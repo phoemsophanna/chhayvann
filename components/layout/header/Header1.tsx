@@ -37,7 +37,7 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
                                                 <span className="txt">Career</span>
                                             </Link>
                                             <Link className="btn-one" href={"/faq"}>
-                                                <span className="txt">Faq's</span>
+                                                <span className="txt">FAQ's</span>
                                             </Link>
                                         </div>
                                     </div>

@@ -28,8 +28,8 @@ const moderustic = Moderustic({
 
 
 export const metadata: Metadata = {
-  title: "Chhay Vann",
-  description: "CHHAY VANN CO., LTD",
+  title: "CHHAYVANN CO., LTD.",
+  description: "CHHAYVANN CO., LTD.",
   keywords: "Jewelry, Gold & Silver - Retailers, Brokers, Designers, etc., Money Exchange"
 };
 

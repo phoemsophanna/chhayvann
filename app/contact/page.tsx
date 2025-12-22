@@ -89,7 +89,7 @@ export default function Courses_Page() {
                                                 </div>
                                                 <div className="text">
                                                     <h4>Address</h4>
-                                                    <p>31 St 286, Sangkat Olympic, Khan Chamkarmon, Phnom Penh, Phnom Penh, 12312 Cambodia</p>
+                                                    <p>No. 31, St. 286, Sangkat Olympic, Khan Chamkamorn, Phnom Penh, Cambodia.</p>
                                                 </div>
                                             </li>
                                             <li>

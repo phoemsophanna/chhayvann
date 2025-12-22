@@ -49,7 +49,7 @@ export default function Courses() {
                                     <div className="tab-single-courses-offered-style1">
                                         <div className="row">
                                             
-                                            <div className="col-xl-4 col-lg-6 col-md-6">
+                                            <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="single-courses-offered-style1">
                                                     <div className="img-box">
                                                         <Link href={"/service/1"}>
@@ -63,7 +63,7 @@ export default function Courses() {
                                                     </div>
                                                     <div className="content-box">
                                                         <h3>
-                                                            <Link href="/service/1">Strategies for Successful Day Trading</Link>
+                                                            <Link href="/service/1">Exchange Rate</Link>
                                                         </h3>
                                                     </div>
                                                     {/* <div className="bottom-box">
@@ -77,7 +77,7 @@ export default function Courses() {
                                                 </div>
                                             </div>
                                             
-                                            <div className="col-xl-4 col-lg-6 col-md-6">
+                                            <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="single-courses-offered-style1">
                                                     <div className="img-box">
                                                         <div className="inner">
@@ -89,7 +89,7 @@ export default function Courses() {
                                                     </div>
                                                     <div className="content-box">
                                                         <h3>
-                                                            <a href="#">Mastering the Basics of Forex Trading</a>
+                                                            <a href="#">Money Tranfer</a>
                                                         </h3>
                                                     </div>
                                                     {/* <div className="bottom-box">
@@ -102,111 +102,6 @@ export default function Courses() {
                                                     </div> */}
                                                 </div>
                                             </div>
-                                            
-                                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                                <div className="single-courses-offered-style1">
-                                                    <div className="img-box">
-                                                        <div className="inner">
-                                                            <Image src="/assets/images/resources/courses-offered-v1-3.webp" alt="Image" width={255} height={190} priority />
-                                                            <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="content-box">
-                                                        <h3>
-                                                            <a href="#">Navigating Forex Trading for Beginners</a>
-                                                        </h3>
-                                                    </div>
-                                                    {/* <div className="bottom-box">
-                                                        <div className="icon">
-                                                            <i className="icon-read-1"></i>
-                                                        </div>
-                                                        <div className="text">
-                                                            <p>4 Lectures _ 1h 30 Mins Duration</p>
-                                                        </div>
-                                                    </div> */}
-                                                </div>
-                                            </div>
-                                            
-                                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                                <div className="single-courses-offered-style1">
-                                                    <div className="img-box">
-                                                        <div className="inner">
-                                                            <Image src="/assets/images/resources/courses-offered-v1-4.webp" alt="Image" width={255} height={190} priority />
-                                                            <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="content-box">
-                                                        <h3>
-                                                            <a href="#">Navigating Forex Trading for Beginners</a>
-                                                        </h3>
-                                                    </div>
-                                                    {/* <div className="bottom-box">
-                                                        <div className="icon">
-                                                            <i className="icon-read-1"></i>
-                                                        </div>
-                                                        <div className="text">
-                                                            <p>4 Lectures _ 1h 30 Mins Duration</p>
-                                                        </div>
-                                                    </div> */}
-                                                </div>
-                                            </div>
-                                            
-                                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                                <div className="single-courses-offered-style1">
-                                                    <div className="img-box">
-                                                        <div className="inner">
-                                                            <Image src="/assets/images/resources/courses-offered-v1-4.webp" alt="Image" width={255} height={190} priority />
-                                                            <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="content-box">
-                                                        <h3>
-                                                            <a href="#">Strategies for Successful Day Trading</a>
-                                                        </h3>
-                                                    </div>
-                                                    {/* <div className="bottom-box">
-                                                        <div className="icon">
-                                                            <i className="icon-read-1"></i>
-                                                        </div>
-                                                        <div className="text">
-                                                            <p>8 Lectures _ 2h 15 Mins Duration</p>
-                                                        </div>
-                                                    </div> */}
-                                                </div>
-                                            </div>
-                                            
-                                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                                <div className="single-courses-offered-style1">
-                                                    <div className="img-box">
-                                                        <div className="inner">
-                                                            <Image src="/assets/images/resources/courses-offered-v1-6.webp" alt="Image" width={255} height={190} priority />
-                                                            <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="content-box">
-                                                        <h3>
-                                                            <a href="#">Mastering the Basics of Forex Trading</a>
-                                                        </h3>
-                                                    </div>
-                                                    {/* <div className="bottom-box">
-                                                        <div className="icon">
-                                                            <i className="icon-read-1"></i>
-                                                        </div>
-                                                        <div className="text">
-                                                            <p>5 Lectures _ 1h 26 Mins Duration</p>
-                                                        </div>
-                                                    </div> */}
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>

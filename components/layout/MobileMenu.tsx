@@ -53,7 +53,15 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
                   <span className="fa fa-angle-right" />
                 </div>
               </li>
-              <li><Link href="/service">Services</Link></li>
+              <li className={`dropdown ${activeDropdown == 2 ? "current" : ""}`}><Link href="/service">Services</Link>
+                <ul style={{ display: activeDropdown == 2 ? "block" : "none" }}>
+                  <li><Link href="/service/1">Exchange Rate</Link></li>
+                  <li><Link href="/service/2">Money Tranfer</Link></li>
+                </ul>
+                <div className={`dropdown-btn ${activeDropdown === 2 ? "open" : ""}`} onClick={() => toggleDropdown(2)}>
+                  <span className="fa fa-angle-right" />
+                </div>
+              </li>
               <li><Link href="/products">Products</Link></li>
               {/* Trading Page */}
               <li><Link href="/trading">Trading</Link></li>

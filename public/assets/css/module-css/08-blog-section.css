@@ -1317,11 +1317,12 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    color: var(--thm-black);
-    font-size: 14px;
+    color: #646966;
+    /* color: var(--thm-black); */
+    font-size: 16px;
     font-family: var(--thm-font-2);
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 400;
+    text-transform: capitalize;
     margin-left: 8px;
     transition: all 200ms linear;
     transition-delay: 0.1s;
@@ -1467,6 +1468,10 @@
     margin-left: 15px;
     padding-left: 35px;
     flex: 1;
+}
+
+.blog-page-one .single-blog-style5 .content-box .top-box .date {
+    flex: 0;
 }
 
 .single-blog-style5 .content-box .top-box .date::before {

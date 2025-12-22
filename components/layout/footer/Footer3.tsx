@@ -215,7 +215,7 @@ export default function Footer3() {
                                             Email: info@chayvann.com.kh
                                         </li>
                                         <li>
-                                            Address: No. 31, St. 286, north of Olympic Market, 12312 Phnom Penh, Cambodia
+                                            Address: No. 31, St. 286, Sangkat Olympic, Khan Chamkamorn, Phnom Penh, Cambodia.
                                         </li>
                                         <li>
                                             Follow Us:

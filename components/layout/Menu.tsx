@@ -55,7 +55,12 @@ export default function Menu() {
           {/* <li className={isActive("/coming-soon") ? "current" : ""}><Link href="/coming-soon">Coming Soon</Link></li> */}
         </ul>
       </li>
-      <li className={isDropdownActive(["/service"]) ? "current" : ""}><Link href="/service">Services</Link></li>
+      <li className={isDropdownActive(["/service"]) ? "dropdown current" : "dropdown"}><Link href="/service">Services</Link>
+        <ul>
+          <li className={isActive("/about") ? "current" : ""}><Link href="/service/1">Exchange Rate</Link></li>
+          <li className={isActive("/history") ? "current" : ""}><Link href="/service/2">Money Tranfer</Link></li>
+        </ul>
+      </li>
       <li className={isActive("/products") ? "current" : ""}><Link href="/products">Products</Link></li>
       {/* Markets Dropdown */}
       {/* <li className={`dropdown ${isDropdownActive(["/markets", "/markets1-trade-forex", "/markets2-stock-market", "/markets3-commodities-market", "/markets4-crypto-market", "/markets5-futures-market", "/markets6-options-market"]) ? "current" : ""}`}>

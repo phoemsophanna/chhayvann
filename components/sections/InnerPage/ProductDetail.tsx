@@ -56,9 +56,6 @@ const ProductDetail = ({post}:any) => {
                       <div className="title-box">
                         <h3>Argor Heraeus</h3>
                       </div>
-                      <div className="price-box">
-                        $18.00
-                      </div>
                       <ul>
                         <li>Type: Gold Bar 1 KG</li>
                         <li>Country: Cambodia</li>

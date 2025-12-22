@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Statement() {
 
     // tab
-    const [activeTab, setActiveTab] = useState("mission");
+    const [activeTab, setActiveTab] = useState("vision");
 
   return (
     <>
@@ -17,11 +17,11 @@ export default function Statement() {
 
                         <div className="statement-style1__tab-btn">
                             <ul className="tabs-button-box clearfix">
-                                <li className={`tab-btn-item ${activeTab === "mission" ? "active-btn-item" : ""}`} onClick={() => setActiveTab("mission")}>
-                                    <h3>Mission Statement</h3>
-                                </li>
                                 <li className={`tab-btn-item ${activeTab === "vision" ? "active-btn-item" : ""}`} onClick={() => setActiveTab("vision")}>
                                     <h3>Vision Statement</h3>
+                                </li>
+                                <li className={`tab-btn-item ${activeTab === "mission" ? "active-btn-item" : ""}`} onClick={() => setActiveTab("mission")}>
+                                    <h3>Mission Statement</h3>
                                 </li>
                                 <li className={`tab-btn-item ${activeTab === "value" ? "active-btn-item" : ""}`} onClick={() => setActiveTab("value")}>
                                     <h3>Our Value</h3>
@@ -93,12 +93,6 @@ export default function Statement() {
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <div className="btn-box">
-                                                        <Link href="#">
-                                                            Start Your Journey
-                                                            <i className="icon-right-arrow"></i>
-                                                        </Link>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">
@@ -175,12 +169,6 @@ export default function Statement() {
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <div className="btn-box">
-                                                        <Link href="#">
-                                                            Start Your Journey
-                                                            <i className="icon-right-arrow"></i>
-                                                        </Link>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">
@@ -256,12 +244,6 @@ export default function Statement() {
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <div className="btn-box">
-                                                        <Link href="#">
-                                                            Start Your Journey
-                                                            <i className="icon-right-arrow"></i>
-                                                        </Link>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">

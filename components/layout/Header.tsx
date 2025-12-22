@@ -11,6 +11,7 @@ import Header1 from "./header/Header1";
 import Header2 from "./header/Header2";
 import Header3 from "./header/Header3";
 import Header4 from "./header/Header4";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
   /** Choose header style (1–4) */
@@ -23,6 +24,7 @@ export default function Header({ style = 1 }: HeaderProps) {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isSidebar, setSidebar] = useState(false);
   const handleSidebar = () => setSidebar((s) => !s);
+  const pathName = usePathname();
 
   // Scroll detection
   useEffect(() => {
@@ -38,6 +40,14 @@ export default function Header({ style = 1 }: HeaderProps) {
       document.body.classList.toggle("mobile-menu-visible", !isMobileMenu);
     }
   }, [isMobileMenu]);
+
+  useEffect(() => {
+    if(typeof document != "undefined"){
+      if(document.body.classList.contains("mobile-menu-visible")){
+        document.body.classList.remove("mobile-menu-visible");
+      }
+    }
+  },[pathName])
 
   // Toggle search popup
   const handlePopup = useCallback(() => {

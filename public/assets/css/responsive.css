@@ -5279,11 +5279,21 @@
     }
 
     .account-style1 .owl-nav-style-one .owl-nav{
-        top: -140px;
+        top: -128px;
     }
 
     .choose-style2 {
         padding: 30px 0 30px;
+    }
+
+    .video-style1__content .bottom-box .left-box .btn-box .btn-one {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 10px 20px;
+    }
+
+    .video-style1__content .sec-title.withtext {
+        padding-bottom: 0;
     }
 
     .video-style1{
@@ -6222,7 +6232,65 @@
         padding-top: 13px;
     }
 
+    .video-style1__content .bottom-box {
+        padding-top: 0;
+    }
 
+    .courses-offered-style1 {
+        padding: 30px 0;
+    }
+
+    .courses-offered-style1 .sec-title {
+        padding-bottom: 30px;
+    }
+
+    .courses-offered-style1 .sec-title p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .currency-pairs-style1 {
+        padding: 30px 0;
+    }
+
+    .account-detail-style1__content {
+        margin-top: 10px;
+    }
+
+    .account-detail-style1 {
+        padding-bottom: 30px;
+    }
+
+    .pt-80 {
+        padding-top: 30px;
+    }
+
+    .tabs-button-box .swiper-wrapper {
+        justify-content: start;
+    }
+
+    .single-blog-style5 .content-box .top-box {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .single-blog-style5 .content-box .top-box .date {
+        padding-top: 0;
+    }
+
+    .blog-details-top .content-box .top-box {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .blog-details-tag ul {
+        display: flex;
+        gap: 10px;
+    }
+
+    .blog-details-tag ul li + li {
+        margin-top: 0;
+    }
 
 
     /*======== Home 04 =========*/

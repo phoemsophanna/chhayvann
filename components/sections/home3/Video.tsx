@@ -54,13 +54,13 @@ export default function Video() {
                                             <i className="icon-right-arrow"></i>
                                         </Link>
                                     </div>
-                                    <div className="total-videos">
+                                    {/* <div className="total-videos">
                                         <h2>40<sup>+</sup></h2>
-                                    </div>
+                                    </div> */}
                                 </div>
-                                <div className="right-box">
+                                {/* <div className="right-box">
                                     <p>Videos <br />From Experts</p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

@@ -224,14 +224,14 @@ export default function Blog_Page_One() {
                         <p>{post.excerpt}</p>
                       </div>
 
-                      <div className="btn-box">
+                      {/* <div className="btn-box">
                         <Link className="show-btn" href={`/blog-1/${post.slug}`}>
                           {post.readTime} <i className="icon-right-arrow"></i>
-                        </Link>
+                        </Link> 
                         <Link className="overlay-btn" href={`/blog-1/${post.slug}`}>
                           Read More <i className="icon-right-arrow"></i>
                         </Link>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

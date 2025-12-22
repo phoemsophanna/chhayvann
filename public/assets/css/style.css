@@ -8125,7 +8125,8 @@ select:focus {
 }
 
 .single-statement-style1__content .list-item li .icon .icon-right-arrow-3 .path2:before {
-    color: var(--thm-black);
+    color: #684d07;
+    /* color: var(--thm-black); */
 }
 
 .single-statement-style1__content .list-item li .text1 {
@@ -8867,7 +8868,11 @@ select:focus {
 =====================================================
 */
 .currency-pairs-style1 {
-    padding: 120px 0px 120px;
+    padding: 80px 0px 45px;
+}
+
+.currency-pairs-style1 .sec-title.withtext {
+    padding-bottom: 0;
 }
 
 .currency-pairs-style1__inner {
@@ -9081,7 +9086,8 @@ select:focus {
 
 .single-currency-pairs-style1 .pricing-table thead {
     position: relative;
-    background: var(--thm-black-bg);
+    background: #8e8e8e;
+    /* background: var(--thm-black-bg); */
 }
 
 .single-currency-pairs-style1 .pricing-table thead th {
@@ -9091,15 +9097,18 @@ select:focus {
     font-weight: 600;
     padding: 19px 40px;
     font-family: var(--thm-font-2);
-    border-right: 1px solid #1a1e37;
+    border-right: 1px solid #747474;
+    text-align: center;
 }
 
 .single-currency-pairs-style1 .pricing-table thead th.name {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--thm-black);
-    background-color: var(--thm-primary-color);
+    /* color: var(--thm-black); */
+    color: #fff;
+    /* background-color: var(--thm-primary-color); */
+    background-color: #9e6a08;
 }
 
 
@@ -9109,6 +9118,7 @@ select:focus {
     position: relative;
     padding: 17px 40px;
     border-right: 1px solid var(--thm-border-color);
+    text-align: center;
 }
 
 .single-currency-pairs-style1 .pricing-table tr td:last-child {
@@ -10013,7 +10023,7 @@ select:focus {
 ================================
 */
 .account-detail-style1 {
-    padding: 80px 0px 80px;
+    padding: 0px 0px 80px;
 }
 
 .account-detail-style1__sidebar {
@@ -11407,7 +11417,7 @@ select:focus {
     left: 0;
     right: 0;
     overflow: hidden;
-    max-width: 330px;
+    max-width: 93%;
     width: 100%;
     margin: 0 auto;
     background-color: var(--thm-black-bg);
@@ -13642,4 +13652,12 @@ select:focus {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.about-style2 .text p {
+    text-align: justify;
+}
+
+.pt-80 {
+    padding-top: 80px;
 }
