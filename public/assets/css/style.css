@@ -23,9 +23,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap');
 
-
-
-
 @import url('animate.min.css');
 @import url('custom-animate.css');
 @import url('fontawesome.css');
@@ -50,8 +47,10 @@
 
 /*== Default Css ==*/
 :root {
-    --thm-font: "Hanken Grotesk", sans-serif;
-    --thm-font-2: "Moderustic", sans-serif;
+    /* --thm-font: "Hanken Grotesk", sans-serif;
+    --thm-font-2: "Moderustic", sans-serif; */
+    --thm-font: "Jost", "Kantumruy Pro", sans-serif;
+    --thm-font-2: "Jost", "Kantumruy Pro", sans-serif;
     --thm-primary-color: #fdcb4c;
     /* --thm-primary-color: #50fa7b; */
     --thm-primary-color-rgb: 80, 250, 123;
@@ -3290,7 +3289,7 @@ select:focus {
 .single-account-style1 .content-box h3 {
     font-size: 24px;
     line-height: 34px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 5px;
 }
 
@@ -3470,7 +3469,7 @@ select:focus {
     font-size: 18px;
     line-height: 28px;
     font-family: var(--thm-font-2);
-    font-weight: 600;
+    font-weight: 500;
     transition: all 200ms linear;
     transition-delay: 0.1s;
 }
@@ -5297,9 +5296,9 @@ select:focus {
 }
 
 .single-choose-style2 .content-box h3 {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 34px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 10px;
 }
 
@@ -6211,8 +6210,8 @@ select:focus {
 .faq-style1-content .accordion-box .block .acc-btn.active {
     /* background: var(--thm-black-bg);
     border-color: var(--thm-black-bg); */
-    background: #8f8f8f;
-    border-color: #8f8f8f;
+    background: #b8b8b8;
+    border-color: #b8b8b8;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -6236,22 +6235,24 @@ select:focus {
 }
 
 .faq-style1-content .accordion-box .block .acc-btn.active span {
-    color: var(--thm-primary-color);
+    color: #9c6a06;
     /* background: var(--thm-black-bg);
     border-color: var(--thm-border-color-1) */
-    background: #8f8f8f;
-    border-color: #8f8f8f;
+    background: #b8b8b8;
+    border-color: #b8b8b8;
 }
 
 .faq-style1-content .accordion-box .block .acc-btn h3 {
     color: var(--thm-black);
     font-size: 18px;
     line-height: 26px;
-    font-weight: 100;
+    font-weight: 600;
+    /* font-weight: 100; */
 }
 
 .faq-style1-content .accordion-box .block .acc-btn.active h3 {
-    color: var(--thm-primary-color);
+    /* color: var(--thm-primary-color); */
+    color: #9c6a06;
     /* color: var(--thm-white); */
 }
 
@@ -6269,7 +6270,8 @@ select:focus {
 
 .faq-style1-content .accordion-box .block .acc-btn.active::before {
     content: "\ea4a";
-    color: var(--thm-primary-color);
+    /* color: var(--thm-primary-color); */
+    color: #9c6a06;
 }
 
 .faq-style1-content .accordion-box .block .acc-content {
@@ -6399,6 +6401,7 @@ select:focus {
 .faq-style2__tab-btn ul li.active-btn-item .icon {
     border-color: var(--thm-primary-color);
     background-color: var(--thm-primary-color);
+    
 }
 
 .faq-style2__tab-btn ul li .icon i {
@@ -11962,8 +11965,8 @@ select:focus {
 }
 
 .tabs-button-box {
-    margin-bottom: 30px;
-     overflow: hidden; 
+    margin-bottom: 50px;
+    overflow: hidden; 
 }
 
 .tabs-button-box .swiper-wrapper {
@@ -12020,7 +12023,8 @@ select:focus {
 }
 
 .blog-details-top .content-box li {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    line-height: 1;
 }
 
 .swiper-slide.tab-btn-item:hover {
@@ -13660,4 +13664,107 @@ select:focus {
 
 .pt-80 {
     padding-top: 80px;
+}
+
+.quick-career-style1 {
+    padding: 80px 0 80px;
+}
+
+.career-container .career-item {
+    padding: 30px 40px;
+    box-shadow: 0 0 30px #efefef;
+    border-radius: 20px;
+    border: 1px solid #f7f7f7;
+    margin-bottom: 20px;
+    transition: 0.3s ease-in;
+    position: relative;
+}
+
+.career-container .career-item:hover {
+    box-shadow: none;
+    border: 1px solid #d6d6d6;
+}
+
+.career-container .career-item h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #684d07;
+    margin-bottom: 5px;
+}
+
+.career-container .career-item p {
+    font-size: 16px;
+}
+
+.career-container .career-item p b {
+    color: #444;
+}
+
+.sec-title.small-weight {
+    padding-bottom: 20px;
+}
+
+.sec-title.small-weight h2 {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.detail-career .sec-title {
+    padding-bottom: 30px;
+}
+
+.detail-career ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.submit-cv-form .fileCV {
+    padding: 10px;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.detail-career {
+    padding: 80px 0 15px;
+}
+
+.career-item span {
+    position: absolute;
+    right: 40px;
+    top: 38%;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 2.5;
+    background-color: rgb(239, 239, 239);
+    border-radius: 100%;
+    border: 1px solid rgb(239, 239, 239);
+    transition: 0.4s;
+    color: #444;
+    box-shadow: 0 0 30px #eaeaea;
+    box-shadow: 5px 5px 30px #f0f0f0;
+}
+
+.career-item span:hover {
+    border: 1px solid rgb(228, 228, 228);
+    box-shadow: none;
+}
+
+.detail-career ul li {
+    list-style: disc;
+}
+
+.detail-career .sec-title h2 {
+    font-size: 30px;
+}
+
+.detail-career .sec-title.sub-title h2 {
+    font-size: 20px;
+}
+
+.submit-form .sec-title h2 {
+    font-size: 30px;
 }

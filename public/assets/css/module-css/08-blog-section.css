@@ -1111,8 +1111,8 @@
     filter: blur(0px);
     -webkit-filter: blur(0px);
     transition: all 1500ms ease;
-    width: auto;
-    height: 250px;
+    /* width: auto; */
+    height: auto;
 }
 
 .single-blog-style4:hover .img-box img {
@@ -1164,7 +1164,7 @@
 .single-blog-style4 .content-box {
     position: relative;
     display: block;
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .single-blog-style4 .meta-box {
@@ -1207,7 +1207,7 @@
 
 .single-blog-style4 .title-box h3 {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 22px;
 }
 
@@ -1457,7 +1457,7 @@
 .single-blog-style5 .content-box .top-box .category h6 {
     font-size: 14px;
     line-height: 24px;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
 }
 
@@ -1524,9 +1524,9 @@
 }
 
 .single-blog-style5 .content-box .title-box h3 {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 34px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 15px;
 }
 
@@ -1621,7 +1621,7 @@
 =============================
 ***/
 .blog-page-one {
-    padding: 80px 0px 80px;
+    padding: 50px 0px 80px;
 }
 
 .blog-page-one .courses-offered-style1__tab-btn {
@@ -1638,6 +1638,7 @@
 
 .single-blog-style5--style6 .content-box .top-box .date h6 {
     color: #646966;
+    font-weight: 500;
 }
 
 .blog-page-one .styled-pagination {

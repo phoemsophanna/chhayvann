@@ -8,9 +8,9 @@ export default function Video() {
   return (
     <>
         <section className="video-style1">
-            <div className="video-style1__shape1">
+            {/* <div className="video-style1__shape1">
                 <Image src="/assets/images/shapes/video-v1-shape1.png" alt="Shape" width={995} height={704} priority />
-            </div>
+            </div> */}
             <div className="container">
                 <div className="row">
                     <div className="col-xl-6">

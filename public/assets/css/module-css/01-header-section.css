@@ -2104,9 +2104,10 @@ Mobile Nav Megamenu Css
 
 
 .stricky-header--style1.main-menu {
-    /* background-color: rgb(186, 186, 186); */
-    background: linear-gradient(90deg, #fffbe6 0%, #d6b46f 100%);
+    background-color: #f9f0d3;
+    /* background: linear-gradient(90deg, #fffbe6 0%, #d6b46f 100%); */
     z-index: 999999;
+    border-bottom: 1px solid #ebe0bb;
 }
 
 .stricky-header--style1 .main-menu__wrapper {

@@ -40,6 +40,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Angkor&family=Jost:ital,wght@0,100..900;1,100..900&family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></link>
+      </head>
       <body className={`${hankenGrotesk.variable} ${moderustic.variable}`}>
         <ClientLayout>{children}</ClientLayout>
       </body>

@@ -34,16 +34,7 @@ export const blogPosts = [
     date: "23.08.2025",
     readTime: "5 Minutes read",
     image: "/assets/images/blog/blog-v3-3.webp",
-  },
-  {
-    slug: "4",
-    title: "Mastering Risk Management in Trading",
-    category: "Economic News",
-    author: "Watson",
-    date: "31.08.2025",
-    readTime: "4 Minutes read",
-    image: "/assets/images/blog/blog-v3-4.webp",
-  },
+  }
 ];
 
 export default function Blog() {
@@ -71,7 +62,7 @@ export default function Blog() {
                 <div className="row">
 
                     {blogPosts.map((post, i) => (
-                    <div className="col-xl-3 col-lg-6 col-md-6" key={post.slug}>
+                    <div className="col-xl-4 col-lg-6 col-md-6" key={post.slug}>
                         <FadeIn direction="up" delay={0.0}>
                         <div className="single-blog-style4">
                             <div className="category-box">
@@ -80,26 +71,17 @@ export default function Blog() {
                                 </div>
                                 <h6>{post.category}</h6>
                             </div>
-                            <div className="img-box">
-                                <Image
-                                src={post.image as string}
-                                alt="Image"
-                                width={270}
-                                height={240}
-                                priority
-                                />
-                                <div className="overlay-icon">
-                                    <Link href="#"
-                                    className="lightbox-image"
-                                    onClick={() => {
-                                        setIndex(i);
-                                        setOpen(true);
-                                    }}
-                                    >
-                                    <i className="icon-maximize"></i>
-                                    </Link>
+                            <Link href={`/blog-1/${post.slug}`}>
+                                <div className="img-box">
+                                    <Image
+                                    src={post.image as string}
+                                    alt="Image"
+                                    width={270}
+                                    height={240}
+                                    priority
+                                    />
                                 </div>
-                            </div>
+                            </Link>
                             <div className="content-box">
                                 <ul className="meta-box clearfix">
                                     <li>
@@ -138,9 +120,8 @@ export default function Blog() {
                 </div>
                 <div className="blog-style4__text">
                     <p>
-                        Become a Master in Markets,
                         <Link href="/blog-1">
-                            Read More Post
+                            Read More News
                             <i className="icon-right-arrow"></i>
                         </Link>
                     </p>

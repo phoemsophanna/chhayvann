@@ -1075,7 +1075,8 @@
 }
 
 .contact-form form .button-box .btn-box .btn-one {
-    color: var(--thm-white);
+    /* color: var(--thm-white); */
+    color: #444;
     border-radius: 36px;
     font-family: var(--thm-font-2);
     font-weight: 600;
@@ -1090,7 +1091,8 @@
 }
 
 .contact-form form .button-box .btn-box .btn-one::after {
-    background: var(--thm-black-bg);
+    /* background: var(--thm-black-bg); */
+    background: rgba(159, 159, 159, 0.29);
 }
 
 .contact-form form .button-box .btn-box .btn-one i {

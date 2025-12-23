@@ -33,7 +33,7 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
                                 <div className="text">
                                     <div className="main-header-style1__content-top-middle">
                                         <div className="btn-box">
-                                            <Link className="btn-one" href={"#"}>
+                                            <Link className="btn-one" href={"/career"}>
                                                 <span className="txt">Career</span>
                                             </Link>
                                             <Link className="btn-one" href={"/faq"}>
