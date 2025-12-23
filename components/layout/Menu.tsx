@@ -79,7 +79,7 @@ export default function Menu() {
 
       {/* Trading Page */}
       <li className={isActive("/trading") ? "current" : ""}><Link href="/trading">Trading</Link></li>
-      <li><Link href="https://inter2.ylgonline.com/" target="_blank">Online Trading</Link></li>
+      <li><Link href="https://chhayvann-demo.ntptrader.com/" target="_blank">Online Trading</Link></li>
       <li className={isDropdownActive(["/blog-1", "/blog-single", "/blog-1"]) ? "current" : ""}><Link href="/blog-1">News & Research</Link></li>
       {/* <li className={`dropdown ${isDropdownActive(["/platform", "/accounts", "/accounts1-standard-account", "/accounts2-mini-account", "/accounts3-stp-account", "/accounts4-demo-account", "/accounts5-islamic-account", "/accounts6-corporate-account"]) ? "current" : ""}`}>
         <Link href="#">Trading</Link>
