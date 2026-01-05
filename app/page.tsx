@@ -19,7 +19,7 @@ export default function Home_One() {
                 <Banner/>
                 <About/>
                 {/* <Counter/> */}
-                <Account/>
+                {/* <Account/> */}
                 <Choose/>
                 <Video/>
                 <Blog/>

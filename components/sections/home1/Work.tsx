@@ -62,10 +62,10 @@ export default function Work() {
                     <div className="text">
                         <div className="main-header-style1__content-top-middle">
                             <div className="btn-box">
-                                <Link className="btn-one active" target="_blank" href="https://register.ylgbullion.co.th/sgp/ylg_bullion_real/individual">
+                                <Link className="btn-one active" href="/individual">
                                     <span className="txt">Open Individual Account</span>
                                 </Link>
-                                <Link className="btn-one" target="_blank" href="https://register.ylgbullion.co.th/sgp/ylg_bullion_real/corporate">
+                                <Link className="btn-one" href="/corporate">
                                     <span className="txt">Open Corporate Account</span>
                                 </Link>
                             </div>

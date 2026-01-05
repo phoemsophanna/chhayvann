@@ -47,11 +47,25 @@ export default function ContactForm() {
                 <div className="input-box">
                     <input
                     type="text"
-                    name="name"
+                    name="firstname"
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your name"
+                    placeholder="First Name"
+                    />
+                </div>
+            </div>
+        </div>
+        <div className="col-xl-6 col-lg-6 col-md-6">
+            <div className="form-group">
+                <div className="input-box">
+                    <input
+                    type="text"
+                    name="lastname"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Last Name"
                     />
                 </div>
             </div>
@@ -78,7 +92,7 @@ export default function ContactForm() {
                 </div>
             </div>
         </div>
-        <div className="col-xl-6 col-lg-6 col-md-6">
+        <div className="col-xl-12 col-lg-12 col-md-12">
             <div className="form-group">
                 <div className="input-box">
                     <input type="text" name="form_subject" id="formSubject"

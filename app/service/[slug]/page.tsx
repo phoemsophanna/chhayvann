@@ -73,16 +73,16 @@ export default function Courses_Details_Page() {
                                                                 <thead className="table-header">
                                                                     <tr>
                                                                         <th className="name">Instrument</th>
-                                                                        <th>Sell</th>
-                                                                        <th>Buy</th>
-                                                                        <th>Spread</th>
+                                                                        <th style={{width: "30%"}}>Sell</th>
+                                                                        <th style={{width: "30%"}}>Buy</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     
                                                                     <tr>
                                                                         <td>
-                                                                            <div className="title">
+                                                                            <div className="title" style={{justifyContent: "space-evenly"}}>
+                                                                                <img src="/assets/images/dollar.webp" style={{width: 120, marginRight: 15}} alt="" />
                                                                                 <h6>eur</h6>
                                                                                 <div className="icon-box">
                                                                                     <i className="icon-exchange"></i>
@@ -97,15 +97,13 @@ export default function Courses_Details_Page() {
                                                                         <td className="buy">
                                                                             $1.06185
                                                                         </td>
-                                                                        <td className="spread">
-                                                                            -0.14%
-                                                                        </td>
                                                                     </tr>
                                                                     
 
                                                                     <tr>
                                                                         <td>
-                                                                            <div className="title">
+                                                                            <div className="title" style={{justifyContent: "space-evenly"}}>
+                                                                                <img src="/assets/images/riel.png" style={{width: 120, marginRight: 15}} alt="" />
                                                                                 <h6>usd</h6>
                                                                                 <div className="icon-box">
                                                                                     <i className="icon-exchange"></i>
@@ -119,14 +117,12 @@ export default function Courses_Details_Page() {
                                                                         <td className="buy">
                                                                             ៛4050
                                                                         </td>
-                                                                        <td className="spread green">
-                                                                            +0.04%
-                                                                        </td>
                                                                     </tr>
                                                                     
                                                                     <tr>
                                                                         <td>
-                                                                            <div className="title">
+                                                                            <div className="title" style={{justifyContent: "space-evenly"}}>
+                                                                                <img src="/assets/images/aus.png" style={{width: 120, marginRight: 15}} alt="" />
                                                                                 <h6>gbp</h6>
                                                                                 <div className="icon-box">
                                                                                     <i className="icon-exchange"></i>
@@ -140,14 +136,12 @@ export default function Courses_Details_Page() {
                                                                         <td className="buy">
                                                                             $0.65994
                                                                         </td>
-                                                                        <td className="spread green">
-                                                                            +0.12%
-                                                                        </td>
                                                                     </tr>
                                                                     
                                                                     <tr>
                                                                         <td>
-                                                                            <div className="title">
+                                                                            <div className="title" style={{justifyContent: "space-evenly"}}>
+                                                                                <img src="/assets/images/aus.png" style={{width: 120, marginRight: 15}} alt="" />
                                                                                 <h6>aud</h6>
                                                                                 <div className="icon-box">
                                                                                     <i className="icon-exchange"></i>
@@ -161,14 +155,12 @@ export default function Courses_Details_Page() {
                                                                         <td className="buy">
                                                                             $0.89665
                                                                         </td>
-                                                                        <td className="spread green">
-                                                                            +0.13%
-                                                                        </td>
                                                                     </tr>
                                                                     
                                                                     <tr>
                                                                         <td>
-                                                                            <div className="title">
+                                                                            <div className="title" style={{justifyContent: "space-evenly"}}>
+                                                                                <img src="/assets/images/dong.png" style={{width: 120, marginRight: 15}} alt="" />
                                                                                 <h6>eur</h6>
                                                                                 <div className="icon-box">
                                                                                     <i className="icon-exchange"></i>
@@ -182,14 +174,12 @@ export default function Courses_Details_Page() {
                                                                         <td className="buy">
                                                                             $22.398
                                                                         </td>
-                                                                        <td className="spread">
-                                                                            -3.06%
-                                                                        </td>
                                                                     </tr>
                                                                     
                                                                     <tr>
                                                                         <td>
-                                                                            <div className="title">
+                                                                            <div className="title" style={{justifyContent: "space-evenly"}}>
+                                                                                <img src="/assets/images/dollar.webp" style={{width: 120, marginRight: 15}} alt="" />
                                                                                 <h6>aud</h6>
                                                                                 <div className="icon-box">
                                                                                     <i className="icon-exchange"></i>
@@ -202,9 +192,6 @@ export default function Courses_Details_Page() {
                                                                         </td>
                                                                         <td className="buy">
                                                                             $13.625
-                                                                        </td>
-                                                                        <td className="spread">
-                                                                            -1.16%
                                                                         </td>
                                                                     </tr>
 
@@ -274,7 +261,7 @@ export default function Courses_Details_Page() {
                                                                             className="path2"></span><span className="path3"></span>
                                                                     </span>
                                                                 </div>
-                                                                <div className="title">
+                                                                <div className="title" style={{justifyContent: "space-evenly"}}>
                                                                     <h3>Benefits</h3>
                                                                     <p>Trouble that are bound to ensue and equal blame desires to
                                                                         obtain.</p>
@@ -303,7 +290,7 @@ export default function Courses_Details_Page() {
                                                                             className="path2"></span><span className="path3"></span>
                                                                     </span>
                                                                 </div>
-                                                                <div className="title">
+                                                                <div className="title" style={{justifyContent: "space-evenly"}}>
                                                                     <h3>Trading Technology</h3>
                                                                     <p>
                                                                         Holds in these matters to this principle of selection rejects.
@@ -438,7 +425,7 @@ export default function Courses_Details_Page() {
                                                                     </span>
                                                                 </div>
                                                                 <div className="content-box">
-                                                                    <div className="title">
+                                                                    <div className="title" style={{justifyContent: "space-evenly"}}>
                                                                         <h3>No Commissions</h3>
                                                                     </div>
                                                                     <div className="border-line"></div>
@@ -458,7 +445,7 @@ export default function Courses_Details_Page() {
                                                                     </span>
                                                                 </div>
                                                                 <div className="content-box">
-                                                                    <div className="title">
+                                                                    <div className="title" style={{justifyContent: "space-evenly"}}>
                                                                         <h3>Flexible Leverage</h3>
                                                                     </div>
                                                                     <div className="border-line"></div>
@@ -481,7 +468,7 @@ export default function Courses_Details_Page() {
                                                                     </span>
                                                                 </div>
                                                                 <div className="content-box">
-                                                                    <div className="title">
+                                                                    <div className="title" style={{justifyContent: "space-evenly"}}>
                                                                         <h3>Low Minimum Deposit</h3>
                                                                     </div>
                                                                     <div className="border-line"></div>
@@ -502,7 +489,7 @@ export default function Courses_Details_Page() {
                                                                     </span>
                                                                 </div>
                                                                 <div className="content-box">
-                                                                    <div className="title">
+                                                                    <div className="title" style={{justifyContent: "space-evenly"}}>
                                                                         <h3>24/6 Support</h3>
                                                                     </div>
                                                                     <div className="border-line"></div>

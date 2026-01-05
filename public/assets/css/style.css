@@ -5118,6 +5118,7 @@ select:focus {
 ================================*/
 .choose-style2 {
     padding: 80px 0px 80px;
+    background-color: #fffdf5;
 }
 
 .choose-style2 .row {
@@ -7261,7 +7262,7 @@ select:focus {
 ===================================
 ***/
 .video-style1 {
-    background-color: #fffdf5;
+    background-color: #fff;
     padding: 80px 0px 80px;
     overflow: hidden;
 }
@@ -13767,4 +13768,77 @@ select:focus {
 
 .submit-form .sec-title h2 {
     font-size: 30px;
+}
+
+.quick-contact-style1-info .list-item .social-link ul li {
+    padding: 0;
+    display: inline-block;
+    margin-top: 0;
+}
+
+.main-header-style1__content-top {
+    background: #faf1cf;
+}
+
+.header-trading-time-style1 {
+    border-color: transparent;
+}
+
+.open-account form {
+    max-width: 768px;
+    margin: auto;
+}
+
+.open-account-form .sec-title {
+    max-width: 768px;
+    margin: auto;
+}
+
+.open-account form input[type="text"], .open-account form input[type="email"], .open-account form input[type="date"] {
+    height: 45px !important;
+    padding-left: 15px !important;
+    margin-bottom: 25px;
+    font-size: 16px !important;
+}
+
+.open-account form .input-box span {
+    font-size: 16px;
+}
+
+.open-account form .input-box label {
+    font-size: 16px;
+}
+
+.submit-cv-form .fileCV {
+    font-size: 16px;
+}
+
+.open-account-form .text p {
+    font-size: 16px;
+}
+
+.open-account-form .btn-one {
+    line-height: 20px;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.open-account form .form-group {
+    margin-bottom: 30px;
+}
+
+.about-style1__img .img-box:before {
+    display: none;
+}
+
+.single-footer-widget-style3 .title:after {
+    display: none;
+}
+
+.single-footer-widget-style3 .title:before {
+    display: none;
+}
+
+.single-footer-widget-style3 .title {
+    padding-bottom: 0;
 }

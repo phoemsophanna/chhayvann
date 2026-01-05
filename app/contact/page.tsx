@@ -14,61 +14,7 @@ export default function Courses_Page() {
                         <div className="row">
                             <div className="col-xl-6 col-lg-5">
                                 <div className="quick-contact-style1__content">
-                                    <div className="sec-title withtext">
-                                        <div className="sub-title">
-                                            <h4>Contact</h4>
-                                        </div>
-                                        <h2>Let&apos;s Talk, Experts Ready Help You</h2>
-                                        <div className="text">
-                                            <p>If you have any questions, need support, or would like more information about our services, please feel free to contact us. Our team is happy to assist you and will respond as soon as possible.</p>
-                                            <p>You can reach us via phone, email, or by using the contact form on this website. We look forward to hearing from you.</p>
-                                        </div>
-                                    </div>
-                                    <div className="social-link">
-                                        <h4>Get Social</h4>
-                                        <ul>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.twitter.com/">
-                                                    <i className="icon-telegram-1"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.youtube.com/">
-                                                    <i className="fab fa-instagram"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.instagram.com/">
-                                                    <i className="fab fa-youtube"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="faq-box">
-                                        <div className="faq-box-inner">
-                                            <div className="icon">
-                                                <span className="icon-guide"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span><span className="path7"></span><span
-                                                        className="path8"></span><span className="path9"></span><span
-                                                        className="path10"></span>
-                                                </span>
-                                            </div>
-                                            <div className="text">
-                                                <p>Answers to 100+ Questions.</p>
-                                                <Link href="/faq">
-                                                    Explore Faq’s
-                                                    <i className="icon-right-arrow"></i>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <img src="/assets/images/customer_supports.jpg" alt="" style={{borderRadius: 20}} />
                                 </div>
                             </div>
                     
@@ -79,19 +25,6 @@ export default function Courses_Page() {
                                     </div>
                                     <div className="list-item">
                                         <ul>
-                                            <li>
-                                                <div className="icon">
-                                                    <span className="icon-map"><span className="path1"></span><span
-                                                            className="path2"></span><span className="path3"></span><span
-                                                            className="path4"></span><span className="path5"></span><span
-                                                            className="path6"></span>
-                                                    </span>
-                                                </div>
-                                                <div className="text">
-                                                    <h4>Address</h4>
-                                                    <p>No. 31, St. 286, Sangkat Olympic, Khan Chamkamorn, Phnom Penh, Cambodia.</p>
-                                                </div>
-                                            </li>
                                             <li>
                                                 <div className="icon">
                                                     <span className="icon-phone-vibration"><span className="path1"></span><span
@@ -105,6 +38,8 @@ export default function Courses_Page() {
                                                     <h4>Phone</h4>
                                                     <p><Link href="tel:180098765432">012-XXX-XXX</Link></p>
                                                     <p><Link href="tel:180098765432">023-XXX-XXX</Link></p>
+                                                    <p><Link href="tel:180098765432">096-XXX-XXX</Link></p>
+                                                    <p><Link href="tel:180098765432">097-XXX-XXX</Link></p>
                                                 </div>
                                             </li>
                                             <li>
@@ -131,9 +66,53 @@ export default function Courses_Page() {
                                                 <div className="text">
                                                     <h4>Office Hours</h4>
                                                     <p>Mon - Sat: 8.00am to 5.00pm</p>
+                                                    <p>Mon - Sat: 8.00am to 5.00pm</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div className="icon">
+                                                    <span className="icon-map"><span className="path1"></span><span
+                                                            className="path2"></span><span className="path3"></span><span
+                                                            className="path4"></span><span className="path5"></span><span
+                                                            className="path6"></span>
+                                                    </span>
+                                                </div>
+                                                <div className="text">
+                                                    <h4>Address</h4>
+                                                    <p>No. 31, St. 286, Sangkat Olympic, Khan Boeng Keng Kang, Phnom Penh, Cambodia.</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div className="quick-contact-style1__content">
+                                                    <div className="social-link">
+                                                        <h4>Get Social</h4>
+                                                        <ul>
+                                                            <li>
+                                                                <Link href="https://www.facebook.com/">
+                                                                    <i className="icon-facebook"></i>
+                                                                </Link>
+                                                            </li>
+                                                            <li>
+                                                                <Link href="https://www.twitter.com/">
+                                                                    <i className="icon-telegram-1"></i>
+                                                                </Link>
+                                                            </li>
+                                                            <li>
+                                                                <Link href="https://www.youtube.com/">
+                                                                    <i className="fab fa-instagram"></i>
+                                                                </Link>
+                                                            </li>
+                                                            <li>
+                                                                <Link href="https://www.instagram.com/">
+                                                                    <i className="fab fa-youtube"></i>
+                                                                </Link>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </li>
                                         </ul>
+                                        
                                         {/* <div className="btn-box">
                                             <Link className="btn-one"
                                                 href="https://www.google.com/maps/search/280%2F5++Granite+Run+Drive+Suite,+%0D%0AHouston+-+90010./@29.8155408,-96.0607242,9z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTEwNS4wIKXMDSoASAFQAw%3D%3D">

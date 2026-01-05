@@ -35,51 +35,51 @@ const blogPosts = [
     author: "t.maverick",
     image: "/assets/images/products/products3.png",
   },
-  {
-    slug: "4",
-    title: "Valcambi",
-    category: "Valcambi",
-    date: "23.08.2025",
-    readTime: "5 Minutes read",
-    author: "N.Isabella",
-    image: "/assets/images/products/products4.png",
-  },
-  {
-    slug: "5",
-    title: "Perth Mint",
-    category: "Perth Mint",
-    date: "15.09.2025",
-    readTime: "4 Minutes read",
-    author: "Silver Scott",
-    image: "/assets/images/products/products5.png",
-  },
-  {
-    slug: "6",
-    title: "Asahi",
-    category: "Economic News",
-    date: "31.08.2025",
-    readTime: "3 Minutes read",
-    author: "z.olivia",
-    image: "/assets/images/products/products6.png",
-  },
-  {
-    slug: "7",
-    title: "Mitsubishi",
-    category: "Economic News",
-    date: "31.08.2025",
-    readTime: "3 Minutes read",
-    author: "t.maverick",
-    image: "/assets/images/products/products7.png",
-  },
-  {
-    slug: "8",
-    title: "PAMP",
-    category: "PAMP",
-    date: "23.08.2025",
-    readTime: "5 Minutes read",
-    author: "N.Isabella",
-    image: "/assets/images/products/products8.png",
-  }
+  // {
+  //   slug: "4",
+  //   title: "Valcambi",
+  //   category: "Valcambi",
+  //   date: "23.08.2025",
+  //   readTime: "5 Minutes read",
+  //   author: "N.Isabella",
+  //   image: "/assets/images/products/products4.png",
+  // },
+  // {
+  //   slug: "5",
+  //   title: "Perth Mint",
+  //   category: "Perth Mint",
+  //   date: "15.09.2025",
+  //   readTime: "4 Minutes read",
+  //   author: "Silver Scott",
+  //   image: "/assets/images/products/products5.png",
+  // },
+  // {
+  //   slug: "6",
+  //   title: "Asahi",
+  //   category: "Economic News",
+  //   date: "31.08.2025",
+  //   readTime: "3 Minutes read",
+  //   author: "z.olivia",
+  //   image: "/assets/images/products/products6.png",
+  // },
+  // {
+  //   slug: "7",
+  //   title: "Mitsubishi",
+  //   category: "Economic News",
+  //   date: "31.08.2025",
+  //   readTime: "3 Minutes read",
+  //   author: "t.maverick",
+  //   image: "/assets/images/products/products7.png",
+  // },
+  // {
+  //   slug: "8",
+  //   title: "PAMP",
+  //   category: "PAMP",
+  //   date: "23.08.2025",
+  //   readTime: "5 Minutes read",
+  //   author: "N.Isabella",
+  //   image: "/assets/images/products/products8.png",
+  // }
 ];
 
 export default function Blog_Page_Two() {
@@ -96,7 +96,7 @@ export default function Blog_Page_Two() {
           <div className="container">
             <div className="row">
               {blogPosts.map((post, i) => (
-                <div className="col-xl-3 col-lg-6 col-md-6 col-6" key={post.slug}>
+                <div className={`col-xl-${blogPosts.length > 3 ? "3" : blogPosts.length > 2 ? "4" : blogPosts.length > 1 ? "6" : "12"} col-lg-6 col-md-6 col-6`} key={post.slug}>
                   <div className="single-blog-style4">
                     {/* <div className="category-box">
                       <div className="icon">

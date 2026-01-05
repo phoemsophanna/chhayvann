@@ -37,6 +37,7 @@ export default function Menu() {
         <Link href="#">Company</Link>
         <ul>
           <li className={isActive("/about") ? "current" : ""}><Link href="/about">About Us</Link></li>
+          <li className={isActive("/organization") ? "current" : ""}><Link href="/organization">Organization Chart</Link></li>
           <li className={isActive("/history") ? "current" : ""}><Link href="/history">History</Link></li>
           <li className={isActive("/team") ? "current" : ""}><Link href="/team">Team Members</Link></li>
           {/* <li className={`dropdown ${isDropdownActive(["/blog-1", "/blog-2", "/blog-3", "/blog-4", "/blog-single"]) ? "current" : ""}`}>

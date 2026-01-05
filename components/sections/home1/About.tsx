@@ -12,16 +12,15 @@ export default function About() {
             <div className="container">
                 <div className="row">
 
-                    <div className="col-xl-5 col-lg-5">
-                        <div className="about-style1__img">
-                            {/* <div className="img-box wow fadeInLeft animated" data-wow-delay="00ms"
+                    <div className="col-xl-6 col-lg-6">
+                        <div className="about-style1__img" style={{marginRight: 0}}>
+                            <div className="img-box wow fadeInLeft animated" data-wow-delay="00ms"
                                 data-wow-duration="1500ms">
-                                <Image src="/assets/images/about/about-v1-1.webp" alt="Image" width={100} height={100} priority />
-                                
-                            </div> */}
+                                <Image src="/assets/images/trading-2.png" alt="Image" width={100} height={100} priority />
+                            </div>
                             <div>
-                                <iframe style={{border: "10px solid #ead8b5",borderRadius: 50,overflow: "hidden",width: "100%",height: "758px"}} src="https://www.youtube.com/embed/37vI9yt9ovU?autoplay=1&mute=1" allow="autoplay; fullscreen">
-                                </iframe>
+                                {/* <iframe style={{border: "10px solid #ead8b5",borderRadius: 50,overflow: "hidden",width: "100%",height: "758px"}} src="https://www.youtube.com/embed/37vI9yt9ovU?autoplay=1&mute=1" allow="autoplay; fullscreen">
+                                </iframe> */}
                             </div>
                             {/* <div className="about-style1__img-award text-center wow fadeInUp animated" data-wow-delay="00ms"
                                 data-wow-duration="1500ms">
@@ -64,7 +63,7 @@ export default function About() {
                         </div>
                     </div>
 
-                    <div className="col-xl-7 col-lg-7">
+                    <div className="col-xl-6 col-lg-6">
                         <div className="about-style1__content wow fadeInRight animated" data-wow-delay="00ms"
                             data-wow-duration="1500ms">
                             <div className="sec-title">
@@ -82,16 +81,10 @@ export default function About() {
                                     teachings were formed and why they continue to influence human thought and progress.
                                     The text explores not only the surface ideas, but also the deeper foundations 
                                     upon which the system is built, guiding the reader through its logic, purpose, 
-                                    and long-term significance. It shows how knowledge, discipline, and experience 
-                                    combine to shape a rational worldview, emphasizing the importance of understanding 
-                                    cause and effect in human actions.
-                                    teachings were formed and why they continue to influence human thought and progress.
-                                    The text explores not only the surface ideas, but also the deeper foundations 
-                                    upon which the system is built, guiding the reader through its logic, purpose, 
                                     and long-term significance.
                                 </p>
                             </div>
-                            <div className="title-box">
+                            {/* <div className="title-box">
                                 <h3>Your Slogan Here</h3>
                                 <h6>Purpose-Driven and Goal-Oriented</h6>
                             </div>
@@ -112,7 +105,7 @@ export default function About() {
                                         business it will frequently.
                                     </p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="btn-box">
                                 <Link href="/about">
                                     Read More

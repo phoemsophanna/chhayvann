@@ -4,6 +4,7 @@ import MobileMenu from "../MobileMenu";
 import Menu from "../Menu";
 import Language from "../Language";
 import { useTranslation } from "react-i18next";
+import { usePathname } from "next/navigation";
 
 // ✅ Define props type
 type Header1Props = {
@@ -14,6 +15,11 @@ type Header1Props = {
 
 export default function Header1({ scroll, handleMobileMenu, handlePopup }: Header1Props) {
     const { t } = useTranslation();
+
+    const pathname = usePathname();
+
+    const isActive = (path: string) => pathname === path;
+
   return (
     <>
       {/* main header */}
@@ -88,10 +94,10 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
 
                         <div className="main-header-style1__content-top-middle">
                             <div className="btn-box">
-                                <Link className="btn-one active" target="_blank" href="https://chhayvann-demo.ntptrader.com/">
+                                <Link className={`btn-one ${isActive("/individual") ? "active" : ""}`} href="/individual">
                                     <span className="txt">Open Individual Account</span>
                                 </Link>
-                                <Link className="btn-one" target="_blank" href="https://chhayvann-demo.ntptrader.com/">
+                                <Link className={`btn-one ${isActive("/corporate") ? "active" : ""}`} href="/corporate">
                                     <span className="txt">Open Corporate Account</span>
                                 </Link>
                             </div>

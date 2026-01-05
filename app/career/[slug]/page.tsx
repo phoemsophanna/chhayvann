@@ -69,7 +69,7 @@ export default function Courses_Page() {
                             </div>
                             <div className="col-12">
                                 <div className="sec-title sub-title withtext text-start" style={{paddingTop: 30, borderTop: "1px solid #eaeaea"}}>
-                                    <h2>POSITION DESCRIPTION</h2>
+                                    <h2>JOB DESCRIPTION</h2>
                                     <div className="text">
                                         <p>
                                             Card Dispute Resolution Officer is to monitor daily suspicious declines 
@@ -81,7 +81,7 @@ export default function Courses_Page() {
                                 </div>
 
                                 <div className="sec-title sub-title withtext text-start">
-                                    <h2 >DUTY & RESPONSIBILITY</h2>
+                                    <h2 >JOB REQUIREMENT</h2>
                                     <div className="text">
                                         <ul role="list">
                                             <li>
@@ -117,14 +117,14 @@ export default function Courses_Page() {
                                         </ul>
                                     </div>
                                 </div>
-                                <div className="sec-title withtext text-start">
+                                {/* <div className="sec-title withtext text-start">
                                     <div className="text">
                                         <p><b>How to apply</b></p>
                                         <p>Interested and qualified applicants should submit your updated Cover Letter and CV stating the position applied for with your current photo (4x6) through
                                             <Link href={`mailto:info@chayvann.com.kh`} style={{color: "#684d07"}}> info@chayvann.com.kh</Link>
                                         </p>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@ export default function Courses_Page() {
                                                 </div>
                                             </div>
                                             <div className="col-12">
-                                                <div className="row" style={{alignItems: "center"}}>
+                                                <div className="row" style={{alignItems: "centers"}}>
                                                     <div className="col-md-6">
                                                         <div className="button-box">
                                                             <ReCAPTCHA

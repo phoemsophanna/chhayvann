@@ -79,22 +79,27 @@ export default function Footer3() {
                                         <div className="text-box">
                                             <p> Business it will frequently to occur that pleasures have all repudiated
                                             and annoyances accepted.</p>
-                                            <p> Business it will frequently to occur that pleasures have all repudiated
-                                            and annoyances accepted.</p>
                                         </div>
                                         <div className="your-trading">
                                             <div className="title1">
                                                 <h3>Begin Your Trading,</h3>
                                             </div>
                                             <div className="btn-box">
-                                                <Link href="https://www.oanda.com/us-en/trading/account-comparison/"
+                                                <Link href="/individual"
                                                     className="btn-one">
                                                     <span className="txt">
-                                                        New Account
+                                                        Open Individual Account
                                                         <i className="icon-right-arrow"></i>
                                                     </span>
                                                 </Link>
-                                                <Link href="https://qxbroker.com/landing/investing?lid=268729&gad_source=1"
+                                                <Link href="/corporate"
+                                                    className="btn-one">
+                                                    <span className="txt">
+                                                        Open Corporate Account
+                                                        <i className="icon-right-arrow"></i>
+                                                    </span>
+                                                </Link>
+                                                <Link href="https://chhayvann-demo.ntptrader.com/"
                                                     className="btn-one">
                                                     <span className="txt">
                                                         Sign In
@@ -166,7 +171,7 @@ export default function Footer3() {
                                             </li>
                                             <li>
                                                 <Link href="/faq">
-                                                    Faq's
+                                                    FAQ's
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
@@ -202,7 +207,7 @@ export default function Footer3() {
                                             } else {
                                                 setDropdown(0);
                                             }
-                                        }}>Contact Us <span className={`fa fa-angle-right ${dropdown == 2 ? "active" : ""}`}></span></h3>
+                                        }}>Information <span className={`fa fa-angle-right ${dropdown == 2 ? "active" : ""}`}></span></h3>
                                     </div>
                                     <ul className={`single-footer-widget-style3-post clearfix ${dropdown == 2 ? "active" : ""}`}>
                                         <li>
@@ -212,10 +217,16 @@ export default function Footer3() {
                                             Phone: 023-XXX-XXX
                                         </li>
                                         <li>
-                                            Email: info@chayvann.com.kh
+                                            Phone: 012-XXX-XXX
                                         </li>
                                         <li>
-                                            Address: No. 31, St. 286, Sangkat Olympic, Khan Chamkamorn, Phnom Penh, Cambodia.
+                                            Phone: 023-XXX-XXX
+                                        </li>
+                                        <li>
+                                            Email: info@chhayvann.com.kh
+                                        </li>
+                                        <li>
+                                            Address: No. 31, St. 286, Sangkat Olympic, Khan Boeng Keng Kang, Phnom Penh, Cambodia.
                                         </li>
                                         <li>
                                             Follow Us:

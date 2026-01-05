@@ -1013,6 +1013,7 @@
 
 
 .contact-form form input[type="text"],
+.contact-form form input[type="date"],
 .contact-form form input[type="email"],
 .contact-form form textarea {
     position: relative;
@@ -1041,6 +1042,7 @@
 }
 
 .contact-form form input[type="text"]:focus,
+.contact-form form input[type="date"]:focus,
 .contact-form form input[type="email"]:focus,
 .contact-form form textarea:focus {
     border-color: var(--thm-primary-color);
@@ -1050,6 +1052,10 @@
 .contact-form form input[type="text"]:-moz-placeholder,
 .contact-form form input[type="text"]::-moz-placeholder,
 .contact-form form input[type="text"]:-ms-input-placeholder,
+.contact-form form input[type="date"]::-webkit-input-placeholder,
+.contact-form form input[type="date"]:-moz-placeholder,
+.contact-form form input[type="date"]::-moz-placeholder,
+.contact-form form input[type="date"]:-ms-input-placeholder,
 .contact-form form input[type="email"]::-webkit-input-placeholder,
 .contact-form form input[type="email"]:-moz-placeholder,
 .contact-form form input[type="email"]::-moz-placeholder,
