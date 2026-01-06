@@ -342,7 +342,7 @@ export default function Courses_Details_Page() {
                                                         <h5>Updated Date: 6 Jan 2026, 8:41 am</h5>
                                                         <p>
                                                             The rates above are for indicative purpose only and only applicable for Swift 
-                                                            Transfer. For the updated rates, please refer to your nearest Chhayvann branch or 
+                                                            Transfer. For the updated rates, please refer to your nearest Chhayvann or 
                                                             call +85523 XXX XXX.
                                                         </p>
                                                     </div>
