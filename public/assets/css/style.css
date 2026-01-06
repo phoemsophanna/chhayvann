@@ -13842,3 +13842,250 @@ select:focus {
 .single-footer-widget-style3 .title {
     padding-bottom: 0;
 }
+
+.dropdown-contain .container-option {
+    display: none;
+}
+
+.dropdown-contain .container-option.active {
+    display: block;
+}
+
+.dropdown-contain {
+    position: relative;
+    z-index: 1000;
+}
+
+.dropdown-contain span {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px;
+    background-color: rgb(236, 236, 236);
+    border: 1px solid #eeeeee;
+    color: #444;
+    width: 200px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 100px;
+    padding-right: 25px;
+    position: relative;
+}
+
+.dropdown-contain span i {
+    position: absolute;
+    height: 30px;
+    right: 5px;
+    width: 30px;
+    padding: 0;
+    background-color: #fff;
+    color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border-radius: 40px;
+    transform: rotate(0deg);
+    transition: 0.3s transform;
+}
+
+.dropdown-contain.active span i {
+    background-color: #fffdf5;
+    border: 1px solid #faf1cf;
+    color: #ffeac5;
+    transform: rotate(180deg);
+}
+
+.dropdown-contain span img {
+    width: 35px;
+}
+
+.dropdown-contain .container-option {
+    position: absolute;
+    width: 270px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 30px 0px #eeeeee;
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+.dropdown-contain .container-option span {
+    background-color: transparent;
+    border: none;
+    width: auto;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dropdown-contain .container-option span:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+.dropdown-contain .container-option .icon-search {
+    color: #9e6a08;
+    position: absolute;
+    top: 20px;
+    left: 18px;
+}
+
+.dropdown-contain .container-option input {
+    padding: 10px 10px 10px 40px;
+    border-radius: 40px;
+    border: none;
+    background-color: rgb(236, 236, 236);
+    width: 100%;
+    font-size: 1rem;
+}
+
+.dropdown-contain .container-option li {
+    margin-bottom: 10px;
+}
+
+.dropdown-contain .container-option span.active {
+    background-color: #fffdf5;
+    border: 1px solid #faf1cf;
+    color: #ffd993;
+}
+
+.content-currency .compare-icon {
+    background-color: #ffeac4;
+    color: #9c6a06;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 30px;
+}
+
+.content-currency .contain-form h6 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: -25px;
+    font-weight: 500;
+}
+
+.content-currency .contain-form {
+    display: flex;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-currency .contain-form .from, .content-currency .contain-form .to, .content-currency .contain-form .amount {
+    position: relative;
+}
+
+.content-currency .contain-form .amount {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.content-currency .contain-form .amount input {
+    background-color: #fffdf5;
+    border: 1px solid #faf1cf;
+    width: 100%;
+    padding: 7px 10px 7px 10px;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1;
+    margin-top: 10px;
+}
+
+.content-currency .contain-form .amount h3 {
+    font-size: 22px;
+}
+
+.content-currency .contain-form .amount h5 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.content-currency .contain-form .amount p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.exchange-currency .content-currency {
+    padding: 30px 50px 30px;
+    box-shadow: 0 0 10px #eeeeee;
+    text-align: center;
+    border: 1px solid #f4f4f4;
+    border-radius: 20px;
+    position: relative;
+}
+
+.exchange-currency .content-currency .title {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -13px;
+}
+
+.exchange-currency .content-currency .title h2 {
+    font-size: 1.35rem;
+    font-weight: 500;
+    background-color: #fff;
+    display: inline-block;
+    box-shadow: 0 0 10px #fff;
+    padding: 0 5px;
+}
+
+.account-detail-style2 {
+    padding: 20px 0 50px;
+}
+
+.exchange-currency .content-img {
+    height: 100%;
+}
+
+.exchange-currency .content-img img {
+    border-radius: 20px;
+    object-fit: cover;
+    height: 100%;
+}
+
+@media screen and (max-width: 769px) {
+    .exchange-currency .content-img {
+        margin-top: 30px;
+    }
+
+    .exchange-currency .content-currency {
+        padding: 30px 5px 30px;
+    }
+
+    .content-currency .contain-form {
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .content-currency .contain-form .from, .content-currency .contain-form .to {
+        flex: 100%;
+        max-width: 100%;
+    }
+
+    .content-currency .contain-form .to {
+        margin-top: 30px;
+    }
+
+    .content-currency .contain-form .from {
+        z-index: 1001;
+    }
+
+    .content-currency .compare-icon {
+        transform: rotate(90deg);
+    }
+
+    .dropdown-contain span {
+        width: 100%;
+    }
+}

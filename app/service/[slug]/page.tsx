@@ -7,10 +7,38 @@ import Link from "next/link";
 import VideoModal from "@/components/elements/VideoPopup";
 import { useState } from "react";
 import { useParams } from "next/navigation";
+import Dropdowns from "@/components/elements/Dropdowns";
 
 export default function Courses_Details_Page() {
     const [activeTab, setActiveTab] = useState("popular");
     const { slug } = useParams();
+    const exchange_rate: Record<string, number> = {
+        USD: 1,
+        KHR: 4100,
+        GBP: 0.73,
+        CNY: 7.2,
+        DONG: 24500
+    };
+    const [exchange, setExchange] = useState({from: "USD", to: "KHR"});
+    const [amount, setAmount] = useState(0);
+    const handleChange = (key: any, value: any) => {
+        console.log(value);
+        if(key == "from"){
+            setExchange({...exchange, from: value});
+        } else {
+            setExchange({...exchange, to: value});
+        }
+    }
+
+    const handleChangeAmount = (e: any) => {
+        if(Number(e.target.value)){
+            const amountTotalUSD = Number(e.target.value) / Number(exchange_rate[exchange.from]);
+            const amounts = amountTotalUSD * Number(exchange_rate[exchange.to]);
+            console.log(amountTotalUSD,amounts,exchange_rate[exchange.from]);
+            setAmount(amounts);
+        }
+    }
+
     return (
         <div>
             <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={Number(slug) == 1 ? "Exchange Rate" : "Money Tranfer"} breadcrumbTitleTwo="Services">
@@ -206,10 +234,131 @@ export default function Courses_Details_Page() {
                                         </div>
                                     </div>
                                 </div>
-
+                
                             </div>
                         </section>
-                        <section className="account-detail-style1">
+                        <section className="account-detail-style2">
+                            <div className="container">
+                                <div className="exchange-currency">
+                                    <div className="row">
+                                        <div className="col-lg-6">
+                                            <div className="content-currency">
+                                                <div className="title">
+                                                    <h2>Currency Converter</h2>
+                                                </div>
+                                                <div className="contain-form">
+                                                    <div className="from">
+                                                        <h6>FROM</h6>
+                                                        <Dropdowns 
+                                                            option={[
+                                                                {
+                                                                    key: 1,
+                                                                    img: "/assets/images/flag/usa.png",
+                                                                    title: "USD - US Dollar",
+                                                                    type: "USD"
+                                                                },
+                                                                {
+                                                                    key: 2,
+                                                                    img: "/assets/images/flag/cambo.png",
+                                                                    title: "KHR - Khmer Riel",
+                                                                    type: "KHR"
+                                                                },
+                                                                {
+                                                                    key: 3,
+                                                                    img: "/assets/images/flag/us.png",
+                                                                    title: "GBP - Pound Sterling",
+                                                                    type: "GBP"
+                                                                },
+                                                                {
+                                                                    key: 4,
+                                                                    img: "/assets/images/flag/ch.png",
+                                                                    title: "CNY - Chinese Renminbi",
+                                                                    type: "CNY"
+                                                                },
+                                                                {
+                                                                    key: 5,
+                                                                    img: "/assets/images/flag/vn.png",
+                                                                    title: "DONG - Vietnam Dong",
+                                                                    type: "DONG"
+                                                                }
+                                                            ]}
+                                                            action={handleChange}
+                                                            type={'from'}
+                                                        >
+                                                            <span><img src="/assets/images/flag/usa.png" alt="" /> USD <i className="fas fa-chevron-down"></i></span>
+                                                        </Dropdowns>
+                                                    </div>
+                                                    <div className="compare-icon">
+                                                        <span className="icon-arrow-right"></span>
+                                                    </div>
+                                                    <div className="to">
+                                                        <h6>TO</h6>
+                                                        <Dropdowns 
+                                                            option={[
+                                                                {
+                                                                    key: 1,
+                                                                    img: "/assets/images/flag/usa.png",
+                                                                    title: "USD - US Dollar",
+                                                                    type: "USD"
+                                                                },
+                                                                {
+                                                                    key: 2,
+                                                                    img: "/assets/images/flag/cambo.png",
+                                                                    title: "KHR - Khmer Riel",
+                                                                    type: "KHR"
+                                                                },
+                                                                {
+                                                                    key: 3,
+                                                                    img: "/assets/images/flag/us.png",
+                                                                    title: "GBP - Pound Sterling",
+                                                                    type: "GBP"
+                                                                },
+                                                                {
+                                                                    key: 4,
+                                                                    img: "/assets/images/flag/ch.png",
+                                                                    title: "CNY - Chinese Renminbi",
+                                                                    type: "CNY"
+                                                                },
+                                                                {
+                                                                    key: 5,
+                                                                    img: "/assets/images/flag/vn.png",
+                                                                    title: "DONG - Vietnam Dong",
+                                                                    type: "DONG"
+                                                                }
+                                                            ]}
+
+                                                            keys={2}
+
+                                                            action={handleChange}
+                                                            type={"to"}
+                                                        >
+                                                            <span><img src="/assets/images/flag/kh.png" alt="" /> KHR <i className="fas fa-chevron-down"></i></span>
+                                                        </Dropdowns>
+                                                    </div>
+                                                    <div className="amount">
+                                                        <h6>AMOUNT</h6>
+                                                        <input type="text" onChange={handleChangeAmount} />
+                                                        <h3>{exchange.to} {amount.toFixed(2)}</h3>
+                                                        <h5>Updated Date: 6 Jan 2026, 8:41 am</h5>
+                                                        <p>
+                                                            The rates above are for indicative purpose only and only applicable for Swift 
+                                                            Transfer. For the updated rates, please refer to your nearest JTRB branch or 
+                                                            call +85523 999 910.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6">
+                                            <div className="content-img">
+                                                <img src="https://img.freepik.com/premium-psd/youtube-video-thumbnail-web-banner-template-trading_475351-174.jpg?w=1480" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section className="account-detail-style1" style={{zIndex: 0}}>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-xl-12 col-lg-12">
