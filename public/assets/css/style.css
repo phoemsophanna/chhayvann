@@ -14088,4 +14088,12 @@ select:focus {
     .dropdown-contain span {
         width: 100%;
     }
+
+    .dropdown-contain span {
+        padding: 10px 25px 10px 10px;
+    }
+
+    .dropdown-contain span i {
+        right: 10px;
+    }
 }
