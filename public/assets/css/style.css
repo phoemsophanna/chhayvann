@@ -13986,8 +13986,8 @@ select:focus {
 }
 
 .content-currency .contain-form .amount input {
-    background-color: #fffdf5;
-    border: 1px solid #faf1cf;
+    background-color: rgb(236, 236, 236);
+    border: 1px solid #e9e9e9;
     width: 100%;
     padding: 7px 10px 7px 10px;
     border-radius: 40px;
