@@ -545,6 +545,10 @@ Mobile Nav Megamenu Css
 
 .main-menu .main-menu__list>li+li,
 .stricky-header .main-menu__list>li+li {
+    margin-left: 45px;
+}
+
+.stricky-header .main-menu__list>li+li {
     margin-left: 30px;
 }
 
