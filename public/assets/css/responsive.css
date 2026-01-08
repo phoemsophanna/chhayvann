@@ -6578,11 +6578,8 @@
 
 
 
-
-@media screen and (min-width: 1366px) {
-    .main-menu .main-menu__list>li+li, .stricky-header .main-menu__list>li+li {
-        margin-left: 30px;
-    }
+.main-menu .main-menu__list>li+li, .stricky-header .main-menu__list>li+li {
+    margin-left: 30px;
 }
 
 
