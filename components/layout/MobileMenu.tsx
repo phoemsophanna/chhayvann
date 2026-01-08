@@ -67,6 +67,7 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
               <li><Link href="/trading">Trading</Link></li>
               <li><Link href="https://inter2.ylgonline.com/" target="_blank">Online Trading</Link></li>
               <li><Link href="/blog-1">News & Research</Link></li>
+              <li><Link href="/career">Career</Link></li>
               {/* Contact */}
               <li><Link href="/contact">Contact Us</Link></li>
             </ul>

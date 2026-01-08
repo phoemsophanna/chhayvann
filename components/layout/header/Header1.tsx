@@ -32,12 +32,12 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
                         <div className="main-header-style1__content-top-left">
                             <div className="header-logo-box-style1">
                                 <Link href="/">
-                                    <Image src="/assets/images/Chhayvann-png.png" alt="Awesome Logo" width={90} height={27} priority />
+                                    <Image src="/assets/images/Chhayvann-Name.png" alt="Awesome Logo" width={320} height={27} priority />
                                 </Link>
                             </div>
                             <div className="header-trading-time-style1">
                                 <div className="text">
-                                    <div className="main-header-style1__content-top-middle">
+                                    {/* <div className="main-header-style1__content-top-middle">
                                         <div className="btn-box">
                                             <Link className="btn-one" href={"/career"}>
                                                 <span className="txt">Career</span>
@@ -46,7 +46,7 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
                                                 <span className="txt">FAQ's</span>
                                             </Link>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     {/* <p><span>Stock:</span> 9.30 am to 4.00 pm</p>
                                     <ul className="clearfix">
                                         <li>
