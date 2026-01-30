@@ -30,7 +30,24 @@ const moderustic = Moderustic({
 export const metadata: Metadata = {
   title: "CHHAYVANN CO., LTD.",
   description: "CHHAYVANN CO., LTD.",
-  keywords: "Jewelry, Gold & Silver - Retailers, Brokers, Designers, etc., Money Exchange"
+  keywords: [
+    "CHHAYVANN",
+    "chhayvann",
+    "CHHAYVANN CO., LTD.",
+    "Cambodia jewelry",
+    "Gold and silver Cambodia",
+    "Money exchange Cambodia",
+    "Jewelry shop in Cambodia",
+    "Gold trading",
+    "Currency exchange Cambodia"
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://www.chhayvann.com"
+  },
 };
 
 export default function RootLayout({
