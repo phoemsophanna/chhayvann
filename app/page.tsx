@@ -39,7 +39,7 @@ export default function Home_One() {
                 <About homepage={homepage} />
                 <Choose />
                 <Video trade={trade} />
-                <Blog homepage={homepage} news={news} />
+                {news.length > 0 ? <Blog homepage={homepage} news={news} /> : ""}
             </Layout>
         </div>
     )
