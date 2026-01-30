@@ -14192,3 +14192,7 @@ select:focus {
 .embedMap iframe {
     width: 100%;
 }
+
+.tabs-button-box {
+    margin-bottom: 0;
+}

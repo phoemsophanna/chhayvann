@@ -30,7 +30,7 @@ export default function About_Page() {
             }
         });
     },[i18n.language]);
-    console.log(about);
+    
     return (
         <div>
             <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="About Us">
