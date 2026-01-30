@@ -14104,6 +14104,12 @@ select:focus {
     .dropdown-contain span i {
         right: 10px;
     }
+    
+    .main-slider-style2 .container {
+        min-height: 210px;
+        display: flex;
+        align-items: center;
+    }
 }
 
 .single-blog-style5 .content-box .top-box .category h6 {
