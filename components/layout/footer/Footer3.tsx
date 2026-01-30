@@ -54,7 +54,7 @@ export default function Footer3() {
                                                         <i className="icon-right-arrow"></i>
                                                     </span>
                                                 </Link>
-                                                <Link href="https://chhayvann-demo.ntptrader.com/"
+                                                <Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank"
                                                     className="btn-one">
                                                     <span className="txt">
                                                         {t("SignIn")}
@@ -107,7 +107,7 @@ export default function Footer3() {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link href="#">
+                                                <Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank">
                                                     {t("HEADER.OnlineTrading")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>

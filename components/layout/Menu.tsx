@@ -64,7 +64,7 @@ export default function Menu() {
 
       {/* Trading Page */}
       <li className={isActive("/trading") ? "current" : ""}><Link href="/trading">{t("HEADER.Trading")}</Link></li>
-      <li><Link href="https://chhayvann-demo.ntptrader.com/" target="_blank">{t("HEADER.OnlineTrading")}</Link></li>
+      <li><Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank">{t("HEADER.OnlineTrading")}</Link></li>
       {
         general?.article > 0 ? (
           <li className={isDropdownActive(["/blog-1", "/blog-single", "/blog-1"]) ? "current" : ""}><Link href="/blog-1">{t("HEADER.NewsResearch")}</Link></li>

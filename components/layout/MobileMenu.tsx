@@ -76,7 +76,7 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
               <li><Link href="/products">{t("HEADER.Products")}</Link></li>
               {/* Trading Page */}
               <li><Link href="/trading">{t("HEADER.Trading")}</Link></li>
-              <li><Link href="https://chhayvann-demo.ntptrader.com/" target="_blank">{t("HEADER.OnlineTrading")}</Link></li>
+              <li><Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank">{t("HEADER.OnlineTrading")}</Link></li>
               <li><Link href="/blog-1">{t("HEADER.NewsResearch")}</Link></li>
               <li><Link href="/career">{t("HEADER.Career")}</Link></li>
               {/* Contact */}
