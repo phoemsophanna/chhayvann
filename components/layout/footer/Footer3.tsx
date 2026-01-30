@@ -112,12 +112,16 @@ export default function Footer3() {
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
-                                            <li>
-                                                <Link href="/blog-1">
-                                                    {t("HEADER.NewsResearch")}
-                                                    <i className="icon-right-arrow"></i>
-                                                </Link>
-                                            </li>
+                                            {
+                                                general?.article > 0 ? (
+                                                    <li>
+                                                        <Link href="/blog-1">
+                                                            {t("HEADER.NewsResearch")}
+                                                            <i className="icon-right-arrow"></i>
+                                                        </Link>
+                                                    </li>
+                                                ) : ""
+                                            }
                                             <li>
                                                 <Link href="/history">
                                                     {t("HEADER.History")}
@@ -139,6 +143,12 @@ export default function Footer3() {
                                             <li>
                                                 <Link href="/contact">
                                                     {t("HEADER.ContactUs")}
+                                                    <i className="icon-right-arrow"></i>
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link href="/privacy">
+                                                    {t("PrivacyPolicy")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
