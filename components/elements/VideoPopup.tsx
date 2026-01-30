@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-export default function VideoModal(): React.JSX.Element {
+export default function VideoModal({videoSrc}:any): React.JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
 
@@ -27,7 +27,7 @@ export default function VideoModal(): React.JSX.Element {
           allow="autoplay; encrypted-media"
           allowFullScreen
         />
-        <button onClick={() => setIsOpen(false)} className="close-btn" aria-label="Close Video">
+        <button onClick={() => setIsOpen(false)} className="close-btn" style={{top: 10, right: 10}} aria-label="Close Video">
           ✕
         </button>
       </div>

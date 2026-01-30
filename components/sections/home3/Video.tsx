@@ -2,9 +2,11 @@
 import VideoModal from "@/components/elements/VideoPopup";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
-export default function Video() {
-
+export default function Video({trade}: any) {
+    const { t } = useTranslation();
+    
   return (
     <>
         <section className="video-style1">
@@ -18,7 +20,7 @@ export default function Video() {
                             data-wow-duration="1500ms">
                             <Image src="/assets/images/resources/video-v1-1.jpg" alt="Image" width={570} height={464} priority />
                             <div className="overlay">
-                                <VideoModal/>
+                                <VideoModal videoSrc={trade?.linkVideo} />
                             </div>
                         </div>
                     </div>
@@ -27,40 +29,26 @@ export default function Video() {
                             data-wow-duration="1500ms">
                             <div className="sec-title withtext">
                                 <div className="sub-title">
-                                    <h4>How to Trade</h4>
+                                    <h4>{trade?.subtitle}</h4>
                                 </div>
-                                <h2>Easy to Follow Video</h2>
+                                <h2>{trade?.title}</h2>
                                 <div className="text">
-                                    <p>Watch our trading videos to get the most from the markets and become a profitable
-                                        trader.Watch our trading.</p>
-                                    <p>Watch our trading videos to get the most from the markets and become a profitable
-                                        trader.Watch our trading get the most from.</p>
+                                    <div dangerouslySetInnerHTML={{__html: trade?.des}} />
                                 </div>
                             </div>
-                            {/* <div className="duration-box">
-                                <div className="number">
-                                    <h4>#1</h4>
-                                </div>
-                                <div className="title">
-                                    <h3>An Introduction to Trading</h3>
-                                    <h5>Duration: 6.05 Mins</h5>
-                                </div>
-                            </div> */}
                             <div className="bottom-box">
                                 <div className="left-box">
                                     <div className="btn-box">
-                                        <Link className="btn-one" href="https://www.youtube.com/shorts/3gI7Iezyd9E">
-                                            <span className="txt">More Videos</span>
-                                            <i className="icon-right-arrow"></i>
-                                        </Link>
+                                        {
+                                            trade?.link ? (
+                                                <Link className="btn-one" target="_blank" href={`${trade?.link ? trade?.link : "#"}`}>
+                                                    <span className="txt">{t("MoreVideos")}</span>
+                                                    <i className="icon-right-arrow"></i>
+                                                </Link>
+                                            ) : ""
+                                        }
                                     </div>
-                                    {/* <div className="total-videos">
-                                        <h2>40<sup>+</sup></h2>
-                                    </div> */}
                                 </div>
-                                {/* <div className="right-box">
-                                    <p>Videos <br />From Experts</p>
-                                </div> */}
                             </div>
                         </div>
                     </div>

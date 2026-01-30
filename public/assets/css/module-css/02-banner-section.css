@@ -1136,6 +1136,20 @@
     z-index: 1;
 }
 
+.main-slider-style2 .image-layer-2 {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    transition: 3s all;
+    z-index: 1;
+}
+
 .main-slider-style2 .image-layer::before {
     content: "";
     position: absolute;
@@ -1145,6 +1159,18 @@
     bottom: 0;
     opacity: 0.5;
     background-color: #000000;
+    z-index: -1;
+}
+
+.main-slider-style2 .image-layer-2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    background-color: #fff;
     z-index: -1;
 }
 

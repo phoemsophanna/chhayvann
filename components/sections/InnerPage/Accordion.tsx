@@ -20,6 +20,8 @@ export default function Accordion({ items }: AccordionProps) {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  console.log(items);
+
   return (
     <div className="faq-style2-tab-content-box-item">
       <div className="single-faq-style2">
@@ -36,7 +38,7 @@ export default function Accordion({ items }: AccordionProps) {
                   className={`acc-btn ${activeIndex === index ? "active" : ""}`}
                   onClick={() => handleToggle(index)}
                 >
-                  <span>{item.label ?? `Q&a ${item.id}`}</span>
+                  <span>{item.label ?? `Q&a`}</span>
                   <h3>{item.question}</h3>
                 </div>
 

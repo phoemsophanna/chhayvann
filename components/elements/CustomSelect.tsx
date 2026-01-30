@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Option = {
   value: string;
@@ -12,6 +13,7 @@ type CustomSelectProps = {
   options: Option[];
   placeholder?: string;
   defaultValue?: any;
+  lang?: any;
   onChange?: (value: string) => void;
 };
 
@@ -19,11 +21,13 @@ export default function CustomSelect({
   options,
   placeholder,
   defaultValue = null,
+  lang = null,
   onChange,
 }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<Option | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const handleSelect = (option: Option) => {
     setSelected(option);
@@ -54,7 +58,7 @@ export default function CustomSelect({
         className="select-inner cursor-pointer"
       >
         <span className="text-sm" style={{height: 25}}>
-          {selected?.element} {selected ? selected.label : placeholder || 'Select an option'}
+          {selected?.element} {selected ? (lang ? t(`GENERAL.${selected.label}`) : selected.label) : placeholder || 'Select an option'}
         </span>
         <i
           className={`icon far fa-angle-down transition-transform duration-200 ${
@@ -76,7 +80,7 @@ export default function CustomSelect({
               selected?.value === option.value ? 'selected' : ''
             }`}
           >
-            {option?.element} {option.label}
+            {option?.element} {lang ? t(`GENERAL.${option.label}`) : option.label}
           </li>
         ))}
       </ul>

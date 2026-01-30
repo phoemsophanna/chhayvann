@@ -1,73 +1,73 @@
-
-import ContactForm from "@/components/elements/ContactForm";
+"use client";
 import Layout from "@/components/layout/Layout";
+import axios from "axios";
 import Link from "next/link";
-
-
-const data = [
-    {
-        slug: 1,
-        name: "Card Dispute Resolution Officer",
-        position: "Head Office, Phnom Penh",
-        dateline: "December 31, 2026"
-    },
-    {
-        slug: 2,
-        name: "Consumer Credit Analyst",
-        position: "Head Office, Phnom Penh",
-        dateline: "December 31, 2026"
-    },
-    {
-        slug: 3,
-        name: "Senior Product Marketing Executive",
-        position: "Head Office, Phnom Penh",
-        dateline: "December 31, 2026"
-    },
-    {
-        slug: 4,
-        name: "Chief Teller (Stung Treng)",
-        position: "Head Office, Phnom Penh",
-        dateline: "December 31, 2026"
-    },
-];
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { api } from "../config";
 
 export default function Courses_Page() {
+    const {t, i18n} = useTranslation();
+    const [banner, setBanner] = useState<any>(null);
+    const [careers, setCareers] = useState<any>([]);
+    const [career, setCareer] = useState<any>(null);
+
+    useEffect(() => {
+        axios.get(`${api.BASE_URL}/career-page`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept-Language": i18n.language
+            }
+        }).then((res) => {
+            if(res.data.status == "success"){
+                setBanner(res.data.banner);
+                setCareers(res.data.careers);
+                setCareer(res.data.career);
+            }
+        });
+    },[i18n.language])
 
     return (
         <div>
-            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Careers">
+            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.Career")} breadcrumbImage={banner?.image}>
                 <section className="quick-career-style1">
                     <div className="container">
                         <div className="row">
                             <div className="col-12 sec-title withtext text-center">
-                                <h2>Work and grow with Chhayvann Co., Ltd.</h2>
+                                <h2>{career?.title}</h2>
                                 <div className="text">
                                     <p>
-                                        At Chhayvann,  we believe ourselves well placed to capture opportunities ahead. We are also strengthening our franchise in the country and fortify our 
-                                        position as Cambodia’s safest bank.
+                                        {career?.summary}
                                     </p>
                                 </div>
                             </div>
                             <div className="col-12">
                                 <div className="sec-title small-weight withtext text-center">
-                                    <h2>Work and grow with Chhayvann</h2>
+                                    <h2>{career?.subtitle}</h2>
                                 </div>
                                 <div className="career-container">
                                     {
-                                        data?.map((q) => {
-                                            return (
-                                                <Link href={`/career/${q.slug}`}>
-                                                    <div className="career-item">
-                                                        <h2>{q.name}</h2>
-                                                        <p>{q.position}</p>
-                                                        <p><b>Application deadline</b> {q.dateline}</p>
-                                                        <span>
-                                                            <i className="fas fa-arrow-right"></i>
-                                                        </span>
-                                                    </div>
-                                                </Link>
-                                            );
-                                        })
+                                        careers.length > 0 ? (
+                                            <>
+                                                {
+                                                    careers?.map((q:any) => {
+                                                        return (
+                                                            <Link href={`/career/${q.id}`} key={q?.id}>
+                                                                <div className="career-item">
+                                                                    <h2>{q?.title}</h2>
+                                                                    <p>{q?.location}</p>
+                                                                    <p><b>{t("ApplicationDeadline")}</b> {q?.deadline}</p>
+                                                                    <span>
+                                                                        <i className="fas fa-arrow-right"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </Link>
+                                                        );
+                                                    })
+                                                }
+                                            </>
+                                        ) : ""
                                     }
                                 </div>
                             </div>

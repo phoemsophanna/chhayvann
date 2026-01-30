@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { api } from "@/app/config";
 const ProductDetail = ({post}:any) => {
     const [photoChanged, setPhotoChanged] = useState("");
     return <>
@@ -13,31 +14,26 @@ const ProductDetail = ({post}:any) => {
                   <div className="row">
                     <div className="col-md-3 col-12 order-md-1 order-2">
                       <div className="gallery-products">
-                        <div className={`img-box ${photoChanged == '/assets/images/products/products1.png' ? 'active' : ""}`} onClick={() => setPhotoChanged("/assets/images/products/products1.png")}>
-                          <Image
-                            src={'/assets/images/products/products1.png'}
-                            alt={post.title}
-                            width={870}
-                            height={500}
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div className={`img-box ${photoChanged == '/assets/images/products/products2.png' ? 'active' : ""}`} onClick={() => setPhotoChanged("/assets/images/products/products2.png")}>
-                          <Image
-                            src={'/assets/images/products/products2.png'}
-                            alt={post.title}
-                            width={870}
-                            height={500}
-                            className="img-fluid"
-                          />
-                        </div>
+                        {
+                          post?.gallery?.map((q:any) => {
+                            return <div className={`img-box ${photoChanged == `${api.FILE_URL}${q}` ? 'active' : ""}`} onClick={() => setPhotoChanged(`${api.FILE_URL}${q}`)}>
+                                    <Image
+                                      src={`${api.FILE_URL}${q}`}
+                                      alt={post.title}
+                                      width={870}
+                                      height={500}
+                                      className="img-fluid"
+                                    />
+                                  </div>;
+                          })
+                        }
                       </div>
                     </div>
                     <div className="col-md-9 col-12 order-md-2 order-1">
                       <div className="blog-details-top">
                         <div className="img-box">
                           <Image
-                            src={photoChanged ? photoChanged : '/assets/images/products/products1.png'}
+                            src={photoChanged ? photoChanged : `${api.FILE_URL}${post?.gallery[0]}`}
                             alt={post.title}
                             width={870}
                             height={500}
@@ -54,25 +50,18 @@ const ProductDetail = ({post}:any) => {
                   <div className="blog-details-top">
                     <div className="content-box">
                       <div className="title-box">
-                        <h3>Argor Heraeus</h3>
+                        <h3>{post?.title}</h3>
                       </div>
                       <ul>
-                        <li>Type: Gold Bar 1 KG</li>
-                        <li>Country: Cambodia</li>
+                        <li>Type: {post?.type}</li>
+                        <li>Country: {post?.country}</li>
                       </ul>
                     </div>
                   </div>
 
                   {/* === Your same static HTML markup === */}
                   <div className="blog-details-text1">
-                    <p>
-                        Triving and dislike men who are so that beguiled and demoralized welcomed every pain
-                        avoided frequently occur that pleasures indignation and dislike men who are so
-                        beguiled the charms of pleasure of the moment, so blinded by desire, that they
-                        cannot foresee the pain troublethat are bound to ensue; and equal blame belongs to
-                        those who fail in their duty through weakness of same as saying through shrinking
-                        our being able to do.
-                    </p>
+                    <div dangerouslySetInnerHTML={{__html: post?.description}} />
                   </div>
                 </div>
               </div>

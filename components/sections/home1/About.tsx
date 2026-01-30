@@ -2,9 +2,11 @@
 import RoundTextScript from "@/components/elements/CircleText";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 
-export default function About() {
+export default function About({homepage}:any) {
+    const { t } = useTranslation();
   return (
     <>
         <section className="about-style1">
@@ -18,48 +20,6 @@ export default function About() {
                                 data-wow-duration="1500ms">
                                 <Image src="/assets/images/trading-2.png" alt="Image" width={100} height={100} priority />
                             </div>
-                            <div>
-                                {/* <iframe style={{border: "10px solid #ead8b5",borderRadius: 50,overflow: "hidden",width: "100%",height: "758px"}} src="https://www.youtube.com/embed/37vI9yt9ovU?autoplay=1&mute=1" allow="autoplay; fullscreen">
-                                </iframe> */}
-                            </div>
-                            {/* <div className="about-style1__img-award text-center wow fadeInUp animated" data-wow-delay="00ms"
-                                data-wow-duration="1500ms">
-                                <div className="about-style1__img-award-top">
-                                    <div className="top">
-                                        <div className="shape1">
-                                            <Image src="/assets/images/about/about-v1-badge.png" alt="Award" width={180} height={157} priority />
-                                        </div>
-                                        <div className="text">
-                                            <h5>Top <br />Trading <br />Broker</h5>
-                                            <h6>2023</h6>
-                                        </div>
-                                    </div>
-                                    <div className="title">
-                                        <h3>Top Trading <br />Platform - Year &apos;23.</h3>
-                                        <p>By ADVFN International.</p>
-                                    </div>
-                                </div>
-                                <div className="about-style1__img-award-bottom">
-                                    <h3>Trade with award <br />winning broker</h3>
-                                </div>
-                            </div> */}
-
-                            {/* <div className="about-style1-round-text wow fadeInRight animated" data-wow-delay="00ms"
-                                data-wow-duration="1500ms">
-                                <div className="about-style1-round-text__dot1"></div>
-                                <div className="about-style1-round-text__dot2"></div>
-                                <div className="about-style1-round-text__top">
-                                    Years of Trading Experience
-                                </div>
-                                <div className="about-style1-round-text__bottom">
-                                    Expertise Built on Experience
-                                </div>
-                                <div className="overlay-text">
-                                    <div className="inner">
-                                        2<span>4</span>
-                                    </div>
-                                </div>
-                            </div> */}
                         </div>
                     </div>
 
@@ -68,47 +28,16 @@ export default function About() {
                             data-wow-duration="1500ms">
                             <div className="sec-title">
                                 <div className="sub-title">
-                                    <h4>Welcome To</h4>
+                                    <h4>{homepage?.subtitle}</h4>
                                 </div>
-                                <h2>CHHAY VANN CO., LTD</h2>
+                                <h2>{homepage?.companyName}</h2>
                             </div>
                             <div className="text">
-                                <p>
-                                    It gives a complete and carefully structured account of the system, 
-                                    explaining its principles in detail while clearly expounding the teachings 
-                                    of the great explorer of truth, the master-builder of human understanding. 
-                                    Through thoughtful explanation and reasoned insight, it reveals how these 
-                                    teachings were formed and why they continue to influence human thought and progress.
-                                    The text explores not only the surface ideas, but also the deeper foundations 
-                                    upon which the system is built, guiding the reader through its logic, purpose, 
-                                    and long-term significance.
-                                </p>
+                                <div dangerouslySetInnerHTML={{__html: homepage?.aboutCompany}} />
                             </div>
-                            {/* <div className="title-box">
-                                <h3>Your Slogan Here</h3>
-                                <h6>Purpose-Driven and Goal-Oriented</h6>
-                            </div>
-                            <div className="text-box">
-                                <div className="icon">
-                                    <div className="inner">
-                                        <span className="icon-target"><span className="path1"></span><span
-                                                className="path2"></span><span className="path3"></span><span
-                                                className="path4"></span><span className="path5"></span><span
-                                                className="path6"></span><span className="path7"></span><span
-                                                className="path8"></span><span className="path9"></span></span>
-                                    </div>
-                                </div>
-                                <div className="text1">
-                                    <p>
-                                        Expound the actual teaching of the great of the
-                                        master-builder human do not know how pursues
-                                        business it will frequently.
-                                    </p>
-                                </div>
-                            </div> */}
                             <div className="btn-box">
                                 <Link href="/about">
-                                    Read More
+                                    {t("ReadMore")}
                                     <i className="icon-right-arrow"></i>
                                 </Link>
                             </div>

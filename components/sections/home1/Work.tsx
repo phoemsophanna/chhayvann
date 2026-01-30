@@ -2,6 +2,7 @@
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const swiperOptions = {
     modules: [Autoplay, Pagination, Navigation],
@@ -15,8 +16,8 @@ const swiperOptions = {
 
     // Navigation
     navigation: {
-        nextEl: '.owl-prev',
-        prevEl: '.owl-next',
+        nextEl: '.owl-next',
+        prevEl: '.owl-prev',
     },
 
     breakpoints: {
@@ -47,7 +48,8 @@ const swiperOptions = {
     }
 }
 
-export default function Work() {
+export default function Work({trade,trades}: any) {
+    const { t } = useTranslation();
   return (
     <>
         <section className="how-it-work-style1">
@@ -55,18 +57,18 @@ export default function Work() {
                 <div className="how-it-work-style1__top">
                     <div className="sec-title">
                         <div className="sub-title">
-                            <h4>How to Invest</h4>
+                            <h4>{trade?.subtitle}</h4>
                         </div>
-                        <h2>Step-by-Step Trading Guide</h2>
+                        <h2>{trade?.title}</h2>
                     </div>
                     <div className="text">
                         <div className="main-header-style1__content-top-middle">
                             <div className="btn-box">
                                 <Link className="btn-one active" href="/individual">
-                                    <span className="txt">Open Individual Account</span>
+                                    <span className="txt">{t("HEADER.OpenIndividualAccount")}</span>
                                 </Link>
                                 <Link className="btn-one" href="/corporate">
-                                    <span className="txt">Open Corporate Account</span>
+                                    <span className="txt">{t("HEADER.OpenCorporateAccount")}</span>
                                 </Link>
                             </div>
                         </div>
@@ -76,102 +78,27 @@ export default function Work() {
                     <div className="col-xl-12">
                         <div className="slider-content relative">
                             <Swiper {...swiperOptions} className="how-it-work-style1-carousel">
-                                <SwiperSlide>
-                                    <div className="single-how-it-work-style1">
-                                        <div className="count-box">
-                                            <div className="step">
-                                                <h6>Step 01</h6>
+                                {
+                                    trades?.map((q:any) => (
+                                        <SwiperSlide key={q?.id}>
+                                            <div className="single-how-it-work-style1">
+                                                <div className="count-box">
+                                                    <div className="step">
+                                                        <h6>{q?.step}</h6>
+                                                    </div>
+                                                </div>
+                                                <div className="content-box">
+                                                    <div className="title">
+                                                        <h3><Link href="#">{q?.title}</Link></h3>
+                                                        <p>
+                                                            {q?.summary}
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="content-box">
-                                            <div className="title">
-                                                <h3><Link href="#">Open Your Account</Link></h3>
-                                                <p>Always holds these matters to this principle of selection or else cases
-                                                    he endures pains.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="single-how-it-work-style1">
-                                        <div className="count-box">
-                                            <div className="step">
-                                                <h6>Step 02</h6>
-                                            </div>
-                                        </div>
-                                        <div className="content-box">
-                                            <div className="title">
-                                                <h3><Link href="#">Fund Your Account</Link></h3>
-                                                <p>Beguiled and demoralized the charms of pleasure of the moment, so blinded
-                                                    by desire that they foresee.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="single-how-it-work-style1">
-                                        <div className="count-box">
-                                            <div className="step">
-                                                <h6>Step 03</h6>
-                                            </div>
-                                        </div>
-                                        <div className="content-box">
-                                            <div className="title">
-                                                <h3><Link href="#">Choose Your Asset</Link></h3>
-                                                <p>Business it will frequently occur that pleasures have to be repudiated
-                                                    and annoyances accepted.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="single-how-it-work-style1">
-                                        <div className="count-box">
-                                            <div className="step">
-                                                <h6>Step 04</h6>
-                                            </div>
-                                        </div>
-                                        <div className="content-box">
-                                            <div className="title">
-                                                <h3><Link href="#">Open Your Account</Link></h3>
-                                                <p>Always holds these matters to this principle of selection or else cases
-                                                    he endures pains.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="single-how-it-work-style1">
-                                        <div className="count-box">
-                                            <div className="step">
-                                                <h6>Step 05</h6>
-                                            </div>
-                                        </div>
-                                        <div className="content-box">
-                                            <div className="title">
-                                                <h3><Link href="#">Fund Your Account</Link></h3>
-                                                <p>Beguiled and demoralized the charms of pleasure of the moment, so blinded
-                                                    by desire that they foresee.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="single-how-it-work-style1">
-                                        <div className="count-box">
-                                            <div className="step">
-                                                <h6>Step 06</h6>
-                                            </div>
-                                        </div>
-                                        <div className="content-box">
-                                            <div className="title">
-                                                <h3><Link href="#">Choose Your Asset</Link></h3>
-                                                <p>Business it will frequently occur that pleasures have to be repudiated
-                                                    and annoyances accepted.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
+                                        </SwiperSlide>
+                                    ))
+                                }
 
                                 <div className="owl-nav-style-one">
                                     <div className="owl-nav disabled">

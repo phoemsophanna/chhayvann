@@ -1,14 +1,22 @@
 "use client";
 
+import { api } from "@/app/config";
 import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useTranslation } from "react-i18next";
 
-export default function ContactForm() {
+export default function ContactForm({setActive}:any) {
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
+    phone: "",
     email: "",
+    subject: "",
     message: "",
+    token: ""
   });
-
+  const { t, i18n } = useTranslation();
+  const [captchaToken, setCaptchaToken] = useState<any>("");
   const [status, setStatus] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -18,23 +26,33 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch (err) {
-      console.error(err);
-      setStatus("error");
+    if(captchaToken) {
+        try {
+          const res = await fetch(`${api.BASE_URL}/sending-email`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+    
+          if (res.ok) {
+            setStatus("success");
+            setFormData({ 
+                firstname: "",
+                lastname: "",
+                phone: "",
+                email: "",
+                subject: "",
+                message: "",
+                token: "" 
+            });
+            setActive(true);
+          } else {
+            setStatus("error");
+          }
+        } catch (err) {
+          console.error(err);
+          setStatus("error");
+        }
     }
   };
 
@@ -49,7 +67,7 @@ export default function ContactForm() {
                     type="text"
                     name="firstname"
                     required
-                    value={formData.name}
+                    value={formData.firstname}
                     onChange={handleChange}
                     placeholder="First Name"
                     />
@@ -63,7 +81,7 @@ export default function ContactForm() {
                     type="text"
                     name="lastname"
                     required
-                    value={formData.name}
+                    value={formData.lastname}
                     onChange={handleChange}
                     placeholder="Last Name"
                     />
@@ -73,8 +91,8 @@ export default function ContactForm() {
         <div className="col-xl-6 col-lg-6 col-md-6">
             <div className="form-group">
                 <div className="input-box">
-                    <input type="text" name="form_phone" id="formPhone"
-                        placeholder="Phone number" />
+                    <input type="text" name="phone" value={formData.phone} id="phone"
+                        placeholder="Phone number" onChange={handleChange} />
                 </div>
             </div>
         </div>
@@ -95,7 +113,7 @@ export default function ContactForm() {
         <div className="col-xl-12 col-lg-12 col-md-12">
             <div className="form-group">
                 <div className="input-box">
-                    <input type="text" name="form_subject" id="formSubject"
+                    <input type="text" name="subject" value={formData.subject} onChange={handleChange} id="formSubject"
                         placeholder="Subject" />
                 </div>
             </div>
@@ -116,16 +134,30 @@ export default function ContactForm() {
                 </div>
             </div>
         </div>
-        <div className="col-xl-12">
-            <div className="button-box">
-                <input id="form_botcheck" name="form_botcheck" className="form-control"
-                    type="hidden" />
-                <div className="btn-box">
-                    <button className="btn-one" type="submit"
-                        data-loading-text="Please wait...">
-                        <span className="txt">Send Your Message</span>
-                        <i className="icon-right-arrow"></i>
-                    </button>
+        <div className="col-12">
+            <div className="row" style={{alignItems: "centers"}}>
+                <div className="col-md-6">
+                    <div className="button-box text-start">
+                        <ReCAPTCHA
+                            sitekey="6LdboZkpAAAAAEvN_JobJlaphv_g3oGY399KoJO3"
+                            onChange={(token) => setCaptchaToken(token)}
+                            onExpired={() => setCaptchaToken(null)}
+                        />
+                        {!captchaToken && <div className="text-danger">Please verify that you are not a robot.</div>}
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <div className="button-box text-md-end text-start">
+                        <input id="form_botcheck" name="form_botcheck" className="form-control"
+                            type="hidden" />
+                        <div className="btn-box">
+                            <button className="btn-one" type="submit"
+                                data-loading-text="Please wait...">
+                                <span className="txt">{t("SubmitApplication")}</span>
+                                <i className="icon-right-arrow"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

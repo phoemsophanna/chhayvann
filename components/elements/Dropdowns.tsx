@@ -1,13 +1,14 @@
+import { api } from "@/app/config";
 import { useEffect, useRef, useState } from "react";
 
-const Dropdowns = ({children, option = [], keys = 1, action, type = "from"}: any) => {
+const Dropdowns = ({children, option = [], id = 1, action, type = "from"}: any) => {
     const [open, setOpen] = useState(false);
-    const [element, setElement] = useState({img: "", keys: "", title: ""});
+    const [element, setElement] = useState({image: "", id: "", currency: ""});
     const ref = useRef<HTMLDivElement>(null);
     const [filter, setFilter] = useState(option);
     
     const currencyFilter = (initualValue: string) => {
-        const filterData = option.filter((q:any) => q.title.toLowerCase().includes(initualValue.toLowerCase()));
+        const filterData = option.filter((q:any) => q?.currency.toLowerCase().includes(initualValue.toLowerCase()));
         setFilter(filterData);
     } 
 
@@ -22,13 +23,27 @@ const Dropdowns = ({children, option = [], keys = 1, action, type = "from"}: any
     }, []);
 
     useEffect(() => {
-        setElement({...element, keys: keys});
-    },[keys]);
+        setFilter(option);
+    },[option])
+
+    useEffect(() => {
+        setElement({...element, id: id});
+    },[id]);
     
     return (
         <div className={`dropdown-contain ${open ? "active" : ""}`} ref={ref}>
             <div onClick={() => setOpen(!open)}>
-                {element.img ? <span><img src={element.img} /> {element.title} <i className="fas fa-chevron-down"></i></span> : children}
+                {
+                    type == "to" ? (
+                        <>
+                            {children}
+                        </>
+                    ) : (
+                        <>
+                            {element?.image ? <span><img src={api.FILE_URL + element?.image} /> {element?.currency} <i className="fas fa-chevron-down"></i></span> : children}
+                        </>
+                    )
+                }
             </div>
             <div className={`container-option ${open ? "active" : ""}`}>
                 <ul>
@@ -39,14 +54,16 @@ const Dropdowns = ({children, option = [], keys = 1, action, type = "from"}: any
                     {
                         filter?.map((q:any) => {
                             return (
-                                <li key={q.key} onClick={(e) => {
-                                    setElement({img: q.img, keys: q.key, title: q.type});
-                                    action(type, q.type);
+                                <li key={q.id} onClick={(e) => {
+                                    setElement({image: q.image, id: q.id, currency: q.type});
+                                    action(type, q);
                                     setOpen(!open);
                                 }}>
-                                    <span className={`${element.keys == q.key ? "active" : ""}`}>
-                                        <img src={q.img} alt="" />
-                                        {q.title}
+                                    <span className={`${element.id == q.id ? "active" : ""}`}>
+                                        <img src={api.FILE_URL + q.image} alt="" />
+                                        {
+                                            q.currency
+                                        }
                                     </span>
                                 </li>
                             );

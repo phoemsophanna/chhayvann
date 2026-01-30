@@ -1,11 +1,14 @@
 "use client";
 
+import { useAppStore } from "@/store/useAppStore";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 export default function Menu() {
   const pathname = usePathname();
-
+  const { services, general } = useAppStore();
+  const { t, i18n } = useTranslation();
   // Checks if a path is active
   const isActive = (path: string) => pathname === path;
 
@@ -24,95 +27,53 @@ export default function Menu() {
             ? "current"
             : ""
         }`}>
-            <Link href="/">Home</Link>
-            {/* <ul className="megamenu clearfix">
-            <li className={isActive("/") ? "current" : ""}><Link href="/">Home Page 01</Link></li>
-            <li className={isActive("/index-2") ? "current" : ""}><Link href="/index-2">Home Page 02</Link></li>
-            <li className={isActive("/index-3") ? "current" : ""}><Link href="/index-3">Home Page 03</Link></li>
-            <li className={isActive("/index-4") ? "current" : ""}><Link href="/index-4">Home Page 04</Link></li>
-            </ul> */}
+            <Link href="/">{t("HEADER.HOME")}</Link>
       </li>
       {/* About */}
-      <li className={`dropdown ${isDropdownActive(["/about", "/history", "/team", "/testimonials", "/coming-soon", "/blog-2", "/blog-3", "/blog-4"]) ? "current" : ""}`}>
-        <Link href="#">Company</Link>
+      <li className={`dropdown ${isDropdownActive(["/about", "/history", "/team", "/testimonials", "/coming-soon"]) ? "current" : ""}`}>
+        <Link href="#">{t("HEADER.Company")}</Link>
         <ul>
-          <li className={isActive("/about") ? "current" : ""}><Link href="/about">About Us</Link></li>
-          <li className={isActive("/organization") ? "current" : ""}><Link href="/organization">Organization Chart</Link></li>
-          <li className={isActive("/history") ? "current" : ""}><Link href="/history">History</Link></li>
-          <li className={isActive("/team") ? "current" : ""}><Link href="/team">Team Members</Link></li>
-          {/* <li className={`dropdown ${isDropdownActive(["/blog-1", "/blog-2", "/blog-3", "/blog-4", "/blog-single"]) ? "current" : ""}`}>
-            <Link href="#">Blog</Link>
-            <ul>
-              <li className={isActive("/blog-1") ? "current" : ""}><Link href="/blog-1">3 Columns Grid</Link></li>
-              <li className={isActive("/blog-2") ? "current" : ""}><Link href="/blog-2">4 Columns Grid</Link></li>
-              <li className={isActive("/blog-3") ? "current" : ""}><Link href="/blog-3">List View 01</Link></li>
-              <li className={isActive("/blog-4") ? "current" : ""}><Link href="/blog-4">List View 02</Link></li>
-              <li className={isActive("/blog-single") ? "current" : ""}><Link href="/blog-single">Blog Details</Link></li>
-            </ul>
-          </li> */}
-          <li className={isActive("/testimonials") ? "current" : ""}><Link href="/testimonials">Testimonials</Link></li>
-          {/* <li className={isActive("/faq") ? "current" : ""}><Link href="/faq">Faq&apos;s</Link></li> */}
-          {/* <li className={isActive("/error") ? "current" : ""}><Link href="/error">404</Link></li> */}
-          {/* <li className={isActive("/coming-soon") ? "current" : ""}><Link href="/coming-soon">Coming Soon</Link></li> */}
+          <li className={isActive("/about") ? "current" : ""}><Link href="/about">{t("HEADER.AboutUs")}</Link></li>
+          <li className={isActive("/organization") ? "current" : ""}><Link href="/organization">{t("HEADER.OrganizationChart")}</Link></li>
+          <li className={isActive("/history") ? "current" : ""}><Link href="/history">{t("HEADER.History")}</Link></li>
+          {
+              general?.teams > 0 ? (
+                <li className={isActive("/team") ? "current" : ""}><Link href="/team">{t("HEADER.TeamMembers")}</Link></li>
+              ) : ""
+          }
+          {
+              general?.testimonels > 0 ? (
+                <li className={isActive("/testimonials") ? "current" : ""}><Link href="/testimonials">{t("HEADER.Testimonials")}</Link></li>
+              ) : ""
+          }
         </ul>
       </li>
-      <li className={isDropdownActive(["/service"]) ? "dropdown current" : "dropdown"}><Link href="/service">Services</Link>
+      <li className={isDropdownActive(["/service"]) ? "dropdown current" : "dropdown"}><Link href="#">{t("HEADER.Services")}</Link>
         <ul>
-          <li className={isActive("/about") ? "current" : ""}><Link href="/service/1">Exchange Rate</Link></li>
-          <li className={isActive("/history") ? "current" : ""}><Link href="/service/2">Money Tranfer</Link></li>
+          <li><Link href="/exchange-rate">{t("HEADER.ExchangeRate")}</Link></li>
+          {
+            services?.map((q:any,index:any) => (
+              <li key={index}><Link href={`/service/${q.id}`}>
+                { i18n.language == "KHM" && q.titleKm ? q.titleKm : q.title }
+              </Link></li>
+            ))
+          }
         </ul>
       </li>
-      <li className={isActive("/products") ? "current" : ""}><Link href="/products">Products</Link></li>
-      {/* Markets Dropdown */}
-      {/* <li className={`dropdown ${isDropdownActive(["/markets", "/markets1-trade-forex", "/markets2-stock-market", "/markets3-commodities-market", "/markets4-crypto-market", "/markets5-futures-market", "/markets6-options-market"]) ? "current" : ""}`}>
-        <Link href="#">Markets</Link>
-        <ul>
-          <li className={isActive("/markets") ? "current" : ""}><Link href="/markets">All Markets</Link></li>
-          <li className={isActive("/markets1-trade-forex") ? "current" : ""}><Link href="/markets1-trade-forex">Trade Forex</Link></li>
-          <li className={isActive("/markets2-stock-market") ? "current" : ""}><Link href="/markets2-stock-market">Stock Market</Link></li>
-          <li className={isActive("/markets3-commodities-market") ? "current" : ""}><Link href="/markets3-commodities-market">Commodities Market</Link></li>
-          <li className={isActive("/markets4-crypto-market") ? "current" : ""}><Link href="/markets4-crypto-market">Crypto Market</Link></li>
-          <li className={isActive("/markets5-futures-market") ? "current" : ""}><Link href="/markets5-futures-market">Futures Market</Link></li>
-          <li className={isActive("/markets6-options-market") ? "current" : ""}><Link href="/markets6-options-market">Options Market</Link></li>
-        </ul>
-            
-      </li> */}
+      <li className={isActive("/products") ? "current" : ""}><Link href="/products">{t("HEADER.Products")}</Link></li>
 
       {/* Trading Page */}
-      <li className={isActive("/trading") ? "current" : ""}><Link href="/trading">Trading</Link></li>
-      <li><Link href="https://chhayvann-demo.ntptrader.com/" target="_blank">Online Trading</Link></li>
-      <li className={isDropdownActive(["/blog-1", "/blog-single", "/blog-1"]) ? "current" : ""}><Link href="/blog-1">News & Research</Link></li>
-      <li className={isActive("/career") ? "current" : ""}><Link href="/career">Career</Link></li>
-      {/* <li className={`dropdown ${isDropdownActive(["/platform", "/accounts", "/accounts1-standard-account", "/accounts2-mini-account", "/accounts3-stp-account", "/accounts4-demo-account", "/accounts5-islamic-account", "/accounts6-corporate-account"]) ? "current" : ""}`}>
-        <Link href="#">Trading</Link>
-        <ul>
-          <li className={`dropdown ${isDropdownActive(["/accounts", "/accounts1-standard-account", "/accounts2-mini-account", "/accounts3-stp-account", "/accounts4-demo-account", "/accounts5-islamic-account", "/accounts6-corporate-account"]) ? "current" : ""}`}>
-              <Link href="#">Our Accounts</Link>
-              <ul>
-                <li className={isActive("/accounts") ? "current" : ""}><Link href="/accounts">All Accounts</Link></li>
-                <li className={isActive("/accounts1-standard-account") ? "current" : ""}><Link href="/accounts1-standard-account">Standard Account</Link></li>
-                <li className={isActive("/accounts2-mini-account") ? "current" : ""}><Link href="/accounts2-mini-account">Mini Account</Link></li>
-                <li className={isActive("/accounts3-stp-account") ? "current" : ""}><Link href="/accounts3-stp-account">STP Account</Link></li>
-                <li className={isActive("/accounts4-demo-account") ? "current" : ""}><Link href="/accounts4-demo-account">Demo Account</Link></li>
-                <li className={isActive("/accounts5-islamic-account") ? "current" : ""}><Link href="/accounts5-islamic-account">Islamic Account</Link></li>
-                <li className={isActive("/accounts6-corporate-account") ? "current" : ""}><Link href="/accounts6-corporate-account">Corporate Account</Link></li>
-              </ul>
-            </li>
-          <li className={isActive("/platform") ? "current" : ""}><Link href="/platform">Platform</Link></li>
-        </ul>
-      </li> */}
-
-      {/* Education Page */}
-      {/* <li className={`dropdown ${isDropdownActive(["/courses", "/courses-details"]) ? "current" : ""}`}>
-        <Link href="#">Education</Link>
-        <ul>
-          <li className={isActive("/courses") ? "current" : ""}><Link href="/courses">Courses</Link></li>
-          <li className={isActive("/courses-details") ? "current" : ""}><Link href="/courses-details">Course Details</Link></li>
-        </ul>
-      </li> */}
+      <li className={isActive("/trading") ? "current" : ""}><Link href="/trading">{t("HEADER.Trading")}</Link></li>
+      <li><Link href="https://chhayvann-demo.ntptrader.com/" target="_blank">{t("HEADER.OnlineTrading")}</Link></li>
+      {
+        general?.article > 0 ? (
+          <li className={isDropdownActive(["/blog-1", "/blog-single", "/blog-1"]) ? "current" : ""}><Link href="/blog-1">{t("HEADER.NewsResearch")}</Link></li>
+        ) : ""
+      }
+      <li className={isActive("/career") ? "current" : ""}><Link href="/career">{t("HEADER.Career")}</Link></li>
 
       {/* Contact */}
-      <li className={isActive("/contact") ? "current" : ""}><Link href="/contact">Contact Us</Link></li>
+      <li className={isActive("/contact") ? "current" : ""}><Link href="/contact">{t("HEADER.ContactUs")}</Link></li>
 
     </ul>
   );

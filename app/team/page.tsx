@@ -1,527 +1,115 @@
+"use client";
 import Layout from "@/components/layout/Layout";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { api } from "../config";
+import { useTranslation } from "react-i18next";
 
 
 export default function Team_Page() {
+    const { t, i18n } = useTranslation();
+    const [team, setTeam] = useState<any>(null);
+    const [banner, setBanner] = useState<any>(null);
+
+    useEffect(() => {
+        axios.get(`${api.BASE_URL}/team`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept-Language": i18n.language
+            }
+        }).then((res) => {
+            if(res.data.status == "success") {
+                setTeam(res.data.team);
+                setBanner(res.data.banner);
+            }
+        });
+    },[i18n.language]);
 
     return (
         <div>
-            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Team Members" breadcrumbTitleTwo="About">
+            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.TeamMembers")} breadcrumbImage={banner?.image}>
                 <section className="team-style1 team-style1--style2">
                     <div className="container">
                         <div className="row">
-
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-1.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>8+ years of experience in markets.</h6>
-                                            
-                                        </div>
-                                    </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">G.Davidson</Link></h3>
-                                        <p>Chief Executive Officer</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
+                            {
+                                team?.map((q:any,index:any) => (
+                                    <div className="col-xl-4 col-lg-6 col-md-6" key={index}>
+                                        <div className="single-team-style1">
+                                            <div className="top-box">
+                                                <div className="img-box">
+                                                    <Image src={`${api.FILE_URL}${q?.image}`} alt="Image" width={170} height={170} priority />
+                                                </div>
+                                                <div className="text-box">
+                                                    <h6>
+                                                        {q?.experience}
+                                                    </h6>
+                                                </div>
                                             </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="icon-linkedin"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-2.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>5+ years of experience in markets.</h6>
-                                            
-                                        </div>
-                                    </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">K.Michael</Link></h3>
-                                        <p>Chief Technology Officer</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
+                                            <div className="middle-box">
+                                                <h3><Link href="#">
+                                                    {q?.name}
+                                                </Link></h3>
+                                                <p>
+                                                    {q?.position}
+                                                </p>
                                             </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="icon-linkedin"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-2.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>6+ years of experience in markets.</h6>
-                                            
-                                        </div>
-                                    </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">M.Frederick</Link></h3>
-                                        <p>Head of Market Research</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
+                                            <div className="bottom-box">
+                                                <div className="left">
+                                                    {
+                                                        q?.email ? (
+                                                            <>
+                                                                <div className="icon">
+                                                                    <span className="icon-message"><span className="path1"></span><span
+                                                                            className="path2"></span><span className="path3"></span><span
+                                                                            className="path4"></span><span className="path5"></span><span
+                                                                            className="path6"></span>
+                                                                    </span>
+                                                                </div>
+                                                                <Link target="_blank" href={`mailto:${q?.email}`}>Email me</Link>
+                                                            </>
+                                                        ) : ""
+                                                    }
+                                                </div>
+                                                <ul className="right">
+                                                    {
+                                                        q?.facebook ? (
+                                                            <li>
+                                                                <Link href={q?.facebook} target="_blank">
+                                                                    <i className="icon-facebook"></i>
+                                                                </Link>
+                                                            </li>
+                                                        ) : ""
+                                                    }
+                                                    {
+                                                        q?.telegram ? (
+                                                            <li>
+                                                                <Link href={q?.telegram} target="_blank">
+                                                                    <i className="fab fa-telegram-plane"></i>
+                                                                </Link>
+                                                            </li>
+                                                        ) : ""
+                                                    }
+                                                    {
+                                                        q?.linkedin ? (
+                                                            <li>
+                                                                <Link href={q?.linkedin} target="_blank">
+                                                                    <i className="icon-linkedin"></i>
+                                                                </Link>
+                                                            </li>
+                                                        ) : ""
+                                                    }
+                                                </ul>
                                             </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-facebook-f"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="fab fa-linkedin-in"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-4.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>6+ years of experience in markets.</h6>
-                                            
                                         </div>
                                     </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">M.Frederick</Link></h3>
-                                        <p>Head of Market Research</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
-                                            </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="icon-linkedin"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-5.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>8+ years of experience in markets.</h6>
-                                            
-                                        </div>
-                                    </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">G.Davidson</Link></h3>
-                                        <p>Chief Executive Officer</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
-                                            </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="icon-linkedin"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-6.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>5+ years of experience in markets.</h6>
-                                            
-                                        </div>
-                                    </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">K.Michael</Link></h3>
-                                        <p>Chief Technology Officer</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
-                                            </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="icon-linkedin"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-2.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>5+ years of experience in markets.</h6>
-                                            
-                                        </div>
-                                    </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">K.Michael</Link></h3>
-                                        <p>Chief Technology Officer</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
-                                            </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="icon-linkedin"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-6.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>5+ years of experience in markets.</h6>
-                                            
-                                        </div>
-                                    </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">K.Michael</Link></h3>
-                                        <p>Chief Technology Officer</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
-                                            </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="icon-linkedin"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-6 col-md-6">
-                                <div className="single-team-style1">
-                                    <div className="top-box">
-                                        <div className="img-box">
-                                            <Image src="/assets/images/team/team-v1-1.webp" alt="Image" width={170} height={170} priority />
-                                        </div>
-                                        <div className="text-box">
-                                            <h6>8+ years of experience in markets.</h6>
-                                            
-                                        </div>
-                                    </div>
-                                    <div className="middle-box">
-                                        <h3><Link href="#">G.Davidson</Link></h3>
-                                        <p>Chief Executive Officer</p>
-                                    </div>
-                                    <div className="bottom-box">
-                                        <div className="left">
-                                            <div className="icon">
-                                                <span className="icon-message"><span className="path1"></span><span
-                                                        className="path2"></span><span className="path3"></span><span
-                                                        className="path4"></span><span className="path5"></span><span
-                                                        className="path6"></span>
-                                                </span>
-                                            </div>
-                                            <Link href="mailto:emailme">Email me</Link>
-                                        </div>
-                                        <ul className="right">
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="icon-facebook"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.facebook.com/">
-                                                    <i className="fab fa-telegram-plane"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="https://www.linkedin.com/login">
-                                                    <i className="icon-linkedin"></i>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
+                                ))
+                            }
                         </div>
                     </div>
                 </section>
-                
-                
-                {/* <section className="awards-style1 awards-style1--style2">
-                    <div className="container">
-                        <div className="sec-title withtext text-center">
-                            <div className="sub-title">
-                                <h4>Awards & Honors</h4>
-                            </div>
-                            <h2>Proud Moments of Achievement</h2>
-                            <div className="text">
-                                <p>
-                                    Discover the most competitive prices in the market, updated <br />regularly for your
-                                    advantage.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="row">
-
-                            <div className="col-xl-4 col-lg-4">
-                                <div className="single-awards-style1">
-                                    <div className="single-awards-style1__shape1">
-                                        <Image src="/assets/images/shapes/awards-v1-1.png" alt="Shape" width={210} height={323} priority />
-                                    </div>
-                                    <div className="icon">
-                                        <span className="icon-trophy"><span className="path1"></span><span className="path2"></span><span
-                                                className="path3"></span><span className="path4"></span><span className="path5"></span><span
-                                                className="path6"></span><span className="path7"></span>
-                                        </span>
-                                    </div>
-                                    <div className="title">
-                                        <h3><Link href="#">Global Forex <br />Broker of the Year</Link></h3>
-                                    </div>
-                                    <div className="border-line"></div>
-                                    <div className="text">
-                                        <p>Global Forex Awards <br />Mar, 2021</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-4">
-                                <div className="single-awards-style1">
-                                    <div className="single-awards-style1__shape1">
-                                        <Image src="/assets/images/shapes/awards-v1-1.png" alt="Shape" width={210} height={323} priority />
-                                    </div>
-                                    <div className="icon">
-                                        <span className="icon-trophy"><span className="path1"></span><span className="path2"></span><span
-                                                className="path3"></span><span className="path4"></span><span className="path5"></span><span
-                                                className="path6"></span><span className="path7"></span>
-                                        </span>
-                                    </div>
-                                    <div className="title">
-                                        <h3><Link href="#">Most Transparent <br />FX Broker</Link></h3>
-                                    </div>
-                                    <div className="border-line"></div>
-                                    <div className="text">
-                                        <p>The Forex Expo USA <br />Dec, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="col-xl-4 col-lg-4">
-                                <div className="single-awards-style1">
-                                    <div className="single-awards-style1__shape1">
-                                        <Image src="/assets/images/shapes/awards-v1-1.png" alt="Shape" width={210} height={323} priority />
-                                    </div>
-                                    <div className="icon">
-                                        <span className="icon-trophy"><span className="path1"></span><span className="path2"></span><span
-                                                className="path3"></span><span className="path4"></span><span className="path5"></span><span
-                                                className="path6"></span><span className="path7"></span>
-                                        </span>
-                                    </div>
-                                    <div className="title">
-                                        <h3><Link href="#">Best Forex Rewards <br />Program</Link></h3>
-                                    </div>
-                                    <div className="border-line"></div>
-                                    <div className="text">
-                                        <p>Global Forex Awards <br />Jun, 2016</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </section> */}
             </Layout>
         </div>
     )

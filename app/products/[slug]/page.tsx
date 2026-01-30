@@ -1,108 +1,38 @@
-// app/blog-1/[slug]/page.tsx
-import Link from "next/link";
-import { notFound } from "next/navigation";
+"use client";
+import { api } from "@/app/config";
 import Layout from "@/components/layout/Layout";
 import ProductDetail from "@/components/sections/InnerPage/ProductDetail";
-
-const blogPosts = [
-  {
-    slug: "1",
-    title: "How global events are shaping commodity prices",
-    category: "Market Analysis",
-    date: "15.09.2025",
-    author: "N.Isabella",
-    comment: "45 Cmts",
-    readTime: "4 Minutes read",
-    image: "/assets/images/blog/blog-v5-1.jpg",
-  },
-  {
-    slug: "2",
-    title: "The Effect of Fiscal Policies on Stock Market Performance",
-    category: "Economic News",
-    date: "31.08.2025",
-    author: "T.Alive",
-    comment: "22 Cmts",
-    readTime: "3 Minutes read",
-    image: "/assets/images/blog/blog-v5-2.jpg",
-  },
-  {
-    slug: "3",
-    title: "Understanding Leverage: The Pros and Cons",
-    category: "Learning Center",
-    date: "23.08.2025",
-    author: "Z.Silva",
-    comment: "35 Cmts",
-    readTime: "5 Minutes read",
-    image: "/assets/images/blog/blog-v5-3.jpg",
-  },
-  {
-    slug: "4",
-    title: "Mastering Risk Management in Trading",
-    category: "Economic News",
-    date: "31.08.2025",
-    author: "Watson",
-    comment: "12 Cmts",
-    readTime: "3 Minutes read",
-    image: "/assets/images/blog/blog-v5-4.jpg",
-  },
-  {
-    slug: "5",
-    title: "The Effect of Fiscal Policies on Stock Market Performance",
-    category: "Economic News",
-    date: "31.08.2025",
-    author: "T.Alive",
-    comment: "22 Cmts",
-    readTime: "3 Minutes read",
-    image: "/assets/images/blog/blog-v5-5.jpg",
-  },
-  {
-    slug: "6",
-    title: "How global events are shaping commodity prices",
-    category: "Market Analysis",
-    date: "15.09.2025",
-    author: "N.Isabella",
-    comment: "45 Cmts",
-    readTime: "4 Minutes read",
-    image: "/assets/images/blog/blog-v4-6.jpg",
-  },
-  {
-    slug: "7",
-    title: "Mastering Risk Management in Trading",
-    category: "Economic News",
-    date: "31.08.2025",
-    author: "Watson",
-    comment: "12 Cmts",
-    readTime: "3 Minutes read",
-    image: "/assets/images/blog/blog-v4-7.jpg",
-  },
-  {
-    slug: "8",
-    title: "Understanding Leverage: The Pros and Cons",
-    category: "Learning Center",
-    date: "23.08.2025",
-    author: "Z.Silva",
-    comment: "35 Cmts",
-    readTime: "5 Minutes read",
-    image: "/assets/images/blog/blog-v4-8.jpg",
-  },
-];
-
-// Generate static paths
-export async function generateStaticParams() {
-  return blogPosts.map(post => ({ slug: post.slug }));
-}
+import axios from "axios";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // ✅ Server component
-export default async function BlogSinglePage_One({ params }: { params: Promise<{ slug: string }> }) {
+export default function BlogSinglePage_One() {
   // params is a Promise now
-  const { slug } = await params;
-  const post = blogPosts.find(p => p.slug === slug);
+  const { slug } = useParams();
 
-  if (!post) return notFound();
+  const [products, setProducts] = useState<any>(null);
+  const [banner, setBanner] = useState<any>(null);
+  const { t, i18n } = useTranslation();
+  useEffect(() => {
+    axios.get(`${api.BASE_URL}/product/${slug}`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept-Language": i18n.language
+      }
+    }).then((res) => {
+      setProducts(res.data.products);
+      setBanner(res.data.banner)
+    });
+  },[i18n.language])
+
+  if(!products) return null;
 
   return (
-    <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Product Details" breadcrumbTitleTwo="Products">
-      <ProductDetail post={post} />
+    <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={products?.title} breadcrumbTitleTwo={t("HEADER.Products")} breadcrumbImage={banner?.image}>
+      <ProductDetail post={products} />
     </Layout>
   );
 }

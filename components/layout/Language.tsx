@@ -9,9 +9,8 @@ export default function Language(){
     ];
 
     const handleSelectChange = (value: string) => {
-        console.log("Selected value:", value);
-        i18n.changeLanguage(value);
         sessionStorage.setItem("LANG", value);
+        i18n.changeLanguage(value);
     };
 
     return(
@@ -21,6 +20,7 @@ export default function Language(){
                 options={options}
                 defaultValue={options.find((q) => q.value == i18n.language)}
                 onChange={handleSelectChange}
+                lang={i18n.language}
             />
         </div>
         </>

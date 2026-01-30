@@ -5,126 +5,98 @@ import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
-const data = [
-    {
-        slug: 1,
-        name: "Card Dispute Resolution Officer",
-        position: "Head Office, Phnom Penh",
-        dateline: "December 31, 2023"
-    },
-    {
-        slug: 2,
-        name: "Consumer Credit Analyst",
-        position: "Head Office, Phnom Penh",
-        dateline: "December 31, 2023"
-    },
-    {
-        slug: 3,
-        name: "Senior Product Marketing Executive",
-        position: "Head Office, Phnom Penh",
-        dateline: "December 31, 2023"
-    },
-    {
-        slug: 4,
-        name: "Chief Teller (Stung Treng)",
-        position: "Head Office, Phnom Penh",
-        dateline: "December 31, 2023"
-    },
-];
-
-interface Career {
-    slug: any,
-    name: any,
-    position: any,
-    dateline: any
-}
+import { useTranslation } from "react-i18next";
+import { api } from "@/app/config";
+import axios from "axios";
+import Popup from "@/components/elements/Popup";
 
 export default function Courses_Page() {
     const { slug } = useParams();
-    const [ career, setCareer ] = useState<Career>();
+    const {t, i18n} = useTranslation();
+    const [banner, setBanner] = useState<any>(null);
+    const [career, setCareer] = useState<any>(null);
+    const [captchaToken, setCaptchaToken] = useState<any>("");
+    const [file, setFile] = useState<any>("");
+    const [active, setActive] = useState(false);
+
     useEffect(() => {
-        setCareer(data.find((q) => Number(q.slug) == Number(slug)));
-    },[slug]);
+        axios.get(`${api.BASE_URL}/career-detail/${slug}`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept-Language": i18n.language
+            }
+        }).then((res) => {
+            if(res.data.status == "success"){
+                setBanner(res.data.banner);
+                setCareer(res.data.career);
+            }
+        });
+    },[i18n.language]);
+
+    const submitCareerForm = (e:any) => {
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        formData.append("captcha", captchaToken);
+        formData.append("careerId", String(slug));
+        if(captchaToken && file) {
+            axios.post(`${api.BASE_URL}/career-apply`,formData,{
+                method: "POST",
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Accept-Language": i18n.language
+                }
+            }).then((res) => {
+                if(res.data.status == "success") {
+                    setActive(true);
+                    form.reset();
+                }
+            });
+        }
+    }
+
+    const handleChangeFile = (e:any) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        setFile(e.target.files?.[0]?.name);
+        const url = URL.createObjectURL(file);
+        console.log(url);
+    }
 
     return (
         <div>
-            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Careers Details">
+            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={career?.title} breadcrumbImage={banner?.image}>
                 <section className="quick-career-style1 detail-career">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-6 col-12 sec-title withtext text-start">
                                 <Link href="/career" style={{display: "inline-block", marginBottom: "20px", color: "#684d07"}}>
-                                    <i className="fas fa-arrow-left"></i> Back to all job
+                                    <i className="fas fa-arrow-left"></i> {t("BackToAllJob")}
                                 </Link>
-                                <h2>{career?.name}</h2>
+                                <h2>{career?.title}</h2>
                                 <div className="text">
                                     <p style={{marginBottom: "5px"}}>
-                                        {career?.position}
+                                        {career?.location}
                                     </p>
                                     <p>
-                                        <b>Application deadline</b> {career?.dateline}
+                                        <b>{t("ApplicationDeadline")}</b> {career?.deadline}
                                     </p>
                                 </div>
                             </div>
                             <div className="col-12">
                                 <div className="sec-title sub-title withtext text-start" style={{paddingTop: 30, borderTop: "1px solid #eaeaea"}}>
-                                    <h2>JOB DESCRIPTION</h2>
+                                    <h2>{t("JOBDESCRIPTION")}</h2>
                                     <div className="text">
-                                        <p>
-                                            Card Dispute Resolution Officer is to monitor daily suspicious declines 
-                                            and approve transactions on both the issuing and acquiring sides by calling 
-                                            to inform/verify with the cardholder/merchant in order to reduce declines 
-                                            occurring and prevent cardholder/bank financial losses.
-                                        </p>
+                                        <div dangerouslySetInnerHTML={{__html: career?.des}} />
                                     </div>
                                 </div>
 
                                 <div className="sec-title sub-title withtext text-start">
-                                    <h2 >JOB REQUIREMENT</h2>
+                                    <h2>{t("JOBREQUIREMENT")}</h2>
                                     <div className="text">
-                                        <ul role="list">
-                                            <li>
-                                                To monitor transactions on both the issuing and acquiring sides (Visa/UPI Debit Card, Visa/Master Credit Card, ATM/CSS Card, Merchant POS, Merchant E-Commerce, and ATM).
-                                            </li>
-                                            <li>
-                                                Monitor/review suspicious account/transaction activity on QR payments, WeChat payments, POS payments, e-commerce payments, and ATM.
-                                            </li>
-                                            <li>
-                                                Monitor/review the offline transactions and investigation/confirmation with the cardholder.
-                                            </li>
-                                            <li>
-                                                Call cardholders/merchants to collect relevant information and verify transactions in case they are suspicious.
-                                            </li>
-                                            <li>
-                                                Block cards/funds in case the transactions are suspicious.
-                                            </li>
-                                            <li>
-                                                Follow up on the previous suspicious transactions.
-                                            </li>
-                                            <li>
-                                                To support call-in/email inquiries from the cardholder/merchant/branch and provide a solution if needed.
-                                            </li>
-                                            <li>
-                                                To understand the workflow in the department.
-                                            </li>
-                                            <li>
-                                                To understand the Rule of Chargeback/Dispute on Card Scheme (Visa/Master/UPl/CSS).
-                                            </li>
-                                            <li>
-                                                To properly update the report to the supervisor and perform other duties as assigned by the manager.
-                                            </li>
-                                        </ul>
+                                        <div dangerouslySetInnerHTML={{__html: career?.content}} />
                                     </div>
                                 </div>
-                                {/* <div className="sec-title withtext text-start">
-                                    <div className="text">
-                                        <p><b>How to apply</b></p>
-                                        <p>Interested and qualified applicants should submit your updated Cover Letter and CV stating the position applied for with your current photo (4x6) through
-                                            <Link href={`mailto:info@chayvann.com.kh`} style={{color: "#684d07"}}> info@chayvann.com.kh</Link>
-                                        </p>
-                                    </div>
-                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -133,21 +105,24 @@ export default function Courses_Page() {
                 <section className="submit-form" style={{padding: "0 0 80px",backgroundColor: "#fff"}}>
                     <div className="container">
                         <div className="sec-title text-start" style={{paddingBottom: 30}}>
-                            <h2>Send Us a Message Anytime</h2>
+                            <h2>{t("SendUsaMessageAnytime")}</h2>
                         </div>
                         <div className="row">
                             <div className="col-xl-12">
                                 <div className="contact-form submit-cv-form">
-                                    <form id="contact-form" className="default-form2">
+                                    <form id="contact-form" onSubmit={(e) => {
+                                        e.preventDefault();
+                                        submitCareerForm(e);
+                                    }} className="default-form2">
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <input
-                                                        type="text"
-                                                        name="name"
-                                                        required
-                                                        placeholder="First Name"
+                                                            type="text"
+                                                            name="firstname"
+                                                            required
+                                                            placeholder="First Name"
                                                         />
                                                     </div>
                                                 </div>
@@ -155,7 +130,7 @@ export default function Courses_Page() {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                     <div className="input-box">
-                                                        <input type="text" name="form_phone" id="formPhone"
+                                                        <input type="text" name="lastname" id="formPhone"
                                                             placeholder="Last Name" />
                                                     </div>
                                                 </div>
@@ -164,8 +139,8 @@ export default function Courses_Page() {
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <input
-                                                        type="email"
-                                                        name="email"
+                                                        type="text"
+                                                        name="phoneNumber"
                                                         required
                                                         placeholder="Phone Number"
                                                         />
@@ -175,7 +150,7 @@ export default function Courses_Page() {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                     <div className="input-box">
-                                                        <input type="text" name="form_subject" id="formSubject"
+                                                        <input type="email" name="email" id="formSubject"
                                                             placeholder="Email Address" />
                                                     </div>
                                                 </div>
@@ -184,9 +159,17 @@ export default function Courses_Page() {
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <label htmlFor="fileCV" className="fileCV"><i className="fas fa-upload"></i> Upload your CV</label><span style={{marginLeft: "10px"}}>Max file size 10MB.</span>
-                                                        <input type="file" style={{visibility: "hidden", position: "absolute"}} name="form_subject" id="fileCV"
-                                                            placeholder="Email Address" />
+                                                        <input type="file" onChange={(e) => handleChangeFile(e)} style={{visibility: "hidden", position: "absolute"}} name="fileCV" id="fileCV"
+                                                            placeholder="Email Address" accept=".pdf" />
+                                                        
                                                     </div>
+                                                    {
+                                                        file && (
+                                                            <div className="input-box mt-2">
+                                                                <img src="/assets/images/google-docs.png" alt="" width={35} /> {file} 
+                                                            </div>
+                                                        )
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -206,10 +189,13 @@ export default function Courses_Page() {
                                             <div className="col-12">
                                                 <div className="row" style={{alignItems: "centers"}}>
                                                     <div className="col-md-6">
-                                                        <div className="button-box">
+                                                        <div className="button-box text-start">
                                                             <ReCAPTCHA
                                                                 sitekey="6LdboZkpAAAAAEvN_JobJlaphv_g3oGY399KoJO3"
+                                                                onChange={(token) => setCaptchaToken(token)}
+                                                                onExpired={() => setCaptchaToken(null)}
                                                             />
+                                                            {!captchaToken && <div className="text-danger">Please verify that you are not a robot.</div>}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
@@ -219,7 +205,7 @@ export default function Courses_Page() {
                                                             <div className="btn-box">
                                                                 <button className="btn-one" type="submit"
                                                                     data-loading-text="Please wait...">
-                                                                    <span className="txt">Submit Application</span>
+                                                                    <span className="txt">{t("SubmitApplication")}</span>
                                                                     <i className="icon-right-arrow"></i>
                                                                 </button>
                                                             </div>
@@ -230,12 +216,12 @@ export default function Courses_Page() {
                                         </div>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </section>
             </Layout>
+            <Popup active={active} setActive={setActive} title={"Save Application"} des={"Sending career application is ready!"} />
         </div>
     )
 }

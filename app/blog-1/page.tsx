@@ -1,185 +1,79 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-const blogPosts = [
-  {
-    slug: "1",
-    title: "How Global Events are Shaping Commodity Prices",
-    category: "Market Analysis",
-    date: "15.09.2025",
-    readTime: "4 Minutes read",
-    image: "/assets/images/blog/blog-v4-1.webp",
-    excerpt:
-      "Desire that they cannot foresee all the pain business it will frequently occur...",
-  },
-  {
-    slug: "2",
-    title: "The Effect of Fiscal Policies on Stock Market Performance",
-    category: "Economic News",
-    date: "31.08.2025",
-    readTime: "3 Minutes read",
-    image: "/assets/images/blog/blog-v4-2.webp",
-    excerpt:
-      "Cases are perfectly simple to all distinguish desire that they cannot foresee...",
-  },
-  {
-    slug: "3",
-    title: "Understanding Leverage: The Pros and Cons",
-    category: "Learning Center",
-    date: "23.08.2025",
-    readTime: "5 Minutes read",
-    image: "/assets/images/blog/blog-v4-3.webp",
-    excerpt:
-      "Foresee the pain trouble that are in bound trouble that are bound to ensue...",
-  },
-  {
-    slug: "4",
-    title: "Understanding Leverage: The Pros and Cons",
-    category: "Learning Center",
-    date: "23.08.2025",
-    readTime: "5 Minutes read",
-    image: "/assets/images/blog/blog-v4-4.webp",
-    excerpt:
-      "Foresee the pain trouble that are in bound trouble that are bound to ensue...",
-  },
-  {
-    slug: "5",
-    title: "How Global Events are Shaping Commodity Prices",
-    category: "Market Analysis",
-    date: "15.09.2025",
-    readTime: "4 Minutes read",
-    image: "/assets/images/blog/blog-v4-5.webp",
-    excerpt:
-      "Desire that they cannot foresee all the pain business it will frequently occur...",
-  },
-  {
-    slug: "6",
-    title: "The Effect of Fiscal Policies on Stock Market Performance",
-    category: "Economic News",
-    date: "31.08.2025",
-    readTime: "3 Minutes read",
-    image: "/assets/images/blog/blog-v4-6.webp",
-    excerpt:
-      "Cases are perfectly simple to all distinguish desire that they cannot foresee...",
-  },
-  {
-    slug: "7",
-    title: "The Effect of Fiscal Policies on Stock Market Performance",
-    category: "Economic News",
-    date: "31.08.2025",
-    readTime: "3 Minutes read",
-    image: "/assets/images/blog/blog-v4-7.webp",
-    excerpt:
-      "Cases are perfectly simple to all distinguish desire that they cannot foresee...",
-  },
-  {
-    slug: "8",
-    title: "Understanding Leverage: The Pros and Cons",
-    category: "Learning Center",
-    date: "23.08.2025",
-    readTime: "5 Minutes read",
-    image: "/assets/images/blog/blog-v4-8.webp",
-    excerpt:
-      "Foresee the pain trouble that are in bound trouble that are bound to ensue...",
-  },
-  {
-    slug: "9",
-    title: "How Global Events are Shaping Commodity Prices",
-    category: "Market Analysis",
-    date: "15.09.2025",
-    readTime: "4 Minutes read",
-    image: "/assets/images/blog/blog-v4-9.webp",
-    excerpt:
-      "Desire that they cannot foresee all the pain business it will frequently occur...",
-  },
-];
+import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { api } from "../config";
+import { useSearchParams } from "next/navigation";
 
 export default function Blog_Page_One() {
-  const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
+  const search = useSearchParams();
+  const [banner, setBanner] = useState<any>(null);
+  const [news, setNews] = useState<any>([]);
+  const [category, setCategory] = useState<any>(null);
+  const { t, i18n } = useTranslation()
 
-  // Prepare Lightbox slides (all blog images)
-  const slides = blogPosts.map((post) => ({ src: post.image }));
+  useEffect(() => {
+    if(search.get("categoryId")){
+      fetchNews(search.get("categoryId"));
+    } else {
+      fetchNews(0);
+    }
+  },[i18n.language]);
+
+  const fetchNews = (categoryId:any) => {
+    axios.get(`${api.BASE_URL}/article-page?categoryId=${categoryId}`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept-Language": i18n.language
+      }
+    }).then((res) => {
+      if(res.data.status == "success") {
+        setBanner(res.data.banner);
+        setCategory(res.data.category);
+        setNews(res.data.articles);
+      }
+    })
+  }
 
   return (
     <div>
       <Layout
         headerStyle={1}
         footerStyle={3}
-        breadcrumbTitle="New & Research"
+        breadcrumbTitle={t("HEADER.NewsResearch")}
+        breadcrumbImage={banner?.image}
       >
         <section className="blog-page-one">
-          {/* <div className="courses-offered-style1__tab-btn">
-              <ul className="tabs-button-box clearfix">
-                  <li className={``}>
-                      <h3>Economic Calendar</h3>
-                      <div className="icon">
-                          <i className="icon-arrow-down"></i>
-                      </div>
-                  </li>
-                  <li className={`tab-btn-item`}>
-                      <h3>Analyst Research</h3>
-                      <div className="icon">
-                          <i className="icon-arrow-down"></i>
-                      </div>
-                  </li>
-                  <li className={`tab-btn-item`}>
-                      <h3>Events & Activities</h3>
-                      <div className="icon">
-                          <i className="icon-arrow-down"></i>
-                      </div>
-                  </li>
-                  <li className={`tab-btn-item`}>
-                      <h3>Gold Knowledge</h3>
-                      <div className="icon">
-                          <i className="icon-arrow-down"></i>
-                      </div>
-                  </li>
-                  <li className={`tab-btn-item`}>
-                      <h3>Upcoming Events</h3>
-                      <div className="icon">
-                          <i className="icon-arrow-down"></i>
-                      </div>
-                  </li>
-              </ul>
-          </div> */}
           <div className="container">
             <Swiper slidesPerView="auto"
                     spaceBetween={10}
                     freeMode={true}
                     speed={600} className="tabs-button-box clearfix">
-              <SwiperSlide className="swiper-slide tab-btn-item active-btn-item">
-                <h3>Economic Calendar</h3>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide tab-btn-item active-btn-item">
-                <h3>Analyst Research</h3>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide tab-btn-item active-btn-item">
-                <h3>Events & Activities</h3>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide tab-btn-item active-btn-item">
-                <h3>Gold Knowledge</h3>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide tab-btn-item active-btn-item">
-                <h3>Upcoming Events</h3>
-              </SwiperSlide>
+              {
+                category?.map((q:any) => {
+                  return <SwiperSlide key={q.id} onClick={() => fetchNews(q?.id)} style={{cursor: "pointer"}} className="swiper-slide tab-btn-item active-btn-item">
+                            <h3>{q?.title}</h3>
+                          </SwiperSlide>;
+                })
+              }
           </Swiper>
             <div className="row">
-              {blogPosts.map((post, i) => (
-                <div className="col-xl-4 col-lg-6 col-md-6" key={post.slug}>
+              {news.map((post:any, i:any) => (
+                <div className="col-xl-4 col-lg-6 col-md-6" key={post.id}>
                   <div className="single-blog-style5 single-blog-style5--style6">
                     {/* ---------- Image Box ---------- */}
                     <div className="img-box relative group">
-                      <Link href={`/blog-1/${post.slug}`}>
+                      <Link href={`/blog-1/${post.id}`}>
                         <Image
-                          src={post.image}
+                          src={`${api.FILE_URL}${post.image}`}
                           alt={post.title}
                           width={370}
                           height={270}
@@ -187,17 +81,6 @@ export default function Blog_Page_One() {
                           className="rounded-md"
                         />
                       </Link>
-                      {/* <div className="overlay-icon">
-                        <Link href="#"
-                          className="lightbox-image"
-                          onClick={() => {
-                            setIndex(i);
-                            setOpen(true);
-                          }}
-                        >
-                          <i className="icon-maximize"></i>
-                        </Link>
-                      </div> */}
                     </div>
 
                     {/* ---------- Content Box ---------- */}
@@ -207,31 +90,22 @@ export default function Blog_Page_One() {
                           <div className="icon">
                             <i className="icon-hashtag"></i>
                           </div>
-                          <h6>{post.category}</h6>
+                          <h6>{post.category?.title}</h6>
                         </div>
                         <div className="date">
                           <div className="icon">
                             <i className="fa fa-calendar"></i>
                           </div>
-                          <h6>{post.date}</h6>
+                          <h6>{post?.date}</h6>
                         </div>
                       </div>
 
                       <div className="title-box">
                         <h3>
-                          <Link href={`/blog-1/${post.slug}`}>{post.title}</Link>
+                          <Link href={`/blog-1/${post.id}`}>{post.title}</Link>
                         </h3>
-                        <p>{post.excerpt}</p>
+                        <p>{post.summary}</p>
                       </div>
-
-                      {/* <div className="btn-box">
-                        <Link className="show-btn" href={`/blog-1/${post.slug}`}>
-                          {post.readTime} <i className="icon-right-arrow"></i>
-                        </Link> 
-                        <Link className="overlay-btn" href={`/blog-1/${post.slug}`}>
-                          Read More <i className="icon-right-arrow"></i>
-                        </Link>
-                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -239,7 +113,7 @@ export default function Blog_Page_One() {
             </div>
 
             {/* ---------- Pagination ---------- */}
-            <ul className="styled-pagination clearfix">
+            {/* <ul className="styled-pagination clearfix">
               <li className="arrow prev">
                 <Link href="#">
                   <span className="icon-arrow-left left"></span>
@@ -261,16 +135,8 @@ export default function Blog_Page_One() {
                   <span className="icon-arrow-right right"></span>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
-
-          {/* ✅ Lightbox Component */}
-          <Lightbox
-            open={open}
-            index={index}
-            close={() => setOpen(false)}
-            slides={slides}
-          />
         </section>
       </Layout>
     </div>

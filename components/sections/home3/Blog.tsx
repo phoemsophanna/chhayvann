@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { api } from "@/app/config";
+import { useTranslation } from "react-i18next";
 
 export const blogPosts = [
   {
@@ -37,8 +39,8 @@ export const blogPosts = [
   }
 ];
 
-export default function Blog() {
-
+export default function Blog({homepage,news}: any) {
+    const { t } = useTranslation();
     const [open, setOpen] = useState(false);
     const [index, setIndex] = useState(0);
 
@@ -51,34 +53,32 @@ export default function Blog() {
             <div className="container">
                 <div className="sec-title withtext text-center">
                     <div className="sub-title">
-                        <h4>News & Research</h4>
+                        <h4>{homepage?.subtitleTwo ? homepage?.subtitleTwo : "News & Research"}</h4>
                     </div>
-                    <h2>Latest Insights and Updates</h2>
+                    <h2>{homepage?.title}</h2>
                     <div className="text">
-                        <p>Discover the most competitive prices in the market, update.</p>
+                        <p>{homepage?.summary}</p>
                     </div>
                 </div>
 
                 <div className="row">
-
-                    {blogPosts.map((post, i) => (
-                    <div className="col-xl-4 col-lg-6 col-md-6" key={post.slug}>
+                    {news?.map((post:any, i:any) => (
+                    <div className="col-xl-4 col-lg-6 col-md-6" key={i}>
                         <FadeIn direction="up" delay={0.0}>
                         <div className="single-blog-style4">
                             <div className="category-box">
                                 <div className="icon">
                                     <span className="icon-hashtag"></span>
                                 </div>
-                                <h6>{post.category}</h6>
+                                <h6>{post?.category?.title}</h6>
                             </div>
-                            <Link href={`/blog-1/${post.slug}`}>
+                            <Link href={`/blog-1/${post?.id}`}>
                                 <div className="img-box">
-                                    <Image
-                                    src={post.image as string}
-                                    alt="Image"
-                                    width={270}
-                                    height={240}
-                                    priority
+                                    <img
+                                        src={`${api.FILE_URL}${post?.image}`}
+                                        alt="Image"
+                                        width={270}
+                                        height={240}
                                     />
                                 </div>
                             </Link>
@@ -88,7 +88,7 @@ export default function Blog() {
                                         <div className="icon">
                                             <i className="fa fa fa-calendar"></i>
                                         </div>
-                                        <h6>{post.date}</h6>
+                                        <h6>{post?.date}</h6>
                                     </li>
                                     {/* <li>
                                         <div className="icon">
@@ -99,15 +99,11 @@ export default function Blog() {
                                 </ul>
                                 <div className="title-box">
                                     <h3>
-                                        <Link href={`/blog-1/${post.slug}`}>{post.title}</Link>
+                                        <Link href={`/blog-1/${post?.id}`}>{post?.title}</Link>
                                     </h3>
                                 </div>
                                 <div className="btn-box">
-                                    <Link className="show-btn" href={`/blog-4/${post.slug}`}>
-                                    {post.readTime}
-                                    <i className="icon-right-arrow"></i>
-                                    </Link>
-                                    <Link className="overlay-btn" href={`/blog-4/${post.slug}`}>
+                                    <Link className="overlay-btn" href={`/blog-1/${post.id}`}>
                                     Read More
                                     <i className="icon-right-arrow"></i>
                                     </Link>
@@ -121,7 +117,7 @@ export default function Blog() {
                 <div className="blog-style4__text">
                     <p>
                         <Link href="/blog-1">
-                            Read More News
+                            {t("ReadMoreNews")}
                             <i className="icon-right-arrow"></i>
                         </Link>
                     </p>

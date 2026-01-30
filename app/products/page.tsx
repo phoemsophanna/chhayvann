@@ -1,113 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
 import Image from "next/image";
-
-const blogPosts = [
-  {
-    slug: "1",
-    title: "Argor Heraeus",
-    category: "Market Analysis",
-    date: "15.09.2025",
-    readTime: "4 Minutes read",
-    author: "Silver Scott",
-    image: "/assets/images/products/products1.png",
-  },
-  {
-    slug: "2",
-    title: "Metalor SA",
-    category: "Economic News",
-    date: "31.08.2025",
-    readTime: "3 Minutes read",
-    author: "z.olivia",
-    image: "/assets/images/products/products2.png",
-  },
-  {
-    slug: "3",
-    title: "RAND",
-    category: "RAND",
-    date: "23.08.2025",
-    readTime: "5 Minutes read",
-    author: "t.maverick",
-    image: "/assets/images/products/products3.png",
-  },
-  // {
-  //   slug: "4",
-  //   title: "Valcambi",
-  //   category: "Valcambi",
-  //   date: "23.08.2025",
-  //   readTime: "5 Minutes read",
-  //   author: "N.Isabella",
-  //   image: "/assets/images/products/products4.png",
-  // },
-  // {
-  //   slug: "5",
-  //   title: "Perth Mint",
-  //   category: "Perth Mint",
-  //   date: "15.09.2025",
-  //   readTime: "4 Minutes read",
-  //   author: "Silver Scott",
-  //   image: "/assets/images/products/products5.png",
-  // },
-  // {
-  //   slug: "6",
-  //   title: "Asahi",
-  //   category: "Economic News",
-  //   date: "31.08.2025",
-  //   readTime: "3 Minutes read",
-  //   author: "z.olivia",
-  //   image: "/assets/images/products/products6.png",
-  // },
-  // {
-  //   slug: "7",
-  //   title: "Mitsubishi",
-  //   category: "Economic News",
-  //   date: "31.08.2025",
-  //   readTime: "3 Minutes read",
-  //   author: "t.maverick",
-  //   image: "/assets/images/products/products7.png",
-  // },
-  // {
-  //   slug: "8",
-  //   title: "PAMP",
-  //   category: "PAMP",
-  //   date: "23.08.2025",
-  //   readTime: "5 Minutes read",
-  //   author: "N.Isabella",
-  //   image: "/assets/images/products/products8.png",
-  // }
-];
+import axios from "axios";
+import { api } from "../config";
+import { useTranslation } from "react-i18next";
 
 export default function Blog_Page_Two() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
-
+  const [products, setProducts] = useState<any>([]);
+  const [banner, setBanner] = useState<any>(null);
+  const [slides, setSlides] = useState<any>(null);
+  const { t, i18n } = useTranslation();
+  useEffect(() => {
+    axios.get(`${api.BASE_URL}/products`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept-Language": i18n.language
+      }
+    }).then((res) => {
+      setProducts(res.data.products);
+      setBanner(res.data.banner)
+    });
+  },[i18n.language])
   // Lightbox slides (use same images as blog posts)
-  const slides = blogPosts.map((post) => ({ src: post.image }));
+
+  useEffect(() => {
+    setSlides(products.map((post:any) => ({ src: api.FILE_URL + post?.gallery[0] })));
+  },[products])
+
+  console.log(products);
 
   return (
     <div>
-      <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Products">
+      <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.Products")} breadcrumbImage={banner?.image}>
         <section className="blog-page-two">
           <div className="container">
             <div className="row">
-              {blogPosts.map((post, i) => (
-                <div className={`col-xl-${blogPosts.length > 3 ? "3" : blogPosts.length > 2 ? "4" : blogPosts.length > 1 ? "6" : "12"} col-lg-6 col-md-6 col-6`} key={post.slug}>
+              {products.map((post:any, i:any) => (
+                <div className={`col-xl-${products?.length > 3 ? "3" : products?.length > 2 ? "4" : products?.length > 1 ? "6" : "12"} col-lg-6 col-md-6 col-6`} key={post.id}>
                   <div className="single-blog-style4">
-                    {/* <div className="category-box">
-                      <div className="icon">
-                        <span className="icon-hashtag"></span>
-                      </div>
-                      <h6>{post.category}</h6>
-                    </div> */}
 
                     <div className="img-box relative group">
                       <Image
-                        src={post.image}
+                        src={`${api.FILE_URL}${post?.gallery[0]}`}
                         alt={post.title}
                         width={270}
                         height={240}
@@ -127,38 +69,23 @@ export default function Blog_Page_Two() {
                     </div>
 
                     <div className="content-box">
-                      {/* <ul className="meta-box clearfix">
-                        <li>
-                          <div className="icon">
-                            <i className="fa fa-calendar"></i>
-                          </div>
-                          <h6>{post.date}</h6>
-                        </li>
-                        <li>
-                          <div className="icon">
-                            <i className="fa fa-user-circle" aria-hidden="true"></i>
-                          </div>
-                          <h6>{post.author}</h6>
-                        </li>
-                      </ul> */}
-
                       <div className="title-box">
                         <h3>
-                          <Link href={`/products/${post.slug}`}>{post.title}</Link>
+                          <Link href={`/products/${post.id}`}>{post.title}</Link>
                         </h3>
                         <p>
-                          Gold Bar 1 KG
+                          {post?.type}
                         </p>
                         <p>
-                          Country: Cambodia
+                          {post?.country}
                         </p>
                       </div>
 
                       <div className="btn-box">
-                        <Link className="show-btn" href={`/products/${post.slug}`}>
+                        <Link className="show-btn" href={`/products/${post.id}`}>
                           Read More <i className="icon-right-arrow"></i>
                         </Link>
-                        <Link className="overlay-btn" href={`/products/${post.slug}`}>
+                        <Link className="overlay-btn" href={`/products/${post.id}`}>
                           Read More <i className="icon-right-arrow"></i>
                         </Link>
                       </div>

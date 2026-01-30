@@ -14054,6 +14054,14 @@ select:focus {
     height: 100%;
 }
 
+.single-awards-style1 .text {
+    width: 65%;
+}
+
+.statement-style1 {
+    padding-bottom: 0;
+}
+
 @media screen and (max-width: 769px) {
     .exchange-currency .content-img {
         margin-top: 30px;
@@ -14096,4 +14104,85 @@ select:focus {
     .dropdown-contain span i {
         right: 10px;
     }
+}
+
+.single-blog-style5 .content-box .top-box .category h6 {
+    font-size: 13px;
+}
+
+.popup {
+    opacity: 0;
+    transition: opacity 0.3s;
+    position: fixed;
+}
+
+.faq-style2 {
+    padding: 60px 0;
+}
+
+.popup.active {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    backdrop-filter: none;
+    opacity: 1;
+}
+
+.popup::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    z-index: 0;   
+}
+
+.popup-container {
+    z-index: 1;
+    position: relative;
+    background: #fff;
+    width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    transform: scale(0.3);
+    transition: transform 0.5s;
+}
+
+.popup.active .popup-container {
+    transform: scale(1);
+}
+
+.popup-header {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.popup-header button i {
+    color: red;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.popup-content h2 {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.embedMap iframe {
+    width: 100%;
 }

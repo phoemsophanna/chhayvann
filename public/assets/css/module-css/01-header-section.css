@@ -1899,7 +1899,7 @@ Mobile Nav Megamenu Css
     border-radius: 22px;
     border: 1px solid #ffffff;
     /* background-color: #fff; */
-    width: 130px;
+    width: auto;
     height: 40px;
     color: var(--thm-white);
     font-size: 16px;
@@ -1907,8 +1907,8 @@ Mobile Nav Megamenu Css
     font-family: var(--thm-font);
     font-weight: 400;
     outline: none;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 8px;
+    padding-right: 30px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }

@@ -3,68 +3,22 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link"
+import { useAppStore } from "@/store/useAppStore";
+import { api } from "@/app/config";
+import { useTranslation } from "react-i18next";
 
 export default function Footer3() {
     const [dropdown, setDropdown] = useState(0);
+    const { general, contact } = useAppStore();
+    const { t, i18n } = useTranslation();
+    console.log(contact);
     return (
         <>
-        
             <footer className="footer-style3">
-                
-
                 <div className="footer-main-style3">
                     <div className="container">
                         <div className="row">
-                            
-
                             <div className="col-xl-4 col-lg-6 col-md-6 single-widget">
-                                {/* <div className="single-footer-widget-style3 mr-minus20 wow fadeInUp" data-wow-duration="1500ms"
-                                    data-wow-delay="000ms">
-                                    <div className="single-footer-widget-style3__bg"
-                                        style={{ backgroundImage: "url(/assets/images/shapes/footer-v3-single-bg.jpg)" }}>
-                                    </div>
-                                    <div className="single-footer-widget-style3-info">
-                                        <div className="icon">
-                                            <Image src="/assets/images/icon/footer-v3-icon1.png" alt="Icon" width={38} height={30} priority />
-                                        </div>
-                                        <div className="title2">
-                                            <h3>Participate in <br />Our Discord Community.</h3>
-                                            <p>Be a part of our update community.</p>
-                                        </div>
-                                        <div className="images-links">
-                                            <ul className="clearfix">
-                                                <li>
-                                                    <div className="img-box img-box1">
-                                                        <Image src="/assets/images/footer/footer-v3-members1.png" alt="Image" width={30} height={38} priority />
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="img-box img-box2">
-                                                        <Image src="/assets/images/footer/footer-v3-members2.png" alt="Image" width={30} height={38} priority />
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="img-box img-box3">
-                                                        <Image src="/assets/images/footer/footer-v3-members3.png" alt="Image" width={30} height={38} priority />
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div className="text">
-                                                <p>25k Members <br />in Our Community</p>
-                                            </div>
-                                        </div>
-                                        <div className="btn-box">
-                                            <Link className="btn-one" href="#">
-                                                <span className="txt">Accept Invite</span>
-                                                <i className="icon-right-arrow"></i>
-                                            </Link>
-                                        </div>
-                                        <div className="members-box">
-                                            <div className="box"></div>
-                                            <p>4,235 Online.</p>
-                                        </div>
-                                    </div>
-                                </div> */}
                                 <div className="single-footer-widget wow fadeInUp" data-wow-duration="1200ms"
                                     data-wow-delay="000ms">
                                         <div className="single-footer-widget-style3__bg"
@@ -73,36 +27,37 @@ export default function Footer3() {
                                     <div className="single-footer-widget-contact">
                                         <div className="footer-logo-style1">
                                             <Link href="/">
-                                                <Image src="/assets/images/Chhayvann-png.png" alt="Logo" width={90} height={27} priority />
+                                                <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : "/assets/images/Chhayvann-png.png"}`} alt="Logo" width={90} height={27} priority />
                                             </Link>
                                         </div>
                                         <div className="text-box">
-                                            <p> Business it will frequently to occur that pleasures have all repudiated
-                                            and annoyances accepted.</p>
+                                            <p>
+                                                {general?.summary}
+                                            </p>
                                         </div>
                                         <div className="your-trading">
                                             <div className="title1">
-                                                <h3>Begin Your Trading,</h3>
+                                                <h3>{t("BeginYourTrading")}</h3>
                                             </div>
                                             <div className="btn-box">
                                                 <Link href="/individual"
                                                     className="btn-one">
                                                     <span className="txt">
-                                                        Open Individual Account
+                                                        {t("HEADER.OpenIndividualAccount")}
                                                         <i className="icon-right-arrow"></i>
                                                     </span>
                                                 </Link>
                                                 <Link href="/corporate"
                                                     className="btn-one">
                                                     <span className="txt">
-                                                        Open Corporate Account
+                                                        {t("HEADER.OpenCorporateAccount")}
                                                         <i className="icon-right-arrow"></i>
                                                     </span>
                                                 </Link>
                                                 <Link href="https://chhayvann-demo.ntptrader.com/"
                                                     className="btn-one">
                                                     <span className="txt">
-                                                        Sign In
+                                                        {t("SignIn")}
                                                         <i className="icon-right-arrow"></i>
                                                     </span>
                                                 </Link>
@@ -123,67 +78,67 @@ export default function Footer3() {
                                             } else {
                                                 setDropdown(0);
                                             }
-                                        }}>Company <span className={`fa fa-angle-right ${dropdown == 1 ? "active" : ""}`}></span></h3>
+                                        }}>{t("HEADER.Company")} <span className={`fa fa-angle-right ${dropdown == 1 ? "active" : ""}`}></span></h3>
                                     </div>
                                     <div className={`footer-widget-links-style3 ${dropdown == 1 ? "active" : ""}`}>
                                         <ul className="clearfix">
                                             <li>
                                                 <Link href="/about">
-                                                    About Us
+                                                    {t("HEADER.AboutUs")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/service">
-                                                    Services
+                                                    {t("HEADER.Services")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/products">
-                                                    Products
+                                                    {t("HEADER.Products")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/trading">
-                                                    Trading
+                                                    {t("HEADER.Trading")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="#">
-                                                    Online Trading
+                                                    {t("HEADER.OnlineTrading")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/blog-1">
-                                                    News & Research
+                                                    {t("HEADER.NewsResearch")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/history">
-                                                    History
+                                                    {t("HEADER.History")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/faq">
-                                                    FAQ's
+                                                    {t("FAQ")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="#">
-                                                    Careers
+                                                    {t("HEADER.Careers")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/contact">
-                                                    Contact Us
+                                                    {t("HEADER.ContactUs")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
@@ -207,50 +162,71 @@ export default function Footer3() {
                                             } else {
                                                 setDropdown(0);
                                             }
-                                        }}>Information <span className={`fa fa-angle-right ${dropdown == 2 ? "active" : ""}`}></span></h3>
+                                        }}>{t("Information")} <span className={`fa fa-angle-right ${dropdown == 2 ? "active" : ""}`}></span></h3>
                                     </div>
                                     <ul className={`single-footer-widget-style3-post clearfix ${dropdown == 2 ? "active" : ""}`}>
+                                        {
+                                            contact?.phoneNumber ? (
+                                                <>
+                                                    {
+                                                        contact?.phoneNumber.map((q:any,i:any) => (
+                                                            <li key={i}>
+                                                                {t("Phone")}: {q?.number}
+                                                            </li>
+                                                        ))
+                                                    }
+                                                </>
+                                            ) : ""
+                                        }
+                                        {
+                                            contact?.email1 ? (
+                                                <li>
+                                                    {t("Email")}: {contact?.email1}
+                                                </li>
+                                            ) : ""
+                                        }
                                         <li>
-                                            Phone: 012-XXX-XXX
+                                            {t("Address")}: {contact?.address}
                                         </li>
                                         <li>
-                                            Phone: 023-XXX-XXX
-                                        </li>
-                                        <li>
-                                            Phone: 012-XXX-XXX
-                                        </li>
-                                        <li>
-                                            Phone: 023-XXX-XXX
-                                        </li>
-                                        <li>
-                                            Email: info@chhayvann.com.kh
-                                        </li>
-                                        <li>
-                                            Address: No. 31, St. 286, Sangkat Olympic, Khan Boeng Keng Kang, Phnom Penh, Cambodia.
-                                        </li>
-                                        <li>
-                                            Follow Us:
+                                            {t("FollowUs")}:
                                             <ul className="social-container">
-                                                <li className="facebook-icon">
-                                                    <a href="">
-                                                        <i className="icon-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li className="telegram-icon">
-                                                    <a href="">
-                                                        <i className="icon-telegram-1"></i>
-                                                    </a>
-                                                </li>
-                                                <li className="instagram-icon">
-                                                    <a href="">
-                                                        <i className="fab fa-instagram"></i>
-                                                    </a>
-                                                </li>
-                                                <li className="youtube-icon">
-                                                    <a href="">
-                                                        <i className="fab fa-youtube"></i>
-                                                    </a>
-                                                </li>
+                                                {
+                                                    contact?.facebookLink ? (
+                                                        <li className="facebook-icon">
+                                                            <a href={contact?.facebookLink} target="_blank">
+                                                                <i className="icon-facebook"></i>
+                                                            </a>
+                                                        </li>
+                                                    ) : ""
+                                                }
+                                                {
+                                                    contact?.telegramLink ? (
+                                                        <li className="telegram-icon">
+                                                            <a href={contact?.telegramLink} target="_blank">
+                                                                <i className="icon-telegram-1"></i>
+                                                            </a>
+                                                        </li>
+                                                    ) : ""
+                                                }
+                                                {
+                                                    contact?.instagramLink ? (
+                                                        <li className="instagram-icon">
+                                                            <a href={contact?.instagramLink} target="_blank">
+                                                                <i className="fab fa-instagram"></i>
+                                                            </a>
+                                                        </li>
+                                                    ) : ""
+                                                }
+                                                {
+                                                    contact?.youtube ? (
+                                                        <li className="youtube-icon">
+                                                            <a href={contact?.youtube} target="_blank">
+                                                                <i className="fab fa-youtube"></i>
+                                                            </a>
+                                                        </li>
+                                                    ) : ""
+                                                }
                                             </ul>
                                         </li>
                                     </ul>
@@ -268,7 +244,7 @@ export default function Footer3() {
                             <div className="copyright-text-style3 wow fadeInLeft" data-wow-duration="1500ms"
                                 data-wow-delay="000ms">
                                 <p>
-                                    Copyrights © {new Date().getFullYear()} <Link href="/index-3">Chhayvann. </Link> All rights reserved.
+                                    Copyrights © {new Date().getFullYear()} <Link href="/">Chhayvann. </Link> All rights reserved.
                                 </p>
                             </div>
                             <div className="payment-methods wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="200ms">

@@ -1,12 +1,39 @@
 "use client";
 
 import Layout from "@/components/layout/Layout";
+import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { api } from "../config";
+import { useTranslation } from "react-i18next";
+import Popup from "@/components/elements/Popup";
 export default function Home_One() {
     const [front, setFront] = useState("");
     const [back, setBack] = useState("");
+
+    const {t, i18n} = useTranslation();
+    const [banner, setBanner] = useState<any>(null);
+    const [individual, setIndividual] = useState<any>(null);
+    const [captchaToken, setCaptchaToken] = useState<any>("");
+    const [privacy, setPrivacy] = useState<any>([]);
+    const [active, setActive] = useState(false);
+
+    useEffect(() => {
+        axios.get(`${api.BASE_URL}/individual-page`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept-Language": i18n.language
+            }
+        }).then((res) => {
+            if(res.data.status == "success"){
+                console.log(res.data);
+                setIndividual(res.data.individual);
+            }
+        });
+    },[i18n.language]);
+
     const handleFrontChange = (e:any) => {
         setFront(URL.createObjectURL(e.target.files[0]));
     }
@@ -23,36 +50,76 @@ export default function Home_One() {
         setBack("");
     }
 
+    const submitOpenAccountForm = (e:any) => {
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        formData.append("captcha", captchaToken);
+        formData.append("privacy", JSON.stringify(privacy));
+        if(captchaToken && front) {
+            axios.post(`${api.BASE_URL}/submit-account-individual`,formData,{
+                method: "POST",
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            }).then((res) => {
+                if(res.data.status == "success") {
+                    setActive(true);
+                    setBack("");
+                    setFront("");
+                    form.reset();
+                }
+            });
+        }
+    }
+
+    const checkPrivacy = (event: any) => {
+        if(event?.checked) {
+            const findPrivacy = privacy.some((q:any) => q == event?.dataset?.value);
+            if(!findPrivacy){
+                setPrivacy([...privacy,event?.dataset?.value]);
+            }
+        } else {
+            const findPrivacy = privacy.filter((q:any) => q != event?.dataset?.value);
+            if(findPrivacy){
+                setPrivacy(findPrivacy);
+            }
+        }
+    }
+
+    if(!individual) return null;
+
     return (
         <div>
-            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Form Request Individual Account">
+            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={individual?.title}>
                 <section className="submit-form open-account-form" style={{padding: "80px 0 80px",backgroundColor: "#fff"}}>
                     <div className="container">
                         <div className="sec-title withtext text-center" style={{paddingBottom: 30}}>
-                            <h2>Form Request Individual Account</h2>
+                            <h2>{individual?.title}</h2>
                             <div className="text">
                                 <p style={{fontSize: 18, fontWeight: 500}}>
-                                    To Request for a Corporate Account Type <Link href="/corporate">Click</Link>
+                                    {individual?.subtitle} <Link href="/corporate">{t("Click")}</Link>
                                 </p>
                             </div>
                             <div className="text">
                                 <p>
-                                    At Chhayvann,  we believe ourselves well placed to capture opportunities ahead. We are also strengthening our franchise in the country and fortify our 
-                                    position as Cambodia’s safest bank.
+                                    {individual?.summary}
                                 </p>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-xl-12">
                                 <div className="contact-form open-account submit-cv-form">
-                                    <form id="contact-form" className="default-form2">
+                                    <form id="contact-form" onSubmit={(e:any) => {
+                                        e.preventDefault();
+                                        submitOpenAccountForm(e);
+                                    }} className="default-form2">
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <input
                                                         type="text"
-                                                        name="name"
+                                                        name="firstname"
                                                         required
                                                         placeholder="First Name"
                                                         />
@@ -62,7 +129,7 @@ export default function Home_One() {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                     <div className="input-box">
-                                                        <input type="text" name="form_phone" id="formPhone"
+                                                        <input type="text" name="lastname" id="formPhone"
                                                             placeholder="Last Name" />
                                                     </div>
                                                 </div>
@@ -71,8 +138,8 @@ export default function Home_One() {
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <input
-                                                        type="email"
-                                                        name="email"
+                                                        type="text"
+                                                        name="phoneNumber"
                                                         required
                                                         placeholder="Phone Number"
                                                         />
@@ -82,7 +149,7 @@ export default function Home_One() {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                     <div className="input-box">
-                                                        <input type="text" name="form_subject" id="formSubject"
+                                                        <input type="email" name="email" id="formSubject"
                                                             placeholder="Email Address" />
                                                     </div>
                                                 </div>
@@ -102,7 +169,7 @@ export default function Home_One() {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                     <div className="input-box">
-                                                        <input type="text" name="form_subject" id="formSubject"
+                                                        <input type="text" name="nidNumber" required id="formSubject"
                                                             placeholder="NID Number" />
                                                     </div>
                                                 </div>
@@ -111,8 +178,9 @@ export default function Home_One() {
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <label htmlFor="fileFront" className="fileCV"><i className="fas fa-upload"></i> Upload Front ID or Passport</label><span style={{marginLeft: "10px"}}>Max size 10MB.</span>
-                                                        <input type="file" onChange={handleFrontChange} style={{visibility: "hidden", position: "absolute"}} name="form_subject" id="fileFront"
+                                                        <input type="file" onChange={handleFrontChange} style={{visibility: "hidden", position: "absolute"}} name="front" id="fileFront"
                                                             placeholder="Email Address" />
+                                                        {!front && <div className="text-danger">Please Upload Front ID Card.</div>}
                                                     </div>
                                                     {front && <>
                                                         <div style={{position: "relative"}}>
@@ -141,7 +209,7 @@ export default function Home_One() {
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <label htmlFor="fileBack" className="fileCV"><i className="fas fa-upload"></i> Upload Back ID or Passport</label><span style={{marginLeft: "10px"}}>Max size 10MB.</span>
-                                                        <input type="file" onChange={handleBackChange} style={{visibility: "hidden", position: "absolute"}} name="form_subject" id="fileBack"
+                                                        <input type="file" onChange={handleBackChange} style={{visibility: "hidden", position: "absolute"}} name="back" id="fileBack"
                                                             placeholder="Email Address" />
                                                     </div>
                                                     {back && <>
@@ -169,41 +237,34 @@ export default function Home_One() {
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <div className="col-xl-12 col-lg-12">
-                                                <div className="form-group">
-                                                    <div className="input-box" style={{display: "flex", gap: 15}}>
-                                                        <input type="checkbox" style={{
-                                                            width: 20,
-                                                            height: 20,
-                                                            flex: "3%"
-                                                        }} name="" id="permission" />
-                                                        <label htmlFor="permission" style={{lineHeight: 1.3,flex: "97%"}}>
-                                                            Allow to give the permission to use the information for the purpose of opening the account. Your Data will be kept confidential and will not be shared with any third party.
-                                                        </label>
+                                            {
+                                                individual?.privacy.map((q:any,i:any) => (
+                                                    <div className="col-xl-12 col-lg-12" key={i}>
+                                                        <div className="form-group">
+                                                            <div className="input-box" style={{display: "flex", gap: 15}}>
+                                                                <input type="checkbox" style={{
+                                                                    width: 20,
+                                                                    height: 20,
+                                                                    flex: "3%"
+                                                                }} name="" required onChange={(event) => checkPrivacy(event.target)} data-value={q?.title} id={`permission-${i}`} />
+                                                                <label htmlFor={`permission-${i}`} style={{lineHeight: 1.3,flex: "97%"}}>
+                                                                    {i18n.language == "KHM" && q?.titleKm ? q?.titleKm : q?.title}
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-xl-12 col-lg-12">
-                                                <div className="form-group">
-                                                    <div className="input-box" style={{display: "flex", gap: 15}}>
-                                                        <input type="checkbox" style={{
-                                                            width: 20,
-                                                            height: 20,
-                                                            flex: "3%"
-                                                        }} name="" id="permission" />
-                                                        <label htmlFor="permission" style={{lineHeight: 1.3,flex: "97%"}}>
-                                                            Confirm that the provided information are accurate and authentic.
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                ))
+                                            }
                                             <div className="col-12">
                                                 <div className="row" style={{alignItems: "center"}}>
                                                     <div className="col-md-6">
                                                         <div className="button-box">
                                                             <ReCAPTCHA
                                                                 sitekey="6LdboZkpAAAAAEvN_JobJlaphv_g3oGY399KoJO3"
+                                                                onChange={(token) => setCaptchaToken(token)}
+                                                                onExpired={() => setCaptchaToken(null)}
                                                             />
+                                                            {!captchaToken && <div className="text-danger">Please verify that you are not a robot.</div>}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
@@ -213,7 +274,7 @@ export default function Home_One() {
                                                             <div className="btn-box">
                                                                 <button className="btn-one" type="submit"
                                                                     data-loading-text="Please wait...">
-                                                                    <span className="txt">Request Application</span>
+                                                                    <span className="txt">{t("RequestApplication")}</span>
                                                                     <i className="icon-right-arrow"></i>
                                                                 </button>
                                                             </div>
@@ -230,6 +291,7 @@ export default function Home_One() {
                     </div>
                 </section>
             </Layout>
+            <Popup active={active} setActive={setActive} title={`Save open Account Individual is successfully!`} />
         </div>
     )
 }

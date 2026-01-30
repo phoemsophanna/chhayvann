@@ -1,95 +1,64 @@
+"use client";
 import Layout from "@/components/layout/Layout";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { api } from "../config";
 
 
 export default function History_Page() {
+    const [banner, setBanner] = useState<any>(null);
+    const [history, setHistory] = useState<any>(null);
+    const { i18n } = useTranslation();
+    useEffect(() => {
+        axios.get(`${api.BASE_URL}/history`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept-Language": i18n.language
+            }
+        }).then((res) => {
+            if(res.data.status == "success"){
+                setBanner(res.data.banner);
+                setHistory(res.data.history);
+            }
+        });
+    },[i18n.language]);
 
     return (
         <div>
-            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Our History" breadcrumbTitleTwo="About">
+            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Our History" breadcrumbImage={banner?.image}>
                 <section className="history-style1">
                     <div className="container">
                         <i className="border-line1"></i>
                         <ul className="history-style1__inner">
-                            <li className="single-history-style1">
-                                <div className="img-box">
-                                    <Image src="/assets/images/resources/history-v1-img1.webp" alt="History" width={370} height={295} priority />
-                                </div>
-                                <div className="year-box">
-                                    <h3>2000</h3>
-                                    <div className="border-line"></div>
-                                </div>
-                                <div className="content-box">
-                                    <div className="title">
-                                        <h3><Link href="#">The Establishment</Link></h3>
-                                    </div>
-                                    <div className="text">
-                                        <p>Denounce with righteous indigation dislike men who are so beguiled and demoralized by
-                                            pleasure of the moment.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            
-                            <li className="single-history-style1 instyle2">
-                                <div className="img-box">
-                                    <Image src="/assets/images/resources/history-v1-img2.webp" alt="History" width={370} height={295} priority />
-                                </div>
-                                <div className="year-box">
-                                    <h3>2010</h3>
-                                    <div className="border-line"></div>
-                                </div>
-                                <div className="content-box">
-                                    <div className="title">
-                                        <h3><Link href="#">Transparent Fx Broker</Link></h3>
-                                    </div>
-                                    <div className="text">
-                                        <p>Owing to the claims of duty or the obliga- tions business it will frequently occurs
-                                            that</p>
-                                    </div>
-                                </div>
-                            </li>
-                            
-
-                            <li className="single-history-style1">
-                                <div className="img-box">
-                                    <Image src="/assets/images/resources/history-v1-img3.webp" alt="History" width={370} height={295} priority />
-                                </div>
-                                <div className="year-box">
-                                    <h3>2020</h3>
-                                    <div className="border-line"></div>
-                                </div>
-                                <div className="content-box">
-                                    <div className="title">
-                                        <h3><Link href="#">Moved headquarters to USA</Link></h3>
-                                    </div>
-                                    <div className="text">
-                                        <p>Righteous indigation dislike men who are so beguiled and demoralized.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            
-
-                            <li className="single-history-style1 instyle2">
-                                <div className="img-box">
-                                    <Image src="/assets/images/resources/history-v1-img4.webp" alt="History" width={370} height={295} priority />
-                                </div>
-                                <div className="year-box">
-                                    <h3>2025</h3>
-                                    <div className="border-line"></div>
-                                </div>
-                                <div className="content-box">
-                                    <div className="title">
-                                        <h3><Link href="#">1m Traders Trusted Us</Link></h3>
-                                    </div>
-                                    <div className="text">
-                                        <p>Denounce with righteous indigation dislike men who are so beguiled and demoralized by
-                                            pleasure of the moment.</p>
-                                    </div>
-                                </div>
-                            </li>
-
+                            {
+                                history?.map((q:any,index: any) => (
+                                    <li className={`single-history-style1 ${(index + 1) % 2 == 0 ? "instyle2" : ""}`} key={index}>
+                                        <div className="img-box">
+                                            <Image src={`${api.FILE_URL}${q.image}`} alt="History" width={370} height={295} priority />
+                                        </div>
+                                        <div className="year-box">
+                                            <h3>{q?.year}</h3>
+                                            <div className="border-line"></div>
+                                        </div>
+                                        <div className="content-box">
+                                            <div className="title">
+                                                <h3><Link href="#">
+                                                    {q?.title}
+                                                </Link></h3>
+                                            </div>
+                                            <div className="text">
+                                                <p>
+                                                    {q?.summary}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </div>
                 </section>

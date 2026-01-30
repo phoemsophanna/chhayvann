@@ -12,6 +12,7 @@ interface LayoutProps {
   footerStyle?: 1 | 2 | 3 | 4;   // optional footer variant
   breadcrumbTitle?: string;
   breadcrumbTitleTwo?: string;
+  breadcrumbImage?: string;
 }
 
 export default function Layout({
@@ -20,6 +21,7 @@ export default function Layout({
   footerStyle = 1,
   breadcrumbTitle,
   breadcrumbTitleTwo,
+  breadcrumbImage,
 }: LayoutProps) {
   const hasBreadcrumb = !!(breadcrumbTitle || breadcrumbTitleTwo);
 
@@ -33,6 +35,7 @@ export default function Layout({
         <Breadcrumb
           breadcrumbTitle={breadcrumbTitle ?? ""}
           breadcrumbTitleTwo={breadcrumbTitleTwo}
+          breadcrumbImage={breadcrumbImage ?? ""}
         />
       )}
 
