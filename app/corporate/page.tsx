@@ -44,8 +44,8 @@ export default function Home_One() {
             }
         }).then((res) => {
             if(res.data.status == "success"){
-                console.log(res.data);
                 setCorparate(res.data.corparate);
+                setBanner(res.data.pageBanner);
             }
         });
     },[i18n.language]);
@@ -90,7 +90,7 @@ export default function Home_One() {
 
     return (
         <div>
-            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Form Request Individual Account">
+            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={corparate?.title} breadcrumbImage={banner?.image}>
                 <section className="submit-form open-account-form" style={{padding: "80px 0 80px",backgroundColor: "#fff"}}>
                     <div className="container">
                         <div className="sec-title withtext text-center" style={{paddingBottom: 30}}>
