@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
@@ -13,35 +12,52 @@ import { api } from "../config";
 import { useSearchParams } from "next/navigation";
 
 export default function Blog_Page_One() {
-  const search = useSearchParams();
   const [banner, setBanner] = useState<any>(null);
   const [news, setNews] = useState<any>([]);
   const [category, setCategory] = useState<any>(null);
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
+  const [categoryId, setCategoryId] = useState<any>(null);
 
   useEffect(() => {
-    if(search.get("categoryId")){
-      fetchNews(search.get("categoryId"));
-    } else {
-      fetchNews(0);
-    }
-  },[i18n.language]);
+    // Safe: only runs on client
+    const params = new URLSearchParams(window.location.search);
+    setCategoryId(params.get("categoryId") || "0");
+  }, []);
 
-  const fetchNews = (categoryId:any) => {
-    axios.get(`${api.BASE_URL}/article-page?categoryId=${categoryId}`,{
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept-Language": i18n.language
+  useEffect(() => {
+    fetchNews(categoryId);
+  }, [i18n.language, categoryId]);
+
+  const fetchNews = async (categoryId: any) => {
+    try {
+      const res = await axios.get(
+        `${api.BASE_URL}/article-page?categoryId=${categoryId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Accept-Language": i18n.language,
+          },
+        }
+      );
+
+      if (res.data.status === "success") {
+        setBanner(res.data.banner || null);
+        setCategory(res.data.category || null);
+        setNews(res.data.articles || []);
+      } else {
+        setBanner(null);
+        setCategory(null);
+        setNews([]);
       }
-    }).then((res) => {
-      if(res.data.status == "success") {
-        setBanner(res.data.banner);
-        setCategory(res.data.category);
-        setNews(res.data.articles);
-      }
-    })
-  }
+    } catch (error) {
+      console.error("Failed to fetch news:", error);
+      setBanner(null);
+      setCategory(null);
+      setNews([]);
+    }
+  };
+
+  if(!news) return null;
 
   return (
     <div>
