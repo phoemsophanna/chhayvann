@@ -132,7 +132,7 @@ export default function Footer3() {
                                             </li>
                                             <li>
                                                 <Link href="#">
-                                                    {t("HEADER.Careers")}
+                                                    {t("HEADER.Career")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
