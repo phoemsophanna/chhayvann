@@ -125,7 +125,7 @@ export default function Exchange_Rate_Page() {
                                                                                     <div className="title" style={{justifyContent: "space-evenly"}}>
                                                                                         <img src={
                                                                                             q?.image
-                                                                                                ? q.image.startsWith("http")
+                                                                                                ? q?.image?.split(":")?.length > 1
                                                                                                     ? q.image
                                                                                                     : `${api.FILE_URL}${q.image}`
                                                                                                 : "/no-image.png"
