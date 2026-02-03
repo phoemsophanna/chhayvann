@@ -35,7 +35,6 @@ export default function Exchange_Rate_Page() {
         if(Number(e.target.value)){
             const amountTotalUSD = Number(e.target.value) / Number(exchange_rate[exchange.from]);
             const amounts = amountTotalUSD * Number(exchange_rate[exchange.to]);
-            // console.log(amountTotalUSD,amounts,exchange_rate[exchange.from]);
             setAmount(amounts);
         }
     }
@@ -83,6 +82,10 @@ export default function Exchange_Rate_Page() {
         maximumFractionDigits: 2,
       }).format(value);
     };
+
+    if(!exchanges) return null;
+
+
 
     return (
         <div>
