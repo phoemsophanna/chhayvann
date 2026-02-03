@@ -132,10 +132,10 @@ export default function Exchange_Rate_Page() {
                                                                                 </td>
 
                                                                                 <td className="sell">
-                                                                                    {Number(q?.sell) ? `$${Number(q?.sell).toFixed(5)}` : q?.sell}
+                                                                                    {`${q?.sell}`}
                                                                                 </td>
                                                                                 <td className="buy">
-                                                                                    {Number(q?.buy) ? `$${Number(q?.buy).toFixed(5)}` : q?.buy}
+                                                                                    {`${q?.buy}`}
                                                                                 </td>
                                                                             </tr>
                                                                         ))
