@@ -76,12 +76,12 @@ export default function Exchange_Rate_Page() {
         }
     },[subCurrency]);
 
-    // const formatUSD = (value: any) => {
-    //   return new Intl.NumberFormat('en-US', {
-    //     minimumFractionDigits: 2,
-    //     maximumFractionDigits: 2,
-    //   }).format(value);
-    // };
+    const formatUSD = (value: any) => {
+      return new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(value);
+    };
 
     if(!exchanges) return null;
 
@@ -203,7 +203,7 @@ export default function Exchange_Rate_Page() {
                                                     <div className="amount">
                                                         <h6>{t("AMOUNT")}</h6>
                                                         <input type="text" onChange={handleChangeAmount} />
-                                                        {/* <h3>{exchange.to} {formatUSD(amount)}</h3> */}
+                                                        <h3>{exchange.to} {formatUSD(amount)}</h3>
                                                         <h5>Updated Date: {exchangeSelected?.date}</h5>
                                                         <p>
                                                             {service?.convertSummary}
