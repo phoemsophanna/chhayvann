@@ -107,7 +107,7 @@ export default function Footer3() {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank">
+                                                <Link href={general?.OnlineTrading ? general?.OnlineTrading : "https://onlinetrade.chhayvann.com.kh/"} target="_blank">
                                                     {t("HEADER.OnlineTrading")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
@@ -135,7 +135,7 @@ export default function Footer3() {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link href="#">
+                                                <Link href="/career">
                                                     {t("HEADER.Career")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
