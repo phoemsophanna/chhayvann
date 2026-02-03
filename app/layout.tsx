@@ -29,7 +29,7 @@ const moderustic = Moderustic({
 
 export const metadata: Metadata = {
   title: "CHHAYVANN CO., LTD.",
-  description: "CHHAYVANN CO., LTD.",
+  description: "CHHAYVANN CO., LTD. is a trusted financial service company specializing in currency exchange and gold trading. We provide competitive exchange rates, transparent pricing, and reliable gold buying and selling services for individuals and businesses.",
   keywords: [
     "CHHAYVANN",
     "chhayvann",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://www.chhayvann.com"
+    canonical: "https://chhayvann.com.kh/"
   },
 };
 
