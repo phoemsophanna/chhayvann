@@ -122,7 +122,13 @@ export default function Exchange_Rate_Page() {
                                                                             <tr key={index}>
                                                                                 <td>
                                                                                     <div className="title" style={{justifyContent: "space-evenly"}}>
-                                                                                        <img src={`${api.FILE_URL}${q?.image}`} style={{width: 120, marginRight: 15}} alt="" />
+                                                                                        <img src={
+                                                                                            q?.image
+                                                                                                ? q.image.startsWith("http")
+                                                                                                    ? q.image
+                                                                                                    : `${api.FILE_URL}${q.image}`
+                                                                                                : "/no-image.png"
+                                                                                        } style={{width: 120, marginRight: 15}} alt="" />
                                                                                         <h6>{q.from}</h6>
                                                                                         <div className="icon-box">
                                                                                             <i className="icon-exchange"></i>
@@ -132,10 +138,10 @@ export default function Exchange_Rate_Page() {
                                                                                 </td>
 
                                                                                 <td className="sell">
-                                                                                    {`${q?.sell}`}
+                                                                                    {q?.sell}
                                                                                 </td>
                                                                                 <td className="buy">
-                                                                                    {`${q?.buy}`}
+                                                                                    {q?.buy}
                                                                                 </td>
                                                                             </tr>
                                                                         ))
@@ -196,7 +202,7 @@ export default function Exchange_Rate_Page() {
                                                     <div className="amount">
                                                         <h6>{t("AMOUNT")}</h6>
                                                         <input type="text" onChange={handleChangeAmount} />
-                                                        <h3>{exchange.to} {formatUSD(Number(amount))}</h3>
+                                                        <h3>{exchange.to} {formatUSD(amount)}</h3>
                                                         <h5>Updated Date: {exchangeSelected?.date}</h5>
                                                         <p>
                                                             {service?.convertSummary}
