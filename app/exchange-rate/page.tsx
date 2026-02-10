@@ -23,7 +23,7 @@ export default function Exchange_Rate_Page() {
     const handleChange = (key: any, value: any) => {
         if(key == "from"){
             setExchange({...exchange, from: value?.type});
-            const filterCurrency = currency?.filter((q:any,index:any) => q?.id != value?.id);
+            const filterCurrency = currency?.filter((q:any,index:any) => value?.subCurrency?.some((s:any) => s.id == q.id));
             setSubCurrency(filterCurrency);
         } else {
             setExchange({...exchange, to: value?.type});
@@ -73,6 +73,9 @@ export default function Exchange_Rate_Page() {
         if(subCurrency?.length > 0) {
             setExchangeSelected(subCurrency[0]);
             setExchange({...exchange, to: subCurrency[0]?.type});
+        } else {
+            setExchangeSelected(currency?.find((q:any) => q.type == "USD" ? q : null));
+            setExchange({...exchange, to: "USD"});
         }
     },[subCurrency]);
 
@@ -182,6 +185,7 @@ export default function Exchange_Rate_Page() {
                                                             option={currency}
                                                             action={handleChange}
                                                             type={'from'}
+                                                            id={currency[0]?.id}
                                                         >
                                                             <span><img src={api.FILE_URL + currency[0]?.image} alt={currency[0]?.image} /> {currency[0]?.type} <i className="fas fa-chevron-down"></i></span>
                                                         </Dropdowns>
