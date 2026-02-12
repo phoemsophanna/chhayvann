@@ -109,7 +109,6 @@ export default function About({homepage}:any) {
                                     <div className="sell">
                                         <span className="value">
                                             {formatUSD(realSell)}
-                                            <span className="">+</span>
                                         </span>
                                         <h6>{t("SELL")} XAU</h6>
                                     </div>
