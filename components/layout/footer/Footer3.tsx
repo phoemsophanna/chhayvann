@@ -11,7 +11,7 @@ export default function Footer3() {
     const [dropdown, setDropdown] = useState(0);
     const { general, contact } = useAppStore();
     const { t, i18n } = useTranslation();
-    console.log(contact);
+    // console.log(contact);
     return (
         <>
             <footer className="footer-style3">

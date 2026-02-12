@@ -49,7 +49,7 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
 
     if (!mounted) return null;
 
-    console.log(general);
+    // console.log(general);
   return (
     <>
       {/* main header */}

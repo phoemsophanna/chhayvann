@@ -27,8 +27,8 @@
     "MoreVideos": "វីដេអូបន្ថែម",
     "ReadMoreNews": "អានព័ត៌មានបន្ថែម",
     "Instrument": "ឧបករណ៍",
-    "Sell": "លក់",
-    "Buy": "ទិញ",
+    "Sell": "លក់ចេញ",
+    "Buy": "ទិញចូល",
     "CurrencyConverter": "ឧបករណ៍បម្លែងរូបិយវត្ថុ",
     "FROM": "ពី",
     "TO": "ទៅកាន់",
@@ -54,5 +54,7 @@
     "SignIn": "ចូលគណនី",
     "Information": "ព័ត៌មាន",
     "FollowUs": "តាមយើង",
-    "PrivacyPolicy": "ភាពឯកជននិងគោលការណ៍"
+    "PrivacyPolicy": "ភាពឯកជននិងគោលការណ៍",
+    "SELL": "លក់ចេញ",
+    "BUY": "ទិញចូល"
 }

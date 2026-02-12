@@ -14196,3 +14196,75 @@ select:focus {
 .tabs-button-box {
     margin-bottom: 0;
 }
+
+.value-exchange {
+    padding: 0px;
+    box-shadow: 0 0 10px #eaeaea;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.graph-exchange {
+    padding: 0px;
+    box-shadow: 0 0 10px #eaeaea;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.value-exchange .content-title,.graph-exchange .chart-title {
+    padding: 8px 14px;
+    background-color: #9f6605;
+}
+
+.value-exchange .content-title h6,.graph-exchange .chart-title h6 {
+    color: #fff;
+    font-weight: 500;
+}
+
+.content-item .date {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px;
+    max-width: 100%;
+    flex: 100%;
+}
+
+.content-item .date span {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.content-item {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 8px 8px;
+    justify-content: space-between;
+}
+
+.content-item .sell,.content-item .buy {
+    padding: 0;
+    border: 2px solid #f9f0d3;
+    border-radius: 15px;
+    flex: 49.3%;
+    max-width: 49.3%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.content-item .sell .value, .content-item .buy .value {
+    display: flex;
+    height: 50px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #444;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-item .sell h6,.content-item .buy h6 {
+    background-color: #f9f0d3;
+    font-weight: 500;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}

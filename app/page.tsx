@@ -30,7 +30,14 @@ export default function Home_One() {
                 setNews(res.data.news);
             }
         });
-    }, [i18n.language])
+    }, [i18n.language]);
+
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return null;
 
     return (
         <div>
