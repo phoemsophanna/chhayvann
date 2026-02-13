@@ -42,7 +42,7 @@ export default function About({homepage}:any) {
                 }
             })
 
-            setTimeout(poll, 1000);
+            setTimeout(poll, 5000);
         }
 
         poll();
