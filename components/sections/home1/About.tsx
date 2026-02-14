@@ -28,13 +28,17 @@ export default function About({homepage}:any) {
     useEffect(() => {
         echo?.channel("xauusd")
             .listen(".price.updated", (e:any) => {
-                if(e){
-                    e.price?.map((row: any) => {
-                        if(row.PAIR == "XAUUSD"){
-                            setRealBuy(row.BID);
-                            setRealSell(row.ASK);
-                        }
-                    })
+                try {
+                    if(e){
+                        e.price?.map((row: any) => {
+                            if(row.PAIR == "XAUUSD"){
+                                setRealBuy(row.BID);
+                                setRealSell(row.ASK);
+                            }
+                        })
+                    }
+                } catch (error) {
+                    console.log(error)
                 }
             });
 
