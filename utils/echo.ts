@@ -9,12 +9,12 @@ if (typeof window !== "undefined") {
 
     echo = new Echo({
         broadcaster: "reverb",
-        key: "localkey",
+        key: "localkey", 
         wsHost: "api.chhayvann.com.kh",
-        wsPort: 8080,
-        wssPort: 8080,
-        forceTLS: true,
-        enabledTransports: ['ws', 'wss'],
+        wsPort: 443,
+        wssPort: 443,
+        forceTLS: true, // Crucial for production https
+        enabledTransports: ["ws", "wss"],
         disableStats: true,
     });
 }

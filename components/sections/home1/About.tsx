@@ -28,7 +28,7 @@ export default function About({homepage}:any) {
     useEffect(() => {
         echo?.channel("xauusd")
             .listen(".price.updated", (e:any) => {
-                if(e.price){
+                if(e){
                     e.price?.map((row: any) => {
                         if(row.PAIR == "XAUUSD"){
                             setRealBuy(row.BID);
