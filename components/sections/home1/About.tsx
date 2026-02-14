@@ -59,8 +59,13 @@ export default function About({homepage}:any) {
                 console.error("Polling error:", err);
             }
         }, 15000);
+        fetchGraph();
+        return () => clearInterval(interval);
+    }, []);
 
-        const res:any = axios.get(`${api.BASE_URL}/trading-graph`);
+    const fetchGraph = async () => {
+        const res = await axios.get(`${api.BASE_URL}/trading-graph`);
+        console.log(res);
         if(res.data?.graph){
             const chartData = res.data.graph.map((row:any) => ({
                 time: dayjs(row.recorded_at).valueOf(),
@@ -69,9 +74,7 @@ export default function About({homepage}:any) {
             }));
             setBuy(chartData);
         }
-
-        return () => clearInterval(interval);
-    }, []);
+    }
 
     const formatUSD = (value: any) => {
       return new Intl.NumberFormat('en-US', {

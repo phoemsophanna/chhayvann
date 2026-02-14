@@ -10,9 +10,11 @@ if (typeof window !== "undefined") {
     echo = new Echo({
         broadcaster: "reverb",
         key: "localkey",
-        wsHost: "194.233.81.255",
+        wsHost: "api.chhayvann.com.kh",
         wsPort: 8080,
-        forceTLS: false,
+        forceTLS: true,
+        encrypted: true,
+        disableStats: true,
     });
 }
 
