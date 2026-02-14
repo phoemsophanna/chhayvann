@@ -17,6 +17,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { echo } from "@/utils/echo";
 
 export default function About({homepage}:any) {
     const { t } = useTranslation();
@@ -25,52 +26,42 @@ export default function About({homepage}:any) {
     const [realSell, setRealSell] = useState<any>(0);
 
     useEffect(() => {
-        async function poll() {
-            await axios.get(`${api.BASE_URL}/trading-api`,{
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then((res:any) => {
-                if(res.data?.data){
-                    res.data?.data?.map((row: any) => {
+        echo?.channel("xauusd")
+            .listen(".price.updated", (e:any) => {
+                if(e.price){
+                    e.price?.map((row: any) => {
                         if(row.PAIR == "XAUUSD"){
                             setRealBuy(row.BID);
                             setRealSell(row.ASK);
                         }
                     })
                 }
-            })
+            });
 
-            setTimeout(poll, 5000);
-        }
-
-        poll();
+        return () => {
+            echo?.leave("xauusd");
+        };
     },[]);
 
     useEffect(() => {
-        async function pollGraph() {
-            await axios.get(`${api.BASE_URL}/trading-graph`,{
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then((res:any) => {
+        const interval = setInterval(async () => {
+            try {
+                const res = await axios.get(`${api.BASE_URL}/trading-graph`);
                 if(res.data?.graph){
-                    const chartData = res.data?.graph?.map((row:any) => ({
+                    const chartData = res.data.graph.map((row:any) => ({
                         time: dayjs(row.recorded_at).valueOf(),
                         price: Number(row.bid),
                         sell: Number(row.ask)
                     }));
                     setBuy(chartData);
                 }
-            })
+            } catch(err) {
+                console.error("Polling error:", err);
+            }
+        }, 15000);
 
-            setTimeout(pollGraph, 15000);
-        }
-
-        pollGraph();
-    },[]);
+        return () => clearInterval(interval);
+    }, []);
 
     const formatUSD = (value: any) => {
       return new Intl.NumberFormat('en-US', {
