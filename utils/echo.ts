@@ -12,8 +12,9 @@ if (typeof window !== "undefined") {
         key: "localkey",
         wsHost: "api.chhayvann.com.kh",
         wsPort: 8080,
-        forceTLS: false,
-        encrypted: true,
+        wssPort: 8080,
+        forceTLS: true,
+        enabledTransports: ['ws', 'wss'],
         disableStats: true,
     });
 }
