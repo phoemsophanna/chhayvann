@@ -60,6 +60,16 @@ export default function About({homepage}:any) {
             }
         }, 15000);
 
+        const res:any = axios.get(`${api.BASE_URL}/trading-graph`);
+        if(res.data?.graph){
+            const chartData = res.data.graph.map((row:any) => ({
+                time: dayjs(row.recorded_at).valueOf(),
+                price: Number(row.bid),
+                sell: Number(row.ask)
+            }));
+            setBuy(chartData);
+        }
+
         return () => clearInterval(interval);
     }, []);
 
