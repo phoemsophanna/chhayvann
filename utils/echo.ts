@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
         key: "localkey",
         wsHost: "api.chhayvann.com.kh",
         wsPort: 8080,
-        forceTLS: true,
+        forceTLS: false,
         encrypted: true,
         disableStats: true,
     });

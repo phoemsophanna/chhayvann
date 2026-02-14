@@ -65,7 +65,6 @@ export default function About({homepage}:any) {
 
     const fetchGraph = async () => {
         const res = await axios.get(`${api.BASE_URL}/trading-graph`);
-        console.log(res);
         if(res.data?.graph){
             const chartData = res.data.graph.map((row:any) => ({
                 time: dayjs(row.recorded_at).valueOf(),
