@@ -62,7 +62,7 @@ export default function About({homepage}:any) {
             } catch(err) {
                 console.error("Polling error:", err);
             }
-        }, 15000);
+        }, 35000);
         fetchGraph();
         return () => clearInterval(interval);
     }, []);

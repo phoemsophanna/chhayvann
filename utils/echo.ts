@@ -8,14 +8,10 @@ if (typeof window !== "undefined") {
     (window as any).Pusher = Pusher;
 
     echo = new Echo({
-        broadcaster: "reverb",
-        key: "localkey", 
-        wsHost: "api.chhayvann.com.kh",
-        wsPort: 443,
-        wssPort: 443,
-        forceTLS: true, // Crucial for production https
-        enabledTransports: ["ws", "wss"],
-        disableStats: true,
+        broadcaster: "pusher",
+        key: "f0fa2fba948713a9aa3f",
+        cluster: "ap1", 
+        forceTLS: true,
     });
 }
 
