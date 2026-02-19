@@ -48,36 +48,34 @@ export default function About({homepage}:any) {
     },[]);
 
     useEffect(() => {
-        const interval = setInterval(async () => {
-            try {
-                const res = await axios.get(`${api.BASE_URL}/trading-graph`);
-                if(res.data?.graph){
-                    const chartData = res.data.graph.map((row:any) => ({
-                        time: dayjs(row.recorded_at).valueOf(),
-                        price: Number(row.bid),
-                        sell: Number(row.ask)
-                    }));
-                    setBuy(chartData);
-                }
-            } catch(err) {
-                console.error("Polling error:", err);
-            }
-        }, 35000);
-        fetchGraph();
-        return () => clearInterval(interval);
-    }, []);
+        let isMounted = true;
+        let timeout: any;
 
-    const fetchGraph = async () => {
-        const res = await axios.get(`${api.BASE_URL}/trading-graph`);
-        if(res.data?.graph){
-            const chartData = res.data.graph.map((row:any) => ({
+        const fetchGraph = async () => {
+            try {
+            const res = await axios.get(`${api.BASE_URL}/trading-graph`);
+            if(res.data?.graph && isMounted){
+                const chartData = res.data.graph.map((row:any) => ({
                 time: dayjs(row.recorded_at).valueOf(),
                 price: Number(row.bid),
                 sell: Number(row.ask)
-            }));
-            setBuy(chartData);
-        }
-    }
+                }));
+                setBuy(chartData);
+            }
+            } catch(err) {
+            console.error("Polling error:", err);
+            } finally {
+            timeout = setTimeout(fetchGraph, 35000); // schedule next fetch only after current finishes
+            }
+        };
+
+        if (typeof window !== "undefined") fetchGraph();
+
+        return () => { 
+            isMounted = false;
+            clearTimeout(timeout);
+        };
+    }, []);
 
     const formatUSD = (value: any) => {
       return new Intl.NumberFormat('en-US', {
