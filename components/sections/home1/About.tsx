@@ -63,9 +63,9 @@ export default function About({homepage}:any) {
                 setBuy(chartData);
             }
             } catch(err) {
-            console.error("Polling error:", err);
+                console.error("Polling error:", err);
             } finally {
-            timeout = setTimeout(fetchGraph, 35000); // schedule next fetch only after current finishes
+                timeout = setTimeout(fetchGraph, 35000);
             }
         };
 
