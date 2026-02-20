@@ -25,7 +25,9 @@ export default function PopupPoster() {
             
             const interval = setInterval(() => {
                 setCount(prev => {
-                    if (prev <= 1) {
+                    if (prev < 1) {
+                        document.body.classList.remove('no-scroll');
+                        sessionStorage.setItem('popup', 'true');
                         clearInterval(interval);
                         return 0;
                     }
