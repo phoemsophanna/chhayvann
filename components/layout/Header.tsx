@@ -88,7 +88,7 @@ export default function Header({ style = 1 }: HeaderProps) {
       <SidebarPopup isOpen={isSidebar} onClose={handleSidebar} />
 
       {/* Back to top button */}
-      <BackToTop scroll={isScrolled} />
+      {/* <BackToTop scroll={isScrolled} /> */}
 
       {/* Social button */}
       <SocialPopup />

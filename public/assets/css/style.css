@@ -14258,7 +14258,7 @@ select:focus {
 
 .scroll-to-top.social-style {
     transform: rotate(0deg);
-    bottom: 60px;
+    bottom: 10px;
 }
 
 .scroll-to-top.social-style .social-container {

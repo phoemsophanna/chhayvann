@@ -60,6 +60,11 @@ export default function About({homepage}:any) {
             },
             rightPriceScale: {
                 borderColor: '#333333',
+                visible: false
+            },
+            leftPriceScale: {
+                borderColor: "#444",
+                visible: true
             },
             timeScale: {
                 borderColor: '#333333',
