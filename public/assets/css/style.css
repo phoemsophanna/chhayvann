@@ -5125,7 +5125,15 @@ select:focus {
     --bs-gutter-x: 0px;
 }
 
-.choose-style2 .row li {
+.choose-style2 .row li .single-choose-style2 {
+    box-shadow: 0 0 30px #f2f2ebf5;
+    margin: 20px 20px 0px 0;
+    padding-top: 42px;
+    border-radius: 10px;
+    height: 90%;
+}
+
+/*.choose-style2 .row li {
     border-bottom: 1px solid #ece9e1;
     border-right: 1px solid #ece9e1;
     border-image: linear-gradient(to top, #c2c2c2, #c9c9c9, #fff) 1 100%;
@@ -5133,7 +5141,7 @@ select:focus {
 
 .choose-style2 .row li:nth-child(1) .single-choose-style2 {
   border-style: solid;
-  border-width: 0 0 1px 0; /* bottom only */
+  border-width: 0 0 1px 0;
   border-image: linear-gradient(
     to left,
     #c2c2c2, #c9c9c9,
@@ -5143,7 +5151,7 @@ select:focus {
 
 .choose-style2 .row li:nth-child(3) .single-choose-style2 {
   border-style: solid;
-  border-width: 0 0 1px 0; /* bottom only */
+  border-width: 0 0 1px 0;
   border-image: linear-gradient(
     to right,
     #c2c2c2, #c9c9c9,
@@ -5177,7 +5185,7 @@ select:focus {
 .choose-style2 .row li:nth-child(6) {
     border-bottom: none;
     border-right: none;
-}
+} */
 
 .single-choose-style2 {
     position: relative;
@@ -5185,12 +5193,12 @@ select:focus {
     padding: 0px 50px 42px;
 }
 
-.choose-style2 .row li:nth-child(4) .single-choose-style2,
+/* .choose-style2 .row li:nth-child(4) .single-choose-style2,
 .choose-style2 .row li:nth-child(5) .single-choose-style2,
 .choose-style2 .row li:nth-child(6) .single-choose-style2 {
     padding-top: 50px;
     padding-bottom: 0;
-}
+} */
 
 .single-choose-style2 .top-box {
     position: relative;
@@ -13596,34 +13604,6 @@ select:focus {
     font-size: 14px;
 }
 
-.social-container li:hover i {
-    color: #fff;
-}
-
-.social-container li.facebook-icon:hover {
-    background-color: #1877F2;
-    border-color: #1877F2;
-}
-
-.social-container li.telegram-icon:hover {
-    background-color: #00AFF0;
-    border-color: #00AFF0;
-}
-
-.social-container li.instagram-icon:hover {
-    background-color: #E4405F;
-    border-color: #E4405F;
-}
-
-.social-container li.youtube-icon:hover {
-    background-color: #CD201F;
-    border-color: #CD201F;
-}
-
-.main-menu .main-menu__list > li > ul > li:hover > a {
-    color: var(--thm-primary-color);
-}
-
 .partner-style1__brand ul li img {
     height: 150px;
     width: auto;
@@ -14267,4 +14247,205 @@ select:focus {
     font-weight: 500;
     padding-top: 5px;
     padding-bottom: 0px;
+}
+
+.scroll-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 10px;
+    right: 10px;
+}
+
+.scroll-to-top.social-style {
+    transform: rotate(0deg);
+    bottom: 60px;
+}
+
+.scroll-to-top.social-style .social-container {
+    display: block;
+    position: absolute;
+    bottom: 40px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.scroll-to-top.social-style .fa-comment-dots {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-to-top.social-style .social-container.active {
+    max-height: 300px;
+    bottom: 45px;
+    opacity: 1;
+}
+
+.scroll-to-top.social-style .social-container li {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.scroll-to-top.social-style .social-container li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.scroll-to-top.social-style .social-container li a i {
+    font-size: 20px;
+    color: #fff;
+}
+
+
+.scroll-to-top.social-style .social-container li.facebook-icon {
+    background-color: #1877F2;
+    border-color: #1877F2;
+}
+
+.scroll-to-top.social-style .social-container li.telegram-icon {
+    background-color: #00AFF0;
+    border-color: #00AFF0;
+}
+
+.scroll-to-top.social-style .social-container li.instagram-icon {
+    background-color: #E4405F;
+    border-color: #E4405F;
+}
+
+.scroll-to-top.social-style .social-container li.youtube-icon {
+    background-color: #CD201F;
+    border-color: #CD201F;
+}
+
+.scroll-to-top.social-style .social-container li.line-icon {
+    background-color: #00B900;
+    border-color: #00B900;
+}
+
+.scroll-to-top.social-style .social-container li.whatsapp-icon {
+    background-color: #00B900;
+    border-color: #00B900;
+}
+
+
+.social-container li:hover i {
+    color: #fff;
+}
+
+.social-container li.facebook-icon:hover {
+    background-color: #1877F2;
+    border-color: #1877F2;
+}
+
+.social-container li.telegram-icon:hover {
+    background-color: #00AFF0;
+    border-color: #00AFF0;
+}
+
+.social-container li.instagram-icon:hover {
+    background-color: #E4405F;
+    border-color: #E4405F;
+}
+
+.social-container li.youtube-icon:hover {
+    background-color: #CD201F;
+    border-color: #CD201F;
+}
+
+.social-container li.line-icon:hover {
+    background-color: #00B900;
+    border-color: #00B900;
+}
+
+.social-container li.whatsapp-icon:hover {
+    background-color: #00B900;
+    border-color: #00B900;
+}
+
+.main-menu .main-menu__list > li > ul > li:hover > a {
+    color: var(--thm-primary-color);
+}
+
+.popup-poster {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000001;
+    backdrop-filter: blur(10px);
+    background-color: #0000005c;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    top: 100%;
+    transition: transform 0.5s ease ,top .2s ease;
+}
+
+.popup-poster.active {
+    transform: scale(1);
+    top: 0;
+}
+
+.popup-poster .popup-containers {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.popup-poster .popup-containers .content-image img {
+    width: auto;
+    max-height: 500px;
+}
+
+.popup-poster .header-content {
+    position: absolute;
+    right: 0;
+    background: #fff;
+    font-size: 12px;
+    padding: 3px 5px;
+    line-height: 1;
+    border-radius: 0px 0px 0px 10px;
+    color: #444;
+    cursor: pointer;
+    border: none;
+    transition: all .3s ease;
+}
+
+.popup-poster .header-content i {
+    color: red;
+}
+
+.popup-poster .header-content:hover {
+    background-color: #e3e3e3;
+}
+
+@media screen and (max-width: 992px) {
+    .popup-poster {
+        padding: 16px;
+        align-items: flex-start;
+    }
+
+    .popup-poster .popup-containers .content-image img {
+        width: auto;
+        max-height: none;
+    }
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+#tv-attr-logo {
+    display: none;
 }

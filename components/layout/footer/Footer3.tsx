@@ -237,6 +237,24 @@ export default function Footer3() {
                                                         </li>
                                                     ) : ""
                                                 }
+                                                {
+                                                    contact?.line ? (
+                                                        <li className="line-icon">
+                                                            <a href={contact?.line} target="_blank">
+                                                                <i className="fab fa-line"></i>
+                                                            </a>
+                                                        </li>
+                                                    ) : ""
+                                                }
+                                                {
+                                                    contact?.whatsapp ? (
+                                                        <li className="whatsapp-icon">
+                                                            <a href={contact?.whatsapp} target="_blank">
+                                                                <i className="fab fa-whatsapp"></i>
+                                                            </a>
+                                                        </li>
+                                                    ) : ""
+                                                }
                                             </ul>
                                         </li>
                                     </ul>

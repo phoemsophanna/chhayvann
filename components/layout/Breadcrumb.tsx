@@ -15,6 +15,11 @@ export default function Breadcrumb({
   breadcrumbImage,
 }: BreadcrumbProps) {
   const { t } = useTranslation();
+
+  if(!breadcrumbImage) return <>
+    <section className="breadcrumb-style1 no-banner"></section>
+  </>;
+  
   return (
     <section className="breadcrumb-style1">
       <div className="breadcrumb-style1__inner">

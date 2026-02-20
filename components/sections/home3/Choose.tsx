@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Choose() {
     const [whyChoose, setWhyChoose] = useState<any>(null);
+    const [countChoose, setCountChoose] = useState<any>(0);
     const { i18n } = useTranslation();
     useEffect(() => {
         axios.get(`${api.BASE_URL}/whychoose`,{
@@ -19,9 +20,38 @@ export default function Choose() {
         }).then((res) => {
             if(res.data.status == "success") {
                 setWhyChoose(res.data.why_choose);
+                var count = 0;
+                for (let index = 0; index < 6; index++) {
+                    switch (index) {
+                        case 0:
+                            if(res.data.why_choose?.titleOne) count++; 
+                            break;
+                        case 1:
+                            if(res.data.why_choose?.titleTwo) count++; 
+                            break;
+                        case 2:
+                            if(res.data.why_choose?.titleThree) count++; 
+                            break;
+                        case 3:
+                            if(res.data.why_choose?.titleFour) count++; 
+                            break;
+                        case 4:
+                            if(res.data.why_choose?.titleFive) count++; 
+                            break;
+                        case 5:
+                            if(res.data.why_choose?.titleSix) count++; 
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                setCountChoose(count);
             }
         });
-    }, [i18n.language])
+    }, [i18n.language]);
+
+    if(!whyChoose) return null;
+
   return (
     <>
         <section className="choose-style2">
@@ -41,7 +71,7 @@ export default function Choose() {
                 <ul className="row clearfix">
                     {
                         whyChoose?.titleOne ? (
-                            <li className="col-xl-4 col-lg-6 col-md-6 col-6">
+                            <li className={`${countChoose == 4 || countChoose == 2 ? `col-xl-6` : `col-xl-4`} col-lg-6 col-md-6 col-6`}>
                                 <div className="single-choose-style2 text-center">
                                     <div className="top-box">
                                         <div className="icon">
@@ -69,7 +99,7 @@ export default function Choose() {
 
                     {
                         whyChoose?.titleTwo ? (
-                            <li className="col-xl-4 col-lg-6 col-md-6 col-6">
+                            <li className={`${countChoose == 4 || countChoose == 2 ? `col-xl-6` : `col-xl-4`} col-lg-6 col-md-6 col-6`}>
                                 <div className="single-choose-style2 text-center">
                                     <div className="top-box">
                                         <div className="icon">
@@ -97,7 +127,7 @@ export default function Choose() {
 
                     {
                         whyChoose?.titleThree ? (
-                            <li className="col-xl-4 col-lg-6 col-md-6 col-6">
+                            <li className={`${countChoose == 4 || countChoose == 2 ? `col-xl-6` : `col-xl-4`} col-lg-6 col-md-6 col-6`}>
                                 <div className="single-choose-style2 text-center">
                                     <div className="top-box">
                                         <div className="icon">
@@ -126,7 +156,7 @@ export default function Choose() {
                     
                     {
                         whyChoose?.titleFour ? (
-                            <li className="col-xl-4 col-lg-6 col-md-6 col-6">
+                            <li className={`${countChoose == 4 || countChoose == 2 ? `col-xl-6` : `col-xl-4`} col-lg-6 col-md-6 col-6`}>
                                 <div className="single-choose-style2 text-center">
                                     <div className="top-box">
                                         <div className="icon">

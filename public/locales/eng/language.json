@@ -29,6 +29,8 @@
     "Instrument": "Instrument",
     "Sell": "Sell",
     "Buy": "Buy",
+    "XAU": "XAU",
+    "USD": "USD",
     "CurrencyConverter": "Currency Converter",
     "FROM": "FROM",
     "TO": "TO",

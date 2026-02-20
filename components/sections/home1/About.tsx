@@ -5,31 +5,24 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import { createChart, CandlestickSeries, ColorType } from "lightweight-charts";
 import { echo } from "@/utils/echo";
 
 export default function About({homepage}:any) {
     const { t } = useTranslation();
-    const [buy, setBuy] = useState<any>([]);
     const [realBuy, setRealBuy] = useState<any>(0);
     const [realSell, setRealSell] = useState<any>(0);
+    const chartContainerRef = useRef<any>(null);
+    const chartRef = useRef<any>(null);
+    const seriesRef = useRef<any>(null);
 
     useEffect(() => {
         echo?.channel("xauusd")
             .listen(".price.updated", (e:any) => {
                 try {
-                    if(e){
+                    if(!e.price.status){
                         e.price?.map((row: any) => {
                             if(row.PAIR == "XAUUSD"){
                                 setRealBuy(row.BID);
@@ -48,32 +41,77 @@ export default function About({homepage}:any) {
     },[]);
 
     useEffect(() => {
+        if (!chartContainerRef.current) return;
         let isMounted = true;
         let timeout: any;
+        const chart = createChart(chartContainerRef.current, {
+            width: chartContainerRef.current.clientWidth,
+            height: 250,
+            layout: {
+                background: { type: ColorType.Solid, color: "#ffffff" },
+                textColor: "#333333",
+            },
+            grid: {
+                vertLines: { visible: false },
+                horzLines: { 
+                    color: "#e1e1e1", 
+                    style: 2,
+                },
+            },
+            rightPriceScale: {
+                borderColor: '#333333',
+            },
+            timeScale: {
+                borderColor: '#333333',
+                timeVisible: true,
+                secondsVisible: false,
+                barSpacing: 10,
+            },
+        });
+
+        const candleSeries = chart.addSeries(CandlestickSeries, {
+            upColor: '#3486b8',
+            downColor: '#e3534f',
+            borderVisible: false,
+            wickUpColor: '#3486b8',
+            wickDownColor: '#e3534f',
+        });
+
+        chartRef.current = chart;
+        seriesRef.current = candleSeries;
 
         const fetchGraph = async () => {
             try {
-            const res = await axios.get(`${api.BASE_URL}/trading-graph`);
-            if(res.data?.graph && isMounted){
-                const chartData = res.data.graph.map((row:any) => ({
-                time: dayjs(row.recorded_at).valueOf(),
-                price: Number(row.bid),
-                sell: Number(row.ask)
-                }));
-                setBuy(chartData);
-            }
-            } catch(err) {
-                console.error("Polling error:", err);
+                const res = await axios.get(`${api.BASE_URL}/trading-graph`);
+
+                if (res.data?.graph && isMounted) {
+                    const formattedData = res.data.graph.map((row:any) => ({
+                        time: Number(dayjs(row.real_time).unix()) + 25200, 
+                        open: Number(row.open),
+                        high: Number(row.high),
+                        low: Number(row.low),
+                        close: Number(row.close),
+                    }));
+
+                    formattedData.sort((a:any, b:any) => a.time - b.time);
+
+                    if (seriesRef.current) {
+                        seriesRef.current.setData(formattedData);
+                    }
+                }
+            } catch (err) {
+                console.error("Fetch error:", err);
             } finally {
-                timeout = setTimeout(fetchGraph, 35000);
+                timeout = setTimeout(fetchGraph, 60000);
             }
         };
 
-        if (typeof window !== "undefined") fetchGraph();
+        fetchGraph();
 
         return () => { 
             isMounted = false;
             clearTimeout(timeout);
+            chart.remove(); 
         };
     }, []);
 
@@ -82,16 +120,6 @@ export default function About({homepage}:any) {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       }).format(value);
-    };
-
-    const generateFixedTicks = () => {
-        const ticks = [];
-        const startTime = dayjs().subtract(2, 'hour').startOf('minute'); 
-        
-        for (let i = 0; i <= 6; i++) {
-            ticks.push(startTime.add(i * 20, 'minute').valueOf());
-        }
-        return ticks;
     };
 
   return (
@@ -104,7 +132,7 @@ export default function About({homepage}:any) {
                         <div className="about-style1__img" style={{marginRight: 0}}>
                             <div className="value-exchange">
                                 <div className="content-title">
-                                    <h6>XAU-USD</h6>
+                                    <h6>{t("XAU")}-{t("USD")}</h6>
                                 </div>
                                 <div className="content-item">
                                     <div className="date">
@@ -115,73 +143,24 @@ export default function About({homepage}:any) {
                                         <span className="value">
                                             {formatUSD(realSell)}
                                         </span>
-                                        <h6>{t("SELL")} XAU</h6>
+                                        <h6>{t("SELL")} {t("XAU")}</h6>
                                     </div>
                                     <div className="buy">
                                         <span className="value">
                                             {formatUSD(realBuy)}
                                         </span>
-                                        <h6>{t("BUY")} XAU</h6>
+                                        <h6>{t("BUY")} {t("XAU")}</h6>
                                     </div>
                                 </div>
                             </div>
                             <div className="graph-exchange">
                                 <div className="chart-title">
-                                    <h6>Graph: XAU-USD</h6>
+                                    <h6>Graph: {t("XAU")}-{t("USD")}</h6>
                                 </div>
-                                <ResponsiveContainer width="100%" height={250} style={{padding: 5}}>
-                                    <LineChart data={buy}>
-                                        <CartesianGrid stroke="#ccc" strokeDasharray="0 0" />
-
-                                        <XAxis
-                                            dataKey="time" 
-                                            type="number"
-                                            domain={[
-                                                dayjs().subtract(2, 'hour').valueOf(),
-                                                dayjs().valueOf()
-                                            ]}
-                                            ticks={generateFixedTicks()}
-                                            tickFormatter={(time) => dayjs(time).format("HH:mm")}
-                                            tick={{ fontSize: 12 }}
-                                            allowDataOverflow={true} 
-                                        />
-
-                                        <YAxis
-                                            domain={['dataMin - 5', 'dataMax + 5']}
-                                            tick={{ fontSize: 12 }}
-                                        />
-
-                                        <Tooltip 
-                                            labelFormatter={(value) => dayjs(value).format("DD MMM HH:mm:ss")}
-                                        />
-
-                                        <Line
-                                            type="monotone"
-                                            dataKey="price"
-                                            stroke="red"
-                                            name={t("Buy")}
-                                            strokeWidth={2}
-                                            dot={false}
-                                            isAnimationActive={false}
-                                        />
-
-                                        <Line
-                                            type="monotone"
-                                            dataKey="sell"
-                                            name={t("Sell")}
-                                            stroke="blue"
-                                            strokeWidth={2}
-                                            dot={false}
-                                            isAnimationActive={false}
-                                        />
-                                    </LineChart>
-                                </ResponsiveContainer>
-                                <div className="color-value" style={{display: "flex", alignItems: "center", justifyContent: "center", gap: 10, fontSize: 16, fontWeight: 500, marginBottom: 10}}>
-                                    <span style={{display: "block", height: 15, width: 25, boxShadow: "0px 0 10px #ededed", backgroundColor: "blue"}} /> 
-                                    {t("Sell")} 
-                                    <span style={{marginLeft: 5, display: "block", height: 15, width: 25,  boxShadow: "0px 0 10px #ededed", backgroundColor: "red"}} />
-                                    {t("Buy")}
-                                </div>
+                                <div
+                                    ref={chartContainerRef}
+                                    style={{ width: "100%", height: "250px" }}
+                                />
                             </div>
                         </div>
                     </div>

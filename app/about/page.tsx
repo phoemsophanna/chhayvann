@@ -15,6 +15,7 @@ export default function About_Page() {
     const [about, setAbout] = useState<any>(null);
     const [partner, setPartner] = useState([]);
     const [awards, setAward] = useState([]);
+    const [banner, setBanner] = useState<any>(null);
     useEffect(() => {
         axios.get(`${api.BASE_URL}/aboutus`,{
             method: "GET",
@@ -27,13 +28,14 @@ export default function About_Page() {
                 setAbout(res.data.aboutus);
                 setAward(res.data.awards);
                 setPartner(res.data.partners);
+                setBanner(res.data.banner);
             }
         });
     },[i18n.language]);
     
     return (
         <div>
-            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="About Us">
+            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.AboutUs")} breadcrumbImage={banner?.image}>
                 <section className="about-style2 pdtop">
                     <div className="container">
                         <div className="row">

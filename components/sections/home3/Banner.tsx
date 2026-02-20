@@ -70,6 +70,26 @@ export default function Banner() {
         });
     },[i18n.language]);
 
+    if(slider.length <= 0) return <>
+        <style>{`
+            .about-style1 {
+                padding-top: 230px;
+            }
+
+            @media screen and (max-width: 1200px) {
+                .about-style1 {
+                    padding-top: 310px;
+                }
+            }
+
+            @media screen and (max-width: 768px) { 
+                .about-style1 {
+                    padding-top: 30px;
+                }
+            }
+        `}</style>
+    </>;
+
   return (
     <>
         <section className="main-slider-style2">

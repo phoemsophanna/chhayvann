@@ -99,7 +99,7 @@ export default function Courses_Page() {
                                                 ) : ""
                                             }
                                             {
-                                                contact?.email1 || contact?.email2 ? (
+                                                contact?.working1 || contact?.working2 || contact?.working3 ? (
                                                     <li>
                                                         <div className="icon">
                                                             <span className="icon-alarm-clock"><span className="path1"></span><span
@@ -120,6 +120,12 @@ export default function Courses_Page() {
                                                             {
                                                                 contact?.working2 ? (
                                                                     <p>{contact?.working2}</p>
+                                                                ) : ""
+                                                            }
+
+                                                            {
+                                                                contact?.working3 ? (
+                                                                    <p>{contact?.working3}</p>
                                                                 ) : ""
                                                             }
                                                         </div>
@@ -157,21 +163,56 @@ export default function Courses_Page() {
                                                                     </li>
                                                                 ) : ""
                                                             }
-                                                            <li>
-                                                                <Link href={contact?.telegramLink} target="_blank">
-                                                                    <i className="icon-telegram-1"></i>
-                                                                </Link>
-                                                            </li>
-                                                            <li>
-                                                                <Link href={contact?.instagramLink} target="_blank">
-                                                                    <i className="fab fa-instagram"></i>
-                                                                </Link>
-                                                            </li>
-                                                            <li>
-                                                                <Link href={contact?.youtube} target="_blank">
-                                                                    <i className="fab fa-youtube"></i>
-                                                                </Link>
-                                                            </li>
+
+                                                            {
+                                                                contact?.telegramLink ? (
+                                                                    <li>
+                                                                        <Link href={contact?.telegramLink} target="_blank">
+                                                                            <i className="icon-telegram-1"></i>
+                                                                        </Link>
+                                                                    </li>
+                                                                ) : ""
+                                                            }
+
+                                                            {
+                                                                contact?.instagramLink ? (
+                                                                    <li>
+                                                                        <Link href={contact?.instagramLink} target="_blank">
+                                                                            <i className="fab fa-instagram"></i>
+                                                                        </Link>
+                                                                    </li>
+                                                                ) : ""
+                                                            }
+
+                                                            {
+                                                                contact?.youtube ? (
+                                                                    <li>
+                                                                        <Link href={contact?.youtube} target="_blank">
+                                                                            <i className="fab fa-youtube"></i>
+                                                                        </Link>
+                                                                    </li>
+                                                                ) : ""
+                                                            }
+
+                                                            {
+                                                                contact?.line ? (
+                                                                    <li>
+                                                                        <Link href={contact?.line} target="_blank">
+                                                                            <i className="fab fa-line"></i>
+                                                                        </Link>
+                                                                    </li>
+                                                                ) : ""
+                                                            }
+
+                                                            {
+                                                                contact?.whatsapp ? (
+                                                                    <li>
+                                                                        <Link href={contact?.whatsapp} target="_blank">
+                                                                            <i className="fab fa-whatsapp"></i>
+                                                                        </Link>
+                                                                    </li>
+                                                                ) : ""
+                                                            }
                                                         </ul>
                                                     </div>
                                                 </div>

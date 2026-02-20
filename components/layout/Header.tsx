@@ -12,6 +12,9 @@ import Header2 from "./header/Header2";
 import Header3 from "./header/Header3";
 import Header4 from "./header/Header4";
 import { usePathname } from "next/navigation";
+import SocialPopup from "../elements/SocialPopup";
+import Popup from "../elements/Popup";
+import PopupPoster from "../elements/PopupPoster";
 
 interface HeaderProps {
   /** Choose header style (1–4) */
@@ -86,6 +89,12 @@ export default function Header({ style = 1 }: HeaderProps) {
 
       {/* Back to top button */}
       <BackToTop scroll={isScrolled} />
+
+      {/* Social button */}
+      <SocialPopup />
+
+      {/* */}
+      <PopupPoster />
     </>
   );
 }
