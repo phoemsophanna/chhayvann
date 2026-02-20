@@ -43,16 +43,20 @@ export default function PopupPoster() {
 
   return (
     <>
-        <section className={`popup-poster ${open ? "active" : ""}`}>
-            <div className="popup-containers">
-                <div className="header-content" onClick={(e:any) => handleClick(e)}>
-                    <span>{count}Seconds <i className="fas fa-times"></i></span>
-                </div>
-                <div className="content-image">
-                    <img src={`${api.FILE_URL}${general?.popup_thumbnail}`} alt="" />
-                </div>
-            </div>
-        </section>
+        {
+            general?.popup_thumbnail ? (
+                <section className={`popup-poster ${open ? "active" : ""}`}>
+                    <div className="popup-containers">
+                        <div className="header-content" onClick={(e:any) => handleClick(e)}>
+                            <span>{count}Seconds <i className="fas fa-times"></i></span>
+                        </div>
+                        <div className="content-image">
+                            <img src={`${api.FILE_URL}${general?.popup_thumbnail}`} alt="" />
+                        </div>
+                    </div>
+                </section>
+            ) : ""
+        }
     </>
   );
 }
