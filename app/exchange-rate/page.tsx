@@ -107,160 +107,164 @@ export default function Exchange_Rate_Page() {
         }
     }
 
-    if(!exchanges) return null;
-
     return (
         <div>
             <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.ExchangeRate")} breadcrumbTitleTwo={t("HEADER.Services")} breadcrumbImage={banner?.image}>
                 {
-                    exchanges?.length > 0 ? (
-                        <section className="currency-pairs-style1">
-                            <div className="container">
-                                <div className="sec-title withtext text-center">
-                                    <h2>{service?.title}</h2>
-                                    <div className="text">
-                                        <p>{service?.summary}</p>
-                                    </div>
-                                </div>
-
-                                <div className="currency-pairs-style1__inner">
-                                    <div className="currency-pairs-style1__tab">
-                                        <div className="tabs-content-box">
-
-                                            {activeTab === "popular" && (
-                                            <div className="tab-content-box-item tab-content-box-item-active fadeIn" id="popular">
-                                                <div className="currency-pairs-style1-tab-content-box-item">
-
-                                                    <div className="single-currency-pairs-style1">
-                                                        <div className="table-outer">
-                                                            <table className="pricing-table">
-                                                                <thead className="table-header">
-                                                                    <tr>
-                                                                        <th className="name">{t("Instrument")}</th>
-                                                                        <th style={{width: "30%"}}>{t("Sell")}</th>
-                                                                        <th style={{width: "30%"}}>{t("Buy")}</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    {
-                                                                        exchanges?.map((q:any,index:any) => (
-                                                                            <tr key={index}>
-                                                                                <td>
-                                                                                    <div className="title" style={{justifyContent: "space-evenly"}}>
-                                                                                        <img src={
-                                                                                            q?.image
-                                                                                                ? q?.image?.split(":")?.length > 1
-                                                                                                    ? q.image
-                                                                                                    : `${api.FILE_URL}${q.image}`
-                                                                                                : "/no-image.png"
-                                                                                        } style={{width: 120, marginRight: 15}} alt="" />
-                                                                                        <h6>{q.from}</h6>
-                                                                                        <div className="icon-box">
-                                                                                            <i className="icon-exchange"></i>
-                                                                                        </div>
-                                                                                        <h6>{q.to}</h6>
-                                                                                    </div>
-                                                                                </td>
-
-                                                                                <td className="sell">
-                                                                                    {q?.sell}
-                                                                                </td>
-                                                                                <td className="buy">
-                                                                                    {q?.buy}
-                                                                                </td>
-                                                                            </tr>
-                                                                        ))
-                                                                    }
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                
-                            </div>
-                        </section>
-                    ) : ""
-                }
-                
-                <section className="account-detail-style2">
-                    <div className="container">
-                        <div className="exchange-currency">
+                    !exchanges ? (
+                        <>
                             {
-                                currency?.length > 0 ? (
-                                    <div className="row">
-                                        <div className="col-lg-6">
-                                            <div className="content-currency">
-                                                <div className="title">
-                                                    <h2>{t("CurrencyConverter")}</h2>
+                                exchanges?.length > 0 ? (
+                                    <section className="currency-pairs-style1">
+                                        <div className="container">
+                                            <div className="sec-title withtext text-center">
+                                                <h2>{service?.title}</h2>
+                                                <div className="text">
+                                                    <p>{service?.summary}</p>
                                                 </div>
-                                                <div className="contain-form">
-                                                    <div className="from">
-                                                        <h6>{t("FROM")}</h6>
-                                                        <Dropdowns 
-                                                            option={currency}
-                                                            action={handleChange}
-                                                            type={'from'}
-                                                            id={currency[0]?.mainFrom}
-                                                        >
-                                                            <span><img src={api.FILE_URL + `/images/Chhayvann_${currency[0].mainFrom}.png`} alt={currency[0]?.mainFrom} /> {currency[0]?.mainFrom} <i className="fas fa-chevron-down"></i></span>
-                                                        </Dropdowns>
-                                                    </div>
-                                                    <div className={`compare-icon`}>
-                                                        <span className="icon-arrow-right"></span>
-                                                    </div>
-                                                    <div className="to">
-                                                        <h6>{t("TO")}</h6>
-                                                        <Dropdowns 
-                                                            option={subCurrency}
-                                                            id={exchangeSelected?.id}
-                                                            action={handleChange}
-                                                            type={"to"}
-                                                        >
-                                                            <span><img src={api.FILE_URL + `/images/Chhayvann_${exchangeSelected?.to}.png`} alt={exchangeSelected?.to} /> {exchangeSelected?.to} <i className="fas fa-chevron-down"></i></span>
-                                                        </Dropdowns>
-                                                    </div>
-                                                    <div className="amount">
-                                                        <h6>{t("AMOUNT")}</h6>
-                                                        <input type="text" onChange={handleChangeAmount} />
-                                                        <h3>{exchange.to} {formatUSD(amount)}</h3>
-                                                        <h5>Updated Date: {formatDate(exchangeSelected?.date)}</h5>
-                                                        <p>
-                                                            {service?.convertSummary}
-                                                        </p>
+                                            </div>
+
+                                            <div className="currency-pairs-style1__inner">
+                                                <div className="currency-pairs-style1__tab">
+                                                    <div className="tabs-content-box">
+
+                                                        {activeTab === "popular" && (
+                                                        <div className="tab-content-box-item tab-content-box-item-active fadeIn" id="popular">
+                                                            <div className="currency-pairs-style1-tab-content-box-item">
+
+                                                                <div className="single-currency-pairs-style1">
+                                                                    <div className="table-outer">
+                                                                        <table className="pricing-table">
+                                                                            <thead className="table-header">
+                                                                                <tr>
+                                                                                    <th className="name">{t("Instrument")}</th>
+                                                                                    <th style={{width: "30%"}}>{t("Sell")}</th>
+                                                                                    <th style={{width: "30%"}}>{t("Buy")}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                {
+                                                                                    exchanges?.map((q:any,index:any) => (
+                                                                                        <tr key={index}>
+                                                                                            <td>
+                                                                                                <div className="title" style={{justifyContent: "space-evenly"}}>
+                                                                                                    <img src={
+                                                                                                        q?.image
+                                                                                                            ? q?.image?.split(":")?.length > 1
+                                                                                                                ? q.image
+                                                                                                                : `${api.FILE_URL}${q.image}`
+                                                                                                            : "/no-image.png"
+                                                                                                    } style={{width: 120, marginRight: 15}} alt="" />
+                                                                                                    <h6>{q.from}</h6>
+                                                                                                    <div className="icon-box">
+                                                                                                        <i className="icon-exchange"></i>
+                                                                                                    </div>
+                                                                                                    <h6>{q.to}</h6>
+                                                                                                </div>
+                                                                                            </td>
+
+                                                                                            <td className="sell">
+                                                                                                {q?.sell}
+                                                                                            </td>
+                                                                                            <td className="buy">
+                                                                                                {q?.buy}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    ))
+                                                                                }
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        )}
                                                     </div>
                                                 </div>
                                             </div>
+                            
                                         </div>
-                                        <div className="col-lg-6">
-                                            <div className="content-img">
-                                                <img src={`${api.FILE_URL}${service?.thumbnail}`} alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </section>
                                 ) : ""
                             }
-                        </div>
-                    </div>
-                </section>
-                <section className="account-detail-style1" style={{zIndex: 0}}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-xl-12 col-lg-12">
-                                <div className="account-detail-style1__content">
-                                    <div className="intro-box">
-                                        <div dangerouslySetInnerHTML={{__html: service?.description}} />
+                            
+                            <section className="account-detail-style2">
+                                <div className="container">
+                                    <div className="exchange-currency">
+                                        {
+                                            currency?.length > 0 ? (
+                                                <div className="row">
+                                                    <div className="col-lg-6">
+                                                        <div className="content-currency">
+                                                            <div className="title">
+                                                                <h2>{t("CurrencyConverter")}</h2>
+                                                            </div>
+                                                            <div className="contain-form">
+                                                                <div className="from">
+                                                                    <h6>{t("FROM")}</h6>
+                                                                    <Dropdowns 
+                                                                        option={currency}
+                                                                        action={handleChange}
+                                                                        type={'from'}
+                                                                        id={currency[0]?.mainFrom}
+                                                                    >
+                                                                        <span><img src={api.FILE_URL + `/images/Chhayvann_${currency[0].mainFrom}.png`} alt={currency[0]?.mainFrom} /> {currency[0]?.mainFrom} <i className="fas fa-chevron-down"></i></span>
+                                                                    </Dropdowns>
+                                                                </div>
+                                                                <div className={`compare-icon`}>
+                                                                    <span className="icon-arrow-right"></span>
+                                                                </div>
+                                                                <div className="to">
+                                                                    <h6>{t("TO")}</h6>
+                                                                    <Dropdowns 
+                                                                        option={subCurrency}
+                                                                        id={exchangeSelected?.id}
+                                                                        action={handleChange}
+                                                                        type={"to"}
+                                                                    >
+                                                                        <span><img src={api.FILE_URL + `/images/Chhayvann_${exchangeSelected?.to}.png`} alt={exchangeSelected?.to} /> {exchangeSelected?.to} <i className="fas fa-chevron-down"></i></span>
+                                                                    </Dropdowns>
+                                                                </div>
+                                                                <div className="amount">
+                                                                    <h6>{t("AMOUNT")}</h6>
+                                                                    <input type="text" onChange={handleChangeAmount} />
+                                                                    <h3>{exchange.to} {formatUSD(amount)}</h3>
+                                                                    <h5>Updated Date: {formatDate(exchangeSelected?.date)}</h5>
+                                                                    <p>
+                                                                        {service?.convertSummary}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-lg-6">
+                                                        <div className="content-img">
+                                                            <img src={`${api.FILE_URL}${service?.thumbnail}`} alt="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ) : ""
+                                        }
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                            </section>
+                            <section className="account-detail-style1" style={{zIndex: 0}}>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-xl-12 col-lg-12">
+                                            <div className="account-detail-style1__content">
+                                                <div className="intro-box">
+                                                    <div dangerouslySetInnerHTML={{__html: service?.description}} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </>
+                    ) : ""
+                }
             </Layout>
         </div>
     )
