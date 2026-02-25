@@ -16,25 +16,40 @@ export default function Exchange_Rate_Page() {
     const [currency, setCurrency] = useState<any>([]);
     const [subCurrency, setSubCurrency] = useState<any>(null);
     const [exchanges, setExchanges] = useState<any>(null);
-    const [exchange_rate, setExchangeRate] = useState<Record<string, number>>({});
     const [service, setService] = useState<any>(null);
-    const [exchange, setExchange] = useState({from: "USD", to: "KHR"});
+    const [exchange, setExchange] = useState({from: "USD", to: "KHR", buy: 0, sell: 0,isTo: 0, isMultiply: 0});
     const [amount, setAmount] = useState(0);
+    const [convertOption, setConvertOption] = useState("sell");
     const handleChange = (key: any, value: any) => {
+        console.log(value, key);
         if(key == "from"){
-            setExchange({...exchange, from: value?.type});
-            const filterCurrency = currency?.filter((q:any,index:any) => value?.subCurrency?.some((s:any) => s.id == q.id));
-            setSubCurrency(filterCurrency);
+            setSubCurrency(value?.items);
+            setExchangeSelected(value?.items[0]);
+            setExchange({...exchange, buy: value?.items[0]?.buy, isMultiply: value?.items[0]?.isMultiply, sell: value?.items[0]?.sell,isTo: value?.items[0]?.isTo, from: value?.items[0]?.from, to: value?.items[0]?.to});
         } else {
-            setExchange({...exchange, to: value?.type});
+            setExchange({...exchange, buy: value?.buy, isMultiply: value?.isMultiply, sell: value?.sell,isTo: value?.isTo, from: value?.from, to: value?.to});
             setExchangeSelected(value);
         }
+        setConvertOption("sell");
+        setAmount(0);
     }
 
     const handleChangeAmount = (e: any) => {
         if(Number(e.target.value)){
-            const amountTotalUSD = Number(e.target.value) / Number(exchange_rate[exchange.from]);
-            const amounts = amountTotalUSD * Number(exchange_rate[exchange.to]);
+            var amounts = 0;
+            if(exchange.isTo == 0) {
+                if(exchange.isMultiply == 1){
+                    amounts = Math.ceil((e.target.value * Number(exchange.buy) * 100)) / 100;
+                } else {
+                    amounts = Math.ceil((e.target.value / Number(exchange.buy) * 100)) / 100;
+                }
+            } else {
+                if(exchange.isMultiply == 1){
+                    amounts = Math.ceil((e.target.value / Number(exchange.sell) * 100)) / 100;
+                } else {
+                    amounts = Math.ceil((e.target.value * Number(exchange.sell) * 100)) / 100;
+                }
+            }
             setAmount(amounts);
         }
     }
@@ -49,35 +64,24 @@ export default function Exchange_Rate_Page() {
         }).then((res) => {
             if(res.data.status == "success") {
                 setBanner(res.data.banner);
-                setCurrency(res.data.currency);
                 setExchanges(res.data.exchange);
                 setService(res.data.service);
+                setCurrency(res.data.convert);
             }
         });
     },[i18n.language]);
 
     useEffect(() => {
         if(currency.length > 0){
-            const exchangeRate = currency?.reduce((acc: Record<string, number>, q: any) => {
-                acc[q.type] = Number(q.rate);
-                return acc;
-            }, {}) || {};
-            setExchangeRate(exchangeRate);
-            setExchange({...exchange, from: currency[0]?.type});
-            const filterCurrency = currency?.filter((q:any,index:any) => index != 0);
-            setSubCurrency(filterCurrency);
+            currency?.map((q:any,index:any) => {
+                if(index == 0){
+                    setExchange({...exchange, buy: q?.items[0]?.buy, isMultiply: q?.items[0]?.isMultiply, sell: q?.items[0]?.sell, from: q?.items[0]?.from, to: q?.items[0]?.to});
+                    setSubCurrency(q?.items);
+                    setExchangeSelected(q?.items[0]);
+                }
+            });
         }
     },[currency]);
-
-    useEffect(() => {
-        if(subCurrency?.length > 0) {
-            setExchangeSelected(subCurrency[0]);
-            setExchange({...exchange, to: subCurrency[0]?.type});
-        } else {
-            setExchangeSelected(currency?.find((q:any) => q.type == "USD" ? q : null));
-            setExchange({...exchange, to: "USD"});
-        }
-    },[subCurrency]);
 
     const formatUSD = (value: any) => {
       return new Intl.NumberFormat('en-US', {
@@ -85,6 +89,19 @@ export default function Exchange_Rate_Page() {
         maximumFractionDigits: 2,
       }).format(value);
     };
+
+    const formatDate = (value: any) => {
+        if(value){
+            const date = new Date(value.replace(" ", "T"));
+            const formatted = date.toLocaleString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            });
+            return formatted;
+        }
+    }
 
     if(!exchanges) return null;
 
@@ -185,12 +202,12 @@ export default function Exchange_Rate_Page() {
                                                             option={currency}
                                                             action={handleChange}
                                                             type={'from'}
-                                                            id={currency[0]?.id}
+                                                            id={currency[0]?.mainFrom}
                                                         >
-                                                            <span><img src={api.FILE_URL + currency[0]?.image} alt={currency[0]?.image} /> {currency[0]?.type} <i className="fas fa-chevron-down"></i></span>
+                                                            <span><img src={api.FILE_URL + `/images/Chhayvann_${currency[0].mainFrom}.png`} alt={currency[0]?.mainFrom} /> {currency[0]?.mainFrom} <i className="fas fa-chevron-down"></i></span>
                                                         </Dropdowns>
                                                     </div>
-                                                    <div className="compare-icon">
+                                                    <div className={`compare-icon`}>
                                                         <span className="icon-arrow-right"></span>
                                                     </div>
                                                     <div className="to">
@@ -201,14 +218,14 @@ export default function Exchange_Rate_Page() {
                                                             action={handleChange}
                                                             type={"to"}
                                                         >
-                                                            <span><img src={api.FILE_URL + (exchangeSelected?.image)} alt={exchangeSelected?.image} /> {exchangeSelected?.type} <i className="fas fa-chevron-down"></i></span>
+                                                            <span><img src={api.FILE_URL + `/images/Chhayvann_${exchangeSelected?.to}.png`} alt={exchangeSelected?.to} /> {exchangeSelected?.to} <i className="fas fa-chevron-down"></i></span>
                                                         </Dropdowns>
                                                     </div>
                                                     <div className="amount">
                                                         <h6>{t("AMOUNT")}</h6>
                                                         <input type="text" onChange={handleChangeAmount} />
                                                         <h3>{exchange.to} {formatUSD(amount)}</h3>
-                                                        <h5>Updated Date: {exchangeSelected?.date}</h5>
+                                                        <h5>Updated Date: {formatDate(exchangeSelected?.date)}</h5>
                                                         <p>
                                                             {service?.convertSummary}
                                                         </p>

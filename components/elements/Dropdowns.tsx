@@ -8,7 +8,12 @@ const Dropdowns = ({children, option = [], id = 1, action, type = "from"}: any) 
     const [filter, setFilter] = useState(option);
     
     const currencyFilter = (initualValue: string) => {
-        const filterData = option.filter((q:any) => q?.currency.toLowerCase().includes(initualValue.toLowerCase()));
+        var filterData = [];
+        if(type == "to") {
+            filterData = option.filter((q:any) => q?.to.toLowerCase().includes(initualValue.toLowerCase()));
+        } else {
+            filterData = option.filter((q:any) => q?.mainFrom.toLowerCase().includes(initualValue.toLowerCase()));
+        }
         setFilter(filterData);
     } 
 
@@ -29,7 +34,7 @@ const Dropdowns = ({children, option = [], id = 1, action, type = "from"}: any) 
     useEffect(() => {
         setElement({...element, id: id});
     },[id]);
-    
+
     return (
         <div className={`dropdown-contain ${open ? "active" : ""}`} ref={ref}>
             <div onClick={() => setOpen(!open)}>
@@ -52,21 +57,30 @@ const Dropdowns = ({children, option = [], id = 1, action, type = "from"}: any) 
                         <input type="text" onChange={(e) => currencyFilter(e.target.value)} placeholder="Type Currency" />
                     </li>
                     {
-                        filter?.map((q:any) => {
-                            return (
+                        filter?.map((q:any, index:any) => {
+                            return ( type == "to" ? (
                                 <li key={q.id} onClick={(e) => {
-                                    setElement({image: q.image, id: q.id, currency: q.type});
+                                    setElement({image: q.to, id: q.id, currency: q.to});
                                     action(type, q);
                                     setOpen(!open);
                                 }}>
                                     <span className={`${element.id == q.id ? "active" : ""}`}>
-                                        <img src={api.FILE_URL + q.image} alt="" />
-                                        {
-                                            q.currency
-                                        }
+                                        <img src={api.FILE_URL + `/images/Chhayvann_${q.to}.png`} alt="" />
+                                        {q.to}
                                     </span>
                                 </li>
-                            );
+                            ) : (
+                                <li key={q.mainFrom} onClick={(e) => {
+                                    setElement({image: `/images/Chhayvann_${q.mainFrom}.png`, id: q.mainFrom, currency: q.mainFrom});
+                                    action(type, q);
+                                    setOpen(!open);
+                                }}>
+                                    <span className={`${element.id == q.id ? "active" : ""}`}>
+                                        <img src={api.FILE_URL + `/images/Chhayvann_${q.mainFrom}.png`} alt="" />
+                                        {q.mainFrom}
+                                    </span>
+                                </li>
+                            ));
                         })
                     }
                 </ul>
