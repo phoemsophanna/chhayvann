@@ -111,7 +111,7 @@ export default function Exchange_Rate_Page() {
         <div>
             <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.ExchangeRate")} breadcrumbTitleTwo={t("HEADER.Services")} breadcrumbImage={banner?.image}>
                 {
-                    !exchanges ? (
+                    exchanges ? (
                         <>
                             {
                                 exchanges?.length > 0 ? (
