@@ -39,15 +39,19 @@ export default function Exchange_Rate_Page() {
             var amounts = 0;
             if(exchange.isTo == 0) {
                 if(exchange.isMultiply == 1){
-                    amounts = Math.ceil((e.target.value * Number(exchange.buy) * 100)) / 100;
+                    // amounts = Math.ceil((e.target.value * Number(exchange.buy) * 100)) / 100;
+                    amounts = e.target.value * Number(exchange.buy);
                 } else {
-                    amounts = Math.ceil((e.target.value / Number(exchange.buy) * 100)) / 100;
+                    // amounts = Math.ceil((e.target.value / Number(exchange.buy) * 100)) / 100;
+                    amounts = e.target.value / Number(exchange.buy);
                 }
             } else {
                 if(exchange.isMultiply == 1){
-                    amounts = Math.ceil((e.target.value / Number(exchange.sell) * 100)) / 100;
+                    // amounts = Math.ceil((e.target.value / Number(exchange.sell) * 100)) / 100;
+                    amounts = e.target.value / Number(exchange.sell);
                 } else {
-                    amounts = Math.ceil((e.target.value * Number(exchange.sell) * 100)) / 100;
+                    // amounts = Math.ceil((e.target.value * Number(exchange.sell) * 100)) / 100;
+                    amounts = e.target.value * Number(exchange.sell);
                 }
             }
             setAmount(amounts);
