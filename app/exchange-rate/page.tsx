@@ -137,7 +137,7 @@ export default function Exchange_Rate_Page() {
                                                                         <table className="pricing-table">
                                                                             <thead className="table-header">
                                                                                 <tr>
-                                                                                    <th className="name">{t("Instrument")}</th>
+                                                                                    <th className="name">{t("ExchnageRate")}</th>
                                                                                     <th style={{width: "30%"}}>{t("Sell")}</th>
                                                                                     <th style={{width: "30%"}}>{t("Buy")}</th>
                                                                                 </tr>
