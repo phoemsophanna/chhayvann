@@ -10,11 +10,9 @@ export default function PopupPoster() {
   const [popup, setPopup] = useState(sessionStorage.getItem('popup') ? true : false);
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if(count < 1){
-        setOpen((prev) => !prev);
-        document.body.classList.remove('no-scroll');
-        sessionStorage.setItem('popup', 'true');
-    }
+    setOpen((prev) => !prev);
+    document.body.classList.remove('no-scroll');
+    sessionStorage.setItem('popup', 'true');
   };
 
   useEffect(() => {
@@ -26,7 +24,7 @@ export default function PopupPoster() {
             const interval = setInterval(() => {
                 setCount(prev => {
                     if (prev < 1) {
-                        setOpen((prev) => !prev);
+                        setOpen((prev) => prev = false);
                         document.body.classList.remove('no-scroll');
                         sessionStorage.setItem('popup', 'true');
                         clearInterval(interval);
