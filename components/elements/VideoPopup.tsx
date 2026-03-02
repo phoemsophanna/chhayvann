@@ -6,15 +6,23 @@ import { createPortal } from "react-dom";
 export default function VideoModal({videoSrc}:any): React.JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
+  const [videoId, setVideoId] = useState<any>(null); 
 
   // Wait until the component is mounted to use portal
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  console.log(videoSrc);
+
   // Disable background scroll
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
+    if(videoSrc){
+      const video = videoSrc.split("v=");
+      setVideoId(video[1]);
+      console.log(video);
+    }
   }, [isOpen]);
 
   // Popup content (renders outside normal layout)
@@ -22,7 +30,7 @@ export default function VideoModal({videoSrc}:any): React.JSX.Element {
     <section className="video-popup-section">
       <div className="video-container">
         <iframe
-          src="https://www.youtube.com/embed/L61p2uyiMSo?autoplay=1"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
           title="my video"
           allow="autoplay; encrypted-media"
           allowFullScreen

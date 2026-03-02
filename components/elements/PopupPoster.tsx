@@ -7,7 +7,6 @@ export default function PopupPoster() {
   const { general } = useAppStore();
   const [open, setOpen] = useState(false);
   const [count, setCount] = useState(5);
-  const [popup, setPopup] = useState(sessionStorage.getItem('popup') ? true : false);
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setOpen((prev) => !prev);
@@ -16,6 +15,7 @@ export default function PopupPoster() {
   };
 
   useEffect(() => {
+    const popup = sessionStorage.getItem('popup') ? true : false;
     if(!popup){
         const mainTimeOut = setTimeout(() => {
             setOpen(true);

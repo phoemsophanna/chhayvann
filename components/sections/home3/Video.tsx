@@ -1,4 +1,5 @@
 
+import { api } from "@/app/config";
 import VideoModal from "@/components/elements/VideoPopup";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +19,7 @@ export default function Video({trade}: any) {
                     <div className="col-xl-6">
                         <div className="video-style1__img wow fadeInDown animated" data-wow-delay="00ms"
                             data-wow-duration="1500ms">
-                            <Image src="/assets/images/resources/video-v1-1.jpg" alt="Image" width={570} height={464} priority />
+                            <Image src={trade?.thumbnail ? api.FILE_URL+trade?.thumbnail : `/assets/images/resources/video-v1-1.jpg`} alt="Image" width={570} height={464} priority />
                             <div className="overlay">
                                 <VideoModal videoSrc={trade?.linkVideo} />
                             </div>
