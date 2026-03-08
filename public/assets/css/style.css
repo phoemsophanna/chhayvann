@@ -14222,7 +14222,31 @@ select:focus {
     justify-content: space-between;
 }
 
-.content-item .sell,.content-item .buy {
+.content-price {
+    width: 100%;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.content-price:last-child {
+    margin-bottom: 0;
+}
+
+.content-price .title {
+    padding: 0;
+    border: 2px solid #f9f0d3;
+    border-radius: 15px;
+    flex: 10%;
+    max-width: 10%;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.content-price .sell,.content-price .buy {
     padding: 0;
     border: 2px solid #f9f0d3;
     border-radius: 15px;

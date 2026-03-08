@@ -14,6 +14,10 @@ export default function About({homepage}:any) {
     const { t } = useTranslation();
     const [realBuy, setRealBuy] = useState<any>(0);
     const [realSell, setRealSell] = useState<any>(0);
+    const [TLBuy, setTLBuy] = useState<any>(0);
+    const [TLSell, setTLSell] = useState<any>(0);
+    const [KGBuy, setKGBuy] = useState<any>(0);
+    const [KGSell, setKGSell] = useState<any>(0);
     const chartContainerRef = useRef<any>(null);
     const chartRef = useRef<any>(null);
     const seriesRef = useRef<any>(null);
@@ -27,6 +31,15 @@ export default function About({homepage}:any) {
                             if(row.PAIR == "XAUUSD"){
                                 setRealBuy(row.BID);
                                 setRealSell(row.ASK);
+                                if(row.BID){
+                                    setTLBuy(row.BID * 1.206);
+                                    setKGBuy(row.BID * 32.148)
+                                }
+                                
+                                if(row.ASK) {
+                                    setTLSell(row.ASK * 1.206);
+                                    setKGSell(row.ASK * 32.148);
+                                }
                             }
                         })
                     }
@@ -144,17 +157,62 @@ export default function About({homepage}:any) {
                                         <span>MKT</span>
                                         <span>Value: {dayjs().format('DD-MMM-YYYY')}</span>
                                     </div>
-                                    <div className="sell">
-                                        <span className="value">
-                                            {formatUSD(realSell)}
-                                        </span>
-                                        <h6>{t("SELL")} {t("XAU")}</h6>
+                                    <div className="content-price" style={{display: "flex",flexWrap: "nowrap"}}>
+                                        <div className="title">
+                                            <span className="value">
+                                                {t("TL")}
+                                            </span>
+                                        </div>
+                                        <div className="sell">
+                                            <span className="value">
+                                                {formatUSD(TLSell)}
+                                            </span>
+                                            <h6>{t("SELL")} {t("XAU")}</h6>
+                                        </div>
+                                        <div className="buy">
+                                            <span className="value">
+                                                {formatUSD(TLBuy)}
+                                            </span>
+                                            <h6>{t("BUY")} {t("XAU")}</h6>
+                                        </div>
                                     </div>
-                                    <div className="buy">
-                                        <span className="value">
-                                            {formatUSD(realBuy)}
-                                        </span>
-                                        <h6>{t("BUY")} {t("XAU")}</h6>
+                                    <div className="content-price" style={{display: "flex",flexWrap: "nowrap"}}>
+                                        <div className="title">
+                                            <span className="value">
+                                                {t("OZ")}
+                                            </span>
+                                        </div>
+                                        <div className="sell">
+                                            <span className="value">
+                                                {formatUSD(realBuy)}
+                                            </span>
+                                            <h6>{t("SELL")} {t("XAU")}</h6>
+                                        </div>
+                                        <div className="buy">
+                                            <span className="value">
+                                                {formatUSD(realSell)}
+                                            </span>
+                                            <h6>{t("BUY")} {t("XAU")}</h6>
+                                        </div>
+                                    </div>
+                                    <div className="content-price" style={{display: "flex",flexWrap: "nowrap"}}>
+                                        <div className="title">
+                                            <span className="value">
+                                                {t("KG")}
+                                            </span>
+                                        </div>
+                                        <div className="sell">
+                                            <span className="value">
+                                                {formatUSD(KGBuy)}
+                                            </span>
+                                            <h6>{t("SELL")} {t("XAU")}</h6>
+                                        </div>
+                                        <div className="buy">
+                                            <span className="value">
+                                                {formatUSD(KGSell)}
+                                            </span>
+                                            <h6>{t("BUY")} {t("XAU")}</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
