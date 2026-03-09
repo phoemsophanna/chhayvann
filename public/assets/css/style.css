@@ -14236,8 +14236,8 @@ select:focus {
     padding: 0;
     border: 2px solid #f9f0d3;
     border-radius: 15px;
-    flex: 10%;
-    max-width: 10%;
+    flex: 15%;
+    max-width: 15%;
     text-align: center;
     overflow: hidden;
     display: flex;
