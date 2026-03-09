@@ -14456,7 +14456,7 @@ select:focus {
 @media screen and (max-width: 992px) {
     .popup-poster {
         padding: 16px;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .popup-poster .popup-containers .content-image img {

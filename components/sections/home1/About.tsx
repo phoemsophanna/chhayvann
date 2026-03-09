@@ -146,7 +146,27 @@ export default function About({homepage}:any) {
             <RoundTextScript />
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-6 col-lg-6 order-lg-2 order-1">
+                    <div className="col-xl-6 col-lg-6">
+                        <div className="about-style1__content wow fadeInRight animated" data-wow-delay="00ms"
+                            data-wow-duration="1500ms">
+                            <div className="sec-title">
+                                <div className="sub-title">
+                                    <h4>{homepage?.subtitle}</h4>
+                                </div>
+                                <h2>{homepage?.companyName}</h2>
+                            </div>
+                            <div className="text">
+                                <div dangerouslySetInnerHTML={{__html: homepage?.aboutCompany}} />
+                            </div>
+                            <div className="btn-box">
+                                <Link href="/about">
+                                    {t("ReadMore")}
+                                    <i className="icon-right-arrow"></i>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-6 col-lg-6">
                         <div className="about-style1__img" style={{marginRight: 0}}>
                             <div className="value-exchange">
                                 <table>
@@ -257,28 +277,6 @@ export default function About({homepage}:any) {
                             </div>
                         </div>
                     </div>
-
-                    <div className="col-xl-6 col-lg-6 order-lg-1 order-2">
-                        <div className="about-style1__content wow fadeInRight animated" data-wow-delay="00ms"
-                            data-wow-duration="1500ms">
-                            <div className="sec-title">
-                                <div className="sub-title">
-                                    <h4>{homepage?.subtitle}</h4>
-                                </div>
-                                <h2>{homepage?.companyName}</h2>
-                            </div>
-                            <div className="text">
-                                <div dangerouslySetInnerHTML={{__html: homepage?.aboutCompany}} />
-                            </div>
-                            <div className="btn-box">
-                                <Link href="/about">
-                                    {t("ReadMore")}
-                                    <i className="icon-right-arrow"></i>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
