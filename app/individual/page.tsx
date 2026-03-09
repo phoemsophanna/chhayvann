@@ -206,7 +206,7 @@ export default function Home_One() {
                                                     </> }
                                                 </div>
                                             </div>
-                                            <div className="col-xl-6 col-lg-6 col-md-6">
+                                            <div className="col-xl-6 col-lg-6 col-md-6" hidden>
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <label htmlFor="fileBack" className="fileCV"><i className="fas fa-upload"></i> Upload Back ID or Passport</label><span style={{marginLeft: "10px"}}>Max size 10MB.</span>
