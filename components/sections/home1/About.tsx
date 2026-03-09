@@ -147,7 +147,7 @@ export default function About({homepage}:any) {
             <div className="container">
                 <div className="row">
                     <div className="col-xl-6 col-lg-6 mb-4">
-                        <div className="about-style1__content wow fadeInRight animated" data-wow-delay="00ms"
+                        <div className="about-style1__content wow fadeInRight animated" style={{marginTop: 0}} data-wow-delay="00ms"
                             data-wow-duration="1500ms">
                             <div className="sec-title">
                                 <div className="sub-title">
