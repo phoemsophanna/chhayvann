@@ -14501,3 +14501,28 @@ select:focus {
 .content-currency .compare-icon .text-of-type.sell {
     top: -30px;
 }
+
+.value-exchange table {
+    width: 100%;
+    text-align: center;
+}
+
+.value-exchange table th {
+    background-color: #9f6605;
+    padding: 8px 14px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.value-exchange table td {
+    padding: 8px 14px;
+}
+
+.value-exchange table td.center {
+    border-left: 1px solid #e9e9e9;
+    border-right: 1px solid #e9e9e9;
+}
+
+.value-exchange table .bottom {
+    border-bottom: 1px solid #e9e9e9;
+}

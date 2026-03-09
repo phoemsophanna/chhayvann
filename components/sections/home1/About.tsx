@@ -146,10 +146,40 @@ export default function About({homepage}:any) {
             <RoundTextScript />
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-6 col-lg-6">
+                    <div className="col-xl-6 col-lg-6 order-lg-2 order-1">
                         <div className="about-style1__img" style={{marginRight: 0}}>
                             <div className="value-exchange">
-                                <div className="content-title">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>{t("XAU")}-{t("USD")}</th>
+                                            <th>{t("SELL")}</th>
+                                            <th>{t("BUY")}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className="bottom">
+                                            <td className="text-start">MKT</td>
+                                            <td colSpan={2} className="text-end">Value: {dayjs().format('DD-MMM-YYYY')}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{t("KG")}</td>
+                                            <td className="center">{formatUSD(KGBuy)}</td>
+                                            <td>{formatUSD(KGSell)}</td>
+                                        </tr>
+                                        <tr className="bottom">
+                                            <td>{t("OZ")}</td>
+                                            <td className="center">{formatUSD(realBuy)}</td>
+                                            <td>{formatUSD(realSell)}</td>
+                                        </tr>
+                                        <tr className="bottom">
+                                            <td>{t("TL")}</td>
+                                            <td className="center">{formatUSD(TLBuy)}</td>
+                                            <td>{formatUSD(TLSell)}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {/* <div className="content-title">
                                     <h6>{t("XAU")}-{t("USD")}</h6>
                                 </div>
                                 <div className="content-item">
@@ -165,13 +195,13 @@ export default function About({homepage}:any) {
                                         </div>
                                         <div className="sell">
                                             <span className="value">
-                                                {formatUSD(TLSell)}
+                                                {formatUSD(TLBuy)}
                                             </span>
                                             <h6>{t("SELL")} {t("XAU")}</h6>
                                         </div>
                                         <div className="buy">
                                             <span className="value">
-                                                {formatUSD(TLBuy)}
+                                                {formatUSD(TLSell)}
                                             </span>
                                             <h6>{t("BUY")} {t("XAU")}</h6>
                                         </div>
@@ -214,7 +244,7 @@ export default function About({homepage}:any) {
                                             <h6>{t("BUY")} {t("XAU")}</h6>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="graph-exchange">
                                 <div className="chart-title">
@@ -228,7 +258,7 @@ export default function About({homepage}:any) {
                         </div>
                     </div>
 
-                    <div className="col-xl-6 col-lg-6">
+                    <div className="col-xl-6 col-lg-6 order-lg-1 order-2">
                         <div className="about-style1__content wow fadeInRight animated" data-wow-delay="00ms"
                             data-wow-duration="1500ms">
                             <div className="sec-title">
