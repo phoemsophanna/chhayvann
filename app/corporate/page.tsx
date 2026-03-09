@@ -174,7 +174,7 @@ export default function Home_One() {
                                                         <label htmlFor="fileBack" className="fileCV"><i className="fas fa-upload"></i> Attached Certificate of Incorporation</label><span style={{marginLeft: "10px"}}>Max size 10MB.</span>
                                                         <input type="file" onChange={handleBackChange} style={{visibility: "hidden", position: "absolute"}} name="certFile" id="fileBack"
                                                             placeholder="Email Address" />
-                                                        {!back && <div className="text-danger">Please Upload Front ID Card.</div>}
+                                                        {!back && <div className="text-danger">* Please upload your attachment.</div>}
                                                     </div>
                                                     {back && <>
                                                         <div style={{position: "relative"}}>
@@ -222,7 +222,7 @@ export default function Home_One() {
                                             <div className="col-12">
                                                 <div className="row" style={{alignItems: "center"}}>
                                                     <div className="col-md-6">
-                                                        <div className="button-box">
+                                                        <div className="button-box" style={{textAlign: "left"}}>
                                                             <ReCAPTCHA
                                                                 sitekey="6LdboZkpAAAAAEvN_JobJlaphv_g3oGY399KoJO3"
                                                                 onChange={(token) => setCaptchaToken(token)}

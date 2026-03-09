@@ -181,7 +181,7 @@ export default function Home_One() {
                                                         <label htmlFor="fileFront" className="fileCV"><i className="fas fa-upload"></i> Upload Front ID or Passport</label><span style={{marginLeft: "10px"}}>Max size 10MB.</span>
                                                         <input type="file" onChange={handleFrontChange} style={{visibility: "hidden", position: "absolute"}} name="front" id="fileFront"
                                                             placeholder="Email Address" />
-                                                        {!front && <div className="text-danger">Please Upload Front ID Card.</div>}
+                                                        {!front && <div className="text-danger">* Please upload your attachment</div>}
                                                     </div>
                                                     {front && <>
                                                         <div style={{position: "relative"}}>
@@ -259,7 +259,7 @@ export default function Home_One() {
                                             <div className="col-12">
                                                 <div className="row" style={{alignItems: "center"}}>
                                                     <div className="col-md-6">
-                                                        <div className="button-box">
+                                                        <div className="button-box" style={{textAlign: "left"}}>
                                                             <ReCAPTCHA
                                                                 sitekey="6LdboZkpAAAAAEvN_JobJlaphv_g3oGY399KoJO3"
                                                                 onChange={(token) => setCaptchaToken(token)}
