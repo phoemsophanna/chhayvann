@@ -182,7 +182,7 @@ export default function About({homepage}:any) {
                                             <td className="text-start">MKT</td>
                                             <td colSpan={2} className="text-end">Value: {dayjs().format('DD-MMM-YYYY')}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="bottom">
                                             <td>{t("KG")}</td>
                                             <td className="center">{formatUSD(KGBuy)}</td>
                                             <td>{formatUSD(KGSell)}</td>
@@ -192,7 +192,7 @@ export default function About({homepage}:any) {
                                             <td className="center">{formatUSD(realBuy)}</td>
                                             <td>{formatUSD(realSell)}</td>
                                         </tr>
-                                        <tr className="bottom">
+                                        <tr>
                                             <td>{t("TL")}</td>
                                             <td className="center">{formatUSD(TLBuy)}</td>
                                             <td>{formatUSD(TLSell)}</td>
