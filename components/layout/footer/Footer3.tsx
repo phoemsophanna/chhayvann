@@ -181,7 +181,7 @@ export default function Footer3() {
                                                     {
                                                         contact?.phoneNumber.map((q:any,i:any) => (
                                                             <li key={i}>
-                                                                {t("Phone")}: {q?.number}
+                                                                {t("Phone")}: {i18n.language == "KHM" && q?.numberKm ? q?.numberKm : q?.number}
                                                             </li>
                                                         ))
                                                     }

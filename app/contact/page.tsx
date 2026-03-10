@@ -65,7 +65,7 @@ export default function Courses_Page() {
                                                             <h4>{t("Phone")}</h4>
                                                             {
                                                                 contact?.phoneNumber?.map((q:any,i:any) => {
-                                                                    return <p key={i}><Link href={`tel:${q?.number}`}>{q?.number}</Link></p>;
+                                                                    return <p key={i}><Link href={`tel:${q?.number}`}>{i18n.language == "KHM" && q?.numberKm ? q?.numberKm : q?.number}</Link></p>;
                                                                 })
                                                             }
                                                         </div>

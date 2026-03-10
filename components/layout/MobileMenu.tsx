@@ -89,7 +89,7 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
               contact?.phoneNumber?.map((q:any,index:any) => (
                 <li key={index}>
                   <i className="fa fa-phone-alt"></i>
-                  <a href={`tel:${q.number}`}>{q.number}</a>
+                  <a href={`tel:${q.number}`}>{i18n.language == "KHM" && q?.numberKm ? q?.numberKm : q?.number}</a>
                 </li>
               ))
             }
