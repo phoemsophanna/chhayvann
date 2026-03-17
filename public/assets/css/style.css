@@ -14526,3 +14526,14 @@ select:focus {
 .value-exchange table .bottom {
     border-bottom: 1px solid #e9e9e9;
 }
+
+.value-exchange .content-title h6, .graph-exchange .chart-title h6 {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+@media screen and (max-width: 992px) {
+    .about-style1__img:last-child {
+        margin-top: 40px;
+    }
+}

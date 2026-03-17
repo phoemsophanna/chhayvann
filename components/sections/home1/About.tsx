@@ -18,9 +18,16 @@ export default function About({homepage}:any) {
     const [TLSell, setTLSell] = useState<any>(0);
     const [KGBuy, setKGBuy] = useState<any>(0);
     const [KGSell, setKGSell] = useState<any>(0);
+    const [XAGPrice, setXAGPrice] = useState<any>(0);
+    const [XAGSell, setXAGSell] = useState<any>(0);
+    const [XAGPriceKg, setXAGPriceKg] = useState<any>(0);
+    const [XAGSellKg, setXAGSellKg] = useState<any>(0);
     const chartContainerRef = useRef<any>(null);
+    const chartContainerRefTwo = useRef<any>(null);
     const chartRef = useRef<any>(null);
+    const chartRefTwo = useRef<any>(null);
     const seriesRef = useRef<any>(null);
+    const seriesRefTwo = useRef<any>(null);
 
     useEffect(() => {
         echo?.channel("xauusd")
@@ -31,6 +38,7 @@ export default function About({homepage}:any) {
                             if(row.PAIR == "XAUUSD"){
                                 setRealBuy(row.BID);
                                 setRealSell(row.ASK);
+                                
                                 if(row.BID){
                                     setTLBuy(row.BID * 1.206);
                                     setKGBuy(row.BID * 32.148)
@@ -40,6 +48,13 @@ export default function About({homepage}:any) {
                                     setTLSell(row.ASK * 1.206);
                                     setKGSell(row.ASK * 32.148);
                                 }
+                            }
+
+                            if(row.PAIR == "XAGUSD"){
+                                setXAGPrice(row.BID);
+                                setXAGSell(row.ASK);
+                                setXAGPriceKg(row.BID * 32.1507);
+                                setXAGSellKg(row.ASK * 32.1507);
                             }
                         })
                     }
@@ -133,6 +148,86 @@ export default function About({homepage}:any) {
         };
     }, []);
 
+    useEffect(() => {
+        if (!chartContainerRefTwo.current) return;
+        let isMounted = true;
+        let timeout: any;
+        const chartTwo = createChart(chartContainerRefTwo.current, {
+            width: chartContainerRefTwo.current.clientWidth,
+            height: 250,
+            layout: {
+                background: { type: ColorType.Solid, color: "#ffffff" },
+                textColor: "#333333",
+            },
+            grid: {
+                vertLines: { visible: false },
+                horzLines: { 
+                    color: "#e1e1e1", 
+                    style: 2,
+                },
+            },
+            rightPriceScale: {
+                borderColor: '#333333',
+                visible: false
+            },
+            leftPriceScale: {
+                borderColor: "#444",
+                visible: true
+            },
+            timeScale: {
+                borderColor: '#333333',
+                timeVisible: true,
+                secondsVisible: false,
+                barSpacing: 10,
+            },
+        });
+
+        const candleSeriesTwo = chartTwo.addSeries(CandlestickSeries, {
+            upColor: '#3486b8',
+            downColor: '#e3534f',
+            borderVisible: false,
+            wickUpColor: '#3486b8',
+            wickDownColor: '#e3534f',
+        });
+
+        chartRefTwo.current = chartTwo;
+        seriesRefTwo.current = candleSeriesTwo;
+
+        const fetchGraph = async () => {
+            try {
+                const res = await axios.get(`${api.BASE_URL}/trading-graph-silver`);
+
+                if (res.data?.graph && isMounted) {
+                    const formattedData = res.data.graph.map((row:any) => ({
+                        time: Number(dayjs(row.real_time).unix()) + 25200, 
+                        open: Number(row.open),
+                        high: Number(row.high),
+                        low: Number(row.low),
+                        close: Number(row.close),
+                    }));
+
+                    formattedData.sort((a:any, b:any) => a.time - b.time);
+
+                    if (seriesRefTwo.current) {
+                        seriesRefTwo.current.setData(formattedData);
+                    }
+                }
+            } catch (err) {
+                console.error("Fetch error:", err);
+            } finally {
+                timeout = setTimeout(fetchGraph, 60000);
+            }
+        };
+
+        fetchGraph();
+
+        return () => { 
+            isMounted = false;
+            clearTimeout(timeout);
+            chartTwo.remove(); 
+        };
+    }, []);
+
     const formatUSD = (value: any) => {
       return new Intl.NumberFormat('en-US', {
         minimumFractionDigits: 2,
@@ -146,7 +241,7 @@ export default function About({homepage}:any) {
             <RoundTextScript />
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-6 col-lg-6 mb-4">
+                    <div className="col-xl-12 col-lg-12 mb-4">
                         <div className="about-style1__content wow fadeInRight animated" style={{marginTop: 0}} data-wow-delay="00ms"
                             data-wow-duration="1500ms">
                             <div className="sec-title">
@@ -272,6 +367,46 @@ export default function About({homepage}:any) {
                                 </div>
                                 <div
                                     ref={chartContainerRef}
+                                    style={{ width: "100%", height: "250px" }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-6 col-lg-6">
+                        <div className="about-style1__img" style={{marginRight: 0}}>
+                            <div className="value-exchange">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style={{backgroundColor: "#C0C0C0"}}>{t("XAG")}-{t("USD")}</th>
+                                            <th style={{backgroundColor: "#C0C0C0"}}>{t("SELL")}</th>
+                                            <th style={{backgroundColor: "#C0C0C0"}}>{t("BUY")}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className="bottom">
+                                            <td style={{padding: "15px"}} className="text-start">MKT</td>
+                                            <td colSpan={2} className="text-end">Value: {dayjs().format('DD-MMM-YYYY')}</td>
+                                        </tr>
+                                        <tr className="bottom">
+                                            <td style={{padding: "15px"}}>{t("KG")}</td>
+                                            <td className="center">{formatUSD(XAGPriceKg)}</td>
+                                            <td>{formatUSD(XAGSellKg)}</td>
+                                        </tr>
+                                        <tr className="bottom">
+                                            <td style={{padding: "15px"}}>{t("OZ")}</td>
+                                            <td className="center">{formatUSD(XAGPrice)}</td>
+                                            <td>{formatUSD(XAGSell)}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="graph-exchange">
+                                <div className="chart-title" style={{backgroundColor: "#C0C0C0"}}>
+                                    <h6>Graph: {t("XAG")}-{t("USD")}</h6>
+                                </div>
+                                <div
+                                    ref={chartContainerRefTwo}
                                     style={{ width: "100%", height: "250px" }}
                                 />
                             </div>
