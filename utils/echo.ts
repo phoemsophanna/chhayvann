@@ -4,14 +4,19 @@ import Pusher from "pusher-js";
 let echo: Echo<any> | null = null;
 
 if (typeof window !== "undefined") {
-    // only in browser
     (window as any).Pusher = Pusher;
 
     echo = new Echo({
-        broadcaster: "pusher",
-        key: "f0fa2fba948713a9aa3f",
-        cluster: "ap1", 
+        broadcaster: "reverb",
+
+        key: "6hictv4hajt8hpmgzbjg",
+
+        wsHost: "127.0.0.1",
+        wsPort: 8080,
+        wssPort: 443,
+
         forceTLS: true,
+        enabledTransports: ["ws", "wss"],
     });
 }
 
