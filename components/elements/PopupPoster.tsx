@@ -16,7 +16,7 @@ export default function PopupPoster() {
 
   useEffect(() => {
     const popup = sessionStorage.getItem('popup') ? true : false;
-    if(!popup){
+    if(!popup && general?.popup_thumbnail){
         const mainTimeOut = setTimeout(() => {
             setOpen(true);
             document.body.classList.add('no-scroll');
