@@ -12,6 +12,7 @@ import Popup from "@/components/elements/Popup";
 
 export default function Courses_Page() {
     const { slug } = useParams();
+    const [loading, setLoading] = useState(false);
     const {t, i18n} = useTranslation();
     const [banner, setBanner] = useState<any>(null);
     const [career, setCareer] = useState<any>(null);
@@ -40,18 +41,22 @@ export default function Courses_Page() {
         formData.append("captcha", captchaToken);
         formData.append("careerId", String(slug));
         if(captchaToken && file) {
-            axios.post(`${api.BASE_URL}/career-apply`,formData,{
-                method: "POST",
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    "Accept-Language": i18n.language
-                }
-            }).then((res) => {
-                if(res.data.status == "success") {
-                    setActive(true);
-                    form.reset();
-                }
-            });
+            if(!loading) {
+                setLoading(true);
+                axios.post(`${api.BASE_URL}/career-apply`,formData,{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Accept-Language": i18n.language
+                    }
+                }).then((res) => {
+                    if(res.data.status == "success") {
+                        setActive(true);
+                        form.reset();
+                    }
+                    setLoading(false);
+                });
+            }
         }
     }
 
@@ -203,11 +208,22 @@ export default function Courses_Page() {
                                                             <input id="form_botcheck" name="form_botcheck" className="form-control"
                                                                 type="hidden" />
                                                             <div className="btn-box">
-                                                                <button className="btn-one" type="submit"
-                                                                    data-loading-text="Please wait...">
-                                                                    <span className="txt">{t("SubmitApplication")}</span>
-                                                                    <i className="icon-right-arrow"></i>
-                                                                </button>
+                                                                {
+                                                                    !loading ? (
+                                                                        <button className="btn-one" type="submit"
+                                                                            data-loading-text="Please wait...">
+                                                                            <span className="txt">{t("SubmitApplication")}</span>
+                                                                            <i className="icon-right-arrow"></i>
+                                                                        </button>
+                                                                    ) : (
+                                                                        <button className="btn-one" type="submit" disabled
+                                                                            data-loading-text="Please wait...">
+                                                                            <span className="txt">{t("SubmitApplication")}</span>
+                                                                            <i className="icon-right-arrow"></i>
+                                                                        </button>
+                                                                    )
+                                                                }
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
