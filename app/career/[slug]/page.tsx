@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { api } from "@/app/config";
 import axios from "axios";
 import Popup from "@/components/elements/Popup";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Courses_Page() {
     const { slug } = useParams();
@@ -195,18 +196,18 @@ export default function Courses_Page() {
                                                 <div className="row" style={{alignItems: "centers"}}>
                                                     <div className="col-md-6">
                                                         <div className="button-box text-start">
-                                                            {/* <ReCAPTCHA
+                                                            <ReCAPTCHA
                                                                 sitekey="6LdboZkpAAAAAEvN_JobJlaphv_g3oGY399KoJO3"
                                                                 onChange={(token) => setCaptchaToken(token)}
                                                                 onExpired={() => setCaptchaToken(null)}
-                                                            /> */}
-                                                            <Turnstile
+                                                            />
+                                                            {/* <Turnstile
                                                                 sitekey="0x4AAAAAAD6I63eF7awp6eBI"
                                                                 onVerify={(token) => {
                                                                     setCaptchaToken(token);
                                                                 }}
                                                                 onExpire={() => setCaptchaToken(null)}
-                                                            />
+                                                            /> */}
                                                             {!captchaToken && <div className="text-danger">Please verify that you are not a robot.</div>}
                                                         </div>
                                                     </div>
