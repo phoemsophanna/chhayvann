@@ -201,13 +201,6 @@ export default function Courses_Page() {
                                                                 onChange={(token) => setCaptchaToken(token)}
                                                                 onExpired={() => setCaptchaToken(null)}
                                                             />
-                                                            {/* <Turnstile
-                                                                sitekey="0x4AAAAAAD6I63eF7awp6eBI"
-                                                                onVerify={(token) => {
-                                                                    setCaptchaToken(token);
-                                                                }}
-                                                                onExpire={() => setCaptchaToken(null)}
-                                                            /> */}
                                                             {!captchaToken && <div className="text-danger">Please verify that you are not a robot.</div>}
                                                         </div>
                                                     </div>
