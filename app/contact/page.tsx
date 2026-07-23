@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../config";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 import Popup from "@/components/elements/Popup";
 
 
@@ -243,7 +244,7 @@ export default function Courses_Page() {
                         </div>
                     </div>
                 </section>
-                <div className="embedMap" dangerouslySetInnerHTML={{__html: contact?.embedMap}} />
+                <div className="embedMap" dangerouslySetInnerHTML={{ __html: sanitizeHtml(contact?.embedMap) }} />
             </Layout>
             <Popup active={active} setActive={setActive} title={contact?.titlePopup} des={contact?.summaryPopup} />
         </div>

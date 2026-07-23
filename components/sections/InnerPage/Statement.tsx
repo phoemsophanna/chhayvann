@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { api } from "@/app/config";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 export default function Statement({about}:any) {
 
@@ -43,7 +44,7 @@ export default function Statement({about}:any) {
                                                     <div className="title">
                                                         <h2>{about?.titleMission}</h2>
                                                     </div>
-                                                    <div dangerouslySetInnerHTML={{__html: about?.desMission}} />
+                                                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(about?.desMission) }} />
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">
@@ -70,7 +71,7 @@ export default function Statement({about}:any) {
                                                             {about?.titleVision}
                                                         </h2>
                                                     </div>
-                                                    <div dangerouslySetInnerHTML={{__html: about?.desVision}} />
+                                                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(about?.desVision) }} />
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">
@@ -94,7 +95,7 @@ export default function Statement({about}:any) {
                                                     <div className="title">
                                                         <h2>{about?.titleValue}</h2>
                                                     </div>
-                                                    <div dangerouslySetInnerHTML={{__html: about?.desValue}} />
+                                                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(about?.desValue) }} />
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">

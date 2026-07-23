@@ -1,6 +1,5 @@
 
 import { api } from "@/app/config";
-import RoundTextScript from "@/components/elements/CircleText";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createChart, CandlestickSeries, ColorType } from "lightweight-charts";
 import { echo } from "@/utils/echo";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 export default function About({homepage}:any) {
     const { t } = useTranslation();
@@ -238,7 +238,6 @@ export default function About({homepage}:any) {
   return (
     <>
         <section className="about-style1">
-            <RoundTextScript />
             <div className="container">
                 <div className="row">
                     <div className="col-xl-12 col-lg-12 mb-4">
@@ -251,7 +250,7 @@ export default function About({homepage}:any) {
                                 <h2>{homepage?.companyName}</h2>
                             </div>
                             <div className="text">
-                                <div dangerouslySetInnerHTML={{__html: homepage?.aboutCompany}} />
+                                <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(homepage?.aboutCompany) }} />
                             </div>
                             <div className="btn-box">
                                 <Link href="/about">

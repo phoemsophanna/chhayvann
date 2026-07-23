@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "@/app/config";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 import axios from "axios";
 import Popup from "@/components/elements/Popup";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -93,14 +94,14 @@ export default function Courses_Page() {
                                 <div className="sec-title sub-title withtext text-start" style={{paddingTop: 30, borderTop: "1px solid #eaeaea"}}>
                                     <h2>{t("JOBDESCRIPTION")}</h2>
                                     <div className="text">
-                                        <div dangerouslySetInnerHTML={{__html: career?.des}} />
+                                        <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(career?.des) }} />
                                     </div>
                                 </div>
 
                                 <div className="sec-title sub-title withtext text-start">
                                     <h2>{t("JOBREQUIREMENT")}</h2>
                                     <div className="text">
-                                        <div dangerouslySetInnerHTML={{__html: career?.content}} />
+                                        <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(career?.content) }} />
                                     </div>
                                 </div>
                             </div>

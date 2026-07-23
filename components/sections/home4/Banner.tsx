@@ -2,10 +2,8 @@
 
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import RoundTextScript from "@/components/elements/CircleText";
 import Image from "next/image";
 import Link from "next/link";
-import "swiper/css/effect-fade";
 
 const swiperOptions = {
   modules: [Autoplay, Pagination, Navigation, EffectFade],
@@ -33,7 +31,6 @@ const swiperOptions = {
 export default function Banner() {
   return (
     <section className="main-slider-style4">
-        <RoundTextScript />
       <div
         className="main-slider-style4__bg"
         style={{ backgroundImage: "url(/assets/images/shapes/slider-v4-bg1.jpg)" }}

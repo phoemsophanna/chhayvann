@@ -4,6 +4,7 @@ import VideoModal from "@/components/elements/VideoPopup";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 export default function Video({trade}: any) {
     const { t } = useTranslation();
@@ -34,7 +35,7 @@ export default function Video({trade}: any) {
                                 </div>
                                 <h2>{trade?.title}</h2>
                                 <div className="text">
-                                    <div dangerouslySetInnerHTML={{__html: trade?.des}} />
+                                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(trade?.des) }} />
                                 </div>
                             </div>
                             <div className="bottom-box">

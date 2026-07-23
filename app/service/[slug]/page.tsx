@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import { api } from "@/app/config";
 import { useTranslation } from "react-i18next";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 export default function Courses_Details_Page() {
     const { i18n } = useTranslation();
@@ -41,7 +42,7 @@ export default function Courses_Details_Page() {
                                             <Image src={`${api.FILE_URL}${service?.image}`} alt="Image" width={350} height={375} priority />
                                         </div>
                                         <h2>{service?.title}</h2>
-                                        <div dangerouslySetInnerHTML={{__html: service?.content}} />
+                                        <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(service?.content) }} />
                                     </div>
                                 </div>
                             </div>

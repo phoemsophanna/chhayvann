@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../config";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 export default function Organization_Page() {
     const { i18n } = useTranslation();
@@ -27,7 +28,7 @@ export default function Organization_Page() {
         <div>
             <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Organization" breadcrumbImage={organization?.banner?.image}>
                 <section className="about-style2 pb-0">
-                    <div dangerouslySetInnerHTML={{__html: organization?.organization?.des}} />
+                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(organization?.organization?.des) }} />
                 </section>
             </Layout>
         </div>

@@ -7,6 +7,7 @@ import Dropdowns from "@/components/elements/Dropdowns";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { api } from "../config";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 export default function Exchange_Rate_Page() {
     const { t, i18n } = useTranslation();
@@ -255,7 +256,7 @@ export default function Exchange_Rate_Page() {
                                         <div className="col-xl-12 col-lg-12">
                                             <div className="account-detail-style1__content">
                                                 <div className="intro-box">
-                                                    <div dangerouslySetInnerHTML={{__html: service?.description}} />
+                                                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(service?.description) }} />
                                                 </div>
                                             </div>
                                         </div>

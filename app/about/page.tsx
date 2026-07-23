@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../config";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 export default function About_Page() {
     const { t, i18n } = useTranslation();
@@ -56,7 +57,7 @@ export default function About_Page() {
                                         </div>
                                         <h2>{about?.companyName}</h2>
                                         <div className="text">
-                                            <div dangerouslySetInnerHTML={{__html: about?.aboutCompany}} />
+                                            <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(about?.aboutCompany) }} />
                                         </div>
                                     </div>
                                 </div>

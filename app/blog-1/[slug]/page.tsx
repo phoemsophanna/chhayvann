@@ -6,6 +6,7 @@ import Layout from "@/components/layout/Layout";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "@/app/config";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 import axios from "axios";
 
 // ✅ Server component
@@ -70,7 +71,7 @@ export default function BlogSinglePage_One() {
                       </div>
                     </div>
                   </div>
-                  <div dangerouslySetInnerHTML={{__html: article?.content}} />
+                  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(article?.content) }} />
                 </div>
                 <div className="blog-details-tag">
                     <div className="title">

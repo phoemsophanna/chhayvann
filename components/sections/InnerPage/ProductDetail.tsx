@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { api } from "@/app/config";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 const ProductDetail = ({post}:any) => {
     const [photoChanged, setPhotoChanged] = useState("");
     return <>
@@ -61,7 +62,7 @@ const ProductDetail = ({post}:any) => {
 
                   {/* === Your same static HTML markup === */}
                   <div className="blog-details-text1">
-                    <div dangerouslySetInnerHTML={{__html: post?.description}} />
+                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(post?.description) }} />
                   </div>
                 </div>
               </div>
