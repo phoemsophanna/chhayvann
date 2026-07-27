@@ -12,7 +12,6 @@ import "swiper/css/autoplay";
 import 'swiper/css/effect-fade';
 
 import ClientLayout from "./client-layout";
-import { useEffect } from "react";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -58,11 +57,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    const container = document.querySelector(".cjs-container");
-    container?.remove();
-  }, []);
-
   return (
     <html lang="en">
       <head>

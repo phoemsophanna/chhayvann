@@ -1,6 +1,6 @@
 
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link"
 import { useAppStore } from "@/store/useAppStore";
@@ -11,6 +11,10 @@ export default function Footer3() {
     const [dropdown, setDropdown] = useState(0);
     const { general, contact } = useAppStore();
     const { t, i18n } = useTranslation();
+    useEffect(() => {
+        const container = document.querySelector(".cjs-container");
+        container?.remove();
+    }, []);
     // console.log(contact);
     return (
         <>
