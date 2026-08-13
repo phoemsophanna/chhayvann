@@ -14995,6 +14995,22 @@ select:focus {
     top:6.5px;
 }
 
+.history-content img {
+    border-radius: 15px;
+}
+
+.history-content h3,.history-content h2,.history-content h1 {
+    font-weight: 400;
+    margin: 20px 0;
+    margin-top: 30px;
+    color: #9c6904;
+}
+
+.history-content p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width: 992px) {
     .about-style1__img:last-child {
         margin-top: 40px;
