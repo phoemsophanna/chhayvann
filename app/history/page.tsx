@@ -30,6 +30,8 @@ export default function History_Page() {
         });
     },[i18n.language]);
 
+    if(!settings) return null;
+
     return (
         <div>
             <Layout headerStyle={1} footerStyle={3} breadcrumbTitle="Our History" breadcrumbImage={banner?.image}>
