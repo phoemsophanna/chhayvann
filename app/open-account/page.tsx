@@ -135,7 +135,7 @@ export default function Account_Open_One() {
                                                 <div className="form-group mb-3">
                                                     <div className="input-box">
                                                         <label htmlFor="" className="form-label" style={{lineHeight: 1}}>Email
-                                                            <span>(optional)</span>
+                                                            <span style={{fontSize: 12, verticalAlign: "top"}}> (optional)</span>
                                                         </label>
                                                         <input type="email" name="email" id="formSubject"
                                                             placeholder="Email Address" className="mb-3" />
