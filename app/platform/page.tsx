@@ -123,9 +123,13 @@ export default function Platform_Page() {
                                 <div className="content-text">
                                     <h2>{sites?.title}</h2>
                                     <div dangerouslySetInnerHTML={{__html: sanitizeHtml(sites?.description)}} />
-                                    <Link href="/open-account" className="btn-account">
-                                        <i className="far fa-user-circle"></i> {t("HEADER.OpenAccount")}
-                                    </Link>
+                                    {
+                                        sites?.label ? (
+                                            <a href={sites?.linkTo ? sites?.linkTo : "https://onlinetrade.chhayvann.com.kh/"} target="_blank" className="btn-account">
+                                                <i className="far fa-user-circle"></i> {sites?.label}
+                                            </a>
+                                        ) : ""
+                                    }
                                 </div>
                             </div>
                             {
