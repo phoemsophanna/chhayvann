@@ -17,7 +17,12 @@
         "Career": "ការងារ",
         "ContactUs": "ទំនាក់ទំនងយើង",
         "OpenIndividualAccount": "បើកគណនីបុគ្គល",
-        "OpenCorporateAccount": "បើកគណនីសហគ្រាស"
+        "OpenCorporateAccount": "បើកគណនីសហគ្រាស",
+        "co_founders": "សហស្ថាបនិក",
+        "products_and_services": "ផលិតផលនិងសេវាកម្ម",
+        "Gold": "មាស",
+        "Platform": "វេទិកា",
+        "OpenAccount": "បើកគណនី"
     },
     "GENERAL": {
         "Khmer": "ខ្មែរ",
@@ -43,7 +48,11 @@
     "SubmitApplication": "ដាក់ពាក្យ",
     "ContactInfo": "ព័ត៌មានទំនាក់ទំនង",
     "Phone": "ទូរស័ព្ទ",
+    "step": "ជំហាន",
     "Email": "អ៊ីមែល",
+    "on_mobile": "លើទូរស័ព្ទ",
+    "on_pc": "លើកុំព្យូរទ័រ",
+    "contact_customer_service": "ទាក់ទងសេវាកម្មអតិថិជន",
     "OfficeHours": "ម៉ោងការិយាល័យ",
     "Address": "អាសយដ្ឋាន",
     "GetSocial": "ចូលរួមបណ្ដាញសង្គម",

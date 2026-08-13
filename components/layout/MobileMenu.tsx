@@ -50,16 +50,25 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
                 <Link href="#">{t("HEADER.Company")}</Link>
                 <ul style={{ display: activeDropdown == 1 ? "block" : "none" }}>
                   <li><Link href="/about">{t("HEADER.AboutUs")}</Link></li>
+                  {
+                    general?.teams > 0 ? (
+                      <li><Link href="/team">{t("HEADER.co_founders")}</Link></li>
+                    ) : ""
+                  }
                   <li><Link href="/history">{t("HEADER.History")}</Link></li>
-                  <li><Link href="/team">{t("HEADER.TeamMembers")}</Link></li>
-                  <li><Link href="/testimonials">{t("HEADER.Testimonials")}</Link></li>
+                  {
+                    general?.testimonels > 0 ? (
+                      <li><Link href="/testimonials">{t("HEADER.Testimonials")}</Link></li>
+                    ) : ""
+                  }
                 </ul>
                 <div className={`dropdown-btn ${activeDropdown === 1 ? "open" : ""}`} onClick={() => toggleDropdown(1)}>
                   <span className="fa fa-angle-right" />
                 </div>
               </li>
-              <li className={`dropdown ${activeDropdown == 2 ? "current" : ""}`}><Link href="#">{t("HEADER.Services")}</Link>
+              <li className={`dropdown ${activeDropdown == 2 ? "current" : ""}`}><Link href="#">{t("HEADER.products_and_services")}</Link>
                 <ul style={{ display: activeDropdown == 2 ? "block" : "none" }}>
+                  <li><Link href="/products">{t("HEADER.Gold")}</Link></li>
                   <li><Link href="/exchange-rate">{t("HEADER.ExchangeRate")}</Link></li>
                   {
                     services?.map((q:any,index:any) => (
@@ -73,11 +82,12 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
                   <span className="fa fa-angle-right" />
                 </div>
               </li>
-              <li><Link href="/products">{t("HEADER.Products")}</Link></li>
+              {/* <li><Link href="/products">{t("HEADER.Products")}</Link></li> */}
               {/* Trading Page */}
-              <li><Link href="/trading">{t("HEADER.Trading")}</Link></li>
-              <li><Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank">{t("HEADER.OnlineTrading")}</Link></li>
-              <li><Link href="/blog-1">{t("HEADER.NewsResearch")}</Link></li>
+              {/* <li><Link href="/trading">{t("HEADER.Trading")}</Link></li>
+              <li><Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank">{t("HEADER.OnlineTrading")}</Link></li> */}
+              <li><Link href="/platform">{t("HEADER.Platform")}</Link></li>
+              {general?.article > 0 ? (<li><Link href="/blog-1">{t("HEADER.NewsResearch")}</Link></li>) : ""}
               <li><Link href="/career">{t("HEADER.Career")}</Link></li>
               {/* Contact */}
               <li><Link href="/contact">{t("HEADER.ContactUs")}</Link></li>

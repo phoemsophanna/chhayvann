@@ -44,24 +44,10 @@ export default function Footer3() {
                                                 <h3>{t("BeginYourTrading")}</h3>
                                             </div>
                                             <div className="btn-box">
-                                                <Link href="/individual"
+                                                <Link href="/open-account"
                                                     className="btn-one">
                                                     <span className="txt">
-                                                        {t("HEADER.OpenIndividualAccount")}
-                                                        <i className="icon-right-arrow"></i>
-                                                    </span>
-                                                </Link>
-                                                <Link href="/corporate"
-                                                    className="btn-one">
-                                                    <span className="txt">
-                                                        {t("HEADER.OpenCorporateAccount")}
-                                                        <i className="icon-right-arrow"></i>
-                                                    </span>
-                                                </Link>
-                                                <Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank"
-                                                    className="btn-one">
-                                                    <span className="txt">
-                                                        {t("SignIn")}
+                                                        {t("HEADER.OpenAccount")}
                                                         <i className="icon-right-arrow"></i>
                                                     </span>
                                                 </Link>
@@ -92,19 +78,19 @@ export default function Footer3() {
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
-                                            <li>
+                                            {/* <li>
                                                 <Link href="/service">
                                                     {t("HEADER.Services")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
-                                            </li>
+                                            </li> */}
                                             <li>
                                                 <Link href="/products">
-                                                    {t("HEADER.Products")}
+                                                    {t("HEADER.Gold")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
-                                            <li>
+                                            {/* <li>
                                                 <Link href="/trading">
                                                     {t("HEADER.Trading")}
                                                     <i className="icon-right-arrow"></i>
@@ -113,6 +99,12 @@ export default function Footer3() {
                                             <li>
                                                 <Link href={general?.OnlineTrading ? general?.OnlineTrading : "https://onlinetrade.chhayvann.com.kh/"} target="_blank">
                                                     {t("HEADER.OnlineTrading")}
+                                                    <i className="icon-right-arrow"></i>
+                                                </Link>
+                                            </li> */}
+                                            <li>
+                                                <Link href="/platform">
+                                                    {t("HEADER.Platform")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>

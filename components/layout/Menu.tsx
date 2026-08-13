@@ -34,13 +34,13 @@ export default function Menu() {
         <Link href="#">{t("HEADER.Company")}</Link>
         <ul>
           <li className={isActive("/about") ? "current" : ""}><Link href="/about">{t("HEADER.AboutUs")}</Link></li>
-          <li className={isActive("/organization") ? "current" : ""}><Link href="/organization">{t("HEADER.OrganizationChart")}</Link></li>
           <li className={isActive("/history") ? "current" : ""}><Link href="/history">{t("HEADER.History")}</Link></li>
           {
               general?.teams > 0 ? (
-                <li className={isActive("/team") ? "current" : ""}><Link href="/team">{t("HEADER.TeamMembers")}</Link></li>
+                <li className={isActive("/team") ? "current" : ""}><Link href="/team">{t("HEADER.co_founders")}</Link></li>
               ) : ""
           }
+          <li className={isActive("/organization") ? "current" : ""}><Link href="/organization">{t("HEADER.OrganizationChart")}</Link></li>
           {
               general?.testimonels > 0 ? (
                 <li className={isActive("/testimonials") ? "current" : ""}><Link href="/testimonials">{t("HEADER.Testimonials")}</Link></li>
@@ -48,8 +48,9 @@ export default function Menu() {
           }
         </ul>
       </li>
-      <li className={isDropdownActive(["/service"]) ? "dropdown current" : "dropdown"}><Link href="#">{t("HEADER.Services")}</Link>
+      <li className={isDropdownActive(["/service","/exchange-rate","/products"]) ? "dropdown current" : "dropdown"}><Link href="#">{t("HEADER.products_and_services")}</Link>
         <ul>
+          <li><Link href="/products">{t("HEADER.Gold")}</Link></li>
           <li><Link href="/exchange-rate">{t("HEADER.ExchangeRate")}</Link></li>
           {
             services?.map((q:any,index:any) => (
@@ -60,11 +61,11 @@ export default function Menu() {
           }
         </ul>
       </li>
-      <li className={isActive("/products") ? "current" : ""}><Link href="/products">{t("HEADER.Products")}</Link></li>
 
       {/* Trading Page */}
-      <li className={isActive("/trading") ? "current" : ""}><Link href="/trading">{t("HEADER.Trading")}</Link></li>
-      <li><Link href={general?.OnlineTrading ? general?.OnlineTrading : "https://onlinetrade.chhayvann.com.kh/"} target="_blank">{t("HEADER.OnlineTrading")}</Link></li>
+      <li className={isActive("/platform") ? "current" : ""}><Link href="/platform">{t("HEADER.Platform")}</Link></li>
+      {/* <li className={isActive("/trading") ? "current" : ""}><Link href="/trading">{t("HEADER.Trading")}</Link></li>
+      <li><Link href={general?.OnlineTrading ? general?.OnlineTrading : "https://onlinetrade.chhayvann.com.kh/"} target="_blank">{t("HEADER.OnlineTrading")}</Link></li> */}
       {
         general?.article > 0 ? (
           <li className={isDropdownActive(["/blog-1", "/blog-single", "/blog-1"]) ? "current" : ""}><Link href="/blog-1">{t("HEADER.NewsResearch")}</Link></li>

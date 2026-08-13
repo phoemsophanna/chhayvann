@@ -73,11 +73,10 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
 
                         <div className="main-header-style1__content-top-middle">
                             <div className="btn-box">
-                                <Link className={`btn-one ${isActive("/individual") ? "active" : ""}`} href="/individual">
-                                    <span className="txt">{t("HEADER.OpenIndividualAccount")}</span>
-                                </Link>
-                                <Link className={`btn-one ${isActive("/corporate") ? "active" : ""}`} href="/corporate">
-                                    <span className="txt">{t("HEADER.OpenCorporateAccount")}</span>
+                                <Link className={`btn-one ${isActive("/open-account") ? "active" : ""}`} href="/open-account">
+                                    <span className="txt">
+                                       <i className="far fa-user"></i> {t("HEADER.OpenAccount")}
+                                    </span>
                                 </Link>
                             </div>
                         </div>

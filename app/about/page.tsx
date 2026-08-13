@@ -10,6 +10,28 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../config";
 import { sanitizeHtml } from "@/utils/sanitizeHtml";
+import { Autoplay, Navigation, Pagination } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+
+const swiperOptions = {
+    modules: [Autoplay, Pagination, Navigation],
+    slidesPerView: 1,
+    spaceBetween: 30,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    loop: true,
+
+    // Navigation
+    navigation: {
+        nextEl: '.owl-next',
+        prevEl: '.owl-prev',
+    },
+    pagination: {
+        clickable: true,
+    }
+}
 
 export default function About_Page() {
     const { t, i18n } = useTranslation();
@@ -40,14 +62,27 @@ export default function About_Page() {
                 <section className="about-style2 pdtop">
                     <div className="container">
                         <div className="row">
-
-                            <div className="col-xl-6 col-lg-6">
-                                <div className="about-style2__left about-style2__left-style3">
-                                    <div className="img-box1">
-                                        <Image src={`${about?.thumbnail ? api.FILE_URL + about?.thumbnail : "/assets/images/about/about-v2-2.webp"}`} alt="Image" width={300} height={460} priority />
+                            {
+                                about?.thumbnail?.length > 0 ? (
+                                    <div className="col-xl-6 col-lg-6">
+                                        <div className="about-style2__left about-style2__left-style3">
+                                            <div className="img-box1">
+                                                <Swiper {...swiperOptions} className="awards-style1-carousel">
+                                                    {
+                                                        about?.thumbnail?.map((q:any) => (
+                                                            <SwiperSlide>
+                                                                <Image src={`${q ? api.FILE_URL + q : "/assets/images/about/about-v2-2.webp"}`} alt="Image" width={300} height={460} priority />
+                                                            </SwiperSlide>
+                                                        ))
+                                                    }
+                                                    <button className="owl-nav-style-about owl-prev"><span className="left icon-arrow-left"></span></button>
+                                                    <button className="owl-nav-style-about owl-next"><span className="icon-arrow-right"></span></button>
+                                                </Swiper>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                ) : ""
+                            }
 
                             <div className="col-xl-6 col-lg-6">
                                 <div className="about-style2__right">

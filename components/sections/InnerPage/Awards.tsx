@@ -59,17 +59,24 @@ export default function Awards({awards,about}: any) {
     <>
         <section className="awards-style1">
             <div className="container">
-                <div className="sec-title withtext text-center">
-                    <div className="sub-title">
-                        <h4>{about?.subtitleAward}</h4>
-                    </div>
-                    <h2>{about?.titleAward}</h2>
-                    <div className="text">
-                        <p>
-                            {about?.summaryAward}
-                        </p>
-                    </div>
-                </div>
+                {
+                    about?.subtitleAward || about?.titleAward || about?.summaryAward ? (
+                        <div className="sec-title withtext text-center">
+                            <div className="sub-title">
+                                {about?.subtitleAward ? <h4>{about?.subtitleAward}</h4> : ""}
+                            </div>
+                            {about?.titleAward ? <h2>{about?.titleAward}</h2> : ""}
+                            {
+                                about?.summaryAward ? 
+                                <div className="text">
+                                    <p>
+                                        {about?.summaryAward}
+                                    </p>
+                                </div> : ""
+                            }
+                        </div>
+                    ) : ""
+                }
                 <div className="row">
                     <div className="col-xl-12">
                         <Swiper {...swiperOptions} className="awards-style1-carousel">

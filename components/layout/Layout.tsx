@@ -24,7 +24,7 @@ export default function Layout({
   breadcrumbImage,
 }: LayoutProps) {
   const hasBreadcrumb = !!(breadcrumbTitle || breadcrumbTitleTwo);
-
+  
   return (
     <div id="top" className="page-wrapper boxed_wrapper">
       {/* ✅ Header (client component automatically wrapped in a Client Boundary) */}

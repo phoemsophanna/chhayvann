@@ -14532,8 +14532,536 @@ select:focus {
     line-height: 28px;
 }
 
+/* New Style For me */
+
+.owl-nav-style-about.owl-prev, .owl-nav-style-about.owl-next {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    border: 1px solid rgb(255 255 255 / 50%);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    z-index: 1000;
+    transition: all .3s ease;
+    opacity: 0;
+}
+
+.owl-nav-style-about.owl-prev:hover, .owl-nav-style-about.owl-next:hover {
+    background-color: #9c6904;
+    border-color: #9c6904;
+}
+
+.owl-nav-style-about.owl-prev {
+    top: calc(50% - 35px);
+    left: 10px;
+}
+
+.owl-nav-style-about.owl-next {
+    top: calc(50% - 35px);
+    right: 10px;
+}
+
+.history-content img {
+    width: 100%;
+}
+
+.img-box1:hover .owl-nav-style-about.owl-prev, .img-box1:hover .owl-nav-style-about.owl-next {
+    opacity: 1;
+}
+
+.img-box1 .swiper-pagination-bullet {
+    height: 5px;
+    width: 15px;
+    border-radius: 5px;
+    background-color: #9c6904;
+}
+
+.about-style2__left .img-box1 {
+    position: relative;
+}
+
+.about-style2__left .img-box1:hover img {
+    transform: scale(1);
+}
+
+.about-style2__left .img-box1:before {
+    display: none;
+}
+
+.single-team-style1 .see-more {
+    display: inline-block;
+    color: #9c6904;
+    transition: all .3s ease;
+    border: 1px solid #9c69045e;
+    line-height: 1;
+    padding: 8px 20px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.single-team-style1 .see-more:hover {
+    color: #fff;
+    background-color: #9c6904;
+}
+
+.single-team-style1 {
+    margin-bottom: 60px;
+}
+
+.single-team-style1 .img-box::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/background-color.png);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.single-team-style1 .img-box img {
+    position: relative;
+    z-index: 1;
+}
+
+.team-banner .content {
+    display: flex;
+}
+
+.team-banner .content-text, .team-banner .content-image {
+    flex: 50%;
+    max-width: 50%;
+    text-align: center;
+}
+
+.team-banner .content-text h2 {
+    font-weight: 500;
+    color: #9c6904;
+    font-size: 42px;
+    line-height: 50px;
+}
+
+.team-banner .content-text p {
+    color: #9c6904;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.team-banner .content-image img {
+    width: 380px;
+}
+
+.bg-color {
+    background-color: #fffdf5;
+}
+
+.online-trading .content-text h2,
+.trading-service h2 {
+    font-weight: 500;
+    font-size: 42px;
+    color: #9c6904;
+    line-height: 54px;
+    margin-bottom: 20px;
+}
+
+.online-trading .content-text p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.online-trading .content-text .btn-account {
+    display: inline-block;
+    padding: 9px 20px;
+    border: 1px solid #9c690480;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #9c6904;
+    line-height: 1;
+    transition: all .3s ease;
+}
+
+.online-trading .content-text .btn-account i {
+    margin-right: 5px;
+}
+
+.online-trading .content-text .btn-account:hover {
+    background-color: #9c6904;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.online-trading .content-image img {
+    width: 100%;
+}
+
+.online-trading .content-image {
+    padding-top: 60px;
+}
+
+.team-style1 {
+    padding: 80px 0;
+}
+
+.trading-service .service-item {
+    padding: 25px;
+    box-shadow: 0px 2px 10px #0000001a;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.trading-service .service-item .icon img {
+    width: 60px;
+}
+
+.trading-service .service-item .icon {
+    margin-bottom: 10px;
+}
+
+.trading-service .service-item p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #9c6904;
+}
+
+.trading-service .content-service h4 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    color: #646966;
+    margin-bottom: 20px;
+}
+
+.trading-service .content-service h4 i {
+    color: #9c6904;
+}
+
+.trading-service .content-service h4 a {
+    color: #9c6904;
+}
+
+.trading-service .content-service .image {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.trading-service .content-service .image img {
+    height: 65px;
+    width: auto;
+}
+
+.trading-service .contact {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.trading-service .contact .contact-item a {
+    display: block;
+    padding: 12px 30px 12px 50px;
+    background: red;
+    border-radius: 30px;
+    line-height: 1;
+    position: relative;
+    text-align: center;
+    width: 200px;
+}
+
+.trading-service .contact .contact-item a {
+    color: #fff;
+    font-size: 16px;
+}
+
+.trading-service .contact .contact-item a i {
+    position: absolute;
+    left: -15px;
+    height: 55px;
+    width: 55px;
+    background: red;
+    border: 3px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    top: -7px;
+    font-size: 24px;
+}
+
+.trading-service .contact .contact-item.phone a, .trading-service .contact .contact-item.phone i {
+    background-color: #9c6904;
+}
+
+.trading-service .contact .contact-item.whatsapp a,.trading-service .contact .contact-item.whatsapp i {
+    background-color: #25D366;
+}
+
+.trading-service .contact .contact-item.linkedin a, .trading-service .contact .contact-item.linkedin i {
+    background-color: #0A66C2;
+}
+
+.trading-service .nav-tabs {
+    border: none;
+}
+
+.trading-service .nav-tabs .nav-item {
+    flex: 50%;
+    max-width: 50%;
+    text-align: center;
+}
+
+.trading-service .nav-tabs .nav-link {
+    width: 100%;
+}
+
+.trading-service .nav-tabs .nav-link {
+    border: none;
+    border-bottom: 2px solid #9c6904;
+    color: #9c6904;
+    opacity: .4;
+}
+
+.trading-service .nav-tabs .nav-link.active,
+.trading-service .nav-tabs .nav-link:hover,
+.trading-service .nav-tabs .nav-link:focus {
+    background-color: transparent;
+    color: #9c6904;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid #9c6904;
+    opacity: 1;
+}
+
+.single-step-style1 {
+    padding: 10px;
+    text-align: center;
+}
+
+.single-step-style1 .icon {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px #0000001a;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.single-step-style1 .icon img {
+    width: 100%;
+}
+
+.single-step-style1 span {
+    color: #9c6904;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.single-step-style1 h3 {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 26px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.single-step-style1 p {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.single-step-style1 .icon .label {
+    position: absolute;
+    top: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #9c6904;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    top: 10px;
+    left: 10px;
+}
+
+.step-style1-carousel .swiper-pagination.swiper-pagination-bullets {
+    position: relative;
+    bottom: 0;
+    margin-top: 15px;
+}
+
+.step-style1-carousel .swiper-pagination.swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 10px;
+    border-radius: 5px;
+    height: 4px;
+    background-color: #9c6904;
+}
+
+.step-style1-carousel .swiper-pagination.swiper-pagination-bullets .swiper-pagination-bullet-active {
+    width: 15px;
+}
+
+.video-content {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px #0000001a;
+}
+
+.video-content::before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.video-content.active::before {
+    display: none;
+}
+
+.video-content iframe,
+.video-content video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+.video-content img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+.trading-service .play-btn2 {
+    position: absolute;
+    z-index: 10;
+    left: calc(50% - 36px);
+    top: calc(50% - 36px);
+    font-size: 72px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.main-header-style1__content-top-middle .btn-box .btn-one {
+    color: #9c6904;
+}
+
+.quick-contact-style1__content .social-link ul li a {
+    color: #444;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.quick-contact-style1__content .social-link ul li a:hover {
+    color: #fff;
+}
+
+.team-style1--style2 {
+    padding-bottom: calc(80px - 60px);
+}
+
+.single-team-style1 {
+    height: calc(100% - 60px);
+}
+
+.single-footer-widget-contact .your-trading .btn-box .btn-one {
+    line-height: 23px;
+    display: inline-block;
+    padding: 8px 25px 8px 40px;
+    width: auto;
+    position: relative;
+    font-weight: 400;
+}
+
+.single-footer-widget-contact .your-trading .btn-box .btn-one i {
+    position: absolute;
+    left: -20px;
+    top:6.5px;
+}
+
 @media screen and (max-width: 992px) {
     .about-style1__img:last-child {
         margin-top: 40px;
+    }
+
+    .single-team-style1 .top-box {
+        padding-right: 0 !important;
+    }
+
+    .single-team-style1 {
+        margin-bottom: 20px;
+        height: calc(100% - 20px);
+    }
+
+    .team-banner .content-text h2 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .team-banner .content-text p {
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 5px;
+    }
+
+    .online-trading .content-image {
+        padding-top: 30px;
+    }
+
+    .online-trading {
+        padding-top: 30px !important;
+    }
+
+    .online-trading .content-text h2, .trading-service h2 {
+        font-size: 28px;
+        line-height: 34px;
+        margin-bottom: 10px;
+    }
+
+    .online-trading .content-text p {
+        margin-bottom: 20px;
+    }
+
+    .trading-service .service-item {
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    .trading-service .col-md-3 {
+        padding: 0 5px;
+    }
+
+    .trading-service .col-md-8 {
+        margin-top: 20px;
+    }
+
+    .trading-service .content-service .image img {
+        height: 45px;
+    }
+
+    .trading-service .contact {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .trading-service .contact .contact-item a {
+        width: 175px;
+        padding: 12px 15px 12px 50px;
     }
 }

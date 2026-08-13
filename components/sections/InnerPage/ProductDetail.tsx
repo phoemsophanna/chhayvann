@@ -17,7 +17,7 @@ const ProductDetail = ({post}:any) => {
                       <div className="gallery-products">
                         {
                           post?.gallery?.map((q:any) => {
-                            return <div className={`img-box ${photoChanged == `${api.FILE_URL}${q}` ? 'active' : ""}`} onClick={() => setPhotoChanged(`${api.FILE_URL}${q}`)}>
+                            return <div className={`img-box ${photoChanged == `${api.FILE_URL}${q}` ? 'active' : ""}`} key={q.id} onClick={() => setPhotoChanged(`${api.FILE_URL}${q}`)}>
                                     <Image
                                       src={`${api.FILE_URL}${q}`}
                                       alt={post.title}
@@ -54,8 +54,8 @@ const ProductDetail = ({post}:any) => {
                         <h3>{post?.title}</h3>
                       </div>
                       <ul>
-                        <li>Type: {post?.type}</li>
-                        <li>Country: {post?.country}</li>
+                        {post?.type ? <li>Type: {post?.type}</li> : ""}
+                        {post?.country ? <li>Country: {post?.country}</li> : ""}
                       </ul>
                     </div>
                   </div>

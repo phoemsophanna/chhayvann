@@ -17,7 +17,12 @@
         "Career": "Career",
         "ContactUs": "Contact Us",
         "OpenIndividualAccount": "Open Individual Account",
-        "OpenCorporateAccount": "Open Corporate Account"
+        "OpenCorporateAccount": "Open Corporate Account",
+        "co_founders": "Co-Founders",
+        "products_and_services": "Products & Services",
+        "Gold": "Gold",
+        "Platform": "Platform",
+        "OpenAccount": "Open Account"
     },
     "GENERAL": {
         "Khmer": "Khmer",
@@ -34,6 +39,10 @@
     "CurrencyConverter": "Currency Converter",
     "FROM": "FROM",
     "TO": "TO",
+    "contact_customer_service": "Contact customer service",
+    "on_mobile": "On Mobile",
+    "on_pc": "On PC",
+    "step": "Step",
     "AMOUNT": "AMOUNT",
     "RecentNews": "Recent News",
     "Categories": "Categories",
