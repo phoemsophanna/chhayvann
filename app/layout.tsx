@@ -12,6 +12,9 @@ import "swiper/css/autoplay";
 import 'swiper/css/effect-fade';
 
 import ClientLayout from "./client-layout";
+import Script from "next/script";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -53,6 +56,17 @@ export default function RootLayout({
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
+        {/* Google tag (gtag.js) */}
+        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+    
+              gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </head>
       <body className={`${hankenGrotesk.variable} ${moderustic.variable}`}>
         <ClientLayout>{children}</ClientLayout>
