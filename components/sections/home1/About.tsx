@@ -251,7 +251,7 @@ export default function About({homepage}:any) {
                                         </div>
                                     ) : ""
                                 }
-                                <h1>{homepage?.companyName ? homepage?.companyName : " CHHAYVANN CO., LTD "}</h1>
+                                <h1>{homepage?.companyName ? homepage?.companyName : " CHHAYVANN CO., LTD CAMBODIA"}</h1>
                             </div>
                             <div className="text">
                                 {
