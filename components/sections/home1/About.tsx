@@ -253,7 +253,12 @@ export default function About({homepage}:any) {
                                 {
                                     homepage?.aboutCompany ? (
                                         <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(homepage?.aboutCompany) }} />
-                                    ) : <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve. We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve. Thank you for placing your trust in us. We look forward to building a strong, productive relationship and to serving you with excellence.</p>
+                                    ) : <>
+                                            <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team.</p>
+                                            <p>Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve.</p>
+                                            <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold </p>
+                                            <p>wholesale that build trust and create long-term value for the communities and businesses we serve. Thank you for placing your trust in us. We look forward to building a strong, productive relationship and to serving you with excellence.</p>
+                                        </>
                                 }
                             </div>
                             <div className="btn-box">

@@ -31,11 +31,17 @@ export default function Video({trade}: any) {
                             data-wow-duration="1500ms">
                             <div className="sec-title withtext">
                                 <div className="sub-title">
-                                    <h4>{trade?.subtitle}</h4>
+                                    <h4>{trade?.subtitle ? trade?.subtitle : "HOW TO USE OUR PLATFORM"}</h4>
                                 </div>
-                                <h2>{trade?.title}</h2>
+                                <h2>{trade?.title ? trade?.title : "Easy to Follow Video"}</h2>
                                 <div className="text">
-                                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(trade?.des) }} />
+                                    {
+                                        trade?.des ? (
+                                            <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(trade?.des) }} />
+                                        ) : <>
+                                            <p>Watch our videos to understand how to use the CHHAYVANN CO., LTD platform for physical gold and silver. Learn step‑by‑step how to trade securely, check live prices, and manage your transactions with confidence.</p>
+                                        </>
+                                    }
                                 </div>
                             </div>
                             <div className="bottom-box">
