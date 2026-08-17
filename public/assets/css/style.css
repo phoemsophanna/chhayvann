@@ -784,8 +784,8 @@ select:focus {
     z-index: 1;
 }
 
-.sec-title h2 {
-    color: #684d07;
+.sec-title h2, .sec-title h1 {
+    color: #9f6605;
     /* color: var(--thm-black); */
     font-size: 35px;
     line-height: 1.2em;

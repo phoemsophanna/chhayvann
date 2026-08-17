@@ -247,10 +247,14 @@ export default function About({homepage}:any) {
                                 <div className="sub-title">
                                     <h4>{homepage?.subtitle}</h4>
                                 </div>
-                                <h2>{homepage?.companyName}</h2>
+                                <h1>{homepage?.companyName ? homepage?.companyName : "CHHAYVANN CO., LTD"}</h1>
                             </div>
                             <div className="text">
-                                <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(homepage?.aboutCompany) }} />
+                                {
+                                    homepage?.aboutCompany ? (
+                                        <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(homepage?.aboutCompany) }} />
+                                    ) : <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve. We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve. Thank you for placing your trust in us. We look forward to building a strong, productive relationship and to serving you with excellence.</p>
+                                }
                             </div>
                             <div className="btn-box">
                                 <Link href="/about">

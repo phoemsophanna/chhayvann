@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: any) {
     `About Company | CHHAYVANN CO., LTD.`,
     `CHHAYVANN CO., LTD is Cambodia’s leading and most trusted gold trading company, established in 1986.`,
     ['CHHAYVANN about us', 'about us'],
-    `/about`
+    `/`
   );
 
   return metadata;

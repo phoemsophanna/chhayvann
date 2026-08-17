@@ -63,7 +63,7 @@ export default function Choose() {
                     <h2>{whyChoose?.title}</h2>
                     <div className="text">
                         <p>
-                            {whyChoose?.summary}
+                            {whyChoose?.summary ? whyChoose?.summary : "Trusted for over 40 years, CHHAYVANN CO., LTD delivers the best quality gold at the most competitive prices, backed by secure transactions and transparent service. Licensed by the Ministry of Commerce, we combine heritage with innovation to serve clients with excellence."}
                         </p>
                     </div>
                 </div>
