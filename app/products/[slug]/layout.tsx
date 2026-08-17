@@ -1,15 +1,13 @@
 import { getSeoMetadata } from "@/utils/seo";
 
 export async function generateMetadata({ params }: any) {
-  const slug = params.slug;
-  
   // Fetch SEO data from API
   const metadata = await getSeoMetadata(
-    `/products/${slug}`, // API endpoint
-    `${slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} | CHHAYVANN CO., LTD.`,
-    `Discover our ${slug.replace(/-/g, ' ')} products and services at CHHAYVANN CO., LTD.`,
-    [slug.replace(/-/g, ' '), 'CHHAYVANN', 'products', 'services'],
-    `/products/${slug}`
+    `/seoSiteSetting?page=GOLD`, // API endpoint
+    `Gold Company | CHHAYVANN CO., LTD.`,
+    `CHHAYVANN CO., LTD is Cambodia’s leading and most trusted gold trading company, established in 1986.`,
+    ['CHHAYVANN Gold', 'Gold'],
+    `/products`
   );
 
   return metadata;
