@@ -53,7 +53,7 @@ export default function Courses_Page() {
                                                 {
                                                     careers?.map((q:any) => {
                                                         return (
-                                                            <Link href={`/career/${q.id}`} key={q?.id}>
+                                                            <Link href={`/career/${q.slug}`} key={q?.id}>
                                                                 <div className="career-item">
                                                                     <h2>{q?.title}</h2>
                                                                     <p>{q?.location}</p>

@@ -72,7 +72,7 @@ export default function Courses_Page() {
 
     return (
         <div>
-            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={career?.title} breadcrumbImage={banner?.image}>
+            <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={career?.title || t("HEADER.Career")} breadcrumbImage={banner?.image}>
                 <section className="quick-career-style1 detail-career">
                     <div className="container">
                         <div className="row">

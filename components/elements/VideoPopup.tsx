@@ -13,8 +13,6 @@ export default function VideoModal({videoSrc}:any): React.JSX.Element {
     setMounted(true);
   }, []);
 
-  console.log(videoSrc);
-
   // Disable background scroll
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";

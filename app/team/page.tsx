@@ -66,7 +66,7 @@ export default function Team_Page() {
                                                 </div> */}
                                             </div>
                                             <div className="middle-box text-center">
-                                                <h3><Link href={q?.description ? `/team/${q?.id}` : "#"}>
+                                                <h3><Link href={q?.description ? `/team/${q?.slug}` : "#"}>
                                                     {q?.name}
                                                 </Link></h3>
                                                 <p className="mb-3">
@@ -74,7 +74,7 @@ export default function Team_Page() {
                                                 </p>
                                                 {
                                                     q?.description ? (
-                                                        <Link href={q?.description ? `/team/${q?.id}` : "#"} className="see-more">
+                                                        <Link href={q?.description ? `/team/${q?.slug}` : "#"} className="see-more">
                                                             See More
                                                         </Link>
                                                     ) : ""
@@ -153,7 +153,7 @@ export default function Team_Page() {
                                                         </div> */}
                                                     </div>
                                                     <div className="middle-box text-center">
-                                                        <h3><Link href={q?.description ? `/team/${q?.id}` : "#"}>
+                                                        <h3><Link href={q?.description ? `/team/${q?.slug}` : "#"}>
                                                             {q?.name}
                                                         </Link></h3>
                                                         <p className="mb-3">
@@ -161,7 +161,7 @@ export default function Team_Page() {
                                                         </p>
                                                         {
                                                             q?.description ? (
-                                                                <Link href={q?.description ? `/team/${q?.id}` : "#"} className="see-more">
+                                                                <Link href={q?.description ? `/team/${q?.slug}` : "#"} className="see-more">
                                                                     See More
                                                                 </Link>
                                                             ) : ""

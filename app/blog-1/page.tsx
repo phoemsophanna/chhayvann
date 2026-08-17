@@ -87,7 +87,7 @@ export default function Blog_Page_One() {
                   <div className="single-blog-style5 single-blog-style5--style6">
                     {/* ---------- Image Box ---------- */}
                     <div className="img-box relative group">
-                      <Link href={`/blog-1/${post.id}`}>
+                      <Link href={`/blog-1/${post.slug}`}>
                         <Image
                           src={`${api.FILE_URL}${post.image}`}
                           alt={post.title}
@@ -118,7 +118,7 @@ export default function Blog_Page_One() {
 
                       <div className="title-box">
                         <h3>
-                          <Link href={`/blog-1/${post.id}`}>{post.title}</Link>
+                          <Link href={`/blog-1/${post.slug}`}>{post.title}</Link>
                         </h3>
                         <p>{post.summary}</p>
                       </div>

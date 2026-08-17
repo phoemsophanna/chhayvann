@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { getSeoMetadata } from "@/utils/seo";
 import { Hanken_Grotesk, Moderustic } from "next/font/google";
 
 import "../public/assets/css/bootstrap.min.css";
@@ -26,31 +26,18 @@ const moderustic = Moderustic({
   variable: "--font-moderustic",
 });
 
+export async function generateMetadata({ params }: any) {
+  // Fetch SEO data from API
+  const metadata = await getSeoMetadata(
+    `/seoSiteSetting?page=HOMEPAGE`, // API endpoint
+    `About Company | CHHAYVANN CO., LTD.`,
+    `CHHAYVANN CO., LTD is Cambodia’s leading and most trusted gold trading company, established in 1986.`,
+    ['CHHAYVANN about us', 'about us'],
+    `/about`
+  );
 
-export const metadata: Metadata = {
-  title: "CHHAYVANN CO., LTD.",
-  description: "CHHAYVANN CO., LTD. is a trusted financial service company specializing in currency exchange and gold trading. We provide competitive exchange rates, transparent pricing, and reliable gold buying and selling services for individuals and businesses.",
-  keywords: [
-    "CHHAYVANN",
-    "chhayvann",
-    'chhayvann co., ltd',
-    'chhayvann cambodia',
-    "CHHAYVANN CO., LTD.",
-    "Cambodia jewelry",
-    "Gold and silver Cambodia",
-    "Money exchange Cambodia",
-    "Jewelry shop in Cambodia",
-    "Gold trading",
-    "Currency exchange Cambodia"
-  ],
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://chhayvann.com.kh/"
-  },
-};
+  return metadata;
+}
 
 export default function RootLayout({
   children,
