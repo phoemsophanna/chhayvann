@@ -30,9 +30,13 @@ export default function Footer3() {
                                     </div>
                                     <div className="single-footer-widget-contact">
                                         <div className="footer-logo-style1">
-                                            <Link href="/">
-                                                <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : "/assets/images/Chhayvann-png.png"}`} alt="Logo" width={90} height={27} priority />
-                                            </Link>
+                                            {
+                                                general?.logo_footer ? (
+                                                    <Link href="/">
+                                                        <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : ""}`} alt="Logo" width={90} height={27} priority />
+                                                    </Link>
+                                                ) : ""
+                                            }
                                         </div>
                                         <div className="text-box">
                                             <p>

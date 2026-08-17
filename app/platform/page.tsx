@@ -125,11 +125,14 @@ export default function Platform_Page() {
                                     <div dangerouslySetInnerHTML={{__html: sanitizeHtml(sites?.description)}} />
                                     {
                                         sites?.label ? (
-                                            <a href={sites?.linkTo ? sites?.linkTo : "https://onlinetrade.chhayvann.com.kh/"} target="_blank" className="btn-account">
-                                                <i className="far fa-user-circle"></i> {sites?.label}
+                                            <a href={sites?.linkTo ? sites?.linkTo : "https://onlinetrade.chhayvann.com.kh/"} target="_blank" className="btn-login btn-account">
+                                                <i className="fas fa-sign-in-alt"></i> {sites?.label}
                                             </a>
                                         ) : ""
                                     }
+                                    <Link href={"/open-account"} target="_blank" className="mx-2 btn-account">
+                                        <i className="far fa-user-circle"></i> {t("HEADER.OpenAccount")}
+                                    </Link>
                                 </div>
                             </div>
                             {
@@ -330,7 +333,7 @@ export default function Platform_Page() {
                                                         ) : ""
                                                     }
                                                     <div className="title">
-                                                        <span>{t("step")} {index + 1}/{pc?.length}</span>
+                                                        <span>{t("step")} {index + 1}/{mobiles?.length}</span>
                                                         <h3>{q?.title}</h3>
                                                     </div>
                                                     <div className="text">

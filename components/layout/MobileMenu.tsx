@@ -34,11 +34,15 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
             <i className="fa fa-times-circle"></i>
           </span>
 
-          <div className="logo-box">
-              <Link href="/" aria-label="logo image">
-                  <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : "/assets/images/Chhayvann-png.png"}`} alt="Image" width={100} height={27} priority />
-              </Link>
-          </div>
+          {
+            general?.logo_footer ? (
+              <div className="logo-box">
+                  <Link href="/" aria-label="logo image">
+                      <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : ""}`} alt="Image" width={100} height={27} priority />
+                  </Link>
+              </div>
+            ) : ""
+          }
 
           <div className="mobile-nav__container">
             <ul className="main-menu__list">

@@ -62,7 +62,7 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
                         <div className="main-header-style1__content-top-left">
                             <div className="header-logo-box-style1">
                                 <Link href="/">
-                                    <Image src={`${general?.logo_header ? api.FILE_URL + general?.logo_header : "/assets/images/Chhayvann-Name.png"}`} alt="Awesome Logo" width={320} height={27} priority />
+                                    <Image src={`${general?.logo_header ? api.FILE_URL + general?.logo_header : ""}`} alt="Awesome Logo" width={320} height={27} priority />
                                 </Link>
                             </div>
                             <div className="header-trading-time-style1">
@@ -89,7 +89,7 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
                                     <div className="main-menu__wrapper-inner">
                                         <div className="sticky-logo-box-style1">
                                             <Link href="/">
-                                                <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : "/assets/images/Chhayvann-png.png"}`} alt="Awesome Logo" width={189} height={27} priority />
+                                                <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : ""}`} alt="Awesome Logo" width={189} height={27} priority />
                                             </Link>
                                         </div>
                                         <div className="main-menu-style1__left">
@@ -126,7 +126,7 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
                     <div className="main-menu__wrapper-inner">
                         <div className="sticky-logo-box-style1">
                             <Link href="/">
-                                <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : "/assets/images/Chhayvann-png.png"}`} alt="Awesome Logo" width={90} height={27} priority />
+                                <Image src={`${general?.logo_footer ? api.FILE_URL + general?.logo_footer : ""}`} alt="Awesome Logo" width={90} height={27} priority />
                             </Link>
                         </div>
                         <div className="main-menu-style1__left">
