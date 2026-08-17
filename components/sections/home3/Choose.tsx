@@ -60,7 +60,7 @@ export default function Choose() {
                     <div className="sub-title">
                         <h4>{whyChoose?.subtitle}</h4>
                     </div>
-                    <h2>{whyChoose?.title ? whyChoose?.title : "Cambodia’s Leading Gold Trading Company Since 1986"}</h2>
+                    <h1>{whyChoose?.title ? whyChoose?.title : "Cambodia’s Leading Gold Trading Company Since 1986"}</h1>
                     <div className="text">
                         <p>
                             {whyChoose?.summary ? whyChoose?.summary : "Trusted for over 40 years, CHHAYVANN CO., LTD delivers the best quality gold at the most competitive prices, backed by secure transactions and transparent service. Licensed by the Ministry of Commerce, we combine heritage with innovation to serve clients with excellence."}
@@ -87,7 +87,7 @@ export default function Choose() {
                                         </div>
                                     </div>
                                     <div className="content-box">
-                                        <h3><Link href="#">{whyChoose?.titleOne}</Link></h3>
+                                        {whyChoose?.titleOne ? <h3><Link href="#">{whyChoose?.titleOne}</Link></h3> : ""}
                                         <p>
                                             {whyChoose?.desOne}
                                         </p>
@@ -115,7 +115,7 @@ export default function Choose() {
                                         </div>
                                     </div>
                                     <div className="content-box">
-                                        <h3><Link href="#">{whyChoose?.titleTwo}</Link></h3>
+                                        {whyChoose?.titleTwo ? <h3><Link href="#">{whyChoose?.titleTwo}</Link></h3> : ""}
                                         <p>
                                             {whyChoose?.desTwo}
                                         </p>
@@ -144,7 +144,7 @@ export default function Choose() {
                                         </div>
                                     </div>
                                     <div className="content-box">
-                                        <h3><Link href="#">{whyChoose?.titleThree}</Link></h3>
+                                        {whyChoose?.titleThree ? <h3><Link href="#">{whyChoose?.titleThree}</Link></h3> : ""}
                                         <p>
                                             {whyChoose?.desThree}
                                         </p>
@@ -172,7 +172,7 @@ export default function Choose() {
                                         </div>
                                     </div>
                                     <div className="content-box">
-                                        <h3><Link href="#">{whyChoose?.titleFour}</Link></h3>
+                                        {whyChoose?.titleFour ? <h3><Link href="#">{whyChoose?.titleFour}</Link></h3> : ""}
                                         <p>
                                             {whyChoose?.desFour}
                                         </p>
@@ -199,7 +199,7 @@ export default function Choose() {
                                         </div>
                                     </div>
                                     <div className="content-box">
-                                        <h3><Link href="#">{whyChoose?.titleFive}</Link></h3>
+                                        {whyChoose?.titleFive ? <h3><Link href="#">{whyChoose?.titleFive}</Link></h3> : ""}
                                         <p>
                                             {whyChoose?.desFive}
                                         </p>
@@ -227,7 +227,7 @@ export default function Choose() {
                                         </div>
                                     </div>
                                     <div className="content-box">
-                                        <h3><Link href="#">{whyChoose?.titleSix}</Link></h3>
+                                        {whyChoose?.titleSix ? <h3><Link href="#">{whyChoose?.titleSix}</Link></h3> : ""}
                                         <p>
                                             {whyChoose?.desSix}
                                         </p>

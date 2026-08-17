@@ -105,9 +105,13 @@ export default function Banner() {
                                             </div>
                                             <div className="container">
                                                 <div className="content-box text-center">
-                                                    <div className="big-title big-title--two">
-                                                        <h2>{q?.title}</h2>
-                                                    </div>
+                                                    {
+                                                        q?.title ? (
+                                                            <div className="big-title big-title--two">
+                                                                <h2>{q?.title}</h2>
+                                                            </div>
+                                                        ) : ""
+                                                    }
                                                     <div className="text-box">
                                                         <div className="text-right">
                                                             <p>

@@ -247,7 +247,7 @@ export default function About({homepage}:any) {
                                 <div className="sub-title">
                                     <h4>{homepage?.subtitle}</h4>
                                 </div>
-                                <h1>{homepage?.companyName ? homepage?.companyName : "CHHAYVANN CO., LTD"}</h1>
+                                <h2>{homepage?.companyName ? homepage?.companyName : "CHHAYVANN CO., LTD"}</h2>
                             </div>
                             <div className="text">
                                 {
