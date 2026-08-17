@@ -333,7 +333,7 @@ export async function fetchSeoFromApi(
 
     const seoData = data?.sites;
     const pathname = new URL(seoData.url || pathnames, baseUrl).pathname;
-    const defaultImage = seoData.image || `${api.FILE_URL}/Chhayvann-png.png`;
+    const defaultImage = `${api.FILE_URL}${seoData.image}` || `${api.FILE_URL}/Chhayvann-png.png`;
 
     const metadata = generateDynamicMetadata(
       seoData.seo_title_eng || 'CHHAYVANN CO., LTD.',
@@ -367,7 +367,6 @@ export async function getSeoMetadata(
   imageUrl?: string
 ): Promise<Metadata> {
   const result = await fetchSeoFromApi(endpoint, language, imageUrl, pathname);
-  console.log(result);
   if (result?.metadata) {
     return result.metadata;
   }
