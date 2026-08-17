@@ -244,25 +244,20 @@ export default function About({homepage}:any) {
                         <div className="about-style1__content wow fadeInRight animated" style={{marginTop: 0}} data-wow-delay="00ms"
                             data-wow-duration="1500ms">
                             <div className="sec-title">
-                                {
-                                    homepage?.subtitle ? (
-                                        <div className="sub-title">
-                                            <h4>{homepage?.subtitle}</h4>
-                                        </div>
-                                    ) : ""
-                                }
+                                <div className="sub-title">
+                                    <h4>{homepage?.subtitle ? homepage?.subtitle : "Welcome To"}</h4>
+                                </div>
                                 <h1>{homepage?.companyName ? homepage?.companyName : " CHHAYVANN CO., LTD CAMBODIA"}</h1>
                             </div>
                             <div className="text">
                                 {
                                     homepage?.aboutCompany ? (
                                         <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(homepage?.aboutCompany) }} />
-                                    ) : <>
-                                            <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team.</p>
-                                            <p>Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve.</p>
-                                            <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold </p>
-                                            <p>wholesale that build trust and create long-term value for the communities and businesses we serve. Thank you for placing your trust in us. We look forward to building a strong, productive relationship and to serving you with excellence.</p>
-                                        </>
+                                    ) : <div>
+                                            <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve.</p>
+                                            <p>If you are joining as a client or partner, expect clear communication, secure handling of funds, and a proactive service team that aims to understand your needs and exceed your expectations. If you are joining as staff, welcome to a workplace that values expertise, continuous improvement, and teamwork.&nbsp;</p>
+                                            <p>Thank you for placing your trust in us. We look forward to building a strong, productive relationship and to serving you with excellence.</p>
+                                        </div>
                                 }
                             </div>
                             <div className="btn-box">
