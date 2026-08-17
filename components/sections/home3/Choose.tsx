@@ -50,7 +50,7 @@ export default function Choose() {
         });
     }, [i18n.language]);
 
-    // if(!whyChoose) return null;
+    if(!whyChoose) return null;
 
   return (
     <>
@@ -60,7 +60,7 @@ export default function Choose() {
                     <div className="sub-title">
                         <h4>{whyChoose?.subtitle}</h4>
                     </div>
-                    <h1>{whyChoose?.title ? whyChoose?.title : "Cambodia’s Leading Gold Trading Company Since 1986"}</h1>
+                    <h2>{whyChoose?.title ? whyChoose?.title : "Cambodia’s Leading Gold Trading Company Since 1986"}</h2>
                     <div className="text">
                         <p>
                             {whyChoose?.summary ? whyChoose?.summary : "Trusted for over 40 years, CHHAYVANN CO., LTD delivers the best quality gold at the most competitive prices, backed by secure transactions and transparent service. Licensed by the Ministry of Commerce, we combine heritage with innovation to serve clients with excellence."}

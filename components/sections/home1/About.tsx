@@ -244,10 +244,14 @@ export default function About({homepage}:any) {
                         <div className="about-style1__content wow fadeInRight animated" style={{marginTop: 0}} data-wow-delay="00ms"
                             data-wow-duration="1500ms">
                             <div className="sec-title">
-                                <div className="sub-title">
-                                    <h4>{homepage?.subtitle}</h4>
-                                </div>
-                                <h2>{homepage?.companyName ? homepage?.companyName : "CHHAYVANN CO., LTD"}</h2>
+                                {
+                                    homepage?.subtitle ? (
+                                        <div className="sub-title">
+                                            <h4>{homepage?.subtitle}</h4>
+                                        </div>
+                                    ) : ""
+                                }
+                                <h1>{homepage?.companyName ? homepage?.companyName : " CHHAYVANN CO., LTD "}</h1>
                             </div>
                             <div className="text">
                                 {
