@@ -50,7 +50,7 @@ export default function Choose() {
         });
     }, [i18n.language]);
 
-    if(!whyChoose) return null;
+    // if(!whyChoose) return null;
 
   return (
     <>
