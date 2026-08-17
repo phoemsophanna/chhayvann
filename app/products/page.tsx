@@ -35,8 +35,6 @@ export default function Blog_Page_Two() {
     setSlides(products.map((post:any) => ({ src: api.FILE_URL + post?.gallery[0] })));
   },[products])
 
-  console.log(products);
-
   return (
     <div>
       <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.Products")} breadcrumbImage={banner?.image}>
@@ -71,7 +69,7 @@ export default function Blog_Page_Two() {
                     <div className="content-box">
                       <div className="title-box">
                         <h3>
-                          <Link href={`/products/${post.id}`}>{post.title}</Link>
+                          <Link href={`/products/${post.slug}`}>{post.title}</Link>
                         </h3>
                         <p>
                           {post?.type}
@@ -82,10 +80,10 @@ export default function Blog_Page_Two() {
                       </div>
 
                       <div className="btn-box">
-                        <Link className="show-btn" href={`/products/${post.id}`}>
+                        <Link className="show-btn" href={`/products/${post.slug}`}>
                           Read More <i className="icon-right-arrow"></i>
                         </Link>
-                        <Link className="overlay-btn" href={`/products/${post.id}`}>
+                        <Link className="overlay-btn" href={`/products/${post.slug}`}>
                           Read More <i className="icon-right-arrow"></i>
                         </Link>
                       </div>
