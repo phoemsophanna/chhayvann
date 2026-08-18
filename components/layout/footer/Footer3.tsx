@@ -153,7 +153,7 @@ export default function Footer3() {
                                                 </Link>
                                             </li>
 
-                                            <li style={{visibility: "hidden"}}>
+                                            <li className="hidden">
                                                 <Link href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
                                                     Google
                                                 </Link>
