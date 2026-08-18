@@ -152,6 +152,21 @@ export default function Footer3() {
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
+
+                                            <li style={{visibility: "hidden"}}>
+                                                <Link href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+                                                    Google
+                                                </Link>
+                                                <Link href="https://www.facebook.com/your-page" target="_blank" rel="noopener noreferrer">
+                                                    Facebook
+                                                </Link>
+                                                <Link href="https://www.instagram.com/your-profile" target="_blank" rel="noopener noreferrer">
+                                                    Instagram
+                                                </Link>
+                                                <Link href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
+                                                    Linkedin
+                                                </Link>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
