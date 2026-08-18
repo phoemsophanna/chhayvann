@@ -245,7 +245,7 @@ export default function About({homepage}:any) {
                             data-wow-duration="1500ms">
                             <div className="sec-title">
                                 <div className="sub-title">
-                                    <h4>{homepage?.subtitle ? homepage?.subtitle : "Welcome To"}</h4>
+                                    <span>{homepage?.subtitle ? homepage?.subtitle : "Welcome To"}</span>
                                 </div>
                                 <h1>{homepage?.companyName ? homepage?.companyName : " CHHAYVANN CO., LTD"} <span style={{visibility: "hidden"}}>CAMBODIA</span></h1>
                             </div>

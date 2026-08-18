@@ -54,7 +54,7 @@ export default function Choose() {
             <div className="container">
                 <div className="sec-title withtext text-center">
                     <div className="sub-title">
-                        <h4>Why Choose Us</h4>
+                        <span>Why Choose Us</span>
                     </div>
                     <h2>Cambodia’s Leading Gold Trading Company Since 1986</h2>
                     <div className="text">
@@ -72,7 +72,7 @@ export default function Choose() {
             <div className="container">
                 <div className="sec-title withtext text-center">
                     <div className="sub-title">
-                        <h4>{whyChoose?.subtitle}</h4>
+                        <span>{whyChoose?.subtitle}</span>
                     </div>
                     <h2>{whyChoose?.title ? whyChoose?.title : "Cambodia’s Leading Gold Trading Company Since 1986"}</h2>
                     <div className="text">

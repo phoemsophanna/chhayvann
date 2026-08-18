@@ -31,7 +31,7 @@ export default function Video({trade}: any) {
                             data-wow-duration="1500ms">
                             <div className="sec-title withtext">
                                 <div className="sub-title">
-                                    <h4>{trade?.subtitle ? trade?.subtitle : "HOW TO USE OUR PLATFORM"}</h4>
+                                    <span>{trade?.subtitle ? trade?.subtitle : "HOW TO USE OUR PLATFORM"}</span>
                                 </div>
                                 <h2>{trade?.title ? trade?.title : "Easy to Follow Video"}</h2>
                                 <div className="text">
