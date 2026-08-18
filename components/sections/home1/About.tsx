@@ -371,7 +371,7 @@ export default function About({homepage}:any) {
                             </div>
                             <div className="graph-exchange">
                                 <div className="chart-title">
-                                    <h6>Graph: {t("XAU")}-{t("USD")}</h6>
+                                    <span>Graph: {t("XAU")}-{t("USD")}</span>
                                 </div>
                                 <div
                                     ref={chartContainerRef}
@@ -411,7 +411,7 @@ export default function About({homepage}:any) {
                             </div>
                             <div className="graph-exchange">
                                 <div className="chart-title" style={{backgroundColor: "#C0C0C0"}}>
-                                    <h6>Graph: {t("XAG")}-{t("USD")}</h6>
+                                    <span>Graph: {t("XAG")}-{t("USD")}</span>
                                 </div>
                                 <div
                                     ref={chartContainerRefTwo}
