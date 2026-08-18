@@ -54,12 +54,13 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
                 <Link href="#">{t("HEADER.Company")}</Link>
                 <ul style={{ display: activeDropdown == 1 ? "block" : "none" }}>
                   <li><Link href="/about">{t("HEADER.AboutUs")}</Link></li>
+                  <li><Link href="/history">{t("HEADER.History")}</Link></li>
                   {
                     general?.teams > 0 ? (
                       <li><Link href="/team">{t("HEADER.co_founders")}</Link></li>
                     ) : ""
                   }
-                  <li><Link href="/history">{t("HEADER.History")}</Link></li>
+                  <li><Link href="/organization">{t("HEADER.OrganizationChart")}</Link></li>
                   {
                     general?.testimonels > 0 ? (
                       <li><Link href="/testimonials">{t("HEADER.Testimonials")}</Link></li>

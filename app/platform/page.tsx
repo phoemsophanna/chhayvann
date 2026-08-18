@@ -119,6 +119,9 @@ export default function Platform_Page() {
                                 <div className="content-text">
                                     <h2>{sites?.title}</h2>
                                     <div dangerouslySetInnerHTML={{__html: sanitizeHtml(sites?.description)}} />
+                                    <Link href={"/open-account"} target="_blank" className="mx-2 btn-account">
+                                        <i className="far fa-user-circle"></i> {t("HEADER.OpenAccount")}
+                                    </Link>
                                     {
                                         sites?.label ? (
                                             <a href={sites?.linkTo ? sites?.linkTo : "https://onlinetrade.chhayvann.com.kh/"} target="_blank" className="btn-login btn-account">
@@ -126,9 +129,6 @@ export default function Platform_Page() {
                                             </a>
                                         ) : ""
                                     }
-                                    <Link href={"/open-account"} target="_blank" className="mx-2 btn-account">
-                                        <i className="far fa-user-circle"></i> {t("HEADER.OpenAccount")}
-                                    </Link>
                                 </div>
                             </div>
                             {

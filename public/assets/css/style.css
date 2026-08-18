@@ -5133,6 +5133,7 @@ select:focus {
     padding-top: 42px;
     border-radius: 10px;
     height: 90%;
+    background-color: #fff;
 }
 
 /*.choose-style2 .row li {
@@ -7448,12 +7449,16 @@ select:focus {
     line-height: 0;
 }
 
-.video-style1__content .bottom-box .left-box .btn-box .btn-one {
-    line-height: 36px;
+.video-style1__content .bottom-box .left-box .btn-box .btn-one,
+.contact-form form .button-box .btn-box .btn-one {
+    line-height: 23px;
     border-radius: 28px;
     font-family: var(--thm-font-2);
-    font-weight: 600;
+    font-weight: 400;
     color: #444;
+    font-size: 18px;
+    height: 40px;
+    padding: 10px 25px;
 }
 
 .video-style1__content .bottom-box .left-box .btn-box .btn-one::after {
@@ -7468,6 +7473,7 @@ select:focus {
     font-size: 10px;
     transition: all 200ms linear;
     transition-delay: 0.1s;
+    margin-right: 0;
 }
 
 .video-style1__content .bottom-box .left-box .total-videos {
@@ -14681,12 +14687,14 @@ select:focus {
 
 .online-trading .content-text .btn-account {
     display: inline-block;
-    padding: 9px 20px;
-    border: 1px solid #9c690480;
+    padding: 11px 20px;
+    border: 1px solid #9c6904;
     border-radius: 30px;
+    height: 40px;
     font-size: 16px;
+    background-color: #9c6904;
     font-weight: 400;
-    color: #9c6904;
+    color: #fff;
     line-height: 1;
     transition: all .3s ease;
 }
@@ -14992,6 +15000,7 @@ select:focus {
     width: auto;
     position: relative;
     font-weight: 400;
+    height: 40px;
 }
 
 .single-footer-widget-contact .your-trading .btn-box .btn-one i {
@@ -15020,13 +15029,14 @@ select:focus {
 }
 
 .online-trading .content-text .btn-account.btn-login {
-    border: 1px solid #C0C0C0;
-    color: #C0C0C0;
+    border: 1px solid #9c6904;
+    color: #9c6904;
+    background-color: #f9f0d3;
 }
 
 .online-trading .content-text .btn-account.btn-login:hover {
     color: #fff;
-    background-color: #C0C0C0;
+    background-color: #9c6904;
 }
 
 .history-content p {
