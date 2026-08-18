@@ -14,7 +14,7 @@ const swiperOptions = {
     modules: [Autoplay, Pagination, Navigation],
     slidesPerView: 1,
     spaceBetween: 30,
-    loop: true,
+    loop: false,
 
     // Navigation
     navigation: {
