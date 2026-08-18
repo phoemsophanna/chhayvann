@@ -7457,7 +7457,7 @@ select:focus {
     font-weight: 400;
     color: #444;
     font-size: 18px;
-    height: 40px;
+    height: 45px;
     padding: 10px 25px;
 }
 
@@ -14687,10 +14687,10 @@ select:focus {
 
 .online-trading .content-text .btn-account {
     display: inline-block;
-    padding: 11px 20px;
+    padding: 14px 20px;
     border: 1px solid #9c6904;
     border-radius: 30px;
-    height: 40px;
+    height: 45px;
     font-size: 16px;
     background-color: #9c6904;
     font-weight: 400;
@@ -14996,11 +14996,11 @@ select:focus {
 .single-footer-widget-contact .your-trading .btn-box .btn-one {
     line-height: 23px;
     display: inline-block;
-    padding: 8px 25px 8px 40px;
+    padding: 10px 30px 10px 45px;
     width: auto;
     position: relative;
     font-weight: 400;
-    height: 40px;
+    height: 45px;
 }
 
 .single-footer-widget-contact .your-trading .btn-box .btn-one i {
