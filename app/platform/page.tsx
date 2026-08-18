@@ -135,7 +135,7 @@ export default function Platform_Page() {
                                 sites?.image ? (
                                     <div className="col-md-6">
                                         <div className="content-image">
-                                            <Image src={api.FILE_URL + sites?.image} alt="" width={100} height={100} priority />
+                                            <Image src={api.FILE_URL + sites?.image} alt="" width={800} height={800} priority />
                                         </div>
                                     </div> 
                                 ) : ""
@@ -154,7 +154,7 @@ export default function Platform_Page() {
                                             {
                                                 q?.icon ?
                                                 <div className="icon">
-                                                    <Image src={api.FILE_URL + q?.icon} width={100} height={100} alt="" priority />
+                                                    <Image src={api.FILE_URL + q?.icon} width={800} height={800} alt="" priority />
                                                 </div> : ""
                                             }
                                             <p>{q?.title}</p>
@@ -172,7 +172,7 @@ export default function Platform_Page() {
                                             {
                                                 q?.icon ?
                                                 <div className="icon">
-                                                    <Image src={api.FILE_URL + q?.icon} width={100} height={100} alt="" priority />
+                                                    <Image src={api.FILE_URL + q?.icon} width={800} height={800} alt="" priority />
                                                 </div> : ""
                                             }
                                             <p>{q?.title}</p>
@@ -190,7 +190,7 @@ export default function Platform_Page() {
                                                     sites?.link ? (
                                                         <div className="img">
                                                             <a href={sites?.link} target="_blank">
-                                                                <Image src={api.FILE_URL + sites?.platform1} width={100} height={100} alt="" priority />
+                                                                <Image src={api.FILE_URL + sites?.platform1} width={800} height={800} alt="" priority />
                                                             </a>
                                                         </div>
                                                     ) : ""
@@ -199,7 +199,7 @@ export default function Platform_Page() {
                                                     sites?.link2 ? (
                                                         <div className="img">
                                                             <a href={sites?.link2} target="_blank">
-                                                                <Image src={api.FILE_URL + sites?.platform2} width={100} height={100} alt="" priority />
+                                                                <Image src={api.FILE_URL + sites?.platform2} width={800} height={800} alt="" priority />
                                                             </a>
                                                         </div>
                                                     ) : ""
@@ -208,7 +208,7 @@ export default function Platform_Page() {
                                                     sites?.link3 ? (
                                                         <div className="img">
                                                             <a href={sites?.link3} target="_blank">
-                                                                <Image src={api.FILE_URL + sites?.platform3} width={100} height={100} alt="" priority />
+                                                                <Image src={api.FILE_URL + sites?.platform3} width={800} height={800} alt="" priority />
                                                             </a>
                                                         </div>
                                                     ) : ""
@@ -294,7 +294,7 @@ export default function Platform_Page() {
                                                         q?.image ? (
                                                             <div className="icon">
                                                                 <span className="label">{index + 1}</span>
-                                                                <img src={api.FILE_URL + q?.image} width={100} height={100} alt="" />
+                                                                <img src={api.FILE_URL + q?.image} width={800} height={800} alt="" />
                                                             </div>
                                                         ) : ""
                                                     }
@@ -324,7 +324,7 @@ export default function Platform_Page() {
                                                         q?.image ? (
                                                             <div className="icon">
                                                                 <span className="label">{index + 1}</span>
-                                                                <img src={api.FILE_URL + q?.image} width={100} height={100} alt="" />
+                                                                <img src={api.FILE_URL + q?.image} width={800} height={800} alt="" />
                                                             </div>
                                                         ) : ""
                                                     }
@@ -359,7 +359,7 @@ export default function Platform_Page() {
                                         <div className="play-btn2" onClick={() => setPlay((prev:any) => !prev)}>
                                             <i className="fas fa-play-circle"></i>
                                         </div>
-                                        <Image src={sites?.video_thumbnail ? api.FILE_URL + sites?.video_thumbnail : `/assets/images/banner.webp`} width={100} height={100} alt="" />
+                                        <Image src={sites?.video_thumbnail ? api.FILE_URL + sites?.video_thumbnail : `/assets/images/banner.webp`} width={800} height={800} alt="" />
                                     </>
                                 )
                             }
