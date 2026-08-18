@@ -85,7 +85,7 @@ export default function Header({ style = 1 }: HeaderProps) {
       <SearchPopup isPopup={isPopupOpen} handlePopup={handlePopup} />
 
       {/* sidebar popup */}
-      <SidebarPopup isOpen={isSidebar} onClose={handleSidebar} />
+      {/* <SidebarPopup isOpen={isSidebar} onClose={handleSidebar} /> */}
 
       {/* Back to top button */}
       {/* <BackToTop scroll={isScrolled} /> */}
