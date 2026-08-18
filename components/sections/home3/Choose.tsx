@@ -50,7 +50,21 @@ export default function Choose() {
         });
     }, [i18n.language]);
 
-    if(!whyChoose) return null;
+    if(!whyChoose) return <section className="choose-style2">
+            <div className="container">
+                <div className="sec-title withtext text-center">
+                    <div className="sub-title">
+                        <h4>Why Choose Us</h4>
+                    </div>
+                    <h2>Cambodia’s Leading Gold Trading Company Since 1986</h2>
+                    <div className="text">
+                        <p>
+                            Trusted for over 40 years, CHHAYVANN CO., LTD delivers the best quality gold at the most competitive prices, backed by secure transactions and transparent service. Licensed by the Ministry of Commerce, we combine heritage with innovation to serve clients with excellence.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>;
 
   return (
     <>
