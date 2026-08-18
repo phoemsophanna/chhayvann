@@ -257,6 +257,7 @@ export default function About({homepage}:any) {
                                             <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve.</p>
                                             <p>If you are joining as a client or partner, expect clear communication, secure handling of funds, and a proactive service team that aims to understand your needs and exceed your expectations. If you are joining as staff, welcome to a workplace that values expertise, continuous improvement, and teamwork.&nbsp;</p>
                                             <p>Thank you for placing your trust in us. We look forward to building a strong, productive relationship and to serving you with excellence.</p>
+                                            <p style={{visibility: "hidden"}}>Chhayvann Co.,Ltd | Gold Trading | Money Exchange Rate</p>
                                         </div>
                                 }
                             </div>
