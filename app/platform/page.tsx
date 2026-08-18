@@ -163,7 +163,7 @@ export default function Platform_Page() {
                                 }
                             </div>
                             <div className="col-md-6 order-lg-2 order-1">
-                                <Image src={sites?.image2 ? api.FILE_URL + sites?.image2 : `/assets/images/frame-mobile.webp`} style={{width: "100%"}} width={100} height={100} alt="" priority />
+                                <Image src={sites?.image2 ? api.FILE_URL + sites?.image2 : `/assets/images/frame-mobile.webp`} style={{width: "100%"}} width={900} height={900} alt="" priority />
                             </div>
                             <div className="col-md-3 col-6 order-lg-3 order-3">
                                 {
