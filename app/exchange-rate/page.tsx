@@ -18,7 +18,7 @@ export default function Exchange_Rate_Page() {
     const [subCurrency, setSubCurrency] = useState<any>(null);
     const [exchanges, setExchanges] = useState<any>(null);
     const [service, setService] = useState<any>(null);
-    const [exchange, setExchange] = useState({from: "USD", to: "KHR", buy: 0, sell: 0,isTo: 0, isMultiply: 0});
+    const [exchange, setExchange] = useState({from: "USD", fromKm: "", toKm: "", to: "KHR", buy: 0, sell: 0,isTo: 0, isMultiply: 0});
     const [amount, setAmount] = useState(0);
     const [convertOption, setConvertOption] = useState("sell");
     const handleChange = (key: any, value: any) => {
@@ -26,9 +26,9 @@ export default function Exchange_Rate_Page() {
         if(key == "from"){
             setSubCurrency(value?.items);
             setExchangeSelected(value?.items[0]);
-            setExchange({...exchange, buy: value?.items[0]?.buy, isMultiply: value?.items[0]?.isMultiply, sell: value?.items[0]?.sell,isTo: value?.items[0]?.isTo, from: value?.items[0]?.from, to: value?.items[0]?.to});
+            setExchange({...exchange, buy: value?.items[0]?.buy, isMultiply: value?.items[0]?.isMultiply, sell: value?.items[0]?.sell,isTo: value?.items[0]?.isTo, from: value?.items[0]?.from, to: value?.items[0]?.to, toKm: value?.items[0]?.toKm, fromKm: value?.items[0]?.fromKm});
         } else {
-            setExchange({...exchange, buy: value?.buy, isMultiply: value?.isMultiply, sell: value?.sell,isTo: value?.isTo, from: value?.from, to: value?.to});
+            setExchange({...exchange, buy: value?.buy, isMultiply: value?.isMultiply, sell: value?.sell,isTo: value?.isTo, from: value?.from, to: value?.to, toKm: value?.toKm, fromKm: value?.fromKm});
             setExchangeSelected(value);
         }
         setConvertOption("sell");
@@ -80,7 +80,7 @@ export default function Exchange_Rate_Page() {
         if(currency.length > 0){
             currency?.map((q:any,index:any) => {
                 if(index == 0){
-                    setExchange({...exchange, buy: q?.items[0]?.buy, isMultiply: q?.items[0]?.isMultiply, sell: q?.items[0]?.sell, from: q?.items[0]?.from, to: q?.items[0]?.to});
+                    setExchange({...exchange, buy: q?.items[0]?.buy, isMultiply: q?.items[0]?.isMultiply, sell: q?.items[0]?.sell, from: q?.items[0]?.from, to: q?.items[0]?.to, fromKm: q?.items[0]?.fromKm, toKm: q?.items[0]?.toKm});
                     setSubCurrency(q?.items);
                     setExchangeSelected(q?.items[0]);
                 }
@@ -95,18 +95,53 @@ export default function Exchange_Rate_Page() {
       }).format(value);
     };
 
+    const toKhmerNumber = (value: number | string) => {
+        const khmerNumbers = ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"];
+
+        return String(value).replace(/\d/g, (digit) => khmerNumbers[Number(digit)]);
+    };
+
     const formatDate = (value: any) => {
-        if(value){
-            const date = new Date(value.replace(" ", "T"));
-            const formatted = date.toLocaleString("en-US", {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-            });
-            return formatted;
+        if (!value) return "";
+
+        const date = new Date(value.replace(" ", "T"));
+
+        if (i18n.language == "KHM") {
+            const khmerWeekdays = [
+                "អាទិត្យ",
+                "ចន្ទ",
+                "អង្គារ",
+                "ពុធ",
+                "ព្រហស្បតិ៍",
+                "សុក្រ",
+                "សៅរ៍",
+            ];
+
+            const khmerMonths = [
+                "មករា",
+                "កុម្ភៈ",
+                "មីនា",
+                "មេសា",
+                "ឧសភា",
+                "មិថុនា",
+                "កក្កដា",
+                "សីហា",
+                "កញ្ញា",
+                "តុលា",
+                "វិច្ឆិកា",
+                "ធ្នូ",
+            ];
+
+            return `${khmerWeekdays[date.getDay()]} ទី ${toKhmerNumber(date.getDate())} ខែ ${khmerMonths[date.getMonth()]} ឆ្នាំ ${toKhmerNumber(date.getFullYear())}`;
         }
-    }
+
+        return date.toLocaleDateString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        });
+    };
 
     return (
         <div>
@@ -156,11 +191,11 @@ export default function Exchange_Rate_Page() {
                                                                                                                 : `${api.FILE_URL}${q.image}`
                                                                                                             : "/no-image.png"
                                                                                                     } style={{width: 120, marginRight: 15}} alt="" />
-                                                                                                    <h6>{q.from}</h6>
+                                                                                                    <h6>{i18n.language == "KHM" && q.fromKm ? q.fromKm : q.from}</h6>
                                                                                                     <div className="icon-box">
                                                                                                         <i className="icon-exchange"></i>
                                                                                                     </div>
-                                                                                                    <h6>{q.to}</h6>
+                                                                                                    <h6>{i18n.language == "KHM" && q.toKm ? q.toKm : q.to}</h6>
                                                                                                 </div>
                                                                                             </td>
 
@@ -230,8 +265,8 @@ export default function Exchange_Rate_Page() {
                                                                 <div className="amount">
                                                                     <h6>{t("AMOUNT")}</h6>
                                                                     <input type="text" onChange={handleChangeAmount} />
-                                                                    <h3>{exchange.to} {formatUSD(amount)}</h3>
-                                                                    <h5>Updated Date: {formatDate(exchangeSelected?.date)}</h5>
+                                                                    <h3>{i18n.language == "KHM" && exchange.toKm ? exchange.toKm : exchange.to} {formatUSD(amount)}</h3>
+                                                                    <h5>{i18n.language == "KHM" ? "បានធ្វើបច្ចុប្បន្នភាព" : "Updated Date"}: {formatDate(exchangeSelected?.date)}</h5>
                                                                     <p>
                                                                         {service?.convertSummary}
                                                                     </p>

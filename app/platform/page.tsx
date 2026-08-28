@@ -184,7 +184,7 @@ export default function Platform_Page() {
                                 <div className="content-service">
                                     {
                                         sites?.link || sites?.link2 || sites?.link3 ? <>
-                                            <h4>Now available on <a href="">iOS</a> and <a href="">Android!</a></h4>
+                                            <h4>{t("Now available on")} <a href="">iOS</a> {t("and")} <a href="">Android!</a></h4>
                                             <div className="image">
                                                 {
                                                     sites?.link ? (

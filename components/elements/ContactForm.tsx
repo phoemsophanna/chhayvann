@@ -69,7 +69,7 @@ export default function ContactForm({setActive}:any) {
                     required
                     value={formData.firstname}
                     onChange={handleChange}
-                    placeholder="First Name"
+                    placeholder={t("First Name")}
                     />
                 </div>
             </div>
@@ -83,7 +83,7 @@ export default function ContactForm({setActive}:any) {
                     required
                     value={formData.lastname}
                     onChange={handleChange}
-                    placeholder="Last Name"
+                    placeholder={t("Last Name")}
                     />
                 </div>
             </div>
@@ -92,7 +92,7 @@ export default function ContactForm({setActive}:any) {
             <div className="form-group">
                 <div className="input-box">
                     <input type="text" name="phone" value={formData.phone} id="phone"
-                        placeholder="Phone number" onChange={handleChange} />
+                        placeholder={t("Phone Number")} onChange={handleChange} />
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@ export default function ContactForm({setActive}:any) {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Email Address"
+                    placeholder={t("Email Address")}
                     />
                 </div>
             </div>
@@ -114,7 +114,7 @@ export default function ContactForm({setActive}:any) {
             <div className="form-group">
                 <div className="input-box">
                     <input type="text" name="subject" value={formData.subject} onChange={handleChange} id="formSubject"
-                        placeholder="Subject" />
+                        placeholder={t("Subject")} />
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@ export default function ContactForm({setActive}:any) {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Message goes here"
+                    placeholder={t("Message goes here")}
                     />
                 </div>
             </div>
@@ -143,7 +143,7 @@ export default function ContactForm({setActive}:any) {
                             onChange={(token) => setCaptchaToken(token)}
                             onExpired={() => setCaptchaToken(null)}
                         />
-                        {!captchaToken && <div className="text-danger">Please verify that you are not a robot.</div>}
+                        {!captchaToken && <div className="text-danger">{t("Please verify that you are not a robot.")}</div>}
                     </div>
                 </div>
                 <div className="col-md-6">

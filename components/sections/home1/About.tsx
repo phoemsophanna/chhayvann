@@ -11,7 +11,7 @@ import { echo } from "@/utils/echo";
 import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 export default function About({homepage}:any) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [realBuy, setRealBuy] = useState<any>(0);
     const [realSell, setRealSell] = useState<any>(0);
     const [TLBuy, setTLBuy] = useState<any>(0);
@@ -235,6 +235,54 @@ export default function About({homepage}:any) {
       }).format(value);
     };
 
+    const toKhmerNumber = (value: number | string) => {
+        const khmerNumbers = ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"];
+
+        return String(value).replace(/\d/g, (digit) => khmerNumbers[Number(digit)]);
+    };
+
+    const formatDate = (value: any) => {
+        if (!value) return "";
+
+        const date = new Date(value.replace(" ", "T"));
+
+        if (i18n.language == "KHM") {
+            const khmerWeekdays = [
+                "អាទិត្យ",
+                "ចន្ទ",
+                "អង្គារ",
+                "ពុធ",
+                "ព្រហស្បតិ៍",
+                "សុក្រ",
+                "សៅរ៍",
+            ];
+
+            const khmerMonths = [
+                "មករា",
+                "កុម្ភៈ",
+                "មីនា",
+                "មេសា",
+                "ឧសភា",
+                "មិថុនា",
+                "កក្កដា",
+                "សីហា",
+                "កញ្ញា",
+                "តុលា",
+                "វិច្ឆិកា",
+                "ធ្នូ",
+            ];
+
+            return `${toKhmerNumber(date.getDate())} ${khmerMonths[date.getMonth()]} ${toKhmerNumber(date.getFullYear())}`;
+        }
+
+        return date.toLocaleDateString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        });
+    };
+
   return (
     <>
         <section className="about-style1">
@@ -282,8 +330,8 @@ export default function About({homepage}:any) {
                                     </thead>
                                     <tbody>
                                         <tr className="bottom">
-                                            <td className="text-start">MKT</td>
-                                            <td colSpan={2} className="text-end">Value: {dayjs().format('DD-MMM-YYYY')}</td>
+                                            <td className="text-start">{t("MKT")}</td>
+                                            <td colSpan={2} className="text-end">{t("Value")}: {formatDate(dayjs().format('DD-MMM-YYYY'))}</td>
                                         </tr>
                                         <tr className="bottom">
                                             <td>{t("KG")}</td>
@@ -371,7 +419,7 @@ export default function About({homepage}:any) {
                             </div>
                             <div className="graph-exchange">
                                 <div className="chart-title">
-                                    <span>Graph: {t("XAU")}-{t("USD")}</span>
+                                    <span>{t("Graph")}: {t("XAU")}-{t("USD")}</span>
                                 </div>
                                 <div
                                     ref={chartContainerRef}
@@ -393,8 +441,8 @@ export default function About({homepage}:any) {
                                     </thead>
                                     <tbody>
                                         <tr className="bottom">
-                                            <td style={{padding: "15px"}} className="text-start">MKT</td>
-                                            <td colSpan={2} className="text-end">Value: {dayjs().format('DD-MMM-YYYY')}</td>
+                                            <td style={{padding: "15px"}} className="text-start">{t("MKT")}</td>
+                                            <td colSpan={2} className="text-end">{t("Value")}: {formatDate(dayjs().format('DD-MMM-YYYY'))}</td>
                                         </tr>
                                         <tr className="bottom">
                                             <td style={{padding: "15px"}}>{t("KG")}</td>
@@ -411,7 +459,7 @@ export default function About({homepage}:any) {
                             </div>
                             <div className="graph-exchange">
                                 <div className="chart-title" style={{backgroundColor: "#C0C0C0"}}>
-                                    <span>Graph: {t("XAG")}-{t("USD")}</span>
+                                    <span>{t("Graph")}: {t("XAG")}-{t("USD")}</span>
                                 </div>
                                 <div
                                     ref={chartContainerRefTwo}

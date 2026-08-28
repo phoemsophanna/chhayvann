@@ -91,14 +91,14 @@ export default function Account_Open_One() {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group mb-3">
                                                     <div className="input-box">
-                                                        <label htmlFor="" className="form-label" style={{lineHeight: 1}}>First Name
+                                                        <label htmlFor="" className="form-label" style={{lineHeight: 1}}>{t("First Name")}
                                                             <span className="text-danger"> *</span>
                                                         </label>
                                                         <input
                                                         type="text"
                                                         name="firstname"
                                                         required
-                                                        placeholder="First Name"
+                                                        placeholder={t("First Name")}
                                                         className="mb-3"
                                                         />
                                                     </div>
@@ -107,25 +107,25 @@ export default function Account_Open_One() {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group mb-3">
                                                     <div className="input-box">
-                                                        <label htmlFor="" className="form-label" style={{lineHeight: 1}}>Last Name
+                                                        <label htmlFor="" className="form-label" style={{lineHeight: 1}}>{t("Last Name")}
                                                             <span className="text-danger"> *</span>
                                                         </label>
                                                         <input type="text" name="lastname" id="formPhone"
-                                                            placeholder="Last Name" required className="mb-3" />
+                                                            placeholder={t("Last Name")} required className="mb-3" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group mb-3">
                                                     <div className="input-box">
-                                                        <label htmlFor="" className="form-label" style={{lineHeight: 1}}>Phone
+                                                        <label htmlFor="" className="form-label" style={{lineHeight: 1}}>{t("Phone")}
                                                             <span className="text-danger"> *</span>
                                                         </label>
                                                         <input
                                                         type="text"
                                                         name="phoneNumber"
                                                         required
-                                                        placeholder="Phone Number"
+                                                        placeholder={t("Phone Number")}
                                                         className="mb-3"
                                                         />
                                                     </div>
@@ -134,11 +134,11 @@ export default function Account_Open_One() {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group mb-3">
                                                     <div className="input-box">
-                                                        <label htmlFor="" className="form-label" style={{lineHeight: 1}}>Email
-                                                            <span style={{fontSize: 12, verticalAlign: "top"}}> (optional)</span>
+                                                        <label htmlFor="" className="form-label" style={{lineHeight: 1}}>{t("Email")}
+                                                            <span style={{fontSize: 12, verticalAlign: "top"}}> ({t("optional")})</span>
                                                         </label>
                                                         <input type="email" name="email" id="formSubject"
-                                                            placeholder="Email Address" className="mb-3" />
+                                                            placeholder={t("Email Address")} className="mb-3" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,7 +171,7 @@ export default function Account_Open_One() {
                                                                 onChange={(token) => setCaptchaToken(token)}
                                                                 onExpired={() => setCaptchaToken(null)}
                                                             />
-                                                            {!captchaToken && <div className="text-danger">Please verify that you are not a robot.</div>}
+                                                            {!captchaToken && <div className="text-danger">{t("Please verify that you are not a robot.")}</div>}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">

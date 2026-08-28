@@ -49,7 +49,9 @@ export default function Team_Page() {
             <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.co_founders")} breadcrumbImage={banner?.image}>
                 <section className="team-style1 team-style1--style2">
                     <div className="container">
-                        <h2>FOUNDERS & BOARD OF DIRECTORS</h2>
+                        <div className="col-12 sec-title withtext text-center">
+                            <h2>{t("FOUNDERS & BOARD OF DIRECTORS")}</h2>
+                        </div>
                         <div className="row justify-content-center gap-lg-4">
                             {
                                 manager?.map((q:any,index:any) => (

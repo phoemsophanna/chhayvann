@@ -129,7 +129,7 @@ export default function Courses_Page() {
                                                             type="text"
                                                             name="firstname"
                                                             required
-                                                            placeholder="First Name"
+                                                            placeholder={t("First Name")}
                                                         />
                                                     </div>
                                                 </div>
@@ -138,7 +138,7 @@ export default function Courses_Page() {
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <input type="text" name="lastname" id="formPhone"
-                                                            placeholder="Last Name" />
+                                                            placeholder={t("Last Name")} />
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,7 +149,7 @@ export default function Courses_Page() {
                                                         type="text"
                                                         name="phoneNumber"
                                                         required
-                                                        placeholder="Phone Number"
+                                                        placeholder={t("Phone Number")}
                                                         />
                                                     </div>
                                                 </div>
@@ -158,14 +158,14 @@ export default function Courses_Page() {
                                                 <div className="form-group">
                                                     <div className="input-box">
                                                         <input type="email" name="email" id="formSubject"
-                                                            placeholder="Email Address" />
+                                                            placeholder={t("Email Address")} />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                     <div className="input-box">
-                                                        <label htmlFor="fileCV" className="fileCV"><i className="fas fa-upload"></i> Upload your CV</label><span style={{marginLeft: "10px"}}>Max file size 10MB.</span>
+                                                        <label htmlFor="fileCV" className="fileCV"><i className="fas fa-upload"></i> {t("Upload your CV")}</label><span style={{marginLeft: "10px"}}>{t("Max file size 10MB")}.</span>
                                                         <input type="file" onChange={(e) => handleChangeFile(e)} style={{visibility: "hidden", position: "absolute"}} name="fileCV" id="fileCV"
                                                             placeholder="Email Address" accept=".pdf" />
                                                         
@@ -188,7 +188,7 @@ export default function Courses_Page() {
                                                         name="message"
                                                         required
                                                         rows={4}
-                                                        placeholder="Why do you want to work with us?"
+                                                        placeholder={t("Why do you want to work with us?")}
                                                         />
                                                     </div>
                                                 </div>
@@ -202,7 +202,7 @@ export default function Courses_Page() {
                                                                 onChange={(token) => setCaptchaToken(token)}
                                                                 onExpired={() => setCaptchaToken(null)}
                                                             />
-                                                            {!captchaToken && <div className="text-danger">Please verify that you are not a robot.</div>}
+                                                            {!captchaToken && <div className="text-danger">{t("Please verify that you are not a robot.")}</div>}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">

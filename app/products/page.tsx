@@ -69,7 +69,13 @@ export default function Blog_Page_Two() {
                     <div className="content-box">
                       <div className="title-box">
                         <h3>
-                          <Link href={`/products/${post.slug}`}>{post.title}</Link>
+                          {
+                            post?.content ? (
+                              <Link href={`/products/${post.slug}`}>{post.title}</Link>
+                            ) : (
+                              post.title
+                            )
+                          }
                         </h3>
                         <p>
                           {post?.type}

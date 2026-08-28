@@ -38,21 +38,35 @@ export default function Footer3() {
                                                 ) : ""
                                             }
                                         </div>
-                                        <div className="text-box">
-                                            <p>
-                                                {general?.summary}
-                                            </p>
-                                        </div>
+                                        {
+                                            general?.summary ? (
+                                                <div className="text-box">
+                                                    <p>
+                                                        {general?.summary}
+                                                    </p>
+                                                </div>
+                                            ) : ""
+                                        }
                                         <div className="your-trading">
-                                            <div className="title1">
+                                            {/* <div className="title1">
                                                 <h3>{t("BeginYourTrading")}</h3>
-                                            </div>
+                                            </div> */}
                                             <div className="btn-box">
                                                 <Link href="/open-account"
                                                     className="btn-one">
                                                     <span className="txt">
                                                         {t("HEADER.OpenAccount")}
-                                                        <i className="icon-right-arrow"></i>
+                                                        <i className="far fa-user-circle"></i>
+                                                    </span>
+                                                </Link>
+                                            </div>
+
+                                            <div className="btn-box">
+                                                <Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank"
+                                                    className="btn-one">
+                                                    <span className="txt">
+                                                        {i18n.language == "KHM" ? "ចូលផ្លាតហ្វម" : "Login"}
+                                                        <i className="fas fa-sign-in-alt"></i>
                                                     </span>
                                                 </Link>
                                             </div>
@@ -211,7 +225,7 @@ export default function Footer3() {
                                             ) : ""
                                         }
                                         <li>
-                                            {t("Address")}: {contact?.address}
+                                            {t("Address")}: {i18n.language == "KHM" && contact?.addressKm ? contact?.addressKm : contact?.address}
                                         </li>
                                         <li>
                                             {t("FollowUs")}:
@@ -283,17 +297,12 @@ export default function Footer3() {
 
                 <div className="footer-bottom-style3">
                     <div className="container">
-                        <div className="bottom-inner-style3">
+                        <div className="bottom-inner-style3 justify-content-center">
                             <div className="copyright-text-style3 wow fadeInLeft" data-wow-duration="1500ms"
                                 data-wow-delay="000ms">
                                 <p>
-                                    Copyrights © {new Date().getFullYear()} <Link href="/">Chhayvann. </Link> All rights reserved.
+                                    Copyrights © {new Date().getFullYear()} <Link href="/">{t("CHHAYVANN Co., Ltd.")} </Link> All rights reserved.
                                 </p>
-                            </div>
-                            <div className="payment-methods wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="200ms">
-                                <div className="text">
-                                    <p>Designed By: <a href="https://camgotech.com/" target="_blank">www.camgotech.com</a></p>
-                                </div>
                             </div>
                         </div>
                     </div>

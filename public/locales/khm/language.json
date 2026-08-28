@@ -3,7 +3,7 @@
         "HOME": "ទំព័រដើម",
         "Company": "ក្រុមហ៊ុន",
         "AboutUs": "អំពីយើង",
-        "OrganizationChart": "គម្រោងអង្គភាព",
+        "OrganizationChart": "រចនាសម្ព័ន្ធក្រុមហ៊ុន",
         "History": "ប្រវត្តិក្រុមហ៊ុន",
         "TeamMembers": "សមាជិកក្រុម",
         "Testimonials": "មតិអតិថិជន",
@@ -21,7 +21,7 @@
         "co_founders": "សហស្ថាបនិក",
         "products_and_services": "ផលិតផលនិងសេវាកម្ម",
         "Gold": "មាស",
-        "Platform": "វេទិកា",
+        "Platform": "ផ្លាតហ្វម",
         "OpenAccount": "បើកគណនី"
     },
     "GENERAL": {
@@ -72,5 +72,23 @@
     "TL": "តម្លឹង",
     "OZ": "អោន",
     "KG": "គីឡូ",
-    "XAG": "ប្រាក់"
+    "XAG": "ប្រាក់",
+    "CHHAYVANN Co., Ltd.": "CHHAYVANN Co., Ltd.",
+    "FOUNDERS & BOARD OF DIRECTORS": "ស្ថាបនិក និងក្រុមប្រឹក្សាភិបាល",
+    "Now available on": "ឥឡូវនេះមាននៅលើ",
+    "and": "និង",
+    "Graph": "ក្រាហ្វ",
+    "Value": "តម្លៃ",
+    "MKT": "ហាងឆេង",
+    "Please verify that you are not a robot.": "សូមផ្ទៀងផ្ទាត់ថា អ្នកមិនមែនជារ៉ូបូតទេ។",
+    "Email Address": "អាសយដ្ឋានអ៊ីមែល",
+    "optional": "ជាជម្រើស",
+    "Phone Number": "លេខទូរស័ព្ទ",
+    "Last Name": "នាមត្រកូល",
+    "First Name": "នាមខ្លួន",
+    "Upload your CV": "បញ្ចូលប្រវត្តិរូបសង្ខេប (CV) របស់អ្នក",
+    "Max file size 10MB": "ទំហំឯកសារអតិបរមា 10MB",
+    "Why do you want to work with us?": "ហេតុអ្វីបានជាអ្នកចង់ធ្វើការជាមួយយើង?",
+    "Subject": "ប្រធានបទ",
+    "Message goes here": "សាររបស់អ្នកនៅទីនេះ"
 }
