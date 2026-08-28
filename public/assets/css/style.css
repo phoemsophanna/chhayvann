@@ -15046,6 +15046,15 @@ select:focus {
     margin-bottom: 10px;
 }
 
+.stricky-header .language-switcher-style1 .nice-select {
+    color: #684d07;
+    border: 1px solid #684d07;
+}
+
+.stricky-header .language-switcher-style1 .nice-select:after {
+    color: #684d07;
+}
+
 @media screen and (max-width: 992px) {
     .about-style1__img:last-child {
         margin-top: 40px;

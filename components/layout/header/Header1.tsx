@@ -147,7 +147,11 @@ export default function Header1({ scroll, handleMobileMenu, handlePopup }: Heade
 
                             </div>
                         </div>
-                        
+                        <div className="main-menu-style1__right">
+                            <div className="language-switcher-style1">
+                                <Language/>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
