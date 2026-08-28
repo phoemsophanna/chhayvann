@@ -272,14 +272,13 @@ export default function About({homepage}:any) {
                 "ធ្នូ",
             ];
 
-            return `${toKhmerNumber(date.getDate())} ${khmerMonths[date.getMonth()]} ${toKhmerNumber(date.getFullYear())}`;
+            return `ថ្ងៃ${toKhmerNumber(date.getDate())} ខែ${khmerMonths[date.getMonth()]} ឆ្នាំ${toKhmerNumber(date.getFullYear())}`;
         }
 
-        return date.toLocaleDateString("en-US", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
+        return date.toLocaleDateString("en-GB", {
             day: "numeric",
+            month: "long",
+            year: "numeric",
         });
     };
 
