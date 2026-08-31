@@ -142,12 +142,16 @@ export default function Footer3() {
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>
-                                            <li>
-                                                <Link href="/faq">
-                                                    {t("FAQ")}
-                                                    <i className="icon-right-arrow"></i>
-                                                </Link>
-                                            </li>
+                                            {
+                                                general?.faq > 0 ? (
+                                                    <li>
+                                                        <Link href="/faq">
+                                                            {t("FAQ")}
+                                                            <i className="icon-right-arrow"></i>
+                                                        </Link>
+                                                    </li>
+                                                ) : ""
+                                            }
                                             <li>
                                                 <Link href="/career">
                                                     {t("HEADER.Career")}

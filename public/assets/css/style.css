@@ -101,6 +101,10 @@ p {
     margin: 0;
 }
 
+span {
+    font-family: var(--thm-font) !important;
+}
+
 a {
     color: var(--thm-black);
     transition: all 200ms linear;
@@ -14660,6 +14664,7 @@ select:focus {
     color: #9c6904;
     font-weight: 300;
     margin-top: 10px;
+    font-size: 25px;
 }
 
 .team-banner .content-image img {
@@ -14680,7 +14685,7 @@ select:focus {
 }
 
 .online-trading .content-text p {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     margin-bottom: 30px;
 }
@@ -15042,7 +15047,7 @@ select:focus {
 }
 
 .history-content p {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
@@ -15124,4 +15129,13 @@ select:focus {
         width: 175px;
         padding: 12px 15px 12px 50px;
     }
+}
+
+.faq-style2 .container ul {
+    list-style: disc;
+    padding-left: 25px;
+}
+
+.faq-style2 .container ul li {
+    list-style: disc;
 }

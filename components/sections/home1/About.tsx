@@ -272,7 +272,7 @@ export default function About({homepage}:any) {
                 "ធ្នូ",
             ];
 
-            return `ថ្ងៃ${toKhmerNumber(date.getDate())} ខែ${khmerMonths[date.getMonth()]} ឆ្នាំ${toKhmerNumber(date.getFullYear())}`;
+            return `ថ្ងៃ${date.getDate()} ខែ${khmerMonths[date.getMonth()]} ឆ្នាំ${date.getFullYear()}`;
         }
 
         return date.toLocaleDateString("en-GB", {
