@@ -101,10 +101,6 @@ p {
     margin: 0;
 }
 
-span {
-    font-family: var(--thm-font) !important;
-}
-
 a {
     color: var(--thm-black);
     transition: all 200ms linear;
@@ -15138,4 +15134,8 @@ select:focus {
 
 .faq-style2 .container ul li {
     list-style: disc;
+}
+
+.faq-style2 span {
+    font-family: var(--thm-font) !important;
 }
