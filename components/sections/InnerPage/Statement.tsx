@@ -49,7 +49,7 @@ export default function Statement({about}:any) {
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">
                                                 <div className="single-statement-style1__img">
-                                                    <Image src={about?.image2 ? api.FILE_URL + about?.image2 : "/assets/images/resources/statement-v1-1.webp"} alt="Image" width={470} height={345} priority />
+                                                    <Image src={about?.image2 ? api.FILE_URL + about?.image2 : "/assets/images/resources/statement-v1-1.webp"} alt="Image" width={800} height={800} priority />
                                                 </div>
                                             </div>
                                         </div>
@@ -76,7 +76,7 @@ export default function Statement({about}:any) {
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">
                                                 <div className="single-statement-style1__img">
-                                                    <Image src={about?.image3 ? api.FILE_URL + about?.image3 : "/assets/images/about/vision.jpg"} alt="Image" width={470} height={345} priority />
+                                                    <Image src={about?.image3 ? api.FILE_URL + about?.image3 : "/assets/images/about/vision.jpg"} alt="Image" width={800} height={800} priority />
                                                 </div>
                                             </div>
                                         </div>
@@ -100,7 +100,7 @@ export default function Statement({about}:any) {
                                             </div>
                                             <div className="col-xl-6 col-lg-6 order-md-2 order-1">
                                                 <div className="single-statement-style1__img">
-                                                    <Image src={about?.image4 ? api.FILE_URL + about?.image4 : "/assets/images/about/value.jpg"} alt="Image" width={470} height={345} priority />
+                                                    <Image src={about?.image4 ? api.FILE_URL + about?.image4 : "/assets/images/about/value.jpg"} alt="Image" width={800} height={800} priority />
                                                 </div>
                                             </div>
                                         </div>

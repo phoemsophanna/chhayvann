@@ -132,7 +132,7 @@ export default function Exchange_Rate_Page() {
                 "ធ្នូ",
             ];
 
-            return `${khmerWeekdays[date.getDay()]} ទី ${toKhmerNumber(date.getDate())} ខែ ${khmerMonths[date.getMonth()]} ឆ្នាំ ${toKhmerNumber(date.getFullYear())}`;
+            return `ថ្ងៃ${khmerWeekdays[date.getDay()]} ទី${toKhmerNumber(date.getDate())} ខែ${khmerMonths[date.getMonth()]} ឆ្នាំ${toKhmerNumber(date.getFullYear())}`;
         }
 
         return date.toLocaleDateString("en-US", {

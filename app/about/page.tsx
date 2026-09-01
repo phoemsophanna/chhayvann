@@ -71,12 +71,18 @@ export default function About_Page() {
                                                     {
                                                         about?.thumbnail?.map((q:any) => (
                                                             <SwiperSlide>
-                                                                <Image src={`${q ? api.FILE_URL + q : "/assets/images/about/about-v2-2.webp"}`} alt="Image" width={300} height={460} priority />
+                                                                <Image src={`${q ? api.FILE_URL + q : "/assets/images/about/about-v2-2.webp"}`} alt="Image" width={900} height={900} priority />
                                                             </SwiperSlide>
                                                         ))
                                                     }
-                                                    <button className="owl-nav-style-about owl-prev"><span className="left icon-arrow-left"></span></button>
-                                                    <button className="owl-nav-style-about owl-next"><span className="icon-arrow-right"></span></button>
+                                                    {
+                                                        about?.thumbnail?.length > 1 ? (
+                                                            <>
+                                                                <button className="owl-nav-style-about owl-prev"><span className="left icon-arrow-left"></span></button>
+                                                                <button className="owl-nav-style-about owl-next"><span className="icon-arrow-right"></span></button>
+                                                            </>
+                                                        ) : ""
+                                                    }
                                                 </Swiper>
                                             </div>
                                         </div>
