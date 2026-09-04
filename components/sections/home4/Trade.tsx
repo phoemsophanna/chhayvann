@@ -100,7 +100,7 @@ export default function Trade() {
                             </div>
                             <div className="bottom-box">
                                 <div className="icon">
-                                    <VideoModal/>
+                                    {/* <VideoModal/> */}
                                 </div>
                                 <h3>
                                     <Link className="video-popup"

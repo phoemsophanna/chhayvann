@@ -114,7 +114,7 @@ export default function Banner() {
                                     </div>
                                     <div className="text-box">
                                         <h4>Master Trading <br />in Minutes...</h4>
-                                        <VideoModal/>
+                                        {/* <VideoModal/> */}
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@ export default function Banner() {
                                     </div>
                                     <div className="text-box">
                                         <h4>Master Trading <br />in Minutes...</h4>
-                                        <VideoModal/>
+                                        {/* <VideoModal/> */}
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@ export default function Banner() {
                                     </div>
                                     <div className="text-box">
                                         <h4>Master Trading <br />in Minutes...</h4>
-                                        <VideoModal/>
+                                        {/* <VideoModal/> */}
                                     </div>
                                 </div>
                             </div>

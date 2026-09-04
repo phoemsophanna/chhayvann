@@ -46,7 +46,7 @@ export default function Service() {
                                         Read More
                                         <i className="icon-right-arrow"></i>
                                     </Link>
-                                    <VideoModal/>
+                                    {/* <VideoModal/> */}
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@ export default function Service() {
                                         Read More
                                         <i className="icon-right-arrow"></i>
                                     </Link>
-                                    <VideoModal/>
+                                    {/* <VideoModal/> */}
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ export default function Service() {
                                         Read More
                                         <i className="icon-right-arrow"></i>
                                     </Link>
-                                    <VideoModal/>
+                                    {/* <VideoModal/> */}
                                 </div>
                             </div>
                         </div>

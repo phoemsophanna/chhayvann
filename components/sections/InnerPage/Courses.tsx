@@ -56,7 +56,7 @@ export default function Courses() {
                                                             <div className="inner">
                                                                 <Image src="/assets/images/resources/courses-offered-v1-1.webp" alt="Image" width={255} height={190} priority />
                                                                 {/* <div className="overlay-icon" style={{display: "none"}}>
-                                                                    <VideoModal/>
+                                                                    {/* <VideoModal/> */}
                                                                 </div> */}
                                                             </div>
                                                         </Link>
@@ -83,7 +83,7 @@ export default function Courses() {
                                                         <div className="inner">
                                                             <Image src="/assets/images/resources/courses-offered-v1-2.webp" alt="Image" width={255} height={190} priority />
                                                             <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
+                                                                {/* <VideoModal/> */}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -120,7 +120,7 @@ export default function Courses() {
                                                         <div className="inner">
                                                             <Image src="/assets/images/resources/courses-offered-v1-1.jpg" alt="Image" width={255} height={190} priority />
                                                             <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
+                                                                {/* <VideoModal/> */}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -146,7 +146,7 @@ export default function Courses() {
                                                         <div className="inner">
                                                             <Image src="/assets/images/resources/courses-offered-v1-2.jpg" alt="Image" width={255} height={190} priority />
                                                             <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
+                                                                {/* <VideoModal/> */}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -172,7 +172,7 @@ export default function Courses() {
                                                         <div className="inner">
                                                             <Image src="/assets/images/resources/courses-offered-v1-3.jpg" alt="Image" width={255} height={190} priority />
                                                             <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
+                                                                {/* <VideoModal/> */}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -198,7 +198,7 @@ export default function Courses() {
                                                         <div className="inner">
                                                             <Image src="/assets/images/resources/courses-offered-v1-4.jpg" alt="Image" width={255} height={190} priority />
                                                             <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
+                                                                {/* <VideoModal/> */}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -224,7 +224,7 @@ export default function Courses() {
                                                         <div className="inner">
                                                             <Image src="/assets/images/resources/courses-offered-v1-5.jpg" alt="Image" width={255} height={190} priority />
                                                             <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
+                                                                {/* <VideoModal/> */}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -250,7 +250,7 @@ export default function Courses() {
                                                         <div className="inner">
                                                             <Image src="/assets/images/resources/courses-offered-v1-6.jpg" alt="Image" width={255} height={190} priority />
                                                             <div className="overlay-icon" style={{display: "none"}}>
-                                                                <VideoModal/>
+                                                                {/* <VideoModal/> */}
                                                             </div>
                                                         </div>
                                                     </div>
