@@ -104,7 +104,7 @@ export default function Footer3() {
                                             </li> */}
                                             <li>
                                                 <Link href="/products">
-                                                    {t("HEADER.Gold")}
+                                                    {t("HEADER.Product")}
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li>

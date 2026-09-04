@@ -5,10 +5,34 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { sanitizeHtml } from "@/utils/sanitizeHtml";
+import { Autoplay, Navigation, Pagination } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { useRef } from "react";
 
-export default function Video({trade}: any) {
+const swiperOptions = {
+    modules: [Autoplay, Pagination, Navigation],
+    slidesPerView: 1,
+    spaceBetween: 30,
+    // autoplay: {
+    //     delay: 5000,
+    //     disableOnInteraction: false,
+    // },
+    loop: true,
+
+    // Navigation
+    navigation: {
+        nextEl: '.owl-next',
+        prevEl: '.owl-prev',
+    },
+    pagination: {
+        clickable: true,
+    }
+}
+
+export default function Video({trade, videoTrade}: any) {
     const { t } = useTranslation();
-    
+    const swiperRef = useRef<any>(null);
+    // console.log(videoTrade);
   return (
     <>
         <section className="video-style1">
@@ -18,13 +42,36 @@ export default function Video({trade}: any) {
             <div className="container">
                 <div className="row">
                     <div className="col-xl-6">
-                        <div className="video-style1__img wow fadeInDown animated" data-wow-delay="00ms"
-                            data-wow-duration="1500ms">
-                            <Image src={trade?.thumbnail ? api.FILE_URL+trade?.thumbnail : `/assets/images/resources/video-v1-1.jpg`} alt="Image" width={570} height={464} priority />
-                            <div className="overlay">
-                                <VideoModal videoSrc={trade?.linkVideo} />
-                            </div>
-                        </div>
+                        <Swiper 
+                            {...swiperOptions} 
+                            className="awards-style1-carousel"
+                            onSwiper={(swiper) => {
+                                swiperRef.current = swiper;
+                            }}
+
+                        >
+                            {
+                                videoTrade?.map((q:any) => (
+                                    <SwiperSlide>
+                                        <div className="video-style1__img wow fadeInDown animated" data-wow-delay="00ms"
+                                            data-wow-duration="1500ms">
+                                            <Image src={q?.image ? api.FILE_URL+q?.image : `/assets/images/resources/video-v1-1.jpg`} alt="Image" width={570} height={464} priority />
+                                            <div className="overlay">
+                                                <VideoModal videoSrc={q?.videoLink} />
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                ))
+                            }
+                            {
+                                videoTrade?.length > 1 ? (
+                                    <>
+                                        <button className="owl-nav-style-about owl-prev" onClick={() => swiperRef.current?.slidePrev()}><span className="left icon-arrow-left"></span></button>
+                                        <button className="owl-nav-style-about owl-next" onClick={() => swiperRef.current?.slideNext()}><span className="icon-arrow-right"></span></button>
+                                    </>
+                                ) : ""
+                            }
+                        </Swiper>
                     </div>
                     <div className="col-xl-6">
                         <div className="video-style1__content wow fadeInUp animated" data-wow-delay="00ms"

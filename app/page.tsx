@@ -15,6 +15,7 @@ export default function Home_One() {
     const [homepage, setHomepage] = useState(null);
     const [trade, setTrade] = useState(null);
     const [news, setNews] = useState([]);
+    const [videoTrade, setVideoTrade] = useState([]);
 
     useEffect(() => {
         axios.get(`${api.BASE_URL}/homepage`,{
@@ -28,6 +29,7 @@ export default function Home_One() {
                 setHomepage(res.data.homepage);
                 setTrade(res.data.howTrade);
                 setNews(res.data.news);
+                setVideoTrade(res.data.videTradde);
             }
         });
     }, [i18n.language]);
@@ -45,7 +47,7 @@ export default function Home_One() {
                 <Banner/>
                 <About homepage={homepage} />
                 <Choose />
-                <Video trade={trade} />
+                <Video trade={trade} videoTrade={videoTrade} />
                 {news.length > 0 ? <Blog homepage={homepage} news={news} /> : ""}
             </Layout>
         </div>

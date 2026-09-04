@@ -262,8 +262,8 @@ export default function Platform_Page() {
                 </section>
                 <section className="team-style1 bg-color trading-service">
                     <div className="container">
-                        <h2 className="text-center mb-3">{sites?.guide_title}</h2>
-                        <ul className="nav nav-tabs">
+                        <h2 className="text-center mb-5">{sites?.guide_title}</h2>
+                        {/* <ul className="nav nav-tabs">
                             <li className="nav-item">
                                 <button
                                     className={`nav-link ${activeTab === "1" ? "active" : ""}`}
@@ -280,7 +280,7 @@ export default function Platform_Page() {
                                     {t("on_mobile")}
                                 </button>
                             </li>
-                        </ul>
+                        </ul> */}
 
                         {/* TabContent */}
                         <div className="tab-content mt-3">

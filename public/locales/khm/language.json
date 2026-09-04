@@ -22,7 +22,8 @@
         "products_and_services": "ផលិតផលនិងសេវាកម្ម",
         "Gold": "មាស",
         "Platform": "ផ្លាតហ្វម",
-        "OpenAccount": "បើកគណនី"
+        "OpenAccount": "បើកគណនី",
+        "Product": "ផលិតផល"
     },
     "GENERAL": {
         "Khmer": "ខ្មែរ",
@@ -67,7 +68,7 @@
     "SELL": "លក់ចេញ",
     "BUY": "ទិញចូល",
     "XAU": "មាស",
-    "USD": "ដុល្លារអាមេរិច",
+    "USD": "ដុល្លារអាមេរិក",
     "ExchnageRate": "អត្រាប្ដូរប្រាក់",
     "TL": "តម្លឹង",
     "OZ": "អោន",
@@ -90,5 +91,7 @@
     "Max file size 10MB": "ទំហំឯកសារអតិបរមា 10MB",
     "Why do you want to work with us?": "ហេតុអ្វីបានជាអ្នកចង់ធ្វើការជាមួយយើង?",
     "Subject": "ប្រធានបទ",
-    "Message goes here": "សាររបស់អ្នកនៅទីនេះ"
+    "Message goes here": "សាររបស់អ្នកនៅទីនេះ",
+    "Time: 10:30 AM": "ម៉ោង ១០:៣០ ព្រឹក",
+    "Updated Date": "បានធ្វើបច្ចុប្បន្នភាព"
 }

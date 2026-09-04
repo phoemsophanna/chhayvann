@@ -22,7 +22,8 @@
         "products_and_services": "Products & Services",
         "Gold": "Gold",
         "Platform": "Platform",
-        "OpenAccount": "Open Account"
+        "OpenAccount": "Open Account",
+        "Product": "Product"
     },
     "GENERAL": {
         "Khmer": "Khmer",
@@ -66,7 +67,7 @@
     "Information": "Information",
     "FollowUs": "Follow Us",
     "PrivacyPolicy": "Privacy & Policy",
-    "ExchnageRate": "Exchnage Rate",
+    "ExchnageRate": "Exchange Rate",
     "TL": "Tael",
     "OZ": "Ounce",
     "KG": "Kilo",
@@ -88,5 +89,7 @@
     "Max file size 10MB": "Max file size 10MB",
     "Why do you want to work with us?": "Why do you want to work with us?",
     "Subject": "Subject",
-    "Message goes here": "Message goes here"
+    "Message goes here": "Message goes here",
+    "Time: 10:30 AM": "Time: 10:30 AM",
+    "Updated Date": "Updated Date"
 }

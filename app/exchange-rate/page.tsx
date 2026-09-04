@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { api } from "../config";
 import { sanitizeHtml } from "@/utils/sanitizeHtml";
+import dayjs from "dayjs";
 
 export default function Exchange_Rate_Page() {
     const { t, i18n } = useTranslation();
@@ -22,7 +23,7 @@ export default function Exchange_Rate_Page() {
     const [amount, setAmount] = useState(0);
     const [convertOption, setConvertOption] = useState("sell");
     const handleChange = (key: any, value: any) => {
-        console.log(value, key);
+        // console.log(value, key);
         if(key == "from"){
             setSubCurrency(value?.items);
             setExchangeSelected(value?.items[0]);
@@ -101,6 +102,8 @@ export default function Exchange_Rate_Page() {
         return String(value).replace(/\d/g, (digit) => khmerNumbers[Number(digit)]);
     };
 
+    console.log(exchanges);
+
     const formatDate = (value: any) => {
         if (!value) return "";
 
@@ -139,7 +142,7 @@ export default function Exchange_Rate_Page() {
             weekday: "long",
             year: "numeric",
             month: "long",
-            day: "numeric",
+            day: "2-digit",
         });
     };
 
@@ -156,7 +159,7 @@ export default function Exchange_Rate_Page() {
                                             <div className="sec-title withtext text-center">
                                                 <h2>{service?.title}</h2>
                                                 <div className="text">
-                                                    <p>{service?.summary}</p>
+                                                    <p>{t("Updated Date")}: {formatDate(dayjs().format("YYYY-MM-DD HH:mm:ss"))} | {t("Time: 10:30 AM")}</p>
                                                 </div>
                                             </div>
 
@@ -173,7 +176,7 @@ export default function Exchange_Rate_Page() {
                                                                         <table className="pricing-table">
                                                                             <thead className="table-header">
                                                                                 <tr>
-                                                                                    <th className="name">{t("ExchnageRate")}</th>
+                                                                                    <th className="name">{t("HEADER.ExchangeRate")}</th>
                                                                                     <th style={{width: "30%"}}>{t("Sell")}</th>
                                                                                     <th style={{width: "30%"}}>{t("Buy")}</th>
                                                                                 </tr>
@@ -219,7 +222,9 @@ export default function Exchange_Rate_Page() {
                                                     </div>
                                                 </div>
                                             </div>
-                            
+                                            <div className="text mt-4 text-center">
+                                                <p>{service?.summary}</p>
+                                            </div>
                                         </div>
                                     </section>
                                 ) : ""

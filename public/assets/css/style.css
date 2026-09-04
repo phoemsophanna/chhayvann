@@ -14561,9 +14561,26 @@ select:focus {
     opacity: 0;
 }
 
+.video-style1 .owl-nav-style-about.owl-prev, .video-style1 .owl-nav-style-about.owl-next {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    border: 1px solid #dcdcdc80;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #dcdcdc;
+    z-index: 1000;
+    transition: all .3s ease;
+    opacity: 0;
+}
+
 .owl-nav-style-about.owl-prev:hover, .owl-nav-style-about.owl-next:hover {
     background-color: #9c6904;
     border-color: #9c6904;
+    color: #fff;
 }
 
 .owl-nav-style-about.owl-prev {
@@ -14585,6 +14602,17 @@ select:focus {
 }
 
 .img-box1 .swiper-pagination-bullet {
+    height: 5px;
+    width: 15px;
+    border-radius: 5px;
+    background-color: #9c6904;
+}
+
+.awards-style1-carousel:hover .owl-nav-style-about.owl-prev, .awards-style1-carousel:hover .owl-nav-style-about.owl-next {
+    opacity: 1;
+}
+
+.awards-style1-carousel .swiper-pagination-bullet {
     height: 5px;
     width: 15px;
     border-radius: 5px;
@@ -15138,4 +15166,336 @@ select:focus {
 
 .faq-style2 span {
     font-family: var(--thm-font) !important;
+}
+
+/* =========================
+   PLAY BUTTON
+========================= */
+
+.video-play-btn {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.play-icon {
+    position: relative;
+    z-index: 3;
+
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #9f6605;
+    color: #fff;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        0 0 0 6px rgba(255, 255, 255, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.play-icon i {
+    font-size: 22px;
+    margin-left: 4px;
+}
+
+.video-play-btn:hover .play-icon {
+    transform: scale(1.1);
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35),
+        0 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+
+/* =========================
+   RIPPLE
+========================= */
+
+.play-ripple {
+    position: absolute;
+    inset: 0;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    animation: videoRipple 2s infinite;
+}
+
+.ripple-two {
+    animation-delay: 0.8s;
+}
+
+@keyframes videoRipple {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   POPUP BACKGROUND
+========================= */
+
+.video-popup-section {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(40, 40, 40, 0.45),
+            rgba(0, 0, 0, 0.92)
+        );
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    animation: videoOverlayIn 0.25s ease forwards;
+}
+
+
+/* =========================
+   VIDEO MODAL
+========================= */
+
+.video-modal {
+    position: relative;
+
+    width: min(1100px, 95vw);
+
+    background: #000;
+
+    border-radius: 18px;
+
+    overflow: visible;
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+
+    animation: videoModalIn 0.35s ease forwards;
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    border-radius: 5px;
+
+    background: #000;
+}
+
+.video-wrapper iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.video-close-btn {
+    position: absolute;
+
+    top: -18px;
+    right: -18px;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(20, 20, 20, 0.9);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.video-close-btn span {
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 300;
+}
+
+.video-close-btn:hover {
+    background: #ec1c23;
+    border-color: #ec1c23;
+    transform: rotate(90deg) scale(1.05);
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.video-error {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+}
+
+.video-error span {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.video-error p {
+    margin: 0;
+    color: #aaa;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes videoOverlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes videoModalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+    .video-popup-section {
+        padding: 20px;
+    }
+
+    .video-modal {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .video-wrapper {
+        border-radius: 12px;
+    }
+
+    .video-close-btn {
+        top: -15px;
+        right: -8px;
+
+        width: 38px;
+        height: 38px;
+    }
+
+    .video-close-btn span {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-popup-section {
+        padding: 12px;
+    }
+
+    .video-play-btn {
+        width: 60px;
+        height: 60px;
+    }
+
+    .play-icon {
+        width: 54px;
+        height: 54px;
+    }
+
+    .video-close-btn {
+        top: -12px;
+        right: -5px;
+
+        width: 34px;
+        height: 34px;
+    }
 }
