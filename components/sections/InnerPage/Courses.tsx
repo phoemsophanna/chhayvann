@@ -56,7 +56,7 @@ export default function Courses() {
                                                             <div className="inner">
                                                                 <Image src="/assets/images/resources/courses-offered-v1-1.webp" alt="Image" width={255} height={190} priority />
                                                                 {/* <div className="overlay-icon" style={{display: "none"}}>
-                                                                    {/* <VideoModal/> */}
+                                                                
                                                                 </div> */}
                                                             </div>
                                                         </Link>
