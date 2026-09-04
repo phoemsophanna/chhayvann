@@ -14016,7 +14016,7 @@ select:focus {
     position: absolute;
     width: 100%;
     left: 0;
-    top: -13px;
+    top: -23px;
 }
 
 .exchange-currency .content-currency .title h2 {
@@ -14024,8 +14024,9 @@ select:focus {
     font-weight: 500;
     background-color: #fff;
     display: inline-block;
-    box-shadow: 0 0 10px #fff;
-    padding: 0 5px;
+    box-shadow: 0 0 10px #eee;
+    padding: 10px 20px;
+    border-radius: 40px;
 }
 
 .account-detail-style2 {
