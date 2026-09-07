@@ -340,7 +340,7 @@ export default function Exchange_Rate_Page() {
                                                                     <h6>{t("AMOUNT")}</h6>
                                                                     <input type="text" onChange={handleChangeAmount} />
                                                                     <h3>{i18n.language == "KHM" && exchange.toKm ? exchange.toKm : exchange.to} {formatUSD(amount)}</h3>
-                                                                    <h5>{i18n.language == "KHM" ? "បានធ្វើបច្ចុប្បន្នភាព" : "Updated Date"}: {formatDate(exchangeSelected?.date)}</h5>
+                                                                    <p>{t("Updated Date")}: {formatDateTime(lastUpdated?.updated_at).date} | {t("Time:")} {formatDateTime(lastUpdated?.updated_at).time}</p>
                                                                     <p>
                                                                         {service?.convertSummary}
                                                                     </p>
