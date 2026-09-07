@@ -22,6 +22,7 @@ export default function Exchange_Rate_Page() {
     const [exchange, setExchange] = useState({from: "USD", fromKm: "", toKm: "", to: "KHR", buy: 0, sell: 0,isTo: 0, isMultiply: 0});
     const [amount, setAmount] = useState(0);
     const [convertOption, setConvertOption] = useState("sell");
+    const [lastUpdated, setLastUpdated] = useState<any>(null);
     const handleChange = (key: any, value: any) => {
         // console.log(value, key);
         if(key == "from"){
@@ -73,6 +74,7 @@ export default function Exchange_Rate_Page() {
                 setExchanges(res.data.exchange);
                 setService(res.data.service);
                 setCurrency(res.data.convert);
+                setLastUpdated(res.data.exchangeLastUpdated);
             }
         });
     },[i18n.language]);
@@ -101,8 +103,6 @@ export default function Exchange_Rate_Page() {
 
         return String(value).replace(/\d/g, (digit) => khmerNumbers[Number(digit)]);
     };
-
-    console.log(exchanges);
 
     const formatDate = (value: any) => {
         if (!value) return "";
@@ -146,6 +146,75 @@ export default function Exchange_Rate_Page() {
         });
     };
 
+    const formatDateTime = (value: any) => {
+        if (!value) return { date: "", time: "" };
+
+        const date = new Date(value);
+
+        if (isNaN(date.getTime())) {
+            return { date: "", time: "" };
+        }
+
+        if (i18n.language === "KHM") {
+            const khmerWeekdays = [
+                "អាទិត្យ",
+                "ចន្ទ",
+                "អង្គារ",
+                "ពុធ",
+                "ព្រហស្បតិ៍",
+                "សុក្រ",
+                "សៅរ៍",
+            ];
+
+            const khmerMonths = [
+                "មករា",
+                "កុម្ភៈ",
+                "មីនា",
+                "មេសា",
+                "ឧសភា",
+                "មិថុនា",
+                "កក្កដា",
+                "សីហា",
+                "កញ្ញា",
+                "តុលា",
+                "វិច្ឆិកា",
+                "ធ្នូ",
+            ];
+
+            const dateText = `ថ្ងៃ${khmerWeekdays[date.getDay()]} ទី${toKhmerNumber(
+                date.getDate()
+            )} ខែ${khmerMonths[date.getMonth()]} ឆ្នាំ${toKhmerNumber(
+                date.getFullYear()
+            )}`;
+
+            const timeText = date.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+            });
+
+            return {
+                date: dateText,
+                time: timeText,
+            };
+        }
+
+        return {
+            date: date.toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+            }),
+
+            time: date.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+            }),
+        };
+    };
+
     return (
         <div>
             <Layout headerStyle={1} footerStyle={3} breadcrumbTitle={t("HEADER.ExchangeRate")} breadcrumbTitleTwo={t("HEADER.Services")} breadcrumbImage={banner?.image}>
@@ -159,7 +228,7 @@ export default function Exchange_Rate_Page() {
                                             <div className="sec-title withtext text-center">
                                                 <h2>{service?.title}</h2>
                                                 <div className="text">
-                                                    <p>{t("Updated Date")}: {formatDate(dayjs().format("YYYY-MM-DD HH:mm:ss"))} | {t("Time: 10:30 AM")}</p>
+                                                    <p>{t("Updated Date")}: {formatDateTime(lastUpdated?.updated_at).date} | {t("Time:")} {formatDateTime(lastUpdated?.updated_at).time}</p>
                                                 </div>
                                             </div>
 
