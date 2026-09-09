@@ -272,7 +272,7 @@ export default function About({homepage}:any) {
                 "ធ្នូ",
             ];
 
-            return `ថ្ងៃ${date.getDate()} ខែ${khmerMonths[date.getMonth()]} ឆ្នាំ${date.getFullYear()}`;
+            return `ថ្ងៃទី${date.getDate()} ខែ${khmerMonths[date.getMonth()]} ឆ្នាំ${date.getFullYear()}`;
         }
 
         return date.toLocaleDateString("en-GB", {
@@ -291,16 +291,16 @@ export default function About({homepage}:any) {
                         <div className="about-style1__content wow fadeInRight animated" style={{marginTop: 0}} data-wow-delay="00ms"
                             data-wow-duration="1500ms">
                             <div className="sec-title">
-                                <div className="sub-title">
+                                <div className="sub-title" hidden={!homepage?.subtitle ? true : false}>
                                     <span>{homepage?.subtitle ? homepage?.subtitle : "Welcome To"}</span>
                                 </div>
-                                <h1>{homepage?.companyName ? homepage?.companyName : " CHHAYVANN CO., LTD"} <span style={{visibility: "hidden"}}>CAMBODIA</span></h1>
+                                <h1 hidden={!homepage?.companyName ? true : false}>{homepage?.companyName ? homepage?.companyName : " CHHAYVANN CO., LTD"} <span style={{visibility: "hidden"}}>CAMBODIA</span></h1>
                             </div>
                             <div className="text">
                                 {
                                     homepage?.aboutCompany ? (
                                         <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(homepage?.aboutCompany) }} />
-                                    ) : <div>
+                                    ) : <div hidden>
                                             <p>We are honored that you have chosen to connect with us—whether as a valued client, a partner, or a new member of our team. Our mission is to deliver secure, reliable, and professional of physical gold wholesale that build trust and create long-term value for the communities and businesses we serve.</p>
                                             <p>If you are joining as a client or partner, expect clear communication, secure handling of funds, and a proactive service team that aims to understand your needs and exceed your expectations. If you are joining as staff, welcome to a workplace that values expertise, continuous improvement, and teamwork.&nbsp;</p>
                                             <p>Thank you for placing your trust in us. We look forward to building a strong, productive relationship and to serving you with excellence.</p>
@@ -316,6 +316,11 @@ export default function About({homepage}:any) {
                             </div>
                         </div>
                     </div>
+                    <div className="col-12">
+                        <p className="px-3 mb-2">
+                            {t("MKT")}{i18n.language == "KHM" ? "៖" : ":"} {formatDate(dayjs().format('DD-MMM-YYYY'))}
+                        </p>
+                    </div>
                     <div className="col-xl-6 col-lg-6">
                         <div className="about-style1__img" style={{marginRight: 0}}>
                             <div className="value-exchange">
@@ -328,10 +333,10 @@ export default function About({homepage}:any) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr className="bottom">
+                                        {/* <tr className="bottom">
                                             <td className="text-start">{t("MKT")}</td>
                                             <td colSpan={2} className="text-end">{t("Value")}: {formatDate(dayjs().format('DD-MMM-YYYY'))}</td>
-                                        </tr>
+                                        </tr> */}
                                         <tr className="bottom">
                                             <td>{t("KG")}</td>
                                             <td className="center">{formatUSD(KGBuy)}</td>
@@ -439,17 +444,17 @@ export default function About({homepage}:any) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr className="bottom">
+                                        {/* <tr className="bottom">
                                             <td style={{padding: "15px"}} className="text-start">{t("MKT")}</td>
                                             <td colSpan={2} className="text-end">{t("Value")}: {formatDate(dayjs().format('DD-MMM-YYYY'))}</td>
-                                        </tr>
+                                        </tr> */}
                                         <tr className="bottom">
-                                            <td style={{padding: "15px"}}>{t("KG")}</td>
+                                            <td style={{padding: "19px 15px"}}>{t("KG")}</td>
                                             <td className="center">{formatUSD(XAGPriceKg)}</td>
                                             <td>{formatUSD(XAGSellKg)}</td>
                                         </tr>
                                         <tr className="bottom">
-                                            <td style={{padding: "15px"}}>{t("OZ")}</td>
+                                            <td style={{padding: "19px 15px"}}>{t("OZ")}</td>
                                             <td className="center">{formatUSD(XAGPrice)}</td>
                                             <td>{formatUSD(XAGSell)}</td>
                                         </tr>

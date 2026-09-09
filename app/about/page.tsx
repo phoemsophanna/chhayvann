@@ -93,7 +93,7 @@ export default function About_Page() {
                             <div className="col-xl-6 col-lg-6">
                                 <div className="about-style2__right">
                                     <div className="sec-title withtext">
-                                        <div className="sub-title">
+                                        <div className="sub-title" hidden={!about?.subtitle ? true : false}>
                                             <h4>{about?.subtitle}</h4>
                                         </div>
                                         <h2>{about?.companyName}</h2>

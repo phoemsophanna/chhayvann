@@ -34,7 +34,11 @@ export default function Menu() {
         <Link href="#">{t("HEADER.Company")}</Link>
         <ul>
           <li className={isActive("/about") ? "current" : ""}><Link href="/about">{t("HEADER.AboutUs")}</Link></li>
-          <li className={isActive("/history") ? "current" : ""}><Link href="/history">{t("HEADER.History")}</Link></li>
+          {
+            general?.history ? (
+              <li className={isActive("/history") ? "current" : ""}><Link href="/history">{t("HEADER.History")}</Link></li>
+            ) : ""
+          }
           {
               general?.teams > 0 ? (
                 <li className={isActive("/team") ? "current" : ""}><Link href="/team">{t("HEADER.co_founders")}</Link></li>
