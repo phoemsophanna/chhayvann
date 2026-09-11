@@ -5,7 +5,7 @@ export default function Language(){
     const { i18n } = useTranslation();
     const options = [
         { value: "KHM", label: "Khmer", element: <img src="/assets/images/flag/cambo.png" style={{width: 25,verticalAlign: "middle"}} alt="english" /> },
-        { value: "ENG", label: "English", element: <img src="/assets/images/flag/us.png" style={{width: 25,verticalAlign: "middle"}} alt="english" /> },
+        // { value: "ENG", label: "English", element: <img src="/assets/images/flag/us.png" style={{width: 25,verticalAlign: "middle"}} alt="english" /> },
     ];
 
     const handleSelectChange = (value: string) => {
