@@ -83,9 +83,28 @@ export default function Exchange_Rate_Page() {
         if(currency.length > 0){
             currency?.map((q:any,index:any) => {
                 if(index == 0){
-                    setExchange({...exchange, buy: q?.items[0]?.buy, isMultiply: q?.items[0]?.isMultiply, sell: q?.items[0]?.sell, from: q?.items[0]?.from, to: q?.items[0]?.to, fromKm: q?.items[0]?.fromKm, toKm: q?.items[0]?.toKm});
-                    setSubCurrency(q?.items);
-                    setExchangeSelected(q?.items[0]);
+                    const items = [...(q?.items ?? [])].sort((a, b) => {
+                        if (a.to === "KHR") return -1;
+                        if (b.to === "KHR") return 1;
+                        return 0;
+                    });
+
+                    setExchange({
+                        ...exchange,
+                        buy: items[0]?.buy,
+                        isMultiply: items[0]?.isMultiply,
+                        sell: items[0]?.sell,
+                        from: items[0]?.from,
+                        to: items[0]?.to,
+                        fromKm: items[0]?.fromKm,
+                        toKm: items[0]?.toKm,
+                    });
+
+                    setSubCurrency(items);
+
+                    setExchangeSelected(
+                        items.find((query: any) => query.to === "KHR")
+                    );
                 }
             });
         }

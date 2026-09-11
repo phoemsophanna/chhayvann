@@ -14,7 +14,7 @@ export default function Menu() {
 
   // Checks if a parent dropdown should be active
   const isDropdownActive = (paths: string[]) => paths.some((path) => pathname.startsWith(path));
-
+  console.log(general);
   return (
     <ul className="main-menu__list">
 
