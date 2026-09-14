@@ -15,6 +15,7 @@ export default function Account_Open_One() {
     const [captchaToken, setCaptchaToken] = useState<any>("");
     const [privacy, setPrivacy] = useState<any>([]);
     const [active, setActive] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         axios.get(`${api.BASE_URL}/individual-page`,{
@@ -37,17 +38,21 @@ export default function Account_Open_One() {
         formData.append("captcha", captchaToken);
         formData.append("privacy", JSON.stringify(privacy));
         if(captchaToken) {
-            axios.post(`${api.BASE_URL}/submit-account-individual`,formData,{
-                method: "POST",
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            }).then((res) => {
-                if(res.data.status == "success") {
-                    setActive(true);
-                    form.reset();
-                }
-            });
+            if(!loading){
+                setLoading(true);
+                axios.post(`${api.BASE_URL}/submit-account-individual`,formData,{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                }).then((res) => {
+                    if(res.data.status == "success") {
+                        setActive(true);
+                        form.reset();
+                        setLoading(false);
+                    }
+                });
+            }
         }
     }
 
