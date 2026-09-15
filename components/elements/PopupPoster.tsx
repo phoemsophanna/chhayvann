@@ -33,14 +33,14 @@ export default function PopupPoster() {
                     return prev - 1;
                 });
             }, 1000);
-        }, 2000);
+        }, 1000);
     
         return () => {
             clearTimeout(mainTimeOut);
             document.body.classList.remove('no-scroll');
         }
     }
-  },[])
+  },[general]);
 
   return (
     <>

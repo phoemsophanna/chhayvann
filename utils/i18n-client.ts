@@ -12,10 +12,10 @@ if (!i18n.isInitialized) {
       ENG: { translation: translationEN },
       KHM: { translation: translationKH }
     },
-    fallbackLng: "KHM",
+    fallbackLng: "ENG",
     lng: typeof window !== "undefined"
-      ? sessionStorage.getItem("LANG") || "KHM"
-      : "KHM",
+      ? sessionStorage.getItem("LANG") || "ENG"
+      : "ENG",
     interpolation: {
       escapeValue: false
     }

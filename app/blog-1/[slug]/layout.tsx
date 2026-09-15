@@ -1,7 +1,7 @@
 import { getSeoMetadata } from "@/utils/seo";
 
 export async function generateMetadata({ params }: any) {
-  const slug = params.slug;
+  const { slug } = await params;
   
   // Fetch SEO data from API
   const metadata = await getSeoMetadata(

@@ -57,7 +57,7 @@ export default function Menu() {
           <li><Link href="/exchange-rate">{t("HEADER.ExchangeRate")}</Link></li>
           {
             services?.map((q:any,index:any) => (
-              <li key={index}><Link href={`/service/${q.id}`}>
+              <li key={index}><Link href={`/service/${q.slug}`}>
                 { i18n.language == "KHM" && q.titleKm ? q.titleKm : q.title }
               </Link></li>
             ))
