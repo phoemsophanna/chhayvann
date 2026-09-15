@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useAppStore } from "@/store/useAppStore";
 import { api } from "@/app/config";
+import { usePathname } from "next/navigation";
 
 type MobileMenuProps = {
   isSidebar: boolean;
@@ -23,6 +24,24 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
       setActiveDropdown(key);
     }
   };
+
+  const pathname = usePathname();
+
+  const isActive = (path: string) => pathname === path;
+
+  const checkIsHide = (type:any) => {
+    if(general.page_banners){
+      console.log(general);
+      const banner = general.page_banners.find(
+        (item:any) => item.type?.toUpperCase() == type.toUpperCase()
+      );
+  
+      return banner?.isHide ?? 0;
+    }
+  };
+
+  // Checks if a parent dropdown should be active
+  const isDropdownActive = (paths: string[]) => paths.some((path) => pathname.startsWith(path));
 
   return (
     <>
@@ -46,56 +65,186 @@ export default function MobileMenu({ handleMobileMenu }: MobileMenuProps) {
 
           <div className="mobile-nav__container">
             <ul className="main-menu__list">
+
               {/* Home */}
-              <li>
+              <li className={isActive("/") ? "current" : ""}>
                 <Link href="/">{t("HEADER.HOME")}</Link>
               </li>
-              <li className={`dropdown ${activeDropdown == 1 ? "current" : ""}`}>
+
+              {/* Company */}
+              <li
+                className={`dropdown ${
+                  activeDropdown === 1 ||
+                  isDropdownActive([
+                    "/about",
+                    "/history",
+                    "/team",
+                    "/testimonials",
+                    "/organization",
+                  ])
+                    ? "current"
+                    : ""
+                }`}
+              >
                 <Link href="#">{t("HEADER.Company")}</Link>
-                <ul style={{ display: activeDropdown == 1 ? "block" : "none" }}>
-                  <li><Link href="/about">{t("HEADER.AboutUs")}</Link></li>
-                  <li><Link href="/history">{t("HEADER.History")}</Link></li>
-                  {
-                    general?.teams > 0 ? (
-                      <li><Link href="/team">{t("HEADER.co_founders")}</Link></li>
-                    ) : ""
-                  }
-                  <li><Link href="/organization">{t("HEADER.OrganizationChart")}</Link></li>
-                  {
-                    general?.testimonels > 0 ? (
-                      <li><Link href="/testimonials">{t("HEADER.Testimonials")}</Link></li>
-                    ) : ""
-                  }
+
+                <ul
+                  style={{
+                    display: activeDropdown === 1 ? "block" : "none",
+                  }}
+                >
+                  {/* About */}
+                  <li className={isActive("/about") ? "current" : ""}>
+                    <Link href="/about">{t("HEADER.AboutUs")}</Link>
+                  </li>
+
+                  {/* History */}
+                  {!checkIsHide("Our History") ? (
+                    <li className={isActive("/history") ? "current" : ""}>
+                      <Link href="/history">{t("HEADER.History")}</Link>
+                    </li>
+                  ) : null}
+
+                  {/* Team */}
+                  {!checkIsHide("Our Team") ? (
+                    <li className={isActive("/team") ? "current" : ""}>
+                      <Link href="/team">{t("HEADER.co_founders")}</Link>
+                    </li>
+                  ) : null}
+
+                  {/* Organization */}
+                  {!checkIsHide("Organization") ? (
+                    <li className={isActive("/organization") ? "current" : ""}>
+                      <Link href="/organization">
+                        {t("HEADER.OrganizationChart")}
+                      </Link>
+                    </li>
+                  ) : null}
+
+                  {/* Testimonials */}
+                  {!checkIsHide("Testimonials") ? (
+                    <li className={isActive("/testimonials") ? "current" : ""}>
+                      <Link href="/testimonials">
+                        {t("HEADER.Testimonials")}
+                      </Link>
+                    </li>
+                  ) : null}
                 </ul>
-                <div className={`dropdown-btn ${activeDropdown === 1 ? "open" : ""}`} onClick={() => toggleDropdown(1)}>
+
+                {/* Mobile dropdown button */}
+                <div
+                  className={`dropdown-btn ${
+                    activeDropdown === 1 ? "open" : ""
+                  }`}
+                  onClick={() => toggleDropdown(1)}
+                >
                   <span className="fa fa-angle-right" />
                 </div>
               </li>
-              <li className={`dropdown ${activeDropdown == 2 ? "current" : ""}`}><Link href="#">{t("HEADER.products_and_services")}</Link>
-                <ul style={{ display: activeDropdown == 2 ? "block" : "none" }}>
-                  <li><Link href="/products">{t("HEADER.Gold")}</Link></li>
-                  <li><Link href="/exchange-rate">{t("HEADER.ExchangeRate")}</Link></li>
-                  {
-                    services?.map((q:any,index:any) => (
-                      <li key={index}><Link href={`/service/${q.id}`}>
-                        { i18n.language == "KHM" && q.titleKm ? q.titleKm : q.title }
-                      </Link></li>
-                    ))
-                  }
+
+              {/* Products & Services */}
+              <li
+                className={`dropdown ${
+                  activeDropdown === 2 ||
+                  isDropdownActive([
+                    "/service",
+                    "/exchange-rate",
+                    "/products",
+                  ])
+                    ? "current"
+                    : ""
+                }`}
+              >
+                <Link href="#">{t("HEADER.products_and_services")}</Link>
+
+                <ul
+                  style={{
+                    display: activeDropdown === 2 ? "block" : "none",
+                  }}
+                >
+                  {/* Products */}
+                  {!checkIsHide("Our Products") ? (
+                    <li className={isActive("/products") ? "current" : ""}>
+                      <Link href="/products">{t("HEADER.Gold")}</Link>
+                    </li>
+                  ) : null}
+
+                  {/* Exchange Rate */}
+                  {!checkIsHide("Currency Exchange") ? (
+                    <li className={isActive("/exchange-rate") ? "current" : ""}>
+                      <Link href="/exchange-rate">
+                        {t("HEADER.ExchangeRate")}
+                      </Link>
+                    </li>
+                  ) : null}
+
+                  {/* Services */}
+                  {services?.map((q: any, index: number) => (
+                    <li
+                      key={index}
+                      className={
+                        isActive(`/service/${q.slug}`) ? "current" : ""
+                      }
+                    >
+                      <Link href={`/service/${q.slug}`}>
+                        {i18n.language === "KHM" && q.titleKm
+                          ? q.titleKm
+                          : q.title}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
-                <div className={`dropdown-btn ${activeDropdown === 2 ? "open" : ""}`} onClick={() => toggleDropdown(2)}>
+
+                {/* Mobile dropdown button */}
+                <div
+                  className={`dropdown-btn ${
+                    activeDropdown === 2 ? "open" : ""
+                  }`}
+                  onClick={() => toggleDropdown(2)}
+                >
                   <span className="fa fa-angle-right" />
                 </div>
               </li>
-              {/* <li><Link href="/products">{t("HEADER.Products")}</Link></li> */}
-              {/* Trading Page */}
-              {/* <li><Link href="/trading">{t("HEADER.Trading")}</Link></li>
-              <li><Link href="https://onlinetrade.chhayvann.com.kh/" target="_blank">{t("HEADER.OnlineTrading")}</Link></li> */}
-              <li><Link href="/platform">{t("HEADER.Platform")}</Link></li>
-              {general?.article > 0 ? (<li><Link href="/blog-1">{t("HEADER.NewsResearch")}</Link></li>) : ""}
-              <li><Link href="/career">{t("HEADER.Career")}</Link></li>
+
+              {/* Platform */}
+              {!checkIsHide("Our Platform") ? (
+                <li className={isActive("/platform") ? "current" : ""}>
+                  <Link href="/platform">{t("HEADER.Platform")}</Link>
+                </li>
+              ) : null}
+
+              {/* News */}
+              {!checkIsHide("Latest News") ? (
+                <li
+                  className={
+                    isDropdownActive([
+                      "/blog-1",
+                      "/blog-single",
+                    ])
+                      ? "current"
+                      : ""
+                  }
+                >
+                  <Link href="/blog-1">
+                    {t("HEADER.NewsResearch")}
+                  </Link>
+                </li>
+              ) : null}
+
+              {/* Career */}
+              {!checkIsHide("Careers") ? (
+                <li className={isActive("/career") ? "current" : ""}>
+                  <Link href="/career">{t("HEADER.Career")}</Link>
+                </li>
+              ) : null}
+
               {/* Contact */}
-              <li><Link href="/contact">{t("HEADER.ContactUs")}</Link></li>
+              {!checkIsHide("Contact") ? (
+                <li className={isActive("/contact") ? "current" : ""}>
+                  <Link href="/contact">{t("HEADER.ContactUs")}</Link>
+                </li>
+              ) : null}
+
             </ul>
           </div>
 

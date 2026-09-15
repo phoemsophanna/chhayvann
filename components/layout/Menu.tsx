@@ -12,6 +12,17 @@ export default function Menu() {
   // Checks if a path is active
   const isActive = (path: string) => pathname === path;
 
+  const checkIsHide = (type:any) => {
+    if(general.page_banners){
+      console.log(general);
+      const banner = general.page_banners.find(
+        (item:any) => item.type?.toUpperCase() == type.toUpperCase()
+      );
+  
+      return banner?.isHide ?? 0;
+    }
+  };
+
   // Checks if a parent dropdown should be active
   const isDropdownActive = (paths: string[]) => paths.some((path) => pathname.startsWith(path));
   return (
@@ -32,20 +43,23 @@ export default function Menu() {
       <li className={`dropdown ${isDropdownActive(["/about", "/history", "/team", "/testimonials", "/coming-soon"]) ? "current" : ""}`}>
         <Link href="#">{t("HEADER.Company")}</Link>
         <ul>
+
           <li className={isActive("/about") ? "current" : ""}><Link href="/about">{t("HEADER.AboutUs")}</Link></li>
           {
-            general?.history ? (
+            !checkIsHide("Our History") ? (
               <li className={isActive("/history") ? "current" : ""}><Link href="/history">{t("HEADER.History")}</Link></li>
             ) : ""
           }
           {
-              general?.teams > 0 ? (
+              !checkIsHide("Our Team") ? (
                 <li className={isActive("/team") ? "current" : ""}><Link href="/team">{t("HEADER.co_founders")}</Link></li>
               ) : ""
           }
-          <li className={isActive("/organization") ? "current" : ""}><Link href="/organization">{t("HEADER.OrganizationChart")}</Link></li>
           {
-              general?.testimonels > 0 ? (
+            !checkIsHide("Organization") ? <li className={isActive("/organization") ? "current" : ""}><Link href="/organization">{t("HEADER.OrganizationChart")}</Link></li> : ""
+          }
+          {
+              !checkIsHide("Testimonials") ? (
                 <li className={isActive("/testimonials") ? "current" : ""}><Link href="/testimonials">{t("HEADER.Testimonials")}</Link></li>
               ) : ""
           }
@@ -53,8 +67,12 @@ export default function Menu() {
       </li>
       <li className={isDropdownActive(["/service","/exchange-rate","/products"]) ? "dropdown current" : "dropdown"}><Link href="#">{t("HEADER.products_and_services")}</Link>
         <ul>
-          <li><Link href="/products">{t("HEADER.Gold")}</Link></li>
-          <li><Link href="/exchange-rate">{t("HEADER.ExchangeRate")}</Link></li>
+          {
+            !checkIsHide("Our Products") ? <li><Link href="/products">{t("HEADER.Gold")}</Link></li> : ""
+          }
+          {
+            !checkIsHide("Currency Exchange") ? <li><Link href="/exchange-rate">{t("HEADER.ExchangeRate")}</Link></li> : ""
+          }
           {
             services?.map((q:any,index:any) => (
               <li key={index}><Link href={`/service/${q.slug}`}>
@@ -66,18 +84,20 @@ export default function Menu() {
       </li>
 
       {/* Trading Page */}
-      <li className={isActive("/platform") ? "current" : ""}><Link href="/platform">{t("HEADER.Platform")}</Link></li>
+      {!checkIsHide("Our Platform") ? <li className={isActive("/platform") ? "current" : ""}><Link href="/platform">{t("HEADER.Platform")}</Link></li> : ""}
       {/* <li className={isActive("/trading") ? "current" : ""}><Link href="/trading">{t("HEADER.Trading")}</Link></li>
       <li><Link href={general?.OnlineTrading ? general?.OnlineTrading : "https://onlinetrade.chhayvann.com.kh/"} target="_blank">{t("HEADER.OnlineTrading")}</Link></li> */}
       {
-        general?.article > 0 ? (
+        !checkIsHide("Latest News") ? (
           <li className={isDropdownActive(["/blog-1", "/blog-single", "/blog-1"]) ? "current" : ""}><Link href="/blog-1">{t("HEADER.NewsResearch")}</Link></li>
         ) : ""
       }
-      <li className={isActive("/career") ? "current" : ""}><Link href="/career">{t("HEADER.Career")}</Link></li>
+      {
+        !checkIsHide("Careers") ? <li className={isActive("/career") ? "current" : ""}><Link href="/career">{t("HEADER.Career")}</Link></li> : ""
+      }
 
       {/* Contact */}
-      <li className={isActive("/contact") ? "current" : ""}><Link href="/contact">{t("HEADER.ContactUs")}</Link></li>
+      {!checkIsHide("") ? <li className={isActive("/contact") ? "current" : ""}><Link href="/contact">{t("HEADER.ContactUs")}</Link></li> : ""}
 
     </ul>
   );

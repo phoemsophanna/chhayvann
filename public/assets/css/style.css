@@ -15521,3 +15521,20 @@ select:focus {
     height: 100%;
     display: block;
 }
+
+.partner-style1--about-page .partner-style1__brand {
+    border: none;
+}
+
+.partner-style1--about-page .partner-style1__brand .row {
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.partner-style1--about-page .partner-style1__brand ul li {
+    border: 1px solid var(--thm-border-color) !important;
+    border-radius: 10px;
+    display: flex;
+    flex: 1 1 49%;
+    max-width: 49%;
+}
