@@ -72,7 +72,7 @@ export default function Blog_Page_One() {
             <Swiper slidesPerView="auto"
                     spaceBetween={10}
                     freeMode={true}
-                    speed={600} className="tabs-button-box clearfix">
+                    speed={600} className="tabs-button-box clearfix mb-3">
               {
                 category?.map((q:any) => {
                   return <SwiperSlide key={q.id} onClick={() => fetchNews(q?.id)} style={{cursor: "pointer"}} className="swiper-slide tab-btn-item active-btn-item">
