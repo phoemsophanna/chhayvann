@@ -14,7 +14,6 @@ export default function Menu() {
 
   const checkIsHide = (type:any) => {
     if(general.page_banners){
-      console.log(general);
       const banner = general.page_banners.find(
         (item:any) => item.type?.toUpperCase() == type.toUpperCase()
       );

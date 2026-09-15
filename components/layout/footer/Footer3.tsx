@@ -16,6 +16,16 @@ export default function Footer3() {
         container?.remove();
     }, []);
     // console.log(contact);
+
+    const checkIsHide = (type:any) => {
+        if(general.page_banners){
+        const banner = general.page_banners.find(
+            (item:any) => item.type?.toUpperCase() == type.toUpperCase()
+        );
+    
+        return banner?.isHide ?? 0;
+        }
+    };
     return (
         <>
             <footer className="footer-style3">
@@ -127,7 +137,7 @@ export default function Footer3() {
                                                 </Link>
                                             </li>
                                             {
-                                                general?.article > 0 ? (
+                                                !checkIsHide("Latest News") ? (
                                                     <li>
                                                         <Link href="/blog-1">
                                                             {t("HEADER.NewsResearch")}
@@ -143,7 +153,7 @@ export default function Footer3() {
                                                 </Link>
                                             </li>
                                             {
-                                                general?.faq > 0 ? (
+                                                !checkIsHide("FAQs") ? (
                                                     <li>
                                                         <Link href="/faq">
                                                             {t("FAQ")}
