@@ -33,7 +33,7 @@ export default function Partners({about, partner}: any) {
                     <div className="col-xl-6 col-lg-6">
                         <FadeIn direction="down" delay={0.0}>
                         <div className="partner-style1__brand">
-                            <ul className="clearfix">
+                            <ul className="row">
                                 {
                                     partner?.map((q:any, i:any) => {
                                         return <li key={i}>
