@@ -130,12 +130,16 @@ export default function Footer3() {
                                                     <i className="icon-right-arrow"></i>
                                                 </Link>
                                             </li> */}
-                                            <li>
-                                                <Link href="/platform">
-                                                    {t("HEADER.Platform")}
-                                                    <i className="icon-right-arrow"></i>
-                                                </Link>
-                                            </li>
+                                            {
+                                                !checkIsHide("Our Platform") ? (
+                                                    <li>
+                                                        <Link href="/platform">
+                                                            {t("HEADER.Platform")}
+                                                            <i className="icon-right-arrow"></i>
+                                                        </Link>
+                                                    </li>
+                                                ) : ""
+                                            }
                                             {
                                                 !checkIsHide("Latest News") ? (
                                                     <li>
@@ -146,12 +150,16 @@ export default function Footer3() {
                                                     </li>
                                                 ) : ""
                                             }
-                                            <li>
-                                                <Link href="/history">
-                                                    {t("HEADER.History")}
-                                                    <i className="icon-right-arrow"></i>
-                                                </Link>
-                                            </li>
+                                            {
+                                                !checkIsHide("Our History") ? (
+                                                    <li>
+                                                        <Link href="/history">
+                                                            {t("HEADER.History")}
+                                                            <i className="icon-right-arrow"></i>
+                                                        </Link>
+                                                    </li>
+                                                ) : ""
+                                            }
                                             {
                                                 !checkIsHide("FAQs") ? (
                                                     <li>
@@ -162,24 +170,36 @@ export default function Footer3() {
                                                     </li>
                                                 ) : ""
                                             }
-                                            <li>
-                                                <Link href="/career">
-                                                    {t("HEADER.Career")}
-                                                    <i className="icon-right-arrow"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/contact">
-                                                    {t("HEADER.ContactUs")}
-                                                    <i className="icon-right-arrow"></i>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/privacy">
-                                                    {t("PrivacyPolicy")}
-                                                    <i className="icon-right-arrow"></i>
-                                                </Link>
-                                            </li>
+                                            {
+                                                !checkIsHide("Careers") ? (
+                                                    <li>
+                                                        <Link href="/career">
+                                                            {t("HEADER.Career")}
+                                                            <i className="icon-right-arrow"></i>
+                                                        </Link>
+                                                    </li>
+                                                ) : ""
+                                            }
+                                            {
+                                                !checkIsHide("Contact Us") ? (
+                                                    <li>
+                                                        <Link href="/contact">
+                                                            {t("HEADER.ContactUs")}
+                                                            <i className="icon-right-arrow"></i>
+                                                        </Link>
+                                                    </li>
+                                                ) : ""
+                                            }
+                                            {
+                                                !checkIsHide("Privacy Policy") ? (
+                                                    <li>
+                                                        <Link href="/privacy">
+                                                            {t("PrivacyPolicy")}
+                                                            <i className="icon-right-arrow"></i>
+                                                        </Link>
+                                                    </li>
+                                                ) : ""
+                                            }
 
                                             <li hidden>
                                                 <Link href="https://www.google.com/" target="_blank" rel="noopener noreferrer">

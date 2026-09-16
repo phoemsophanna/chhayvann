@@ -96,7 +96,7 @@ export default function Menu() {
       }
 
       {/* Contact */}
-      {!checkIsHide("") ? <li className={isActive("/contact") ? "current" : ""}><Link href="/contact">{t("HEADER.ContactUs")}</Link></li> : ""}
+      {!checkIsHide("Contact Us") ? <li className={isActive("/contact") ? "current" : ""}><Link href="/contact">{t("HEADER.ContactUs")}</Link></li> : ""}
 
     </ul>
   );
