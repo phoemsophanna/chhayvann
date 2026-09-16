@@ -50,10 +50,10 @@ export default function Exchange_Rate_Page() {
     |
     */
     const [exchange, setExchange] = useState({
-        from: "USD",
+        from: "KHR",
         fromKm: "",
 
-        to: "KHR",
+        to: "USD",
         toKm: "",
 
         rateFrom: "",
