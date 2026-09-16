@@ -1020,10 +1020,10 @@ export default function Exchange_Rate_Page() {
         }
 
         const defaultFrom =
-            "KHR";
+            "USD";
 
         let defaultTo =
-            "USD";
+            "KHR";
 
         /*
         |--------------------------------------------------------------------------
